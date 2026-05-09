@@ -4,19 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
-    <title>ABG Distribuidora | Ferro e Aço de Alta Performance</title>
-    <meta name="description" content="Líder em distribuição de ferragens estruturais e aço CA-50 em Duque de Caxias. Entrega rápida em todo o RJ com logística própria.">
-    
+    <title>ABG Distribuidora | Ferro, Aço e Lajes em Duque de Caxias</title>
+    <meta name="description" content="Distribuição de aço CA-50, colunas e lajes com o melhor preço do RJ. Entrega rápida e material certificado.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --gold: #d4af37;
-            --dark: #05070a;
-            --deep-blue: #0a0f1a;
-            --glass: rgba(255, 255, 255, 0.03);
+            /* Cores extraídas da sua identidade visual (Azul Profundo e Amarelo de Valor) */
+            --abg-blue: #0a1931;
+            --abg-blue-dark: #060c18;
+            --abg-gold: #d4af37;
+            --abg-gold-light: #f1d279;
         }
 
         * {
@@ -26,282 +27,244 @@
         }
 
         body {
-            background-color: var(--dark);
-            color: #fff;
-            overflow-x: hidden;
+            background-color: var(--abg-blue-dark);
+            color: #ffffff;
+            background-image: url('https://www.transparenttextures.com/patterns/dark-steel.png'); /* Textura industrial sutil */
         }
 
-        /* Tratamento visual do Galpão (Filtro Industrial) */
-        .shed-filter {
-            filter: grayscale(100%) contrast(120%) brightness(60%);
-            mix-blend-mode: luminosity;
-            transition: 0.8s ease;
-        }
-        .group:hover .shed-filter {
-            filter: grayscale(30%) contrast(110%) brightness(70%);
+        /* Gradiente de Fundo Principal (Estilo Anúncio) */
+        .bg-abg-gradient {
+            background: radial-gradient(circle at top right, #162a4d 0%, var(--abg-blue-dark) 70%);
         }
 
-        .glass-nav {
-            backdrop-filter: blur(20px);
-            background: rgba(5, 7, 10, 0.8);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .text-gold-gradient {
-            background: linear-gradient(135deg, #fff 30%, var(--gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Efeito de Card Premium */
-        .premium-card {
-            background: linear-gradient(145deg, #0d121d, #05070a);
-            border: 1px solid rgba(255,255,255,0.05);
+        /* Efeito Glow nos Cards */
+        .bento-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
 
-        .premium-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
-            transition: 0.5s;
+        .bento-card:hover {
+            border-color: var(--abg-gold);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .premium-card:hover::before {
-            left: 100%;
+        /* Efeito de revelar cor na imagem ao passar o mouse */
+        .img-reveal {
+            filter: grayscale(100%) brightness(0.6);
+            transition: 0.7s ease;
+        }
+        .bento-card:hover .img-reveal {
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.05);
         }
 
-        .glow-dot {
-            box-shadow: 0 0 15px var(--gold);
+        .btn-gold {
+            background: linear-gradient(135deg, var(--abg-gold), #b38f29);
+            color: #000;
+            font-weight: 900;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-gold:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .border-gold-diagonal {
+            border-right: 4px solid var(--abg-gold);
         }
     </style>
 </head>
-<body>
+<body class="bg-abg-gradient">
 
     <a href="https://wa.me/5521992320613" target="_blank" class="fixed bottom-8 right-8 z-50 group">
-        <div class="absolute inset-0 bg-green-500 blur-2xl opacity-20 group-hover:opacity-50 transition"></div>
+        <div class="absolute inset-0 bg-green-500 blur-xl opacity-20 group-hover:opacity-50 transition"></div>
         <div class="relative bg-green-600 w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl transition-transform group-hover:rotate-[360deg]">
             <i class="fab fa-whatsapp"></i>
         </div>
     </a>
 
-    <div class="hidden md:flex bg-black py-2 px-6 border-b border-white/5 justify-between items-center text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">
-        <div class="flex gap-6">
-            <span><i class="fas fa-map-marker-alt text-[#d4af37] mr-2"></i> Duque de Caxias - RJ</span>
-            <span><i class="fas fa-truck text-[#d4af37] mr-2"></i> Entregas em todo o estado</span>
-        </div>
-        <div class="flex gap-4">
-            <span>CNPJ: 52.570.746/0001-34</span>
-        </div>
-    </div>
-
-    <nav class="sticky top-0 z-40 glass-nav">
+    <nav class="sticky top-0 z-40 backdrop-blur-xl border-b border-white/5 bg-black/30">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-4">
-                <img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png" alt="ABG Logo" class="w-16 md:w-20 drop-shadow-2xl">
-                <div class="hidden sm:block">
-                    <h1 class="font-black text-xl tracking-tighter uppercase leading-none">ABG <span class="text-[#d4af37]">Distribuidora</span></h1>
-                    <span class="text-[9px] tracking-[0.3em] text-slate-500 font-black uppercase">Steel & Construction</span>
+                <img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png" alt="ABG Logo" class="w-16 md:w-20">
+                <div class="hidden sm:block border-l border-white/10 pl-4">
+                    <span class="block font-black text-xl tracking-tighter uppercase leading-none">ABG <span class="text-[#d4af37]">DISTRIBUIDORA</span></span>
+                    <span class="text-[9px] tracking-[0.4em] text-slate-400 font-bold uppercase">Fabricante Nacional</span>
                 </div>
             </div>
             
-            <div class="flex items-center gap-8 text-[11px] font-black uppercase tracking-widest">
-                <div class="hidden lg:flex gap-8 text-slate-300">
-                    <a href="#inicio" class="hover:text-[#d4af37] transition">Início</a>
-                    <a href="#produtos-ancora" class="hover:text-[#d4af37] transition">Produtos</a>
-                    <a href="quem-somos.html" class="hover:text-[#d4af37] transition">Empresa</a>
-                    <a href="entregas.html" class="hover:text-[#d4af37] transition">Entregas</a>
-                    <a href="produtos.html" class="text-[#d4af37] border-b border-[#d4af37]/30 pb-1">Catálogo Completo</a>
-                </div>
-                <a href="https://wa.me/5521992320613" target="_blank" class="bg-[#d4af37] text-black px-6 py-3 rounded-full hover:scale-105 transition active:scale-95 shadow-[0_0_20px_rgba(212,175,55,0.3)]">Orçamento</a>
+            <div class="hidden lg:flex items-center gap-10 text-[11px] font-black uppercase tracking-widest text-slate-300">
+                <a href="#inicio" class="hover:text-[#d4af37] transition">Início</a>
+                <a href="#catalogo-rapido" class="hover:text-[#d4af37] transition">Produtos</a>
+                <a href="quem-somos.html" class="hover:text-[#d4af37] transition">Quem Somos</a>
+                <a href="entregas.html" class="hover:text-[#d4af37] transition">Entregas</a>
+                <a href="https://wa.me/5521992320613" target="_blank" class="btn-gold px-8 py-3 rounded-lg">Orçamento</a>
             </div>
         </div>
     </nav>
 
-    <section id="inicio" class="relative min-h-[95vh] flex items-center overflow-hidden">
-        <div class="absolute top-0 right-0 w-[50%] h-full bg-gradient-to-l from-[#d4af37]/5 to-transparent"></div>
-        
+    <section id="inicio" class="relative min-h-[85vh] flex items-center overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
-            <div class="pt-10">
-                <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg mb-8">
-                    <span class="w-2 h-2 bg-[#d4af37] rounded-full glow-dot"></span>
-                    <span class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-300">Estoque Pronta Entrega</span>
+            <div>
+                <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-md mb-8">
+                    <span class="w-2 h-2 bg-[#d4af37] rounded-full animate-pulse"></span>
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300">Direto da Fábrica - Duque de Caxias</span>
                 </div>
-                <h2 class="text-6xl md:text-8xl font-black leading-[0.9] mb-8 uppercase">
-                    A Força <br> <span class="text-gold-gradient">Bruta</span> Do <br> Seu Aço.
-                </h2>
-                <p class="text-slate-400 text-lg leading-relaxed mb-12 max-w-lg font-medium">
-                    Abastecemos sua obra com ferragens estruturais certificadas. Preço de distribuidora e logística de precisão para todo o Rio de Janeiro.
+                <h1 class="text-6xl md:text-8xl font-black leading-[0.9] mb-8 uppercase italic">
+                    A Força <br> Do <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#d4af37]">Nosso Aço</span>
+                </h1>
+                <p class="text-slate-400 text-lg leading-relaxed mb-10 max-w-xl font-medium">
+                    Reduzindo custos, construindo futuros. Ferragens e lajes com certificação nacional e logística de alta performance para todo o RJ.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-6">
-                    <a href="https://wa.me/5521992320613" class="bg-white text-black px-12 py-6 rounded-2xl font-black uppercase text-sm text-center hover:bg-[#d4af37] transition-colors">
-                        Falar com Consultor
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://wa.me/5521992320613" target="_blank" class="btn-gold px-12 py-5 rounded-xl uppercase text-sm flex items-center gap-3">
+                        Solicitar Tabela de Preços
                     </a>
-                    <div class="flex items-center gap-4 px-6 border-l border-white/10">
-                        <span class="text-3xl font-black">24h</span>
-                        <span class="text-[10px] uppercase font-bold text-slate-500 leading-tight">Suporte para <br> Cotações Rápidas</span>
-                    </div>
                 </div>
             </div>
             
-            <div class="relative group">
-                <div class="absolute -inset-10 bg-gradient-to-tr from-[#d4af37]/20 to-transparent blur-3xl opacity-30"></div>
-                <div class="relative rounded-[50px] overflow-hidden border border-white/10 shadow-2xl">
+            <div class="relative">
+                <div class="absolute -inset-20 bg-blue-500/10 blur-[120px] rounded-full"></div>
+                <div class="rounded-[40px] overflow-hidden border border-white/10 shadow-2xl relative">
                     <img src="https://i.postimg.cc/1RNKH2Gj/file-00000000204471fbb554c8d1a051e409.png" 
-                         alt="Centro de Distribuição" 
-                         class="w-full h-[600px] object-cover shed-filter scale-110 group-hover:scale-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                    <div class="absolute bottom-12 left-12">
-                        <span class="block text-5xl font-black text-[#d4af37]">RJ</span>
-                        <span class="text-xs font-black uppercase tracking-[0.4em]">Logística em 48h</span>
+                         alt="CD Duque de Caxias" 
+                         class="w-full h-[500px] object-cover filter contrast-125 brightness-75 grayscale hover:grayscale-0 transition duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 flex items-center gap-4">
+                        <div class="bg-[#d4af37] text-black font-black p-4 rounded-xl text-center">
+                            <span class="block text-2xl">48h</span>
+                            <span class="text-[8px] uppercase">Entrega Máxima</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="produtos-ancora" class="py-32 bg-[#080a0f] border-y border-white/5">
+    <section id="catalogo-rapido" class="py-32 bg-black/20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-                <div>
-                    <h3 class="text-[#d4af37] font-black uppercase text-xs tracking-[0.5em] mb-4">Divisão de Materiais</h3>
-                    <p class="text-5xl font-black uppercase leading-none">O que nós <span class="text-gold-gradient">Entregamos</span></p>
+                <div class="border-l-4 border-[#d4af37] pl-8">
+                    <h2 class="text-sm font-black text-[#d4af37] uppercase tracking-[0.5em] mb-4">Divisão de Materiais</h2>
+                    <p class="text-4xl md:text-5xl font-black uppercase italic">Soluções <span class="text-slate-500">Estruturais</span></p>
                 </div>
-                <a href="produtos.html" class="text-xs font-black uppercase border-b-2 border-[#d4af37] pb-2 hover:text-[#d4af37] transition">Ver todos os diâmetros</a>
+                <div class="flex gap-4">
+                    <div class="bg-white/5 p-4 rounded-xl text-center border border-white/5">
+                        <span class="block text-[#d4af37] font-black text-xl">FRETE</span>
+                        <span class="text-[10px] font-bold uppercase text-slate-500">Sob consulta</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="premium-card rounded-[40px] group cursor-pointer">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="produtos.html#colunas" class="bento-card rounded-[30px] group block">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000" class="w-full h-full object-cover img-reveal">
+                        <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-[#d4af37] uppercase">A partir de R$ 55,00</div>
                     </div>
-                    <div class="p-10">
-                        <span class="text-[#d4af37] text-[10px] font-black uppercase tracking-widest">CA-50 / CA-60</span>
-                        <h4 class="text-2xl font-black uppercase mt-2 mb-4">Vergalhões e Colunas</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-8">Barras de 12 metros, estribos e colunas prontas para concretagem imediata.</p>
-                        <i class="fas fa-arrow-right text-[#d4af37]"></i>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-black uppercase mb-2">Colunas Prontas</h3>
+                        <p class="text-slate-500 text-sm mb-6 uppercase font-bold tracking-tighter">1/4 • 5/16 • 3/8</p>
+                        <span class="text-[#d4af37] font-black text-[10px] uppercase group-hover:gap-4 flex items-center gap-2 transition-all">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
                     </div>
-                </div>
+                </a>
 
-                <div class="premium-card rounded-[40px] group cursor-pointer md:-mt-10">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <a href="produtos.html#lajes" class="bento-card rounded-[30px] group block md:mt-12">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1589939705384-5185138a0470?q=80&w=1000" class="w-full h-full object-cover img-reveal">
+                        <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-[#d4af37] uppercase">A partir de R$ 35,00</div>
                     </div>
-                    <div class="p-10">
-                        <span class="text-[#d4af37] text-[10px] font-black uppercase tracking-widest">Logística Própria</span>
-                        <h4 class="text-2xl font-black uppercase mt-2 mb-4">Entrega em Canteiro</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-8">Frota preparada para descarga rápida de materiais pesados e longos.</p>
-                        <i class="fas fa-arrow-right text-[#d4af37]"></i>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-black uppercase mb-2">Lajes Pré-Moldadas</h3>
+                        <p class="text-slate-500 text-sm mb-6 uppercase font-bold tracking-tighter">Isopor (EPS) • Cerâmica</p>
+                        <span class="text-[#d4af37] font-black text-[10px] uppercase flex items-center gap-2">Explorar <i class="fas fa-arrow-right"></i></span>
                     </div>
-                </div>
+                </a>
 
-                <div class="premium-card rounded-[40px] group cursor-pointer">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1589939705384-5185138a0470?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <a href="produtos.html#cimento" class="bento-card rounded-[30px] group block">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1590250073549-b09e1e129c5e?q=80&w=1000" class="w-full h-full object-cover img-reveal">
+                        <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black text-[#d4af37] uppercase">Lotes Fechados</div>
                     </div>
-                    <div class="p-10">
-                        <span class="text-[#d4af37] text-[10px] font-black uppercase tracking-widest">Obras Civis</span>
-                        <h4 class="text-2xl font-black uppercase mt-2 mb-4">Lajes e Cimento</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-8">Soluções em EPS e cerâmica para lajes leves e seguras.</p>
-                        <i class="fas fa-arrow-right text-[#d4af37]"></i>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-black uppercase mb-2">Cimento & Base</h3>
+                        <p class="text-slate-500 text-sm mb-6 uppercase font-bold tracking-tighter">CSN CP3 • MAUÁ CP2</p>
+                        <span class="text-[#d4af37] font-black text-[10px] uppercase flex items-center gap-2">Ver Catálogo <i class="fas fa-arrow-right"></i></span>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <section class="py-32">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="bg-gradient-to-br from-[#0d121d] to-black rounded-[60px] border border-white/5 p-12 md:p-24 relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-96 h-96 bg-[#d4af37]/10 blur-[120px] rounded-full"></div>
+    <footer class="bg-black pt-24 pb-8 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-4 gap-12 mb-20">
                 
-                <div class="grid lg:grid-cols-2 gap-20 items-center relative z-10">
-                    <div>
-                        <h3 class="text-4xl md:text-5xl font-black uppercase mb-8 leading-tight">Especialistas <br> Em <span class="text-[#d4af37]">Resultado</span></h3>
-                        <p class="text-slate-400 text-lg mb-12">Nossa equipe comercial não apenas vende, ela calcula. Vitória e Leonardo estão prontos para otimizar sua lista de materiais.</p>
-                        
-                        <div class="flex flex-wrap gap-8">
-                            <div class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl pr-8 border border-white/5">
-                                <div class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center font-black text-[#d4af37]">VM</div>
-                                <div>
-                                    <span class="block font-bold text-sm">Vitória Maria</span>
-                                    <span class="text-[9px] uppercase font-black text-slate-500">Comercial Senior</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl pr-8 border border-white/5">
-                                <div class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center font-black text-[#d4af37]">LG</div>
-                                <div>
-                                    <span class="block font-bold text-sm">Leonardo Godoi</span>
-                                    <span class="text-[9px] uppercase font-black text-slate-500">Gestão de Projetos</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="p-8 bg-white/5 rounded-3xl border border-white/5">
-                            <i class="fas fa-certificate text-2xl text-[#d4af37] mb-4"></i>
-                            <span class="block font-black uppercase text-xs">Aço Certificado</span>
-                        </div>
-                        <div class="p-8 bg-white/5 rounded-3xl border border-white/5 mt-8">
-                            <i class="fas fa-coins text-2xl text-[#d4af37] mb-4"></i>
-                            <span class="block font-black uppercase text-xs">Preço Fábrica</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-black pt-28 pb-12">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-16 mb-24">
                 <div class="col-span-1 md:col-span-1">
-                    <img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png" alt="ABG" class="w-20 mb-8 grayscale hover:grayscale-0 transition cursor-pointer">
-                    <p class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.3em] leading-loose">
-                        Unidade Industrial <br> Duque de Caxias - RJ <br> Brasil
+                    <img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png" alt="ABG Logo" class="w-24 mb-6 filter brightness-125">
+                    <h4 class="text-white font-black uppercase text-sm mb-4">ABG Distribuidora de Ferro e Aço</h4>
+                    <p class="text-slate-500 text-[11px] font-bold uppercase tracking-widest leading-relaxed">
+                        Reduzindo custos, construindo futuros.<br>
+                        CNPJ: 52.570.746/0001-34
                     </p>
                 </div>
-                
+
                 <div>
-                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-10">Explorar</h4>
-                    <ul class="space-y-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
-                        <li><a href="produtos.html" class="hover:text-[#d4af37] transition">Materiais de Construção</a></li>
-                        <li><a href="entregas.html" class="hover:text-[#d4af37] transition">Áreas de Entrega</a></li>
-                        <li><a href="quem-somos.html" class="hover:text-[#d4af37] transition">Nossa História</a></li>
+                    <h5 class="text-[#d4af37] font-black uppercase text-[10px] tracking-[0.3em] mb-8">Navegação</h5>
+                    <ul class="space-y-4 text-xs font-bold uppercase text-slate-400">
+                        <li><a href="produtos.html" class="hover:text-white transition">Catálogo de Produtos</a></li>
+                        <li><a href="entregas.html" class="hover:text-white transition">Logística & Entregas</a></li>
+                        <li><a href="quem-somos.html" class="hover:text-white transition">Quem Somos</a></li>
+                        <li><a href="contato.html" class="hover:text-white transition">Fale Conosco</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-10">Administrativo</h4>
-                    <ul class="space-y-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
-                        <li>CNPJ 52.570.746/0001-34</li>
-                        <li>Frete sob consulta</li>
-                        <li>Condições para Atacado</li>
-                    </ul>
+                    <h5 class="text-[#d4af37] font-black uppercase text-[10px] tracking-[0.3em] mb-8">Onde Estamos</h5>
+                    <p class="text-slate-400 text-xs font-bold uppercase leading-loose">
+                        Duque de Caxias - RJ<br>
+                        Rio de Janeiro, Brasil
+                    </p>
+                    <div class="mt-6 flex items-center gap-2 text-slate-500 text-[10px] font-black">
+                        <i class="fas fa-truck text-[#d4af37]"></i> ENTREGAS EM TODO O RJ
+                    </div>
                 </div>
 
                 <div>
-                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-10">Conectar</h4>
-                    <div class="flex gap-4">
-                        <a href="https://www.instagram.com/abg.distribuidora.de.ferro" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#d4af37] hover:text-black transition">
-                            <i class="fab fa-instagram text-xl"></i>
+                    <h5 class="text-[#d4af37] font-black uppercase text-[10px] tracking-[0.3em] mb-8">Canais Oficiais</h5>
+                    <div class="flex flex-col gap-3">
+                        <a href="https://wa.me/5521992320613" target="_blank" class="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-lg hover:bg-green-600/20 hover:border-green-600 transition group">
+                            <i class="fab fa-whatsapp text-green-500 text-lg"></i>
+                            <span class="text-[10px] font-black uppercase">(21) 99232-0613</span>
                         </a>
-                        <a href="https://wa.me/5521992320613" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-green-600 transition">
-                            <i class="fab fa-whatsapp text-xl"></i>
+                        <a href="https://www.instagram.com/abg.distribuidora.de.ferro" target="_blank" class="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-lg hover:bg-[#d4af37]/20 hover:border-[#d4af37] transition">
+                            <i class="fab fa-instagram text-[#d4af37] text-lg"></i>
+                            <span class="text-[10px] font-black uppercase">@abg.distribuidora</span>
+                        </a>
+                        <a href="mailto:contato@abgdistribuidora.com.br" class="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-lg hover:bg-blue-600/20 hover:border-blue-600 transition">
+                            <i class="fas fa-envelope text-blue-400 text-lg"></i>
+                            <span class="text-[10px] font-black uppercase">E-mail Comercial</span>
                         </a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
-                <span class="text-[9px] font-black uppercase tracking-[0.5em] text-slate-700">© 2026 ABG Distribuidora de Ferro e Aço</span>
-                <span class="text-[9px] font-black uppercase tracking-[0.5em] text-slate-700">Estrutura Forte. Confiança Sólida.</span>
+                <span class="text-[9px] font-black uppercase tracking-[0.5em] text-slate-700 italic">© 2026 ABG - Estrutura Forte. Confiança Sólida.</span>
+                <div class="flex gap-8 text-[9px] font-black uppercase tracking-widest text-slate-700">
+                    <span>Privacidade</span>
+                    <span>Termos</span>
+                </div>
             </div>
         </div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-900/10 blur-[150px] rounded-full pointer-events-none"></div>
     </footer>
 
 </body>
