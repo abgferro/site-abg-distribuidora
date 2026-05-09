@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,56 +8,96 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
-body{
-    font-family:'Montserrat',sans-serif;
-    background:#07111f;
-    color:white;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
 }
 
-.bg-industrial{
-    background:
-    linear-gradient(rgba(4,10,20,.92),rgba(4,10,20,.96)),
-    url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop');
-    background-size:cover;
-    background-position:center;
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#07111f;
+color:white;
+overflow-x:hidden;
 }
 
 .gold{
-    color:#d4af37;
+color:#d4af37;
 }
 
 .bg-gold{
-    background:#d4af37;
+background:#d4af37;
 }
 
 .border-gold{
-    border-color:#d4af37;
+border-color:#d4af37;
 }
 
 .card{
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(8px);
+background:rgba(255,255,255,.04);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.08);
 }
 
 .glow{
-    box-shadow:0 0 30px rgba(212,175,55,.15);
+box-shadow:0 0 40px rgba(212,175,55,.15);
+}
+
+.hover-card{
+transition:.4s ease;
+}
+
+.hover-card:hover{
+transform:translateY(-8px);
+border-color:rgba(212,175,55,.35);
+}
+
+.hero-bg{
+background:
+linear-gradient(rgba(4,10,20,.88),rgba(4,10,20,.95)),
+url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+}
+
+.section-divider{
+height:1px;
+background:linear-gradient(to right,transparent,rgba(212,175,55,.4),transparent);
 }
 
 .timeline::before{
-    content:'';
-    position:absolute;
-    left:19px;
-    top:0;
-    width:2px;
-    height:100%;
-    background:#d4af37;
+content:'';
+position:absolute;
+left:18px;
+top:0;
+width:2px;
+height:100%;
+background:#d4af37;
+}
+
+.gallery-image{
+height:320px;
+object-fit:cover;
+width:100%;
+transition:.5s ease;
+}
+
+.gallery-card:hover .gallery-image{
+transform:scale(1.05);
+}
+
+.blur-bg{
+background:linear-gradient(to top,rgba(4,10,20,.95),transparent);
 }
 
 </style>
@@ -68,9 +108,10 @@ body{
 <!-- WHATSAPP -->
 
 <a href="https://wa.me/5521992320613"
-class="fixed bottom-6 right-6 z-50 bg-[#25d366] text-white p-5 rounded-full shadow-2xl hover:scale-110 transition duration-300">
+target="_blank"
+class="fixed bottom-6 right-6 z-50 bg-[#25d366] p-5 rounded-full shadow-2xl hover:scale-110 transition duration-300">
 
-<i class="fab fa-whatsapp text-3xl"></i>
+<i class="fab fa-whatsapp text-3xl text-white"></i>
 
 </a>
 
@@ -78,16 +119,16 @@ class="fixed bottom-6 right-6 z-50 bg-[#25d366] text-white p-5 rounded-full shad
 
 <header class="sticky top-0 z-50 bg-[#07111f]/95 backdrop-blur border-b border-white/10">
 
-<div class="container mx-auto px-6 py-4 flex justify-between items-center">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
 <a href="index.html" class="flex items-center gap-4">
 
-<img src="https://i.postimg.cc/LskMhPWq/IMG-20260331-111203-766.webp"
+<img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png"
 class="w-14 h-14 object-contain">
 
 <div>
 
-<h1 class="font-black text-lg uppercase tracking-tight">
+<h1 class="font-black uppercase text-lg">
 ABG DISTRIBUIDORA
 </h1>
 
@@ -99,15 +140,23 @@ Ferro e Aço
 
 </a>
 
-<nav class="hidden md:flex gap-8 text-xs uppercase font-bold">
+<nav class="hidden md:flex items-center gap-8 uppercase text-xs font-black">
 
-<a href="index.html" class="hover:text-yellow-400 transition">Início</a>
+<a href="index.html" class="hover:text-yellow-400 transition">
+Início
+</a>
 
-<a href="produtos.html" class="hover:text-yellow-400 transition">Catálogo</a>
+<a href="produtos.html" class="hover:text-yellow-400 transition">
+Catálogo
+</a>
 
-<a href="entregas.html" class="hover:text-yellow-400 transition">Entregas</a>
+<a href="entregas.html" class="hover:text-yellow-400 transition">
+Entregas
+</a>
 
-<a href="contato.html" class="hover:text-yellow-400 transition">Contato</a>
+<a href="contato.html" class="hover:text-yellow-400 transition">
+Contato
+</a>
 
 </nav>
 
@@ -117,17 +166,17 @@ Ferro e Aço
 
 <!-- HERO -->
 
-<section class="bg-industrial min-h-[85vh] flex items-center">
+<section class="hero-bg min-h-[90vh] flex items-center relative overflow-hidden">
 
-<div class="container mx-auto px-6 py-24">
+<div class="max-w-7xl mx-auto px-6 py-24 w-full">
 
 <div class="max-w-5xl">
 
-<span class="bg-gold text-black px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-widest">
+<span class="bg-gold text-black px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-[0.3em]">
 Quem Somos
 </span>
 
-<h1 class="text-5xl md:text-7xl font-black uppercase leading-[0.95] mt-8">
+<h1 class="text-5xl md:text-7xl font-black uppercase leading-[0.95] mt-10">
 
 Estrutura forte.
 <span class="gold">Confiança sólida.</span>
@@ -136,7 +185,8 @@ Estrutura forte.
 
 <p class="text-gray-300 text-lg leading-relaxed mt-10 max-w-3xl">
 
-Mais do que vender materiais de construção, a ABG nasceu com o propósito de construir confiança, criar relações verdadeiras e entregar qualidade com transparência para milhares de clientes em todo o estado do Rio de Janeiro.
+A ABG DISTRIBUIDORA DE FERRO E AÇO nasceu com um propósito simples:
+entregar materiais de qualidade com transparência, compromisso e atendimento humano para clientes em todo o estado do Rio de Janeiro.
 
 </p>
 
@@ -150,6 +200,7 @@ Ver Catálogo
 </a>
 
 <a href="https://wa.me/5521992320613"
+target="_blank"
 class="border border-white/20 px-10 py-5 rounded-2xl font-bold uppercase text-sm hover:bg-white/10 transition text-center">
 
 Falar no WhatsApp
@@ -164,53 +215,107 @@ Falar no WhatsApp
 
 </section>
 
-<!-- HISTÓRIA -->
+<!-- EMPRESA VERIFICADA -->
 
 <section class="py-24">
 
-<div class="container mx-auto px-6">
+<div class="max-w-7xl mx-auto px-6">
 
-<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="text-center mb-20">
 
-<div>
-
-<h2 class="text-4xl font-black uppercase mb-10">
-Nossa História
+<h2 class="text-4xl md:text-5xl font-black uppercase">
+Empresa Verificada
 </h2>
 
-<div class="space-y-8 text-gray-300 leading-relaxed">
-
-<p>
-A história da ABG DISTRIBUIDORA DE FERRO E AÇO começou em 2018 através de um pequeno comércio voltado para água e gás. Mesmo em uma estrutura simples, já existia algo que se tornaria a base da empresa: honestidade, compromisso e respeito pelo cliente.
-</p>
-
-<p>
-Com o passar do tempo, percebemos a necessidade de criar uma empresa mais transparente, acessível e preparada para oferecer qualidade com preço justo no setor da construção civil.
-</p>
-
-<p>
-Em 2020 iniciamos nossa trajetória no ramo de ferragens e materiais de construção. Cada entrega realizada representava mais um passo na construção de um sonho maior.
-</p>
-
-<p>
-Em 2022 demos um dos maiores passos da nossa trajetória: o fechamento de contrato com a ArcelorMittal, uma das maiores fornecedoras de aço do mundo.
-</p>
-
-<p>
-Já em 2023 expandimos ainda mais nossas operações através de novas parcerias com fornecedores como CSN, Gerdau, Mauá e olarias especializadas.
-</p>
-
-<div class="border-l-4 border-gold pl-6 py-2">
-
-<p class="text-white font-bold text-xl italic">
-“Entregar qualidade, confiança e preço justo para cada cliente.”
+<p class="text-gray-400 mt-5 max-w-3xl mx-auto">
+Compromisso com transparência, atendimento real e entregas em todo o estado do Rio de Janeiro.
 </p>
 
 </div>
 
-<p>
-Hoje a ABG atende todo o estado do Rio de Janeiro através de logística própria e parceiros especializados, sempre mantendo o compromisso com transparência e atendimento humanizado.
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+<div class="card rounded-3xl p-10 hover-card glow">
+<i class="fas fa-building text-5xl gold mb-8"></i>
+<h3 class="font-black text-2xl uppercase mb-4">
+CNPJ Ativo
+</h3>
+<p class="text-gray-400 text-sm leading-relaxed">
+Empresa registrada e atuando oficialmente no segmento de ferragens e construção civil.
 </p>
+</div>
+
+<div class="card rounded-3xl p-10 hover-card glow">
+<i class="fas fa-truck-fast text-5xl gold mb-8"></i>
+<h3 class="font-black text-2xl uppercase mb-4">
+Logística Própria
+</h3>
+<p class="text-gray-400 text-sm leading-relaxed">
+Entregas organizadas através de operação própria e parceiros especializados.
+</p>
+</div>
+
+<div class="card rounded-3xl p-10 hover-card glow">
+<i class="fas fa-shield-halved text-5xl gold mb-8"></i>
+<h3 class="font-black text-2xl uppercase mb-4">
+Empresa Verificada
+</h3>
+<p class="text-gray-400 text-sm leading-relaxed">
+Atendimento humanizado, suporte rápido e compromisso com cada cliente.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- HISTÓRIA -->
+
+<section class="py-24">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="grid lg:grid-cols-2 gap-20 items-start">
+
+<div>
+
+<h2 class="text-5xl font-black uppercase mb-10">
+Nossa História
+</h2>
+
+<div class="space-y-8 text-gray-300 leading-relaxed text-lg">
+
+<p>
+A história da ABG começou em 2018 através de um pequeno comércio voltado para água e gás.
+Mesmo em uma estrutura simples, já existia algo que se tornaria a base da empresa:
+honestidade, compromisso e respeito ao cliente.
+</p>
+
+<p>
+Com o crescimento das operações, identificamos a necessidade de um mercado mais transparente no setor de ferragens e construção civil.
+Foi então que iniciamos nossa trajetória no segmento de aço, ferragens e materiais para obras.
+</p>
+
+<p>
+Em 2022 demos um dos passos mais importantes da nossa caminhada:
+o início de operações com fornecedores reconhecidos nacionalmente como ArcelorMittal, CSN e Gerdau.
+</p>
+
+<p>
+Hoje a ABG DISTRIBUIDORA DE FERRO E AÇO atende clientes em todo o estado do Rio de Janeiro, mantendo como principal objetivo:
+</p>
+
+<div class="border-l-4 border-gold pl-6 py-4">
+
+<p class="text-white text-2xl italic font-bold">
+“Entregar qualidade, confiança e preço justo para cada cliente.”
+</p>
+
+</div>
 
 </div>
 
@@ -220,82 +325,70 @@ Hoje a ABG atende todo o estado do Rio de Janeiro através de logística própri
 
 <div class="timeline relative pl-16 space-y-12">
 
-<div>
+<div class="relative">
 
-<div class="absolute left-0 w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-black">
+<div class="absolute left-[-64px] top-0 w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-black">
 2018
 </div>
 
-<div class="card rounded-2xl p-6">
-
-<h3 class="font-black text-xl mb-2">
+<div class="card rounded-3xl p-8">
+<h3 class="font-black text-2xl mb-3">
 O início
 </h3>
-
-<p class="text-gray-400 text-sm">
-Primeiras operações com água e gás.
+<p class="text-gray-400">
+Primeiras operações comerciais com água e gás.
 </p>
-
 </div>
 
 </div>
 
-<div>
+<div class="relative">
 
-<div class="absolute left-0 mt-[120px] w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-black">
+<div class="absolute left-[-64px] top-0 w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-black">
 2020
 </div>
 
-<div class="card rounded-2xl p-6 mt-24">
-
-<h3 class="font-black text-xl mb-2">
-Entrada nas ferragens
+<div class="card rounded-3xl p-8">
+<h3 class="font-black text-2xl mb-3">
+Entrada nas Ferragens
 </h3>
-
-<p class="text-gray-400 text-sm">
-Início das operações com construção civil.
+<p class="text-gray-400">
+Expansão para o setor de ferro, aço e construção civil.
 </p>
-
 </div>
 
 </div>
 
-<div>
+<div class="relative">
 
-<div class="absolute left-0 mt-[240px] w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-black">
+<div class="absolute left-[-64px] top-0 w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-black">
 2022
 </div>
 
-<div class="card rounded-2xl p-6 mt-24">
-
-<h3 class="font-black text-xl mb-2">
-Contrato com ArcelorMittal
+<div class="card rounded-3xl p-8">
+<h3 class="font-black text-2xl mb-3">
+Novos Fornecedores
 </h3>
-
-<p class="text-gray-400 text-sm">
-Marco importante na expansão da empresa.
+<p class="text-gray-400">
+Parcerias com ArcelorMittal, CSN e Gerdau.
 </p>
-
 </div>
 
 </div>
 
-<div>
+<div class="relative">
 
-<div class="absolute left-0 mt-[360px] w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-black">
+<div class="absolute left-[-64px] top-0 w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-black">
 2023
 </div>
 
-<div class="card rounded-2xl p-6 mt-24">
-
-<h3 class="font-black text-xl mb-2">
-Nascimento oficial da ABG
+<div class="card rounded-3xl p-8">
+<h3 class="font-black text-2xl mb-3">
+Nascimento da ABG
 </h3>
-
-<p class="text-gray-400 text-sm">
-Expansão da operação e consolidação da marca.
+<p class="text-gray-400">
+Consolidação da marca ABG DISTRIBUIDORA DE FERRO E AÇO.
 </p>
-
 </div>
 
 </div>
@@ -310,105 +403,152 @@ Expansão da operação e consolidação da marca.
 
 </section>
 
-<!-- GALERIA -->
+<!-- ESTATÍSTICAS -->
 
 <section class="py-24 bg-[#0d1829]">
 
-<div class="container mx-auto px-6">
+<div class="max-w-7xl mx-auto px-6">
 
-<div class="text-center mb-16">
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-<h2 class="text-5xl font-black uppercase">
-Nossa operação
-</h2>
+<div class="card rounded-3xl p-10 text-center hover-card">
 
-<p class="text-gray-400 mt-6 max-w-3xl mx-auto">
-Estrutura preparada para atender pequenas e grandes obras em todo o RJ.
+<h3 class="text-5xl font-black gold mb-4">
+RJ
+</h3>
+
+<p class="uppercase font-bold text-sm tracking-[0.2em] text-gray-300">
+Atendimento em todo o estado
 </p>
 
 </div>
 
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="card rounded-3xl p-10 text-center hover-card">
 
-<div class="overflow-hidden rounded-3xl relative group">
+<h3 class="text-5xl font-black gold mb-4">
+24h
+</h3>
 
-<img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop"
-class="w-full h-[320px] object-cover group-hover:scale-110 transition duration-700">
+<p class="uppercase font-bold text-sm tracking-[0.2em] text-gray-300">
+Suporte online e acompanhamento
+</p>
 
-<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+</div>
 
-<div class="absolute bottom-6 left-6">
+<div class="card rounded-3xl p-10 text-center hover-card">
 
-<h3 class="font-black text-xl uppercase">
+<h3 class="text-5xl font-black gold mb-4">
++2020
+</h3>
+
+<p class="uppercase font-bold text-sm tracking-[0.2em] text-gray-300">
+Atuando no setor de ferragens
+</p>
+
+</div>
+
+<div class="card rounded-3xl p-10 text-center hover-card">
+
+<h3 class="text-5xl font-black gold mb-4">
+100%
+</h3>
+
+<p class="uppercase font-bold text-sm tracking-[0.2em] text-gray-300">
+Compromisso com transparência
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- GALERIA -->
+
+<section class="py-24">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="text-center mb-20">
+
+<h2 class="text-5xl font-black uppercase">
+Nossa Estrutura
+</h2>
+
+<p class="text-gray-400 mt-5 max-w-3xl mx-auto">
+Operação preparada para atender obras de pequeno, médio e grande porte.
+</p>
+
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+<div class="gallery-card relative overflow-hidden rounded-[30px]">
+
+<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop"
+class="gallery-image">
+
+<div class="absolute inset-0 blur-bg flex items-end p-8">
+
+<div>
+
+<h3 class="font-black text-2xl uppercase">
+Ferragens & Aço
+</h3>
+
+<p class="text-gray-300 text-sm mt-2">
+Materiais para estruturas, colunas e construção civil.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="gallery-card relative overflow-hidden rounded-[30px]">
+
+<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop"
+class="gallery-image">
+
+<div class="absolute inset-0 blur-bg flex items-end p-8">
+
+<div>
+
+<h3 class="font-black text-2xl uppercase">
 Logística
 </h3>
 
-<p class="text-sm text-gray-300">
-Entregas rápidas e organizadas.
+<p class="text-gray-300 text-sm mt-2">
+Entregas organizadas para todo o estado do RJ.
 </p>
 
 </div>
 
 </div>
 
-<div class="overflow-hidden rounded-3xl relative group">
+</div>
 
-<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop"
-class="w-full h-[320px] object-cover group-hover:scale-110 transition duration-700">
+<div class="gallery-card relative overflow-hidden rounded-[30px]">
 
-<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+<img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop"
+class="gallery-image">
 
-<div class="absolute bottom-6 left-6">
+<div class="absolute inset-0 blur-bg flex items-end p-8">
 
-<h3 class="font-black text-xl uppercase">
-Ferragens
+<div>
+
+<h3 class="font-black text-2xl uppercase">
+Distribuição
 </h3>
 
-<p class="text-sm text-gray-300">
-Qualidade e resistência.
+<p class="text-gray-300 text-sm mt-2">
+Atendimento rápido para obras e construções.
 </p>
 
 </div>
-
-</div>
-
-<div class="overflow-hidden rounded-3xl relative group">
-
-<img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200&auto=format&fit=crop"
-class="w-full h-[320px] object-cover group-hover:scale-110 transition duration-700">
-
-<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-
-<div class="absolute bottom-6 left-6">
-
-<h3 class="font-black text-xl uppercase">
-Construção Civil
-</h3>
-
-<p class="text-sm text-gray-300">
-Materiais para toda etapa da obra.
-</p>
-
-</div>
-
-</div>
-
-<div class="overflow-hidden rounded-3xl relative group">
-
-<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop"
-class="w-full h-[320px] object-cover group-hover:scale-110 transition duration-700">
-
-<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-
-<div class="absolute bottom-6 left-6">
-
-<h3 class="font-black text-xl uppercase">
-Estrutura
-</h3>
-
-<p class="text-sm text-gray-300">
-Operação preparada para grandes demandas.
-</p>
 
 </div>
 
@@ -422,67 +562,62 @@ Operação preparada para grandes demandas.
 
 <!-- FORNECEDORES -->
 
-<section class="py-24">
+<section class="py-24 bg-[#0d1829]">
 
-<div class="container mx-auto px-6">
+<div class="max-w-7xl mx-auto px-6">
 
-<div class="text-center mb-16">
+<div class="text-center mb-20">
 
 <h2 class="text-5xl font-black uppercase">
-Grandes fornecedores
+Parceiros & Fornecedores
 </h2>
 
-<p class="text-gray-400 mt-6 max-w-3xl mx-auto">
-Parcerias com marcas reconhecidas nacionalmente.
+<p class="text-gray-400 mt-5">
+Fornecedores reconhecidos nacionalmente.
 </p>
 
 </div>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-<div class="card rounded-3xl p-10 text-center">
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/ArcelorMittal_logo.svg/512px-ArcelorMittal_logo.svg.png"
-class="h-14 mx-auto object-contain mb-6">
-
-<h3 class="font-black text-xl uppercase">
-ArcelorMittal
-</h3>
-
-</div>
-
-<div class="card rounded-3xl p-10 text-center">
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/CSN_logo.svg/512px-CSN_logo.svg.png"
-class="h-14 mx-auto object-contain mb-6">
-
-<h3 class="font-black text-xl uppercase">
+<div class="card rounded-3xl p-10 text-center hover-card">
+<i class="fas fa-industry text-5xl gold mb-6"></i>
+<h3 class="font-black text-2xl uppercase">
 CSN
 </h3>
-
+<p class="text-gray-400 text-sm mt-4">
+Fornecedor de aço e materiais estruturais.
+</p>
 </div>
 
-<div class="card rounded-3xl p-10 text-center">
+<div class="card rounded-3xl p-10 text-center hover-card">
+<i class="fas fa-building-circle-check text-5xl gold mb-6"></i>
+<h3 class="font-black text-2xl uppercase">
+ArcelorMittal
+</h3>
+<p class="text-gray-400 text-sm mt-4">
+Uma das maiores referências mundiais em aço.
+</p>
+</div>
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Gerdau_logo.svg/512px-Gerdau_logo.svg.png"
-class="h-14 mx-auto object-contain mb-6">
-
-<h3 class="font-black text-xl uppercase">
+<div class="card rounded-3xl p-10 text-center hover-card">
+<i class="fas fa-helmet-safety text-5xl gold mb-6"></i>
+<h3 class="font-black text-2xl uppercase">
 Gerdau
 </h3>
-
+<p class="text-gray-400 text-sm mt-4">
+Qualidade reconhecida no segmento de ferragens.
+</p>
 </div>
 
-<div class="card rounded-3xl p-10 text-center">
-
-<h3 class="font-black text-4xl gold uppercase mb-6">
+<div class="card rounded-3xl p-10 text-center hover-card">
+<i class="fas fa-cubes text-5xl gold mb-6"></i>
+<h3 class="font-black text-2xl uppercase">
 Mauá
 </h3>
-
-<h3 class="font-black text-xl uppercase">
-Cimento Mauá
-</h3>
-
+<p class="text-gray-400 text-sm mt-4">
+Fornecedor de cimento e materiais para construção.
+</p>
 </div>
 
 </div>
@@ -491,76 +626,110 @@ Cimento Mauá
 
 </section>
 
-<!-- DIFERENCIAIS -->
+<!-- QUALIDADE -->
 
-<section class="py-24 bg-[#0d1829]">
+<section class="py-24">
 
-<div class="container mx-auto px-6">
+<div class="max-w-7xl mx-auto px-6">
 
-<div class="text-center mb-16">
+<div class="text-center mb-20">
 
 <h2 class="text-5xl font-black uppercase">
-Por que escolher a ABG?
+Qualidade & Garantia
 </h2>
 
 </div>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-<div class="card rounded-3xl p-10 text-center">
-
-<i class="fas fa-truck text-5xl gold mb-6"></i>
-
-<h3 class="font-black text-2xl uppercase">
-Entrega rápida
+<div class="card rounded-3xl p-10 text-center hover-card">
+<i class="fas fa-award text-5xl gold mb-6"></i>
+<h3 class="font-black text-xl uppercase">
+Materiais Certificados
 </h3>
+</div>
 
-<p class="text-gray-400 text-sm mt-4">
-Atendimento em diversas regiões do RJ.
-</p>
+<div class="card rounded-3xl p-10 text-center hover-card">
+<i class="fas fa-shield text-5xl gold mb-6"></i>
+<h3 class="font-black text-xl uppercase">
+Garantia de Qualidade
+</h3>
+</div>
+
+<div class="card rounded-3xl p-10 text-center hover-card">
+<i class="fas fa-circle-check text-5xl gold mb-6"></i>
+<h3 class="font-black text-xl uppercase">
+Padrão ABNT
+</h3>
+</div>
+
+<div class="card rounded-3xl p-10 text-center hover-card">
+<i class="fas fa-star text-5xl gold mb-6"></i>
+<h3 class="font-black text-xl uppercase">
+Empresa Verificada
+</h3>
+</div>
 
 </div>
 
-<div class="card rounded-3xl p-10 text-center">
+</div>
 
-<i class="fas fa-shield-halved text-5xl gold mb-6"></i>
+</section>
 
-<h3 class="font-black text-2xl uppercase">
-Qualidade garantida
-</h3>
+<!-- POR QUE ESCOLHER -->
 
-<p class="text-gray-400 text-sm mt-4">
-Produtos selecionados e fornecedores reconhecidos.
-</p>
+<section class="py-24 bg-[#0d1829]">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="text-center mb-20">
+
+<h2 class="text-5xl font-black uppercase">
+Por Que Escolher a ABG?
+</h2>
 
 </div>
 
-<div class="card rounded-3xl p-10 text-center">
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-<i class="fas fa-handshake text-5xl gold mb-6"></i>
-
-<h3 class="font-black text-2xl uppercase">
+<div class="card rounded-3xl p-8 hover-card">
+<i class="fas fa-handshake text-4xl gold mb-6"></i>
+<h3 class="font-black text-xl uppercase mb-4">
 Transparência
 </h3>
-
-<p class="text-gray-400 text-sm mt-4">
-Atendimento humano e acompanhamento real.
+<p class="text-gray-400 text-sm">
+Atendimento claro, direto e humanizado.
 </p>
-
 </div>
 
-<div class="card rounded-3xl p-10 text-center">
-
-<i class="fas fa-award text-5xl gold mb-6"></i>
-
-<h3 class="font-black text-2xl uppercase">
-Confiança
+<div class="card rounded-3xl p-8 hover-card">
+<i class="fas fa-truck text-4xl gold mb-6"></i>
+<h3 class="font-black text-xl uppercase mb-4">
+Entrega Rápida
 </h3>
-
-<p class="text-gray-400 text-sm mt-4">
-Compromisso com qualidade e respeito.
+<p class="text-gray-400 text-sm">
+Logística organizada em todo o RJ.
 </p>
+</div>
 
+<div class="card rounded-3xl p-8 hover-card">
+<i class="fas fa-sack-dollar text-4xl gold mb-6"></i>
+<h3 class="font-black text-xl uppercase mb-4">
+Preço Competitivo
+</h3>
+<p class="text-gray-400 text-sm">
+Qualidade com excelente custo-benefício.
+</p>
+</div>
+
+<div class="card rounded-3xl p-8 hover-card">
+<i class="fas fa-users text-4xl gold mb-6"></i>
+<h3 class="font-black text-xl uppercase mb-4">
+Compromisso
+</h3>
+<p class="text-gray-400 text-sm">
+Foco em criar relações duradouras.
+</p>
 </div>
 
 </div>
@@ -573,19 +742,22 @@ Compromisso com qualidade e respeito.
 
 <section class="py-24">
 
-<div class="container mx-auto px-6">
+<div class="max-w-5xl mx-auto px-6 text-center">
 
-<div class="bg-gradient-to-r from-[#0d1829] to-[#13233d] rounded-[40px] p-14 text-center border border-white/10">
+<h2 class="text-5xl md:text-6xl font-black uppercase leading-tight">
 
-<h2 class="text-5xl font-black uppercase leading-tight max-w-4xl mx-auto">
-Sua obra merece materiais de qualidade.
+Sua obra merece
+<span class="gold">qualidade e confiança.</span>
+
 </h2>
 
-<p class="text-gray-400 mt-8 max-w-2xl mx-auto leading-relaxed">
-Solicite agora um orçamento com nossa equipe.
+<p class="text-gray-400 text-lg leading-relaxed mt-8 max-w-3xl mx-auto">
+
+Solicite agora seu orçamento personalizado com nossa equipe e tenha acesso aos melhores materiais para sua obra.
+
 </p>
 
-<div class="flex flex-col md:flex-row gap-6 justify-center mt-12">
+<div class="flex flex-col sm:flex-row justify-center gap-5 mt-12">
 
 <a href="produtos.html"
 class="bg-gold text-black px-12 py-5 rounded-2xl font-black uppercase text-sm hover:scale-105 transition glow">
@@ -595,13 +767,12 @@ Ver Catálogo
 </a>
 
 <a href="https://wa.me/5521992320613"
+target="_blank"
 class="border border-white/20 px-12 py-5 rounded-2xl font-black uppercase text-sm hover:bg-white/10 transition">
 
-Falar no WhatsApp
+Solicitar Orçamento
 
 </a>
-
-</div>
 
 </div>
 
@@ -611,22 +782,22 @@ Falar no WhatsApp
 
 <!-- FOOTER -->
 
-<footer class="bg-black py-14 border-t border-white/10">
+<footer class="bg-black border-t border-white/10 py-16">
 
-<div class="container mx-auto px-6 text-center">
+<div class="max-w-7xl mx-auto px-6 text-center">
 
-<img src="https://i.postimg.cc/LskMhPWq/IMG-20260331-111203-766.webp"
-class="w-20 mx-auto mb-6">
+<img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png"
+class="w-24 mx-auto mb-8">
 
-<h3 class="font-black text-2xl uppercase">
+<h2 class="text-2xl font-black uppercase mb-4">
 ABG DISTRIBUIDORA DE FERRO E AÇO
-</h3>
+</h2>
 
-<p class="gold mt-2 uppercase tracking-[0.3em] text-xs font-bold">
+<p class="gold uppercase tracking-[0.3em] text-xs font-bold">
 Estrutura forte. Confiança sólida.
 </p>
 
-<div class="mt-8 space-y-2 text-gray-400 text-sm">
+<div class="mt-10 space-y-3 text-gray-400 text-sm">
 
 <p>CNPJ: 52.570.746/0001-34</p>
 
@@ -640,9 +811,9 @@ R. Berlarmino Gondim, 35 - Parque Independência - Duque de Caxias/RJ
 
 </div>
 
-<div class="flex justify-center gap-6 mt-8 text-2xl">
+<div class="flex justify-center gap-6 mt-10 text-2xl">
 
-<a href="https://www.instagram.com/abg.distribuidora.de.ferro"
+<a href="https://www.instagram.com/abg.distribuidora.de.ferro?igsh=MXNsZ3kyYWZzaHBtcQ=="
 class="hover:text-yellow-400 transition">
 
 <i class="fab fa-instagram"></i>
@@ -655,6 +826,12 @@ class="hover:text-green-400 transition">
 <i class="fab fa-whatsapp"></i>
 
 </a>
+
+</div>
+
+<div class="border-t border-white/10 mt-12 pt-8 text-slate-600 text-xs uppercase tracking-[0.3em]">
+
+© ABG DISTRIBUIDORA DE FERRO E AÇO — Todos os direitos reservados.
 
 </div>
 
