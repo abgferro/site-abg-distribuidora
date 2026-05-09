@@ -1,176 +1,430 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABG Distribuidora | Ferro e Aço Nacional</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
-        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
-        
-        /* PALETA FIEL À LOGO ABG */
-        .bg-abg-blue { background-color: #0c2144; } /* Azul Marinho dos banners */
-        .text-abg-blue { color: #0c2144; }
-        .bg-abg-gold { background-color: #d4af37; } /* Dourado Metálico */
-        .text-abg-gold { color: #d4af37; }
-        .border-abg-gold { border-color: #d4af37; }
-        .bg-industrial { background: linear-gradient(135deg, #0c2144 0%, #051021 100%); }
-        
-        .hover-card:hover { transform: translateY(-5px); transition: 0.3s ease; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .banner-mask { mask-image: linear-gradient(to bottom, black 80%, transparent 100%); }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ABG DISTRIBUIDORA DE FERRO E AÇO | Ferro, Aço e Construção</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap');
+
+    * {
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0b111c;
+      overflow-x: hidden;
+    }
+
+    .industrial-bg {
+      background:
+      linear-gradient(rgba(4,9,18,.85), rgba(4,9,18,.90)),
+      url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .glass {
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .gold {
+      color: #d4af37;
+    }
+
+    .bg-gold {
+      background: #d4af37;
+    }
+
+    .border-gold {
+      border-color: #d4af37;
+    }
+
+    .hover-card {
+      transition: .3s ease;
+    }
+
+    .hover-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+    }
+
+    .gradient-card {
+      background: linear-gradient(135deg,#131c2d,#1c2940);
+    }
+  </style>
 </head>
-<body class="bg-[#f4f7f9] text-slate-900">
+<body class="text-white">
 
-    <a href="https://wa.me/5521992320613" class="fixed bottom-6 right-6 z-[100] bg-[#25d366] text-white p-4 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition border-4 border-white">
-        <i class="fab fa-whatsapp text-3xl"></i>
-    </a>
+<!-- WHATSAPP -->
+<a href="https://wa.me/5521992320613" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:scale-110 transition p-5 rounded-full shadow-2xl border-4 border-white">
+  <i class="fab fa-whatsapp text-3xl"></i>
+</a>
 
-    <div class="bg-abg-blue text-white py-2 px-6 text-[10px] md:text-xs flex justify-between items-center uppercase tracking-widest border-b border-white/10 font-bold">
-        <span><i class="fas fa-industry mr-2 text-abg-gold"></i> Fabricante Nacional de Ferragens</span>
-        <span class="hidden md:inline italic">Reduzindo custos, construindo futuros</span>
+<!-- TOPO -->
+<div class="bg-black border-b border-white/10 py-3 px-6 text-[11px] uppercase tracking-wider">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-3 items-center">
+
+    <div class="flex flex-wrap justify-center gap-6 text-slate-300 font-semibold">
+      <span><i class="fa-solid fa-location-dot gold mr-2"></i>Duque de Caxias - RJ</span>
+      <span><i class="fa-solid fa-phone gold mr-2"></i>(21) 99232-0613</span>
+      <span><i class="fa-solid fa-envelope gold mr-2"></i>abg.distribuidora.ltda@gmail.com</span>
     </div>
 
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-md border-b-2 border-abg-gold">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="bg-abg-blue p-2 rounded flex flex-col items-center justify-center">
-                    <span class="text-white font-black text-2xl italic leading-none">ABG</span>
-                </div>
-                <div class="flex flex-col leading-tight border-l-2 border-slate-200 pl-3">
-                    <span class="text-sm font-black tracking-tighter uppercase text-abg-blue">Ferragens & Construção</span>
-                    <span class="text-[9px] text-slate-500 font-bold uppercase tracking-widest">Duque de Caxias - RJ</span>
-                </div>
-            </div>
-            <nav class="hidden md:flex space-x-8 text-[11px] font-black uppercase tracking-tighter">
-                <a href="index.html" class="text-abg-blue border-b-2 border-abg-gold">Início</a>
-                <a href="produtos.html" class="hover:text-abg-gold transition">Catálogo de Preços</a>
-                <a href="https://wa.me/5521992320613" class="hover:text-abg-gold transition">Solicitar Orçamento</a>
-            </nav>
+    <div class="text-slate-400 text-center">
+      CNPJ: 52.570.746/0001-34
+    </div>
+
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-[#0d1524]/95 backdrop-blur-md border-b border-white/10">
+
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <div class="flex items-center gap-4">
+
+      <img src="https://i.postimg.cc/LskMhPWq/IMG-20260331-111203-766.webp" class="w-20 md:w-24 rounded-xl border border-white/10 shadow-2xl">
+
+      <div>
+        <h1 class="font-black text-lg md:text-2xl uppercase tracking-tight">
+          ABG DISTRIBUIDORA
+        </h1>
+
+        <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-slate-400 font-bold">
+          Ferro • Aço • Construção
+        </p>
+      </div>
+
+    </div>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm uppercase font-bold tracking-wide">
+      <a href="#inicio" class="hover:text-yellow-400 transition">Início</a>
+      <a href="#produtos" class="hover:text-yellow-400 transition">Produtos</a>
+      <a href="#empresa" class="hover:text-yellow-400 transition">Empresa</a>
+      <a href="produtos.html" class="hover:text-yellow-400 transition">Catálogo</a>
+      <a href="https://www.instagram.com/abg.distribuidora.de.ferro" target="_blank" class="hover:text-yellow-400 transition">Instagram</a>
+    </nav>
+
+    <a href="https://wa.me/5521992320613" target="_blank" class="hidden md:flex bg-gold text-black px-6 py-3 rounded-xl font-black uppercase text-xs hover:scale-105 transition">
+      Solicitar orçamento
+    </a>
+
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="inicio" class="industrial-bg min-h-screen flex items-center relative overflow-hidden">
+
+  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+
+  <div class="max-w-7xl mx-auto px-6 py-24 relative z-10 grid md:grid-cols-2 gap-20 items-center">
+
+    <div>
+
+      <div class="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 px-5 py-2 rounded-full uppercase text-[10px] tracking-[0.3em] font-black mb-8">
+        <i class="fa-solid fa-industry"></i>
+        Fabricante Nacional
+      </div>
+
+      <h2 class="text-5xl md:text-7xl font-black leading-[0.95] uppercase mb-8">
+        Ferro,
+        aço e
+        materiais
+        para sua
+        obra.
+      </h2>
+
+      <p class="text-slate-300 text-lg leading-relaxed max-w-2xl mb-10">
+        Distribuição de ferragens, cimento, lajes, blocos, tijolos e materiais de construção para Duque de Caxias e todo o Rio de Janeiro.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-5">
+
+        <a href="https://wa.me/5521992320613" target="_blank" class="bg-gold text-black px-8 py-5 rounded-2xl font-black uppercase text-sm text-center hover:scale-105 transition shadow-2xl">
+          Fazer orçamento
+        </a>
+
+        <a href="produtos.html" class="border border-white/20 hover:bg-white/10 px-8 py-5 rounded-2xl font-black uppercase text-sm text-center transition">
+          Ver catálogo completo
+        </a>
+
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14">
+
+        <div class="glass rounded-2xl p-5 text-center">
+          <h3 class="text-2xl font-black gold">+5MIL</h3>
+          <p class="text-[10px] uppercase tracking-widest text-slate-400 mt-2">Clientes atendidos</p>
         </div>
-    </header>
 
-    <section class="relative bg-industrial py-20 md:py-32 overflow-hidden flex items-center">
-        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-        
-        <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
-            <div class="text-center md:text-left">
-                <span class="inline-block px-4 py-1 bg-abg-gold text-abg-blue text-[10px] font-black rounded mb-6 uppercase tracking-[0.2em]">Direto da Fábrica</span>
-                <h1 class="text-white text-5xl md:text-7xl font-black uppercase leading-[0.9] mb-6">
-                    Aço de Elite <br><span class="text-abg-gold italic">Preço Justo.</span>
-                </h1>
-                <p class="text-slate-300 text-lg md:text-xl max-w-lg mb-10 font-light leading-relaxed">
-                    Distribuição ágil de Ferro, Aço, Lajes e Cimento para toda Duque de Caxias e região.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://wa.me/5521992320613" class="bg-abg-gold text-abg-blue px-10 py-5 rounded font-black uppercase tracking-tighter text-sm shadow-xl hover:bg-yellow-500 transition text-center">
-                        Orçamento no WhatsApp
-                    </a>
-                    <a href="produtos.html" class="border-2 border-white/20 text-white hover:bg-white/10 px-10 py-5 rounded font-black uppercase tracking-tighter text-sm transition text-center">
-                        Ver Catálogo Técnico
-                    </a>
-                </div>
-            </div>
-
-            <div class="hidden md:flex justify-center relative">
-                <div class="relative w-[350px] h-[350px] rounded-full border-8 border-abg-gold/20 overflow-hidden shadow-2xl">
-                    <div class="absolute inset-0 bg-slate-800 flex items-center justify-center text-white text-center p-8 italic">
-                         Aqui inserimos a foto do Leonardo Godoi para passar credibilidade.
-                    </div>
-                </div>
-                <div class="absolute -bottom-4 right-10 bg-white p-4 rounded-xl shadow-2xl border-l-4 border-abg-gold">
-                    <p class="text-abg-blue font-black text-xs uppercase italic">Leonardo Godoi</p>
-                    <p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest">Diretor Comercial</p>
-                </div>
-            </div>
+        <div class="glass rounded-2xl p-5 text-center">
+          <h3 class="text-2xl font-black gold">RJ</h3>
+          <p class="text-[10px] uppercase tracking-widest text-slate-400 mt-2">Atendimento regional</p>
         </div>
-    </section>
 
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-between items-end mb-12 border-b-2 border-slate-100 pb-8">
-                <div>
-                    <h2 class="text-3xl font-black text-abg-blue uppercase italic tracking-tighter leading-none">Nossos Carros-Chefe</h2>
-                    <p class="text-slate-400 text-xs mt-2 uppercase font-bold">Qualidade Certificada ABNT</p>
-                </div>
-                <a href="produtos.html" class="text-abg-gold font-black text-xs uppercase border-b-2 border-abg-gold hover:text-abg-blue hover:border-abg-blue transition pb-1">Ver todos os materiais</a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-slate-50 p-6 rounded-2xl hover-card border border-slate-100 relative overflow-hidden group">
-                    <div class="text-abg-blue text-4xl mb-6 opacity-20 group-hover:opacity-100 transition"><i class="fas fa-layer-group"></i></div>
-                    <h3 class="font-black text-lg text-abg-blue mb-2 uppercase italic">Lajes Pré-Moldadas</h3>
-                    <p class="text-xs text-slate-500 mb-6 leading-relaxed">Opções em Cerâmica ou Isopor com isolamento térmico e alta resistência estrutural.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs font-bold text-emerald-600">A partir de R$ 35,00/m²</span>
-                        <a href="produtos.html" class="text-abg-blue text-xs font-black uppercase underline">Detalhes</a>
-                    </div>
-                </div>
-
-                <div class="bg-slate-50 p-6 rounded-2xl hover-card border border-slate-100 relative overflow-hidden group">
-                    <div class="text-abg-blue text-4xl mb-6 opacity-20 group-hover:opacity-100 transition"><i class="fas fa-bars-staggered"></i></div>
-                    <h3 class="font-black text-lg text-abg-blue mb-2 uppercase italic">Colunas Prontas</h3>
-                    <p class="text-xs text-slate-500 mb-6 leading-relaxed">Fabricação em bitolas 1/4, 5/16 e 3/8. Economia de tempo e mão de obra na sua fundação.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs font-bold text-emerald-600">A partir de R$ 55,00/cada</span>
-                        <a href="produtos.html" class="text-abg-blue text-xs font-black uppercase underline">Detalhes</a>
-                    </div>
-                </div>
-
-                <div class="bg-slate-50 p-6 rounded-2xl hover-card border border-slate-100 relative overflow-hidden group">
-                    <div class="text-abg-blue text-4xl mb-6 opacity-20 group-hover:opacity-100 transition"><i class="fas fa-box"></i></div>
-                    <h3 class="font-black text-lg text-abg-blue mb-2 uppercase italic">Cimento 50KG</h3>
-                    <p class="text-xs text-slate-500 mb-6 leading-relaxed">Cimento CSN CP3 e Mauá CP2. O melhor preço do milheiro para Duque de Caxias.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs font-bold text-emerald-600">Confira as Ofertas</span>
-                        <a href="produtos.html" class="text-abg-blue text-xs font-black uppercase underline">Detalhes</a>
-                    </div>
-                </div>
-            </div>
+        <div class="glass rounded-2xl p-5 text-center">
+          <h3 class="text-2xl font-black gold">PIX</h3>
+          <p class="text-[10px] uppercase tracking-widest text-slate-400 mt-2">Desconto à vista</p>
         </div>
-    </section>
 
-    <section class="py-16 bg-abg-blue">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+        <div class="glass rounded-2xl p-5 text-center">
+          <h3 class="text-2xl font-black gold">100%</h3>
+          <p class="text-[10px] uppercase tracking-widest text-slate-400 mt-2">Compra segura</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="hidden md:flex justify-center">
+      <div class="relative">
+
+        <div class="absolute -inset-10 bg-yellow-500/20 blur-3xl rounded-full"></div>
+
+        <img src="https://i.postimg.cc/LskMhPWq/IMG-20260331-111203-766.webp" class="relative w-[520px] drop-shadow-[0_20px_80px_rgba(0,0,0,.9)]">
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="py-24 bg-[#0d1524]" id="empresa">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-20">
+      <span class="gold uppercase tracking-[0.4em] text-xs font-black">ABG DISTRIBUIDORA</span>
+      <h2 class="text-4xl md:text-5xl font-black uppercase mt-4 mb-6">
+        Estrutura forte para sua obra.
+      </h2>
+      <p class="text-slate-400 max-w-3xl mx-auto leading-relaxed">
+        Trabalhamos com materiais certificados, atendimento rápido e distribuição de ferragens e materiais para construção civil em todo o Rio de Janeiro.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="gradient-card hover-card p-10 rounded-3xl border border-white/10">
+        <i class="fa-solid fa-truck-fast text-5xl gold mb-8"></i>
+        <h3 class="text-2xl font-black uppercase mb-4">Entrega rápida</h3>
+        <p class="text-slate-400 leading-relaxed">
+          Logística preparada para entregas rápidas em Duque de Caxias e região.
+        </p>
+      </div>
+
+      <div class="gradient-card hover-card p-10 rounded-3xl border border-white/10">
+        <i class="fa-solid fa-shield-halved text-5xl gold mb-8"></i>
+        <h3 class="text-2xl font-black uppercase mb-4">Compra segura</h3>
+        <p class="text-slate-400 leading-relaxed">
+          Empresa registrada com atendimento profissional e pagamento seguro.
+        </p>
+      </div>
+
+      <div class="gradient-card hover-card p-10 rounded-3xl border border-white/10">
+        <i class="fa-solid fa-building text-5xl gold mb-8"></i>
+        <h3 class="text-2xl font-black uppercase mb-4">Direto da distribuidora</h3>
+        <p class="text-slate-400 leading-relaxed">
+          Menos intermediários e melhores preços para atacado e varejo.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section id="produtos" class="py-24 bg-[#09101a]">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="flex flex-col md:flex-row justify-between md:items-end gap-8 mb-16">
+
+      <div>
+        <span class="gold uppercase tracking-[0.4em] text-xs font-black">Produtos</span>
+        <h2 class="text-4xl md:text-5xl font-black uppercase mt-4">
+          Principais materiais
+        </h2>
+      </div>
+
+      <a href="produtos.html" class="border border-yellow-500 text-yellow-400 px-8 py-4 rounded-2xl font-black uppercase text-sm hover:bg-yellow-500 hover:text-black transition">
+        Ver catálogo completo
+      </a>
+
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="bg-[#121b2b] border border-white/10 rounded-3xl p-8 hover-card">
+        <i class="fa-solid fa-bars-progress gold text-5xl mb-8"></i>
+        <h3 class="text-2xl font-black uppercase mb-4">Ferragens</h3>
+        <p class="text-slate-400 mb-8 leading-relaxed">
+          Vergalhões, colunas, estribos, malha pop, radier e ferragens estruturais.
+        </p>
+        <a href="produtos.html" class="text-yellow-400 uppercase text-sm font-black">
+          Ver preços →
+        </a>
+      </div>
+
+      <div class="bg-[#121b2b] border border-white/10 rounded-3xl p-8 hover-card">
+        <i class="fa-solid fa-cubes-stacked gold text-5xl mb-8"></i>
+        <h3 class="text-2xl font-black uppercase mb-4">Construção</h3>
+        <p class="text-slate-400 mb-8 leading-relaxed">
+          Cimento, areia, pedra, areola, blocos e tijolos para sua obra.
+        </p>
+        <a href="produtos.html" class="text-yellow-400 uppercase text-sm font-black">
+          Ver preços →
+        </a>
+      </div>
+
+      <div class="bg-[#121b2b] border border-white/10 rounded-3xl p-8 hover-card">
+        <i class="fa-solid fa-layer-group gold text-5xl mb-8"></i>
+        <h3 class="text-2xl font-black uppercase mb-4">Lajes</h3>
+        <p class="text-slate-400 mb-8 leading-relaxed">
+          Lajes de isopor e cerâmica produzidas sob medida para sua construção.
+        </p>
+        <a href="produtos.html" class="text-yellow-400 uppercase text-sm font-black">
+          Ver preços →
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="py-24 bg-[#0d1524]">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-[40px] p-10 md:p-20 text-black shadow-2xl">
+
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+
+        <div>
+          <h2 class="text-4xl md:text-5xl font-black uppercase leading-tight mb-8">
+            Já possui sua lista de materiais?
+          </h2>
+
+          <p class="font-semibold leading-relaxed mb-10">
+            Tire uma foto da sua lista de materiais e envie diretamente para nossa equipe comercial no WhatsApp.
+          </p>
+
+          <div class="flex flex-col gap-4 font-bold">
+            <span><i class="fa-solid fa-phone mr-3"></i>(21) 99232-0613</span>
+            <span><i class="fa-solid fa-envelope mr-3"></i>abg.distribuidora.ltda@gmail.com</span>
+            <span><i class="fa-solid fa-location-dot mr-3"></i>R. Berlarmino Gondim, 35 - Parque Independência</span>
+          </div>
+
+        </div>
+
+        <div class="bg-black/10 rounded-3xl p-10 border border-black/10">
+
+          <h3 class="font-black text-2xl uppercase mb-8">
+            Atendimento
+          </h3>
+
+          <div class="space-y-6">
+
             <div>
-                <h3 class="text-white font-black uppercase text-2xl mb-6 italic border-l-4 border-abg-gold pl-4 text-left">Aviso aos Clientes</h3>
-                <div class="space-y-6">
-                    <div class="flex items-start space-x-4">
-                        <div class="text-abg-gold mt-1"><i class="fas fa-shoe-prints"></i></div>
-                        <p class="text-slate-300 text-sm"><strong>Segurança Industrial:</strong> O acesso à nossa fábrica é permitido apenas com calçados fechados.</p>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="text-abg-gold mt-1"><i class="fas fa-qrcode"></i></div>
-                        <p class="text-slate-300 text-sm"><strong>Desconto no PIX:</strong> Ganhe de 3% a 5% de desconto imediato em compras acima de R$ 1.000,00.</p>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="text-abg-gold mt-1"><i class="fas fa-clock"></i></div>
-                        <p class="text-slate-300 text-sm"><strong>Horário:</strong> Atendimento presencial até 13h. Após esse horário, operamos apenas logística de entrega.</p>
-                    </div>
-                </div>
+              <p class="font-black uppercase text-sm">Segunda a Sexta</p>
+              <p class="font-semibold">08h às 17h</p>
             </div>
-            <div class="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-sm text-center">
-                <i class="fas fa-camera text-abg-gold text-3xl mb-4"></i>
-                <h4 class="text-white font-black uppercase mb-2">Já tem sua lista de materiais?</h4>
-                <p class="text-slate-400 text-xs mb-6 italic">Tire uma foto do seu orçamento ou lista de materiais e envie para nossa equipe de vendas.</p>
-                <a href="https://wa.me/5521992320613" class="inline-block bg-white text-abg-blue px-8 py-4 rounded-full font-black uppercase text-[10px] tracking-widest hover:scale-105 transition">
-                    <i class="fas fa-upload mr-2"></i> Enviar Agora no WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <footer class="bg-[#051021] text-slate-500 py-12 px-6 border-t border-white/5">
-        <div class="container mx-auto text-center">
-            <div class="font-black text-white text-xl italic mb-4">ABG DISTRIBUIDORA</div>
-            <p class="text-[10px] uppercase tracking-[0.5em] mb-6">Reduzindo custos, construindo futuros</p>
-            <p class="text-xs mb-2">Rua Berlarmino Gondim, 35 - Parque Independência</p>
-            <p class="text-xs mb-8 italic">Duque de Caxias – RJ | (21) 99232-0613</p>
-            <div class="text-[9px] opacity-30">© 2026 Ferragens & Construção Brasileira. Todos os direitos reservados.</div>
+            <div>
+              <p class="font-black uppercase text-sm">Sábado</p>
+              <p class="font-semibold">07h30 às 15h30</p>
+            </div>
+
+            <div>
+              <p class="font-black uppercase text-sm">Importante</p>
+              <p class="font-semibold">Entrada na fábrica apenas com calçado fechado.</p>
+            </div>
+
+          </div>
+
+          <a href="https://wa.me/5521992320613" target="_blank" class="mt-10 bg-black text-white px-8 py-5 rounded-2xl uppercase text-sm font-black inline-block hover:scale-105 transition">
+            Chamar no WhatsApp
+          </a>
+
         </div>
-    </footer>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black border-t border-white/10 py-16">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="grid md:grid-cols-4 gap-12 mb-14">
+
+      <div>
+        <img src="https://i.postimg.cc/LskMhPWq/IMG-20260331-111203-766.webp" class="w-28 mb-6">
+        <p class="text-slate-500 leading-relaxed text-sm">
+          Distribuidora de ferro, aço e materiais para construção civil no Rio de Janeiro.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-black uppercase mb-6 text-lg">Contato</h3>
+        <div class="space-y-4 text-slate-400 text-sm">
+          <p>(21) 99232-0613</p>
+          <p>abg.distribuidora.ltda@gmail.com</p>
+          <p>Duque de Caxias - RJ</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-black uppercase mb-6 text-lg">Empresa</h3>
+        <div class="space-y-4 text-slate-400 text-sm">
+          <p>CNPJ: 52.570.746/0001-34</p>
+          <p>Atacado e varejo</p>
+          <p>Frete grátis*</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-black uppercase mb-6 text-lg">Redes sociais</h3>
+
+        <a href="https://www.instagram.com/abg.distribuidora.de.ferro" target="_blank" class="inline-flex items-center gap-3 text-pink-400 font-bold hover:scale-105 transition">
+          <i class="fab fa-instagram text-2xl"></i>
+          Instagram Oficial
+        </a>
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between gap-6 text-slate-500 text-xs uppercase tracking-wider">
+
+      <p>
+        © 2026 ABG DISTRIBUIDORA DE FERRO E AÇO
+      </p>
+
+      <p>
+        Reduzindo custos, construindo futuros.
+      </p>
+
+    </div>
+
+  </div>
+</footer>
 
 </body>
-</html>
+      </html>
