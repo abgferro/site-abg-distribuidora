@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo ABG DISTRIBUIDORA</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Produtos | ABG DISTRIBUIDORA DE FERRO E AÇO</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap');
 
 *{
+margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:'Montserrat',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-background:#0b111c;
+background:#08111f;
+color:white;
+overflow-x:hidden;
 }
 
 .gold{
@@ -27,316 +38,559 @@ color:#d4af37;
 background:#d4af37;
 }
 
-.card{
-background:#121b2b;
+.border-gold{
+border-color:#d4af37;
+}
+
+.hero-bg{
+background:
+linear-gradient(rgba(5,10,20,.88),rgba(5,10,20,.92)),
+url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+}
+
+.glass{
+backdrop-filter:blur(14px);
+background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
 }
 
-.table-row:nth-child(even){
-background:rgba(255,255,255,.03);
+.card{
+background:linear-gradient(145deg,#121b2d,#172338);
+border:1px solid rgba(255,255,255,.08);
+transition:.35s ease;
 }
 
-.hover-card{
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+border-color:rgba(212,175,55,.3);
+}
+
+.product-img{
+height:220px;
+width:100%;
+object-fit:cover;
+}
+
+.category-btn{
 transition:.3s ease;
 }
 
-.hover-card:hover{
-transform:translateY(-6px);
+.category-btn:hover{
+background:#d4af37;
+color:black;
 }
+
+.search-input{
+background:#111b2d;
+border:1px solid rgba(255,255,255,.1);
+}
+
+.cart-box{
+background:linear-gradient(145deg,#111827,#1b2942);
+border:1px solid rgba(212,175,55,.2);
+}
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#d4af37;
+border-radius:10px;
+}
+
 </style>
 </head>
-<body class="text-white">
 
-<a href="https://wa.me/5521992320613" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 p-5 rounded-full border-4 border-white shadow-2xl hover:scale-110 transition">
+<body>
+
+<!-- WHATSAPP -->
+
+<a href="https://wa.me/5521992320613"
+target="_blank"
+class="fixed bottom-6 right-6 z-50 bg-green-500 p-5 rounded-full border-4 border-white shadow-2xl hover:scale-110 transition">
+
 <i class="fab fa-whatsapp text-3xl"></i>
+
 </a>
 
-<header class="sticky top-0 z-40 bg-[#0d1524]/95 backdrop-blur-md border-b border-white/10">
+<!-- HEADER -->
+
+<header class="sticky top-0 z-50 bg-[#09111d]/95 backdrop-blur-md border-b border-white/10">
+
 <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
 <a href="index.html" class="flex items-center gap-4">
-<img src="https://i.postimg.cc/LskMhPWq/IMG-20260331-111203-766.webp" class="w-16 rounded-lg">
+
+<img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png"
+class="w-16 md:w-20 rounded-xl">
+
 <div>
-<h1 class="font-black uppercase text-lg">ABG DISTRIBUIDORA</h1>
-<p class="text-[10px] uppercase tracking-[0.3em] text-slate-400">Catálogo Oficial</p>
+
+<h1 class="font-black uppercase text-lg md:text-xl">
+ABG DISTRIBUIDORA
+</h1>
+
+<p class="text-[10px] uppercase tracking-[0.3em] text-slate-400">
+Ferro • Aço • Construção
+</p>
+
 </div>
+
 </a>
 
-<div class="hidden md:flex items-center gap-8 uppercase text-xs font-black">
+<nav class="hidden md:flex gap-8 uppercase text-xs font-black">
+
 <a href="index.html" class="hover:text-yellow-400 transition">Início</a>
-<a href="https://www.instagram.com/abg.distribuidora.de.ferro" target="_blank" class="hover:text-yellow-400 transition">Instagram</a>
-<a href="https://wa.me/5521992320613" target="_blank" class="hover:text-yellow-400 transition">WhatsApp</a>
-</div>
+
+<a href="#mais-vendidos" class="hover:text-yellow-400 transition">Mais Vendidos</a>
+
+<a href="#catalogo" class="hover:text-yellow-400 transition">Catálogo</a>
+
+<a href="quem-somos.html" class="hover:text-yellow-400 transition">Quem Somos</a>
+
+<a href="entregas.html" class="hover:text-yellow-400 transition">Entregas</a>
+
+</nav>
+
+<a href="https://wa.me/5521992320613"
+target="_blank"
+class="hidden md:flex bg-gold text-black px-6 py-3 rounded-xl font-black uppercase text-xs hover:scale-105 transition">
+
+Solicitar orçamento
+
+</a>
 
 </div>
+
 </header>
 
-<section class="py-20 bg-[#101827] border-b border-white/10">
-<div class="max-w-7xl mx-auto px-6 text-center">
+<!-- HERO -->
+
+<section class="hero-bg min-h-[90vh] flex items-center relative overflow-hidden">
+
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+
+<div class="max-w-7xl mx-auto px-6 py-24 relative z-10 grid md:grid-cols-2 gap-20 items-center">
+
+<div>
+
+<div class="inline-flex items-center gap-3 bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 px-5 py-2 rounded-full uppercase text-[10px] tracking-[0.3em] font-black mb-8">
+
+<i class="fa-solid fa-industry"></i>
+Distribuidora Premium
+
+</div>
+
+<h2 class="text-5xl md:text-7xl font-black uppercase leading-[0.95] mb-8">
+
+Produtos para
+obras fortes
+e estruturas
+de confiança.
+
+</h2>
+
+<p class="text-slate-300 text-lg leading-relaxed max-w-2xl mb-10">
+
+Ferragens, cimento, blocos, tijolos, lajes e materiais de construção com entrega rápida para todo o RJ.
+
+</p>
+
+<div class="flex flex-col sm:flex-row gap-5">
+
+<a href="#mais-vendidos"
+class="bg-gold text-black px-8 py-5 rounded-2xl font-black uppercase text-sm text-center hover:scale-105 transition">
+
+Ver produtos
+
+</a>
+
+<a href="https://wa.me/5521992320613"
+target="_blank"
+class="border border-white/20 hover:bg-white/10 px-8 py-5 rounded-2xl font-black uppercase text-sm text-center transition">
+
+Solicitar orçamento
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hidden md:flex justify-center">
+
+<img src="https://images.unsplash.com/photo-1599707254554-027aeb4deacd?q=80&w=1974&auto=format&fit=crop"
+class="rounded-[40px] shadow-2xl border border-white/10">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MAIS VENDIDOS -->
+
+<section id="mais-vendidos" class="py-24">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="text-center mb-16">
 
 <span class="gold uppercase tracking-[0.4em] text-xs font-black">
-Catálogo ABG
+Produtos em destaque
 </span>
 
-<h2 class="text-5xl font-black uppercase mt-6 mb-6">
-Tabela de preços
+<h2 class="text-5xl font-black uppercase mt-6">
+Mais vendidos
 </h2>
 
-<p class="text-slate-400 max-w-3xl mx-auto leading-relaxed">
-Valores atualizados da ABG DISTRIBUIDORA DE FERRO E AÇO.
-Preços sujeitos à alteração conforme mercado do aço e construção civil.
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+<!-- PRODUTO -->
+
+<div class="card rounded-[30px] overflow-hidden">
+
+<img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?q=80&w=1974&auto=format&fit=crop"
+class="product-img">
+
+<div class="p-8">
+
+<h3 class="text-2xl font-black uppercase mb-3">
+Vergalhão 3/8
+</h3>
+
+<p class="text-slate-400 text-sm mb-6">
+Barra de 12 metros de alta resistência.
 </p>
 
-</div>
-</section>
+<div class="flex justify-between items-center mb-6">
 
-<main class="max-w-7xl mx-auto px-6 py-20 space-y-20">
+<span class="gold text-3xl font-black">
+R$ 50,00
+</span>
 
-<!-- FERRAGENS -->
-<section>
-<div class="flex items-center gap-4 mb-10">
-<i class="fa-solid fa-bars-progress text-4xl gold"></i>
-<h2 class="text-4xl font-black uppercase">Ferragens</h2>
-</div>
+<span class="text-xs uppercase text-green-400 font-bold">
+Disponível
+</span>
 
-<div class="grid md:grid-cols-2 gap-8">
-
-<div class="card rounded-3xl overflow-hidden hover-card">
-<div class="bg-gold text-black p-5 font-black uppercase">Vergalhões (12 metros)</div>
-<table class="w-full text-sm">
-<tr class="table-row border-b border-white/10"><td class="p-4">3/16</td><td class="p-4 text-right font-black">R$ 10,00</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">1/4</td><td class="p-4 text-right font-black gold">R$ 20,00</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">5/16</td><td class="p-4 text-right font-black gold">R$ 30,00</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">3/8</td><td class="p-4 text-right font-black">R$ 50,00</td></tr>
-<tr class="table-row"><td class="p-4">1/2</td><td class="p-4 text-right font-black">R$ 80,00</td></tr>
-</table>
 </div>
 
-<div class="card rounded-3xl overflow-hidden hover-card">
-<div class="bg-gold text-black p-5 font-black uppercase">Colunas (6 metros)</div>
-<table class="w-full text-sm">
-<tr class="table-row border-b border-white/10"><td class="p-4">1/4 7x20</td><td class="p-4 text-right font-black">R$ 55,00</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">1/4 7x27</td><td class="p-4 text-right font-black">R$ 67,50</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">5/16 7x20</td><td class="p-4 text-right font-black">R$ 65,00</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">5/16 7x27</td><td class="p-4 text-right font-black">R$ 87,50</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">3/8 7x20</td><td class="p-4 text-right font-black">R$ 115,00</td></tr>
-<tr class="table-row"><td class="p-4">3/8 7x27</td><td class="p-4 text-right font-black">R$ 147,50</td></tr>
-</table>
+<button onclick="addToCart('Vergalhão 3/8',50)"
+class="w-full bg-gold text-black py-4 rounded-2xl uppercase text-sm font-black hover:scale-105 transition">
+
+Adicionar ao carrinho
+
+</button>
+
 </div>
 
 </div>
-</section>
 
-<!-- RADIER -->
-<section class="card rounded-[40px] p-10">
-<h2 class="text-3xl font-black uppercase mb-10">Radier</h2>
+<!-- PRODUTO -->
 
-<div class="overflow-auto">
-<table class="w-full min-w-[700px] text-sm">
-<tr class="border-b border-white/10 uppercase text-slate-400 text-xs">
-<th class="p-4 text-left">Medida</th>
-<th class="p-4 text-left">Bitola</th>
-<th class="p-4 text-right">Valor</th>
-</tr>
+<div class="card rounded-[30px] overflow-hidden">
 
-<tr class="table-row border-b border-white/10"><td class="p-4">60x60</td><td class="p-4">1/4</td><td class="p-4 text-right font-black">R$ 12,00</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">80x80</td><td class="p-4">1/4</td><td class="p-4 text-right font-black">R$ 18,00</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">60x60</td><td class="p-4">5/16</td><td class="p-4 text-right font-black">R$ 20,00</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">80x80</td><td class="p-4">5/16</td><td class="p-4 text-right font-black">R$ 25,00</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">100x100</td><td class="p-4">5/16</td><td class="p-4 text-right font-black">R$ 40,00</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">60x60</td><td class="p-4">3/8</td><td class="p-4 text-right font-black">R$ 27,50</td></tr>
-<tr class="table-row border-b border-white/10"><td class="p-4">80x80</td><td class="p-4">3/8</td><td class="p-4 text-right font-black">R$ 50,00</td></tr>
-<tr class="table-row"><td class="p-4">100x100</td><td class="p-4">3/8</td><td class="p-4 text-right font-black">R$ 65,00</td></tr>
-</table>
-</div>
-</section>
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1974&auto=format&fit=crop"
+class="product-img">
 
-<!-- OUTROS -->
-<section class="grid md:grid-cols-3 gap-8">
+<div class="p-8">
 
-<div class="card rounded-3xl p-8 hover-card">
-<h3 class="text-2xl font-black uppercase mb-8">Malha Pop</h3>
-<div class="space-y-5">
-<div class="flex justify-between border-b border-white/10 pb-3"><span>20x20</span><span class="font-black">R$ 72,50</span></div>
-<div class="flex justify-between border-b border-white/10 pb-3"><span>15x15</span><span class="font-black">R$ 87,50</span></div>
-<div class="flex justify-between"><span>10x10</span><span class="font-black">R$ 115,00</span></div>
-</div>
-</div>
+<h3 class="text-2xl font-black uppercase mb-3">
+Tijolo 20x30
+</h3>
 
-<div class="card rounded-3xl p-8 hover-card">
-<h3 class="text-2xl font-black uppercase mb-8">Arame Recozido</h3>
-<div class="space-y-5">
-<div class="flex justify-between border-b border-white/10 pb-3"><span>Liso</span><span class="font-black">R$ 25,00</span></div>
-<div class="flex justify-between"><span>Torcido</span><span class="font-black">R$ 25,00</span></div>
-</div>
-</div>
-
-<div class="card rounded-3xl p-8 hover-card">
-<h3 class="text-2xl font-black uppercase mb-8">Pregos</h3>
-<div class="space-y-5">
-<div class="flex justify-between border-b border-white/10 pb-3"><span>16x24</span><span class="font-black">R$ 20,00</span></div>
-<div class="flex justify-between border-b border-white/10 pb-3"><span>17x27</span><span class="font-black">R$ 20,00</span></div>
-<div class="flex justify-between"><span>18x30</span><span class="font-black">R$ 20,00</span></div>
-</div>
-</div>
-
-</section>
-
-<!-- CONSTRUÇÃO -->
-<section>
-<div class="flex items-center gap-4 mb-10">
-<i class="fa-solid fa-trowel-bricks text-4xl gold"></i>
-<h2 class="text-4xl font-black uppercase">Construção</h2>
-</div>
-
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-<div class="card rounded-3xl p-8 hover-card">
-<h3 class="font-black text-2xl uppercase mb-6">Cimento</h3>
-<div class="space-y-5">
-<div class="flex justify-between border-b border-white/10 pb-3"><span>CSN CP III</span><span class="font-black">R$ 28,50</span></div>
-<div class="flex justify-between"><span>Mauá CP II</span><span class="font-black">R$ 33,50</span></div>
-</div>
-</div>
-
-<div class="card rounded-3xl p-8 hover-card">
-<h3 class="font-black text-2xl uppercase mb-6">Brutos</h3>
-<div class="space-y-5">
-<div class="flex justify-between border-b border-white/10 pb-3"><span>Areia Lavada</span><span class="font-black">R$ 105,00</span></div>
-<div class="flex justify-between border-b border-white/10 pb-3"><span>Areola</span><span class="font-black">R$ 110,00</span></div>
-<div class="flex justify-between"><span>Pedra Brita</span><span class="font-black">R$ 130,00</span></div>
-</div>
-</div>
-
-<div class="card rounded-3xl p-8 hover-card">
-<h3 class="font-black text-2xl uppercase mb-6">Lajes</h3>
-<div class="space-y-5">
-<div class="flex justify-between border-b border-white/10 pb-3"><span>Isopor</span><span class="font-black">R$ 35/m²</span></div>
-<div class="flex justify-between"><span>Cerâmica</span><span class="font-black">R$ 40/m²</span></div>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- TIJOLOS -->
-<section class="grid md:grid-cols-2 gap-8">
-
-<div class="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-[40px] p-10 text-black hover-card">
-<h2 class="text-4xl font-black uppercase mb-8">Tijolos</h2>
-
-<div class="space-y-6">
-<div>
-<p class="font-black uppercase mb-3">Atacado (1000 un)</p>
-<div class="space-y-3">
-<div class="flex justify-between"><span>20x20</span><span class="font-black">R$ 750,00</span></div>
-<div class="flex justify-between"><span>20x30</span><span class="font-black">R$ 850,00</span></div>
-</div>
-</div>
-
-<div>
-<p class="font-black uppercase mb-3">Varejo</p>
-<div class="space-y-3">
-<div class="flex justify-between"><span>20x20</span><span class="font-black">R$ 1,10</span></div>
-<div class="flex justify-between"><span>20x30</span><span class="font-black">R$ 1,20</span></div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="card rounded-[40px] p-10 hover-card">
-<h2 class="text-4xl font-black uppercase mb-8">Blocos</h2>
-
-<div class="space-y-6">
-<div>
-<p class="font-black uppercase mb-3">Atacado (1000 un)</p>
-<div class="space-y-3">
-<div class="flex justify-between"><span>9x19x39</span><span class="font-black">R$ 1.650,00</span></div>
-<div class="flex justify-between"><span>14x19x39</span><span class="font-black">R$ 2.000,00</span></div>
-</div>
-</div>
-
-<div>
-<p class="font-black uppercase mb-3">Varejo</p>
-<div class="space-y-3">
-<div class="flex justify-between"><span>9x19x39</span><span class="font-black">R$ 2,25</span></div>
-<div class="flex justify-between"><span>14x19x39</span><span class="font-black">R$ 3,00</span></div>
-</div>
-</div>
-</div>
-</div>
-
-</section>
-
-<!-- MADEIRAS -->
-<section class="card rounded-[40px] p-10">
-<h2 class="text-4xl font-black uppercase mb-10">Madeiras</h2>
-
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-<div class="bg-black/20 rounded-3xl p-6">
-<h3 class="font-black uppercase mb-5">Tábuas</h3>
-<div class="space-y-3">
-<div class="flex justify-between"><span>30x2,5</span><span class="font-black">R$ 35,00</span></div>
-<div class="flex justify-between"><span>20x2,5</span><span class="font-black">R$ 30,00</span></div>
-</div>
-</div>
-
-<div class="bg-black/20 rounded-3xl p-6">
-<h3 class="font-black uppercase mb-5">Sarrafos</h3>
-<div class="space-y-3">
-<div class="flex justify-between"><span>25cm</span><span class="font-black">R$ 20,00</span></div>
-<div class="flex justify-between"><span>20cm</span><span class="font-black">R$ 18,00</span></div>
-<div class="flex justify-between"><span>15cm</span><span class="font-black">R$ 15,00</span></div>
-<div class="flex justify-between"><span>10cm</span><span class="font-black">R$ 12,00</span></div>
-</div>
-</div>
-
-<div class="bg-gold rounded-3xl p-8 text-black flex flex-col justify-center">
-<h3 class="font-black text-2xl uppercase mb-4">Atendimento rápido</h3>
-<p class="font-semibold leading-relaxed mb-6">
-Solicite agora seu orçamento diretamente com nossa equipe.
+<p class="text-slate-400 text-sm mb-6">
+Tijolo 10 furos para construção.
 </p>
-<a href="https://wa.me/5521992320613" target="_blank" class="bg-black text-white text-center py-4 rounded-2xl uppercase text-sm font-black hover:scale-105 transition">
-Falar no WhatsApp
-</a>
+
+<div class="flex justify-between items-center mb-6">
+
+<span class="gold text-3xl font-black">
+R$ 850
+</span>
+
+<span class="text-xs uppercase text-green-400 font-bold">
+Atacado
+</span>
+
+</div>
+
+<button onclick="addToCart('Tijolo 20x30',850)"
+class="w-full bg-gold text-black py-4 rounded-2xl uppercase text-sm font-black hover:scale-105 transition">
+
+Adicionar ao carrinho
+
+</button>
+
 </div>
 
 </div>
+
+<!-- PRODUTO -->
+
+<div class="card rounded-[30px] overflow-hidden">
+
+<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop"
+class="product-img">
+
+<div class="p-8">
+
+<h3 class="text-2xl font-black uppercase mb-3">
+Cimento CSN
+</h3>
+
+<p class="text-slate-400 text-sm mb-6">
+Alta resistência para sua obra.
+</p>
+
+<div class="flex justify-between items-center mb-6">
+
+<span class="gold text-3xl font-black">
+R$ 28,50
+</span>
+
+<span class="text-xs uppercase text-green-400 font-bold">
+Pronta entrega
+</span>
+
+</div>
+
+<button onclick="addToCart('Cimento CSN',28.5)"
+class="w-full bg-gold text-black py-4 rounded-2xl uppercase text-sm font-black hover:scale-105 transition">
+
+Adicionar ao carrinho
+
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUTO -->
+
+<div class="card rounded-[30px] overflow-hidden">
+
+<img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
+class="product-img">
+
+<div class="p-8">
+
+<h3 class="text-2xl font-black uppercase mb-3">
+Laje Isopor
+</h3>
+
+<p class="text-slate-400 text-sm mb-6">
+Maior economia e leveza estrutural.
+</p>
+
+<div class="flex justify-between items-center mb-6">
+
+<span class="gold text-3xl font-black">
+R$ 35/m²
+</span>
+
+<span class="text-xs uppercase text-green-400 font-bold">
+Mais vendida
+</span>
+
+</div>
+
+<button onclick="addToCart('Laje Isopor',35)"
+class="w-full bg-gold text-black py-4 rounded-2xl uppercase text-sm font-black hover:scale-105 transition">
+
+Adicionar ao carrinho
+
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUTO -->
+
+<div class="card rounded-[30px] overflow-hidden">
+
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop"
+class="product-img">
+
+<div class="p-8">
+
+<h3 class="text-2xl font-black uppercase mb-3">
+Coluna 7x20
+</h3>
+
+<p class="text-slate-400 text-sm mb-6">
+Estruturas resistentes para fundação.
+</p>
+
+<div class="flex justify-between items-center mb-6">
+
+<span class="gold text-3xl font-black">
+R$ 65
+</span>
+
+<span class="text-xs uppercase text-green-400 font-bold">
+Alta procura
+</span>
+
+</div>
+
+<button onclick="addToCart('Coluna 7x20',65)"
+class="w-full bg-gold text-black py-4 rounded-2xl uppercase text-sm font-black hover:scale-105 transition">
+
+Adicionar ao carrinho
+
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUTO -->
+
+<div class="card rounded-[30px] overflow-hidden">
+
+<img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1974&auto=format&fit=crop"
+class="product-img">
+
+<div class="p-8">
+
+<h3 class="text-2xl font-black uppercase mb-3">
+Bloco 9x19x39
+</h3>
+
+<p class="text-slate-400 text-sm mb-6">
+Bloco de concreto estrutural.
+</p>
+
+<div class="flex justify-between items-center mb-6">
+
+<span class="gold text-3xl font-black">
+R$ 1.650
+</span>
+
+<span class="text-xs uppercase text-green-400 font-bold">
+Atacado
+</span>
+
+</div>
+
+<button onclick="addToCart('Bloco 9x19x39',1650)"
+class="w-full bg-gold text-black py-4 rounded-2xl uppercase text-sm font-black hover:scale-105 transition">
+
+Adicionar ao carrinho
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-</main>
+<!-- BUSCA -->
 
-<footer class="bg-black border-t border-white/10 py-16 mt-20">
-<div class="max-w-7xl mx-auto px-6 text-center">
+<section id="catalogo" class="pb-10">
 
-<img src="https://i.postimg.cc/LskMhPWq/IMG-20260331-111203-766.webp" class="w-28 mx-auto mb-8">
+<div class="max-w-7xl mx-auto px-6">
 
-<h2 class="text-2xl font-black uppercase mb-4">
-ABG DISTRIBUIDORA DE FERRO E AÇO
+<div class="glass rounded-[30px] p-8">
+
+<div class="flex flex-col md:flex-row gap-5 justify-between items-center">
+
+<div>
+
+<h2 class="text-3xl font-black uppercase mb-2">
+Catálogo ABG
 </h2>
 
-<p class="text-slate-500 max-w-3xl mx-auto leading-relaxed mb-8">
-Distribuição de ferragens, aço e materiais de construção civil para Duque de Caxias e região.
+<p class="text-slate-400">
+Pesquise produtos rapidamente.
 </p>
 
-<div class="flex flex-col md:flex-row justify-center gap-6 text-slate-400 text-sm mb-10">
-<p>(21) 99232-0613</p>
-<p>abg.distribuidora.ltda@gmail.com</p>
-<p>CNPJ: 52.570.746/0001-34</p>
 </div>
 
-<a href="https://www.instagram.com/abg.distribuidora.de.ferro" target="_blank" class="inline-flex items-center gap-3 text-pink-400 font-black hover:scale-105 transition">
-<i class="fab fa-instagram text-2xl"></i>
-Instagram Oficial
-</a>
+<div class="relative w-full md:w-[450px]">
 
-<div class="border-t border-white/10 mt-12 pt-8 text-slate-600 text-xs uppercase tracking-[0.3em]">
-Reduzindo custos, construindo futuros.
+<input type="text"
+placeholder="Buscar produto..."
+id="searchInput"
+class="search-input w-full py-5 px-6 rounded-2xl outline-none text-white">
+
+<i class="fa-solid fa-magnifying-glass absolute right-6 top-1/2 -translate-y-1/2 text-slate-400"></i>
+
 </div>
 
 </div>
-</footer>
 
-</body>
-                                                                                                     </html>
+</div>
+
+</div>
+
+</section>
+
+<!-- CARRINHO -->
+
+<section class="pb-24">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="cart-box rounded-[35px] p-10">
+
+<div class="flex flex-col md:flex-row justify-between gap-10">
+
+<div>
+
+<h2 class="text-4xl font-black uppercase mb-4">
+Carrinho de orçamento
+</h2>
+
+<p class="text-slate-400 max-w-2xl">
+Adicione os produtos desejados e envie automaticamente para nosso WhatsApp.
+</p>
+
+</div>
+
+<div class="text-right">
+
+<h3 class="text-slate-400 uppercase text-sm mb-2">
+Total estimado
+</h3>
+
+<p id="cartTotal" class="text-5xl font-black gold">
+R$ 0,00
+</p>
+
+</div>
+
+</div>
+
+<div id="cartItems"
+class="mt-10 space-y-4 text-slate-300">
+
+Nenhum produto adicionado.
+
+</div>
+
+<div class="mt-10 flex flex-col md:flex-row gap-5">
+
+<button onclick="sendWhatsApp()"
+class="bg-green-500 hover:bg-green-600 transition text-white font-black uppercase px-8 py-5 rounded-2xl">
+
+<i class="fab fa-whatsapp mr-2"></i>
+Finalizar no WhatsApp
+
+</button>
+
+<button onclick="clearCart()"
+class="border border-white/10 hover:bg-white/10 transition px-8 py-5 rounded-2xl uppercase text
