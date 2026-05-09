@@ -10,10 +10,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
         body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
         .bg-abg-dark { background-color: #0c0c0c; }
-        .bg-abg-accent { background-color: #FFD700; } /* Amarelo Ouro */
+        .bg-abg-accent { background-color: #FFD700; }
         .text-abg-accent { color: #FFD700; }
         .border-abg { border-color: #FFD700; }
         .hover-card:hover { transform: scale(1.02); transition: 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -38,374 +39,104 @@
                 </div>
             </div>
             <nav class="hidden md:flex space-x-8 text-xs font-black uppercase tracking-tighter">
-                <a href="#catalogo" class="hover:text-abg-accent">Catálogo</a>
-                <a href="#servicos" class="hover:text-abg-accent">Diferenciais</a>
-                <a href="#contato" class="hover:text-abg-accent">Atendimento</a>
+                <a href="index.html" class="text-abg-accent">Início</a>
+                <a href="produtos.html" class="hover:text-abg-accent transition">Catálogo de Preços</a>
+                <a href="#contato" class="hover:text-abg-accent transition">Atendimento</a>
             </nav>
         </div>
     </header>
 
-    <section class="relative bg-abg-dark py-24 md:py-32 overflow-hidden">
-        <div class="absolute inset-0 opacity-40 bg-[url('background-abg.jpg')] bg-cover bg-center"></div>
-        <div class="container mx-auto px-6 relative z-10 text-center md:text-left">
-            <h1 class="text-white text-4xl md:text-7xl font-black uppercase leading-none mb-6">
-                A Base Forte da <br><span class="text-abg-accent">Sua Construção.</span>
-            </h1>
-            <p class="text-gray-300 text-lg md:text-xl max-w-2xl mb-10 font-light italic">
-                O melhor preço de ferro e aço em Duque de Caxias, com a agilidade que sua obra exige.
-            </p>
-            <a href="https://wa.me/5521992320613?text=Olá!%20Gostaria%20de%20montar%20um%20orçamento%20de%20ferro%20e%20aço%20com%20a%20ABG%20Distribuidora." 
-               class="bg-abg-accent text-black px-12 py-5 rounded font-black uppercase tracking-tighter text-sm inline-block shadow-2xl hover:bg-yellow-500 transition">
-                Montar Orçamento via WhatsApp
-            </a>
-        </div>
-    </section>
-
-    <section id="catalogo" class="py-20 container mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b-2 border-gray-100 pb-6">
-            <div>
-                <span class="text-abg-accent font-bold uppercase tracking-widest text-xs">Nosso Catálogo</span>
-                <h2 class="text-3xl font-black uppercase italic">Materiais de Qualidade</h2>
-            </div>
-            <span class="text-gray-400 text-xs hidden md:block">Produtos Certificados ABNT</span>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            <div class="bg-white p-4 rounded border border-gray-100 hover-card">
-                <div class="bg-gray-100 aspect-square rounded mb-4 flex items-center justify-center text-abg-dark">
-                    <i class="fas fa-layer-group text-4xl"></i>
-                </div>
-                <h3 class="font-bold text-xs uppercase mb-2">Vigas e Perfis</h3>
-                <p class="text-[10px] text-gray-500 mb-4">Suporte estrutural pesado.</p>
-                <div class="border-t pt-4 flex justify-between items-center">
-                    <span class="text-[9px] font-bold text-green-600 uppercase">Sob Consulta</span>
-                    <i class="fas fa-plus text-[10px]"></i>
-                </div>
-            </div>
-            <div class="bg-white p-4 rounded border border-gray-100 hover-card">
-                <div class="bg-gray-100 aspect-square rounded mb-4 flex items-center justify-center text-abg-dark">
-                    <i class="fas fa-bars-staggered text-4xl"></i>
-                </div>
-                <h3 class="font-bold text-xs uppercase mb-2">Vergalhões</h3>
-                <p class="text-[10px] text-gray-500 mb-4">Aço CA-50 e CA-60.</p>
-                <div class="border-t pt-4 flex justify-between items-center">
-                    <span class="text-[9px] font-bold text-green-600 uppercase">Melhor Preço</span>
-                    <i class="fas fa-plus text-[10px]"></i>
-                </div>
-            </div>
-            <div class="bg-white p-4 rounded border border-gray-100 hover-card">
-                <div class="bg-gray-100 aspect-square rounded mb-4 flex items-center justify-center text-abg-dark">
-                    <i class="fas fa-border-all text-4xl"></i>
-                </div>
-                <h3 class="font-bold text-xs uppercase mb-2">Treliças e Malhas</h3>
-                <p class="text-[10px] text-gray-500 mb-4">Prontas para lajes.</p>
-                <div class="border-t pt-4 flex justify-between items-center">
-                    <span class="text-[9px] font-bold text-green-600 uppercase">Em Estoque</span>
-                    <i class="fas fa-plus text-[10px]"></i>
-                </div>
-            </div>
-            <div class="bg-white p-4 rounded border border-gray-100 hover-card">
-                <div class="bg-gray-100 aspect-square rounded mb-4 flex items-center justify-center text-abg-dark">
-                    <i class="fas fa-sheet-plastic text-4xl"></i>
-                </div>
-                <h3 class="font-bold text-xs uppercase mb-2">Chapas e Cortes</h3>
-                <p class="text-[10px] text-gray-500 mb-4">Aço sob medida.</p>
-                <div class="border-t pt-4 flex justify-between items-center">
-                    <span class="text-[9px] font-bold text-green-600 uppercase">Corte Especial</span>
-                    <i class="fas fa-plus text-[10px]"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="servicos" class="bg-abg-dark text-white py-20">
-        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-12">
-            <div class="flex items-start space-x-4">
-                <div class="text-abg-accent text-3xl"><i class="fas fa-bolt"></i></div>
-                <div>
-                    <h4 class="font-black uppercase mb-2 italic">Entrega Expresso</h4>
-                    <p class="text-xs text-gray-400">Sabemos que sua obra não pode parar. Logística focada na agilidade.</p>
-                </div>
-            </div>
-            <div class="flex items-start space-x-4">
-                <div class="text-abg-accent text-3xl"><i class="fas fa-qrcode"></i></div>
-                <div>
-                    <h4 class="font-black uppercase mb-2 italic">Desconto no PIX</h4>
-                    <p class="text-xs text-gray-400">Pagamento à vista com condições de distribuidora.</p>
-                </div>
-            </div>
-            <div class="flex items-start space-x-4">
-                <div class="text-abg-accent text-3xl"><i class="fas fa-shield-halved"></i></div>
-                <div>
-                    <h4 class="font-black uppercase mb-2 italic">Aço Certificado</h4>
-                    <p class="text-xs text-gray-400">Garantia de segurança estrutural para seu projeto.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contato" class="bg-white py-20 px-6 border-t-4 border-abg">
-        <div class="container mx-auto grid md:grid-cols-3 gap-12">
-            <div>
-                <h5 class="font-black uppercase mb-6 italic border-l-4 border-abg pl-3">Onde Estamos</h5>
-                <p class="text-xs text-gray-600 leading-relaxed mb-4">
-                    Rua Berlarmino Gondim, 35<br>
-                    Parque Independência, Duque de Caxias – RJ
-                </p>
-                <span class="bg-gray-100 text-[9px] font-bold px-2 py-1 rounded">MATRIZ</span>
-            </div>
-            <div>
-                <h5 class="font-black uppercase mb-6 italic border-l-4 border-abg pl-3">Atendimento</h5>
-                <p class="text-xs text-gray-600 mb-2"><strong>Seg a Sex:</strong> 08:30 às 13:00</p>
-                <p class="text-[10px] text-gray-400 italic font-bold">* Após as 13h apenas entregas internas.</p>
-                <p class="text-xs text-gray-600 mt-2"><strong>Sábados:</strong> Somente logística.</p>
-            </div>
-            <div>
-                <h5 class="font-black uppercase mb-6 italic border-l-4 border-abg pl-3">Fale Conosco</h5>
-                <p class="text-2xl font-black text-abg-dark mb-2 tracking-tighter uppercase">(21) 99232-0613</p>
-                <p class="text-[9px] uppercase font-bold text-gray-400">Siga-nos nas redes sociais</p>
-            </div>
-        </div>
-        <div class="container mx-auto text-center pt-16 text-[9px] font-bold uppercase tracking-[0.5em] text-gray-300">
-            © 2026 ABG DISTRIBUIDORA DE FERRO E AÇO
-        </div>
-    </footer>
-
-</body>
-</html>
-        </div>
-    </nav>
-
-    <section class="relative min-h-screen flex items-center pt-20 bg-gradient-industrial text-white overflow-hidden">
-        <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000')] bg-cover bg-center"></div>
+    <section class="relative bg-abg-dark py-24 md:py-32 overflow-hidden flex items-center">
+        <div class="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
         
-        <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="inline-block px-3 py-1 bg-gold/20 text-gold text-xs font-bold rounded-full mb-6 uppercase tracking-widest">Líder em Duque de Caxias</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
-                    Sua Obra Com <br><span class="text-gold underline decoration-4 underline-offset-8">Aço de Elite.</span>
-                </h1>
-                <p class="text-lg text-slate-300 mb-10 leading-relaxed max-w-lg">
-                    Fornecemos a estrutura necessária para grandes projetos. Agilidade na entrega, preços de distribuidora e materiais com certificação de qualidade.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://wa.me/5521992320613?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20de%20ferro%20e%20aço%20com%20a%20ABG%20Distribuidora." 
-                       class="bg-gold text-slate-900 px-10 py-5 rounded-lg font-bold text-center hover:bg-yellow-500 transition shadow-xl uppercase text-sm tracking-tighter">
-                        Solicitar Orçamento Agora
-                    </a>
-                    <a href="#produtos" class="border border-slate-700 hover:bg-slate-800 px-10 py-5 rounded-lg font-bold text-center transition uppercase text-sm tracking-tighter">
-                        Ver Catálogo
-                    </a>
-                </div>
-            </div>
-            
-            <div class="hidden md:block glass p-8 rounded-2xl">
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="text-center p-4 border-r border-slate-700">
-                        <p class="text-3xl font-bold text-gold">100%</p>
-                        <p class="text-xs uppercase text-slate-400 tracking-widest">Qualidade Certificada</p>
-                    </div>
-                    <div class="text-center p-4">
-                        <p class="text-3xl font-bold text-gold">24h</p>
-                        <p class="text-xs uppercase text-slate-400 tracking-widest">Entrega Agilizada</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="empresa" class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Por que escolher a ABG?</h2>
-                <div class="h-1 w-20 bg-gold mx-auto mb-6"></div>
-                <p class="text-slate-500">Unimos a tradição do aço com a agilidade moderna para atender construtoras e indústrias em todo o Rio de Janeiro.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-slate-900 hover:text-white transition-all duration-500 card-shadow">
-                    <i class="fas fa-truck-loading text-4xl text-gold mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4 italic">Logística Própria</h3>
-                    <p class="text-sm opacity-70">Frota dedicada para garantir que seu material chegue no horário combinado, sem atrasos no seu cronograma.</p>
-                </div>
-                <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-slate-900 hover:text-white transition-all duration-500 card-shadow">
-                    <i class="fas fa-certificate text-4xl text-gold mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4 italic">Materiais Normatizados</h3>
-                    <p class="text-sm opacity-70">Trabalhamos apenas com aço que atende rigorosamente às normas ABNT, garantindo segurança estrutural total.</p>
-                </div>
-                <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-slate-900 hover:text-white transition-all duration-500 card-shadow">
-                    <i class="fas fa-handshake text-4xl text-gold mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4 italic">Preço de Distribuidora</h3>
-                    <p class="text-sm opacity-70">Negociações direto da fonte para oferecer o melhor custo-benefício em compras por atacado e varejo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-gold py-12">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-slate-900">
-                <h2 class="text-2xl font-black uppercase tracking-tighter">Oportunidade para Pagamento à Vista</h2>
-                <p class="font-medium">Consulte nossos descontos progressivos para pagamentos via PIX ou Transferência.</p>
-            </div>
-            <a href="https://wa.me/5521992320613?text=Olá!%20Gostaria%20de%20saber%20sobre%20os%20descontos%20no%20PIX." 
-               class="bg-slate-900 text-white px-8 py-4 rounded font-bold uppercase text-xs tracking-widest hover:bg-slate-800 transition">
-                Consultar Desconto
-            </a>
-        </div>
-    </section>
-
-    <footer id="contato" class="bg-slate-900 text-slate-400 py-20 px-6">
-        <div class="container mx-auto grid md:grid-cols-3 gap-16 border-b border-slate-800 pb-16">
-            <div>
-                <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm italic">Onde Estamos</h4>
-                <p class="text-sm leading-relaxed">
-                    Rua Berlarmino Gondim, 35<br>
-                    Parque Independência, Duque de Caxias – RJ
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm italic">Horário de Atendimento</h4>
-                <p class="text-sm leading-relaxed mb-2">
-                    <span class="text-gold">Público:</span> Seg. a Sex. das 08:30 às 13:00
-                </p>
-                <p class="text-[11px] opacity-50 uppercase italic">
-                    * Após as 13h: Somente logística e entregas internas.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm italic">Contato Direto</h4>
-                <p class="text-2xl font-black text-white mb-2">(21) 99232-0613</p>
-                <p class="text-xs uppercase tracking-widest text-gold font-bold">Atendimento via WhatsApp</p>
-            </div>
-        </div>
-        <div class="container mx-auto pt-8 text-center text-[10px] uppercase tracking-[0.4em] opacity-30">
-            © 2026 ABG Distribuidora de Ferro e Aço | RJ
-        </div>
-    </footer>
-
-</body>
-</html>
-    </header>
-
-    <section class="relative h-[500px] flex items-center bg-industrial overflow-hidden">
-        <div class="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4">
-                TRABALHO QUE <span class="text-accent">CONSTRÓI.</span><br>
+        <div class="container mx-auto px-6 relative z-10 text-center md:text-left">
+            <span class="inline-block px-3 py-1 bg-abg-accent/20 text-abg-accent text-[10px] font-bold rounded-full mb-6 uppercase tracking-widest border border-abg-accent/30">Líder em Duque de Caxias</span>
+            <h1 class="text-white text-4xl md:text-7xl font-black uppercase leading-tight mb-6">
+                TRABALHO QUE <span class="text-abg-accent">CONSTRÓI.</span><br>
                 PARCERIA QUE FORTALECE.
             </h1>
-            <p class="text-gray-300 max-w-xl mb-8 text-lg">
-                Fornecimento ágil de materiais de construção pesada em Duque de Caxias. Ferro e aço certificados para sua obra não parar.
+            <p class="text-gray-300 text-lg md:text-xl max-w-2xl mb-10 font-light italic leading-relaxed">
+                Ferro, aço e materiais certificados para sua obra não parar. O melhor preço da região com entrega agilizada.
             </p>
-            <div class="flex flex-wrap gap-4">
-                <a href="https://wa.me/5521992320613" class="accent-yellow text-industrial px-8 py-4 font-black rounded uppercase tracking-tighter hover:bg-yellow-500 transition">Solicitar Orçamento</a>
-                <div class="bg-white/10 backdrop-blur-md p-3 rounded border border-white/20 text-white text-sm">
-                    <i class="fas fa-truck-fast text-accent mr-2"></i> Entrega rápida para toda a região
+            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <a href="https://wa.me/5521992320613?text=Olá!%20Gostaria%20de%20montar%20um%20orçamento%20de%20ferro%20e%20aço%20com%20a%20ABG%20Distribuidora." 
+                   class="bg-abg-accent text-black px-10 py-5 rounded font-black uppercase tracking-tighter text-sm shadow-2xl hover:bg-yellow-500 transition text-center">
+                    Solicitar Orçamento Agora
+                </a>
+                <a href="produtos.html" class="border border-white/30 text-white hover:bg-white/10 px-10 py-5 rounded font-black uppercase tracking-tighter text-sm transition text-center backdrop-blur-sm">
+                    Ver Tabela de Preços
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white border-b border-gray-100">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
+            <div class="flex items-center space-x-4 p-4 border-l-4 border-abg-accent bg-gray-50">
+                <i class="fas fa-certificate text-2xl text-abg-dark"></i>
+                <div>
+                    <h4 class="font-bold text-xs uppercase tracking-tighter">Qualidade Certificada</h4>
+                    <p class="text-[10px] text-gray-500 uppercase">Materiais Normatizados ABNT</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4 p-4 border-l-4 border-abg-accent bg-gray-50">
+                <i class="fas fa-truck-fast text-2xl text-abg-dark"></i>
+                <div>
+                    <h4 class="font-bold text-xs uppercase tracking-tighter">Entrega Express</h4>
+                    <p class="text-[10px] text-gray-500 uppercase">Logística Própria e Ágil</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4 p-4 border-l-4 border-abg-accent bg-gray-50">
+                <i class="fas fa-qrcode text-2xl text-abg-dark"></i>
+                <div>
+                    <h4 class="font-bold text-xs uppercase tracking-tighter">Desconto via PIX</h4>
+                    <p class="text-[10px] text-gray-500 uppercase">Preço de Distribuidora à Vista</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="produtos" class="py-20 container mx-auto px-6">
-        <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tighter">Nosso Catálogo</h2>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-industrial card-hover">
-                <div class="text-accent text-3xl mb-4"><i class="fas fa-layer-group"></i></div>
-                <h3 class="font-black text-lg mb-2">Vigas e Perfis</h3>
-                <p class="text-sm text-gray-500">Estruturas robustas para grandes vãos e suporte de carga pesada.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-industrial card-hover">
-                <div class="text-accent text-3xl mb-4"><i class="fas fa-bars-staggered"></i></div>
-                <h3 class="font-black text-lg mb-2">Vergalhões</h3>
-                <p class="text-sm text-gray-500">O esqueleto da sua construção com a resistência que você precisa.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-industrial card-hover">
-                <div class="text-accent text-3xl mb-4"><i class="fas fa-border-all"></i></div>
-                <h3 class="font-black text-lg mb-2">Treliças e Malhas</h3>
-                <p class="text-sm text-gray-500">Prontos para lajes e pisos, garantindo estabilidade e rapidez.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-industrial card-hover">
-                <div class="text-accent text-3xl mb-4"><i class="fas fa-sheet-plastic"></i></div>
-                <h3 class="font-black text-lg mb-2">Chapas e Cortes</h3>
-                <p class="text-sm text-gray-500">Sob medida para projetos industriais e serralheria especializada.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="promocao" class="bg-emerald-600 py-12">
+    <section class="bg-emerald-600 py-10">
         <div class="container mx-auto px-6 flex flex-wrap justify-between items-center text-white">
-            <div class="mb-6 md:mb-0">
-                <h3 class="text-2xl font-black uppercase tracking-tighter">Desconto no Pagamento via PIX</h3>
-                <p class="opacity-90">Acima de R$ 1.000,00 → <span class="font-bold text-yellow-300">3% OFF</span> | Acima de R$ 2.000,00 → <span class="font-bold text-yellow-300">5% OFF</span></p>
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-black uppercase tracking-tighter">Economize no Pagamento via PIX</h3>
+                <p class="text-sm opacity-90">Consulte nossos descontos progressivos para compras acima de R$ 1.000,00.</p>
             </div>
-            <div class="bg-white text-emerald-700 px-6 py-3 rounded-lg font-black italic shadow-lg">
-                MELHOR PREÇO DA REGIÃO
-            </div>
+            <a href="https://wa.me/5521992320613?text=Quero%20saber%20mais%20sobre%20o%20desconto%20no%20PIX." class="bg-white text-emerald-700 px-8 py-3 rounded font-black italic shadow-lg hover:scale-105 transition uppercase text-xs">Consultar Agora</a>
         </div>
     </section>
 
-    <section id="contato" class="py-20 bg-slate-200">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+    <footer id="contato" class="bg-abg-dark text-gray-400 py-20 px-6">
+        <div class="container mx-auto grid md:grid-cols-3 gap-12 border-b border-gray-800 pb-16">
             <div>
-                <h3 class="text-2xl font-black mb-6 uppercase">Onde Estamos</h3>
-                <p class="text-lg font-bold">Rua Berlarmino Gondim, 35</p>
-                <p class="text-gray-600 mb-6">Parque Independência, Duque de Caxias – RJ</p>
-                
-                <div class="space-y-4">
-                    <div class="flex items-center">
-                        <i class="fas fa-clock text-emerald-600 mr-3"></i>
-                        <span><strong>Segunda a Sexta:</strong> 08:30 às 13:00 (Público)</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500 ml-7 italic">
-                        *Após 13h: Somente entregas programadas.
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-calendar-check text-emerald-600 mr-3"></i>
-                        <span><strong>Sábados:</strong> Apenas entregas</span>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-industrial p-8 rounded-2xl text-white">
-                <h3 class="text-xl font-bold mb-4 italic text-accent underline">Aviso de Segurança</h3>
-                <p class="text-sm opacity-80 leading-relaxed mb-6">
-                    Para garantir a segurança de todos, o acesso à nossa fábrica é permitido **somente com calçados fechados**. Contamos com sua colaboração.
+                <h5 class="text-white font-black uppercase mb-6 italic border-l-4 border-abg pl-3">Onde Estamos</h5>
+                <p class="text-xs leading-relaxed">
+                    Rua Berlarmino Gondim, 35<br>
+                    Parque Independência, Duque de Caxias – RJ
                 </p>
-                <div class="border-t border-white/10 pt-6">
-                    <p class="text-xs uppercase tracking-widest opacity-50 mb-2 font-bold">Atendimento Direto</p>
-                    <p class="text-2xl font-black">(21) 99232-0613</p>
-                </div>
+                <div class="mt-4 inline-block bg-white/5 text-[9px] font-bold px-3 py-1 rounded border border-white/10 uppercase tracking-widest">Unidade Matriz</div>
+            </div>
+            <div>
+                <h5 class="text-white font-black uppercase mb-6 italic border-l-4 border-abg pl-3">Atendimento</h5>
+                <p class="text-xs mb-2"><strong>Seg a Sex:</strong> 08:30 às 13:00 (Presencial)</p>
+                <p class="text-[10px] text-abg-accent italic font-bold uppercase">* Após as 13h: Apenas logística e entregas.</p>
+                <p class="text-xs mt-2"><strong>Sábados:</strong> Somente Entregas.</p>
+            </div>
+            <div>
+                <h5 class="text-white font-black uppercase mb-6 italic border-l-4 border-abg pl-3">Contato Direto</h5>
+                <p class="text-3xl font-black text-white mb-1 tracking-tighter">(21) 99232-0613</p>
+                <p class="text-[9px] uppercase font-bold text-abg-accent tracking-[0.2em]">Atendimento via WhatsApp</p>
             </div>
         </div>
-    </section>
-
-    <footer class="bg-industrial text-gray-500 py-8 text-center text-xs">
-        <p>© 2026 ABG DISTRIBUIDORA DE FERRO E AÇO. Duque de Caxias - RJ.</p>
-    </footer>
-
-</body>
-</html>
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6 text-center">
-            <div class="p-6 bg-white rounded-lg shadow-md border-t-4 border-yellow-400">
-                <h3 class="font-bold text-xl mb-2">Qualidade Premium</h3>
-                <p class="text-gray-600">Materiais certificados para garantir a segurança da sua estrutura.</p>
-            </div>
-            <div class="p-6 bg-white rounded-lg shadow-md border-t-4 border-yellow-400">
-                <h3 class="font-bold text-xl mb-2">Entrega Rápida</h3>
-                <p class="text-gray-600">Logística eficiente para não deixar sua obra parada.</p>
-            </div>
-            <div class="p-6 bg-white rounded-lg shadow-md border-t-4 border-yellow-400">
-                <h3 class="font-bold text-xl mb-2">Melhor Preço</h3>
-                <p class="text-gray-600">Condições especiais para pagamentos via PIX.</p>
-            </div>
+        
+        <div class="container mx-auto mt-10 p-6 bg-red-900/20 border border-red-900/30 rounded-xl text-center">
+            <p class="text-[11px] uppercase font-bold text-red-400 tracking-widest">
+                <i class="fas fa-exclamation-triangle mr-2"></i> Atenção: Acesso à fábrica somente com calçados fechados
+            </p>
         </div>
-    </section>
 
-    <footer id="contato" class="bg-industrial text-gray-400 py-10 px-6 text-center">
-        <p class="mb-2">Rua Berlarmino Gondim, 35 - Parque Independência</p>
-        <p class="mb-4">Duque de Caxias – RJ</p>
-        <div class="text-sm border-t border-gray-800 pt-4">
-            © 2026 ABG Distribuidora de Ferro e Aço. Todos os direitos reservados.
+        <div class="container mx-auto text-center pt-10 text-[9px] font-bold uppercase tracking-[0.5em] opacity-30">
+            © 2026 ABG DISTRIBUIDORA DE FERRO E AÇO | Duque de Caxias - RJ
         </div>
     </footer>
 
