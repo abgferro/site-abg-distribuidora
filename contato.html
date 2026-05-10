@@ -1,200 +1,678 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atendimento | ABG DISTRIBUIDORA DE FERRO E AÇO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<title>Contato | ABG DISTRIBUIDORA DE FERRO E AÇO</title>
+    :root {
+      --preto: #0a0a0a;
+      --amarelo: #f5c518;
+      --amarelo-escuro: #d4a800;
+      --cinza-escuro: #141414;
+      --cinza-medio: #1e1e1e;
+      --cinza-borda: #2a2a2a;
+      --cinza-texto: #888;
+      --branco: #ffffff;
+      --branco-suave: #e8e8e8;
+    }
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    html { scroll-behavior: smooth; }
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+    body {
+      background: var(--preto);
+      color: var(--branco);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-body{
-    font-family:'Montserrat',sans-serif;
-    background:#07111f;
-    color:white;
-}
+    /* ── WHATSAPP FLUTUANTE ── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: #25d366;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.6); }
+    .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
 
-.bg-industrial{
-    background:
-    linear-gradient(rgba(4,10,20,.92),rgba(4,10,20,.96)),
-    url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop');
-    background-size:cover;
-    background-position:center;
-}
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.96);
+      border-bottom: 1px solid var(--cinza-borda);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--branco);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo span { color: var(--amarelo); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--cinza-texto);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.ativo { color: var(--amarelo); }
+    .nav-cta {
+      background: var(--amarelo);
+      color: var(--preto) !important;
+      padding: 8px 18px;
+      border-radius: 4px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--amarelo-escuro); color: var(--preto) !important; }
 
-.gold{ color:#d4af37; }
-.bg-gold{ background:#d4af37; }
-.card{
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(10px);
-}
-.glow{ box-shadow:0 0 30px rgba(212,175,55,.15); }
+    /* hamburger mobile */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--branco); transition: 0.3s; }
+    .mobile-menu { display: none; }
 
-</style>
+    /* ── HERO ── */
+    .hero {
+      background: var(--cinza-escuro);
+      border-bottom: 1px solid var(--cinza-borda);
+      padding: 64px 24px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(245,197,24,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amarelo);
+      border: 1px solid rgba(245,197,24,0.3);
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+    .hero h1 em { font-style: normal; color: var(--amarelo); }
+    .hero p {
+      max-width: 520px;
+      margin: 0 auto;
+      color: var(--cinza-texto);
+      font-size: 1rem;
+    }
+
+    /* ── SEÇÃO GENÉRICA ── */
+    section { padding: 72px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amarelo);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      color: var(--cinza-texto);
+      max-width: 540px;
+      font-size: 0.95rem;
+    }
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--cinza-borda);
+      margin: 0;
+    }
+
+    /* ── GRID CANAIS ── */
+    .canais-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .canal-card {
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 8px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .canal-card:hover { border-color: var(--amarelo); transform: translateY(-3px); }
+    .canal-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(245,197,24,0.12);
+      flex-shrink: 0;
+    }
+    .canal-icon svg { width: 24px; height: 24px; }
+    .canal-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .canal-card p {
+      font-size: 0.9rem;
+      color: var(--cinza-texto);
+      flex: 1;
+    }
+    .canal-info {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--branco-suave);
+    }
+    .canal-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+      background: rgba(245,197,24,0.15);
+      color: var(--amarelo);
+      width: fit-content;
+    }
+    .canal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--amarelo);
+      margin-top: 4px;
+      transition: gap 0.2s;
+    }
+    .canal-link:hover { gap: 12px; }
+    .canal-link::after { content: '→'; }
+
+    /* ── HORÁRIOS ── */
+    .horarios-section { background: var(--cinza-escuro); }
+    .horarios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .horario-card {
+      border: 1px solid var(--cinza-borda);
+      border-radius: 8px;
+      padding: 28px 24px;
+      background: var(--cinza-medio);
+    }
+    .horario-card .periodo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amarelo);
+      margin-bottom: 8px;
+    }
+    .horario-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .horario-card .horas {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--amarelo);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .horario-card p { font-size: 0.88rem; color: var(--cinza-texto); }
+
+    /* ── TRABALHE CONOSCO ── */
+    .trabalhe-box {
+      margin-top: 48px;
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-left: 4px solid var(--amarelo);
+      border-radius: 8px;
+      padding: 36px 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .trabalhe-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(245,197,24,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .trabalhe-icon svg { width: 30px; height: 30px; }
+    .trabalhe-text { flex: 1; min-width: 200px; }
+    .trabalhe-text h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .trabalhe-text p { color: var(--cinza-texto); font-size: 0.92rem; max-width: 480px; }
+    .btn-amarelo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--amarelo);
+      color: var(--preto);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+    .btn-amarelo:hover { background: var(--amarelo-escuro); transform: translateY(-1px); }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      background: var(--cinza-escuro);
+      border-top: 1px solid var(--cinza-borda);
+      text-align: center;
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(245,197,24,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-final h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .cta-final h2 em { font-style: normal; color: var(--amarelo); }
+    .cta-final p { color: var(--cinza-texto); margin-bottom: 32px; font-size: 1rem; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--cinza-borda);
+      color: var(--branco);
+      background: transparent;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 4px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--amarelo); color: var(--amarelo); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080808;
+      border-top: 1px solid var(--cinza-borda);
+      padding: 48px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+    .footer-brand img { height: 40px; margin-bottom: 14px; filter: brightness(1); }
+    .footer-brand p { color: var(--cinza-texto); font-size: 0.88rem; max-width: 300px; line-height: 1.6; }
+    .footer-brand .cnpj { font-size: 0.78rem; color: #555; margin-top: 10px; letter-spacing: 0.04em; }
+    .footer-col h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amarelo);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      color: var(--cinza-texto);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--branco); }
+    .footer-col ul li span { color: var(--cinza-texto); font-size: 0.9rem; }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 32px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--cinza-borda);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: #444; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        background: var(--cinza-escuro);
+        border-top: 1px solid var(--cinza-borda);
+        padding: 16px 24px 24px;
+        gap: 16px;
+      }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu a {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 600;
+        font-size: 1.05rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--cinza-texto);
+        text-decoration: none;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--cinza-borda);
+      }
+      .mobile-menu a:last-child { border-bottom: none; }
+      .trabalhe-box { flex-direction: column; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- WHATSAPP FIXO -->
-<a href="https://wa.me/5521992320613?text=Olá! Quero um orçamento na ABG." 
-class="fixed bottom-6 right-6 z-50 bg-[#25d366] p-5 rounded-full shadow-2xl hover:scale-110 transition">
-<i class="fab fa-whatsapp text-3xl text-white"></i>
+<!-- WhatsApp flutuante -->
+<a class="whatsapp-float" href="https://wa.me/5521992320613?text=Olá,%20gostaria%20de%20falar%20com%20a%20ABG%20Distribuidora." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<!-- HEADER -->
-<header class="sticky top-0 z-50 bg-[#07111f]/95 backdrop-blur border-b border-white/10">
-<div class="container mx-auto px-6 py-4 flex justify-between items-center">
-
-<a href="index.html" class="flex items-center gap-4">
-<img src="https://i.postimg.cc/LskMhPWq/IMG-20260331-111203-766.webp" class="w-14 h-14 object-contain">
-<div>
-<h1 class="font-black text-lg uppercase">ABG DISTRIBUIDORA</h1>
-<p class="text-[10px] uppercase tracking-[0.3em] text-gray-400">Ferro e Aço</p>
-</div>
-</a>
-
-<nav class="hidden md:flex gap-8 text-xs uppercase font-bold">
-<a href="index.html" class="hover:text-yellow-400">Início</a>
-<a href="produtos.html" class="hover:text-yellow-400">Catálogo</a>
-<a href="quem-somos.html" class="hover:text-yellow-400">Quem Somos</a>
-<a href="entregas.html" class="hover:text-yellow-400">Entregas</a>
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">ABG <span>DISTRIBUIDORA</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="produtos.html">Catálogo</a></li>
+      <li><a href="entregas.html">Entregas</a></li>
+      <li><a href="quem-somos.html">Quem Somos</a></li>
+      <li><a href="contato.html" class="ativo">Atendimento</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Início</a>
+    <a href="produtos.html">Catálogo</a>
+    <a href="entregas.html">Entregas</a>
+    <a href="quem-somos.html">Quem Somos</a>
+    <a href="contato.html">Atendimento</a>
+  </div>
 </nav>
 
-</div>
-</header>
-
 <!-- HERO -->
-<section class="bg-industrial min-h-[75vh] flex items-center">
-<div class="container mx-auto px-6 py-24">
-
-<div class="max-w-5xl">
-
-<span class="bg-gold text-black px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-widest">
-Atendimento rápido
-</span>
-
-<h1 class="text-5xl md:text-7xl font-black uppercase leading-[0.95] mt-8">
-Fale com a
-<span class="gold">ABG</span>
-</h1>
-
-<p class="text-gray-300 text-lg mt-10 max-w-3xl">
-Atendimento direto com nossa equipe comercial. Orçamentos, entregas e suporte técnico com resposta rápida.
-</p>
-
-<!-- BADGES -->
-<div class="flex flex-wrap gap-4 mt-10 text-sm">
-<div class="bg-white/5 px-4 py-2 rounded-full border border-white/10">⚡ Resposta em até 15 min</div>
-<div class="bg-white/5 px-4 py-2 rounded-full border border-white/10">🚚 Entrega RJ inteiro</div>
-<div class="bg-white/5 px-4 py-2 rounded-full border border-white/10">🏗 Atendimento obra</div>
+<div class="hero">
+  <div class="hero-badge">Fale com a ABG</div>
+  <h1>Atendimento<br><em>Direto e Humano.</em></h1>
+  <p>Estamos disponíveis por WhatsApp, e-mail e Instagram. Escolha o canal que preferir.</p>
 </div>
 
-</div>
+<hr class="divider" />
 
-</div>
+<!-- CANAIS DE ATENDIMENTO -->
+<section>
+  <div class="container">
+    <div class="section-label">Canais Diretos</div>
+    <h2 class="section-title">Como nos <em style="font-style:normal;color:var(--amarelo)">Contatar</em></h2>
+    <p class="section-subtitle">Escolha o canal de sua preferência para orçamentos, dúvidas, propostas ou suporte.</p>
+
+    <div class="canais-grid">
+
+      <!-- WhatsApp -->
+      <div class="canal-card">
+        <div class="canal-icon">
+          <svg viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="canal-tag">Assistente Virtual 24h</div>
+        <h3>WhatsApp</h3>
+        <p>Nossa assistente virtual está disponível 24 horas por dia, 7 dias por semana. Para agendamento de visita ou retirada de material, contate pelo WhatsApp.</p>
+        <div class="canal-info">(21) 99232-0613</div>
+        <a class="canal-link" href="https://wa.me/5521992320613?text=Olá,%20gostaria%20de%20um%20atendimento." target="_blank" rel="noopener">Iniciar Conversa</a>
+      </div>
+
+      <!-- E-mail -->
+      <div class="canal-card">
+        <div class="canal-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f5c518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </div>
+        <div class="canal-tag">Propostas & Trabalhe Conosco</div>
+        <h3>E-mail Comercial</h3>
+        <p>Para envio de propostas comerciais, parcerias ou currículo para trabalhar conosco. Respondemos em até 24 horas úteis.</p>
+        <div class="canal-info">abg.distribuidora.ltda@gmail.com</div>
+        <a class="canal-link" href="mailto:abg.distribuidora.ltda@gmail.com">Enviar E-mail</a>
+      </div>
+
+      <!-- Instagram -->
+      <div class="canal-card">
+        <div class="canal-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div class="canal-tag">Verificado</div>
+        <h3>Instagram</h3>
+        <p>Acompanhe nossos produtos, novidades e nos mande uma DM. Perfil verificado da ABG Distribuidora.</p>
+        <div class="canal-info">@abg.distribuidora.de.ferro</div>
+        <a class="canal-link" href="https://www.instagram.com/abg.distribuidora.de.ferro" target="_blank" rel="noopener">Ver Perfil</a>
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<!-- CONTATO RÁPIDO -->
-<section class="py-24">
-<div class="container mx-auto px-6">
+<hr class="divider" />
 
-<div class="text-center mb-16">
-<h2 class="text-4xl md:text-5xl font-black uppercase">Canais Oficiais</h2>
-<p class="text-gray-400 mt-4">Escolha o canal mais rápido para atendimento</p>
-</div>
+<!-- HORÁRIOS -->
+<section class="horarios-section">
+  <div class="container">
+    <div class="section-label">Horários</div>
+    <h2 class="section-title">Nosso <em style="font-style:normal;color:var(--amarelo)">Atendimento</em></h2>
+    <p class="section-subtitle">Confira os horários de funcionamento presencial na fábrica e do suporte online.</p>
 
-<div class="grid lg:grid-cols-3 gap-8">
+    <div class="horarios-grid">
 
-<!-- WHATSAPP -->
-<div class="card rounded-3xl p-10">
-<i class="fab fa-whatsapp text-5xl gold mb-6"></i>
-<h3 class="font-black text-2xl uppercase">WhatsApp</h3>
-<p class="text-gray-400 mt-4">Orçamentos e pedidos imediatos</p>
+      <div class="horario-card">
+        <div class="periodo">Seg a Sex — Presencial</div>
+        <h3>Fábrica / Retirada</h3>
+        <div class="horas">08:30 – 13:00</div>
+        <p>Atendimento presencial em nossa unidade em Duque de Caxias para visitas, retirada de materiais e atendimento ao público.</p>
+      </div>
 
-<a href="https://wa.me/5521992320613?text=Olá! Quero um orçamento." 
-class="inline-block mt-6 bg-gold text-black px-6 py-3 rounded-xl font-black">
-Abrir conversa
-</a>
-</div>
+      <div class="horario-card">
+        <div class="periodo">Todos os dias — Online</div>
+        <h3>Assistente Virtual</h3>
+        <div class="horas">24 horas</div>
+        <p>Nossa assistente virtual no WhatsApp está sempre ativa para tirar dúvidas, registrar pedidos e encaminhar orçamentos.</p>
+      </div>
 
-<!-- EMAIL -->
-<div class="card rounded-3xl p-10">
-<i class="fas fa-envelope text-5xl gold mb-6"></i>
-<h3 class="font-black text-2xl uppercase">E-mail</h3>
-<p class="text-gray-400 mt-4">Contato empresarial e documentos</p>
-<p class="mt-4 font-bold">abg.distribuidora.ltda@gmail.com</p>
-</div>
+      <div class="horario-card">
+        <div class="periodo">Seg a Sex — Online</div>
+        <h3>E-mail Comercial</h3>
+        <div class="horas">Em até 24h</div>
+        <p>Propostas, parcerias e mensagens enviadas por e-mail são respondidas em até 24 horas úteis pela nossa equipe.</p>
+      </div>
 
-<!-- INSTAGRAM -->
-<div class="card rounded-3xl p-10">
-<i class="fab fa-instagram text-5xl gold mb-6"></i>
-<h3 class="font-black text-2xl uppercase">Instagram</h3>
-<p class="text-gray-400 mt-4">Obras, entregas e novidades</p>
-<a class="text-yellow-400 font-bold" href="https://www.instagram.com/abg.distribuidora.de.ferro" target="_blank">@abg.distribuidora.de.ferro</a>
-</div>
+    </div>
 
-</div>
-</div>
+    <!-- Trabalhe Conosco -->
+    <div class="trabalhe-box">
+      <div class="trabalhe-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#f5c518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+      </div>
+      <div class="trabalhe-text">
+        <h3>Trabalhe Conosco</h3>
+        <p>Quer fazer parte do time ABG? Envie seu currículo para o nosso e-mail comercial com o assunto <strong style="color:var(--branco-suave)">"Trabalhe Conosco"</strong>. Analisamos todas as candidaturas e retornamos em breve.</p>
+      </div>
+      <a class="btn-amarelo" href="mailto:abg.distribuidora.ltda@gmail.com?subject=Trabalhe%20Conosco%20-%20Currículo">
+        Enviar Currículo
+      </a>
+    </div>
+  </div>
 </section>
 
-<!-- ROTA / CEP SIMULADO -->
-<section class="py-24 bg-[#0d1829]">
-<div class="container mx-auto px-6">
+<hr class="divider" />
 
-<div class="text-center mb-16">
-<h2 class="text-4xl font-black uppercase">Consulta de Entrega</h2>
-<p class="text-gray-400 mt-4">Simulação de prazo (confirmação final via WhatsApp)</p>
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <div class="container">
+    <h2>Sua obra não pode<br><em>esperar.</em></h2>
+    <p>Fale agora com nossa equipe e receba um orçamento personalizado.</p>
+    <div class="cta-btns">
+      <a class="btn-amarelo" href="https://wa.me/5521992320613?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener">
+        Solicitar Orçamento
+      </a>
+      <a class="btn-outline" href="produtos.html">Ver Catálogo</a>
+    </div>
+  </div>
 </div>
 
-<div class="card rounded-3xl p-10 max-w-2xl mx-auto">
-
-<label class="text-sm text-gray-300">Digite seu CEP</label>
-<input id="cep" class="w-full mt-3 p-4 rounded-xl bg-black/30 border border-white/10" placeholder="Ex: 20000-000" />
-
-<button onclick="consultar()" class="w-full mt-6 bg-gold text-black py-4 rounded-xl font-black">
-Consultar prazo
-</button>
-
-<div id="resultado" class="mt-6 text-gray-300"></div>
-
-</div>
-
-</div>
-</section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png" alt="ABG Distribuidora" />
+      <p>Reduzindo custos, construindo futuros. Ferro, aço e lajes em todo o estado do Rio de Janeiro.</p>
+      <p class="cnpj">CNPJ: 52.570.746/0001-34</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explorar</h4>
+      <ul>
+        <li><a href="produtos.html">Materiais</a></li>
+        <li><a href="entregas.html">Logística</a></li>
+        <li><a href="quem-somos.html">Quem Somos</a></li>
+        <li><a href="contato.html">Atendimento</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Canais Diretos</h4>
+      <ul>
+        <li><a href="https://wa.me/5521992320613" target="_blank">(21) 99232-0613</a></li>
+        <li><a href="mailto:abg.distribuidora.ltda@gmail.com">E-mail Comercial</a></li>
+        <li><a href="https://www.instagram.com/abg.distribuidora.de.ferro" target="_blank">Instagram Oficial</a></li>
+        <li><span>Duque de Caxias — RJ</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ABG Distribuidora de Ferro e Aço — Todos os direitos reservados.</p>
+    <p style="color:#333;font-size:0.78rem;">Fabricante Nacional · RJ</p>
+  </div>
+</footer>
 
 <script>
-function consultar(){
-  const cep = document.getElementById('cep').value;
-  let msg = '';
-
-  if(!cep){
-    msg = 'Informe um CEP válido.';
-  } else {
-    const base = parseInt(cep.replace(/\D/g,''));
-
-    if(base < 30000000){
-      msg = 'Prazo estimado: 24h a 48h (Baixada / RJ próximo)';
-    } else if(base < 50000000){
-      msg = 'Prazo estimado: 48h a 72h (Capital / interior RJ)';
-    } else {
-      msg = 'Prazo sob consulta via WhatsApp (rota especial / logística)';
-    }
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
   }
-
-  document.getElementById('resultado').innerHTML = msg + '<br><br><a class="text-yellow-400 font-bold" href="https://wa.me/5521992320613">Confirmar no WhatsApp</a>';
-}
 </script>
-
-<!-- FOOTER SIMPLIFICADO -->
-<footer class="bg-black py-14 border-t border-white/10 text-center">
-<p class="text-gray-400">ABG DISTRIBUIDORA DE FERRO E AÇO</p>
-<p class="text-gray-500 text-sm mt-2">Duque de Caxias - RJ</p>
-</footer>
 
 </body>
 </html>
