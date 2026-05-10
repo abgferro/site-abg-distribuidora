@@ -73,16 +73,43 @@
     }
     .nav-logo {
       font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 1.1rem;
-      letter-spacing: 0.05em;
       text-decoration: none;
-      color: var(--branco);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0;
+      line-height: 1;
     }
-    .nav-logo span { color: var(--amarelo); }
+    .nav-logo .logo-abg {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      color: var(--amarelo);
+      background: var(--amarelo);
+      color: var(--preto);
+      padding: 4px 10px;
+      border-radius: 3px 0 0 3px;
+    }
+    .nav-logo .logo-nome {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--branco-suave);
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-left: none;
+      padding: 4px 12px;
+      border-radius: 0 3px 3px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .nav-logo .logo-nome em {
+      font-style: normal;
+      color: var(--cinza-texto);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+    }
     .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
     .nav-links a {
       font-family: 'Barlow Condensed', sans-serif;
@@ -515,29 +542,18 @@
     .forn-logo:last-child { border-right: none; }
     .forn-logo:hover { background: #252525; }
     .forn-logo img {
-      max-height: 36px;
-      max-width: 110px;
+      max-height: 40px;
+      max-width: 120px;
       width: auto;
       object-fit: contain;
-      filter: brightness(0) invert(1);
-      opacity: 0.55;
-      transition: opacity 0.2s;
+      filter: saturate(0.3) brightness(1.4);
+      opacity: 0.6;
+      transition: filter 0.25s, opacity 0.25s;
     }
-    .forn-logo:hover img { opacity: 0.9; }
-    /* fallback texto para Rubrax */
-    .forn-logo-text { flex-direction: column; gap: 3px; }
-    .forn-logo-text strong {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--branco-suave);
-      opacity: 0.55;
-      transition: opacity 0.2s;
+    .forn-logo:hover img {
+      filter: saturate(1) brightness(1);
+      opacity: 1;
     }
-    .forn-logo-text span { font-size: 0.68rem; color: var(--cinza-texto); letter-spacing: 0.1em; }
-    .forn-logo-text:hover strong { opacity: 0.9; }
 
     /* ── ENTREGA BANNER ── */
     .entrega-banner {
@@ -692,7 +708,10 @@
 <!-- NAVBAR -->
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="index.html">ABG <span>DISTRIBUIDORA DE FERRO E AÇO</span></a>
+    <a class="nav-logo" href="index.html">
+      <span class="logo-abg">ABG</span>
+      <span class="logo-nome">DISTRIBUIDORA DE FERRO E AÇO<em>DUQUE DE CAXIAS · RJ</em></span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html" class="ativo">Início</a></li>
       <li><a href="produtos.html">Catálogo</a></li>
@@ -875,20 +894,19 @@
     <p class="forn-label">Fornecedores Parceiros</p>
     <div class="forn-logos">
       <div class="forn-logo">
-        <img src="https://logospng.org/download/csn-companhia-siderurgica-nacional/logo-csn-companhia-siderurgica-nacional-256.png" alt="CSN" />
+        <img src="https://i.postimg.cc/3wJxvGgV/efd57eb4-csn.jpg" alt="CSN" />
       </div>
       <div class="forn-logo">
-        <img src="https://logospng.org/download/arcelormittal/logo-arcelormittal-256.png" alt="ArcelorMittal" />
+        <img src="https://i.postimg.cc/GmjptKsJ/images.jpg" alt="Mauá" />
       </div>
       <div class="forn-logo">
-        <img src="https://logospng.org/download/gerdau/logo-gerdau-256.png" alt="Gerdau" />
+        <img src="https://i.postimg.cc/DwhZ7HmW/channels4-profile.jpg" alt="Gerdau" />
       </div>
       <div class="forn-logo">
-        <img src="https://logospng.org/download/maua/logo-maua-256.png" alt="Mauá" />
+        <img src="https://i.postimg.cc/qMyqV4Js/images-(1).jpg" alt="Rubrax Lajes Pré-Moldadas" />
       </div>
-      <div class="forn-logo forn-logo-text">
-        <strong>RUBRAX</strong>
-        <span>Lajes</span>
+      <div class="forn-logo">
+        <img src="https://i.postimg.cc/9Xv0nrhR/images.png" alt="ArcelorMittal" />
       </div>
     </div>
   </div>
