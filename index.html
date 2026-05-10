@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ABG Distribuidora | Ferro, Aço e Lajes - Rio de Janeiro</title>
+  <title>ABG Distribuidora de Ferro e Aço | Rio de Janeiro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -149,7 +149,9 @@
       min-height: 92vh;
       display: flex;
       align-items: center;
-      background: var(--cinza-escuro);
+      background:
+        linear-gradient(to right, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.75) 50%, rgba(10,10,10,0.45) 100%),
+        url('https://i.postimg.cc/1RNKH2Gj/file-00000000204471fbb554c8d1a051e409.png') center/cover no-repeat;
       position: relative;
       overflow: hidden;
       padding: 80px 24px;
@@ -158,9 +160,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 100% 50%, rgba(245,197,24,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 80% at 0% 50%, rgba(245,197,24,0.03) 0%, transparent 60%);
+      background: radial-gradient(ellipse 50% 60% at 0% 50%, rgba(245,197,24,0.07) 0%, transparent 60%);
       pointer-events: none;
     }
     /* grade de fundo sutil */
@@ -169,10 +169,10 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(var(--cinza-borda) 1px, transparent 1px),
-        linear-gradient(90deg, var(--cinza-borda) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
       background-size: 60px 60px;
-      opacity: 0.18;
+      opacity: 1;
       pointer-events: none;
     }
     .hero-inner {
@@ -180,12 +180,13 @@
       margin: 0 auto;
       width: 100%;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      grid-template-columns: 1fr;
+      gap: 0;
       align-items: center;
       position: relative;
       z-index: 1;
     }
+    .hero-content { max-width: 620px; }
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -300,44 +301,6 @@
       letter-spacing: 0.12em;
       color: var(--cinza-texto);
       font-weight: 600;
-    }
-
-    /* imagem hero */
-    .hero-img-wrap {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--cinza-borda);
-    }
-    .hero-img-wrap img {
-      width: 100%;
-      height: 480px;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.85) contrast(1.05);
-    }
-    .hero-img-badge {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      background: rgba(10,10,10,0.92);
-      border: 1px solid var(--cinza-borda);
-      border-left: 3px solid var(--amarelo);
-      padding: 12px 16px;
-      border-radius: 4px;
-      backdrop-filter: blur(8px);
-    }
-    .hero-img-badge strong {
-      display: block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .hero-img-badge span {
-      font-size: 0.78rem;
-      color: var(--cinza-texto);
     }
 
     /* ── FAIXA MARQUEE ── */
@@ -542,26 +505,39 @@
       min-width: 140px;
       background: var(--cinza-medio);
       padding: 28px 24px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-right: 1px solid var(--cinza-borda);
       transition: background 0.2s;
+      min-height: 90px;
     }
     .forn-logo:last-child { border-right: none; }
-    .forn-logo:hover { background: #222; }
-    .forn-logo strong {
+    .forn-logo:hover { background: #252525; }
+    .forn-logo img {
+      max-height: 36px;
+      max-width: 110px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.55;
+      transition: opacity 0.2s;
+    }
+    .forn-logo:hover img { opacity: 0.9; }
+    /* fallback texto para Rubrax */
+    .forn-logo-text { flex-direction: column; gap: 3px; }
+    .forn-logo-text strong {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.3rem;
       font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--branco-suave);
-      display: block;
+      opacity: 0.55;
+      transition: opacity 0.2s;
     }
-    .forn-logo span {
-      font-size: 0.72rem;
-      color: var(--cinza-texto);
-      letter-spacing: 0.1em;
-    }
+    .forn-logo-text span { font-size: 0.68rem; color: var(--cinza-texto); letter-spacing: 0.1em; }
+    .forn-logo-text:hover strong { opacity: 0.9; }
 
     /* ── ENTREGA BANNER ── */
     .entrega-banner {
@@ -688,8 +664,6 @@
 
     /* ── RESPONSIVO ── */
     @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-      .hero-img-wrap { display: none; }
       .entrega-inner { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
@@ -718,7 +692,7 @@
 <!-- NAVBAR -->
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="index.html">ABG <span>DISTRIBUIDORA</span></a>
+    <a class="nav-logo" href="index.html">ABG <span>DISTRIBUIDORA DE FERRO E AÇO</span></a>
     <ul class="nav-links">
       <li><a href="index.html" class="ativo">Início</a></li>
       <li><a href="produtos.html">Catálogo</a></li>
@@ -770,13 +744,6 @@
           <div class="hero-stat-num">100%</div>
           <div class="hero-stat-label">Compromisso</div>
         </div>
-      </div>
-    </div>
-    <div class="hero-img-wrap">
-      <img src="https://i.postimg.cc/1RNKH2Gj/file-00000000204471fbb554c8d1a051e409.png" alt="Galpão ABG Distribuidora" />
-      <div class="hero-img-badge">
-        <strong>Galpão ABG</strong>
-        <span>Duque de Caxias · RJ</span>
       </div>
     </div>
   </div>
@@ -908,20 +875,20 @@
     <p class="forn-label">Fornecedores Parceiros</p>
     <div class="forn-logos">
       <div class="forn-logo">
-        <strong>CSN</strong>
-        <span>Aço Estrutural</span>
+        <img src="https://logospng.org/download/csn-companhia-siderurgica-nacional/logo-csn-companhia-siderurgica-nacional-256.png" alt="CSN" />
       </div>
       <div class="forn-logo">
-        <strong>ArcelorMittal</strong>
-        <span>Ferragens</span>
+        <img src="https://logospng.org/download/arcelormittal/logo-arcelormittal-256.png" alt="ArcelorMittal" />
       </div>
       <div class="forn-logo">
-        <strong>Gerdau</strong>
-        <span>Vergalhões</span>
+        <img src="https://logospng.org/download/gerdau/logo-gerdau-256.png" alt="Gerdau" />
       </div>
       <div class="forn-logo">
-        <strong>Mauá</strong>
-        <span>Cimento</span>
+        <img src="https://logospng.org/download/maua/logo-maua-256.png" alt="Mauá" />
+      </div>
+      <div class="forn-logo forn-logo-text">
+        <strong>RUBRAX</strong>
+        <span>Lajes</span>
       </div>
     </div>
   </div>
