@@ -1,843 +1,557 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quem Somos | ABG Distribuidora de Ferro e Aço</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:      #0d0d0d;
+      --bg2:     #141414;
+      --bg3:     #1a1a1a;
+      --border:  #2a2a2a;
+      --yellow:  #f5c518;
+      --yellow2: #e0b000;
+      --red:     #c0392b;
+      --red2:    #e74c3c;
+      --white:   #f0ede8;
+      --muted:   #888;
+      --font-h:  'Barlow Condensed', sans-serif;
+      --font-b:  'Barlow', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--white); font-family: var(--font-b); overflow-x: hidden; }
 
-<title>Quem Somos | ABG DISTRIBUIDORA DE FERRO E AÇO</title>
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(13,13,13,0.96); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      height: 64px; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .nav-logo img { height: 36px; }
+    .nav-logo span { font-family: var(--font-h); font-weight: 800; font-size: 1.1rem; letter-spacing: .05em; color: var(--white); line-height: 1.1; }
+    .nav-logo small { display: block; font-size: .65rem; color: var(--yellow); font-weight: 600; letter-spacing: .08em; }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .85rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-links a.active { border-bottom: 2px solid var(--yellow); padding-bottom: 2px; }
+    .nav-cta { background: var(--yellow); color: #000; padding: .45rem 1rem; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: .8rem; letter-spacing: .05em; text-transform: uppercase; transition: background .2s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--yellow2); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: #111; border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; flex-direction: column; gap: 1rem; z-index: 998; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1rem; font-weight: 600; padding: .5rem 0; border-bottom: 1px solid var(--border); }
 
-<script src="https://cdn.tailwindcss.com"></script>
+    /* LAYOUT */
+    .pt { padding-top: 64px; }
+    .section { padding: 4.5rem 1.5rem; }
+    .section-inner { max-width: 960px; margin: 0 auto; }
+    .section-label { font-family: var(--font-h); font-size: .78rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--yellow); margin-bottom: .5rem; }
+    .section-title { font-family: var(--font-h); font-size: clamp(2rem,5vw,3rem); font-weight: 900; text-transform: uppercase; line-height: 1.05; margin-bottom: 1.5rem; }
+    .divider { border: none; border-top: 1px solid var(--border); }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, #0d0d0d 40%, #1a0e00 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 6rem 1.5rem 4.5rem; text-align: center;
+    }
+    .hero-tag { display: inline-block; border: 1px solid var(--yellow); color: var(--yellow); font-family: var(--font-h); font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: .3rem 1rem; border-radius: 2px; margin-bottom: 1.25rem; }
+    .hero h1 { font-family: var(--font-h); font-size: clamp(2.6rem,7vw,5rem); font-weight: 900; text-transform: uppercase; line-height: 1; margin-bottom: 1rem; }
+    .hero h1 em { font-style: normal; color: var(--yellow); }
+    .hero p { font-size: 1.1rem; color: #aaa; max-width: 640px; margin: 0 auto 2rem; line-height: 1.7; }
+    .hero-btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: .85rem 1.5rem; border: none; cursor: pointer; font-family: var(--font-h); font-weight: 800; font-size: 1rem; letter-spacing: .06em; text-transform: uppercase; border-radius: 4px; transition: all .2s; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; }
+    .btn-yellow { background: var(--yellow); color: #000; }
+    .btn-yellow:hover { background: var(--yellow2); }
+    .btn-green { background: #25d366; color: #000; }
+    .btn-green:hover { background: #1db954; }
+    .btn-outline { background: transparent; color: var(--white); border: 1.5px solid var(--border); }
+    .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
 
-<style>
+    /* TRUST BADGES */
+    .trust-strip {
+      background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+    }
+    .trust-inner { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+    .trust-badge { display: flex; align-items: center; gap: .5rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: .45rem .9rem; font-size: .8rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+    .trust-badge .icon { font-size: 1rem; }
+    .trust-badge.yellow { border-color: rgba(245,197,24,.4); color: var(--yellow); }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+    /* STATS */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 0; }
+    .stat-item { background: var(--bg3); padding: 2rem 1.25rem; text-align: center; }
+    .stat-num { font-family: var(--font-h); font-size: 2.8rem; font-weight: 900; color: var(--yellow); line-height: 1; }
+    .stat-label { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-top: .35rem; }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Montserrat',sans-serif;
-}
+    /* HISTÓRIA */
+    .historia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    @media (max-width: 680px) { .historia-grid { grid-template-columns: 1fr; } }
+    .historia-text p { color: #bbb; line-height: 1.8; font-size: .97rem; margin-bottom: 1rem; }
+    .historia-text p strong { color: var(--white); }
+    .historia-text blockquote {
+      border-left: 3px solid var(--yellow); padding: .75rem 1rem;
+      font-style: italic; color: #ccc; margin: 1.5rem 0; font-size: 1rem; line-height: 1.7;
+      background: rgba(245,197,24,.04); border-radius: 0 4px 4px 0;
+    }
 
-html{
-scroll-behavior:smooth;
-}
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 2.5rem; }
+    .timeline::before { content: ''; position: absolute; left: .75rem; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--yellow), transparent); }
+    .timeline-item { position: relative; padding-bottom: 2rem; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot { position: absolute; left: -2.1rem; top: .15rem; width: 28px; height: 28px; border-radius: 50%; background: var(--yellow); color: #000; font-family: var(--font-h); font-weight: 900; font-size: .8rem; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg); }
+    .timeline-dot.future { background: var(--bg3); border-color: var(--yellow); color: var(--yellow); }
+    .timeline-year { font-family: var(--font-h); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--yellow); margin-bottom: .1rem; }
+    .timeline-year.future { color: #666; }
+    .timeline-name { font-family: var(--font-h); font-size: 1.15rem; font-weight: 800; text-transform: uppercase; margin-bottom: .25rem; }
+    .timeline-desc { font-size: .88rem; color: #777; line-height: 1.5; }
+    .in-progress {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: rgba(245,197,24,.1); border: 1px solid rgba(245,197,24,.3);
+      color: var(--yellow); font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; padding: .2rem .55rem; border-radius: 3px; margin-top: .35rem;
+    }
+    .in-progress::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); animation: blink 1.2s infinite; }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:.2; } }
 
-body{
-background:#07111f;
-color:white;
-overflow-x:hidden;
-}
+    /* GALERIA */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+    @media (max-width: 580px) { .gallery-grid { grid-template-columns: 1fr 1fr; } }
+    .gallery-item { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 4/3; background: #111; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; display: block; }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item .overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,.75)); padding: .75rem; }
+    .gallery-item .overlay span { font-family: var(--font-h); font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
 
-.gold{
-color:#d4af37;
-}
+    /* FORNECEDORES */
+    .fornec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 1rem; }
+    .fornec-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1.5rem 1rem; text-align: center; transition: border-color .2s, transform .2s;
+    }
+    .fornec-card:hover { border-color: var(--yellow); transform: translateY(-2px); }
+    .fornec-logo { font-family: var(--font-h); font-size: 1.4rem; font-weight: 900; letter-spacing: .05em; color: var(--white); margin-bottom: .4rem; }
+    .fornec-label { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
 
-.bg-gold{
-background:#d4af37;
-}
+    /* SELOS */
+    .selos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 1rem; }
+    .selo-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: .75rem; transition: border-color .2s;
+    }
+    .selo-card:hover { border-color: var(--yellow); }
+    .selo-icon { font-size: 2.5rem; }
+    .selo-name { font-family: var(--font-h); font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
+    .selo-desc { font-size: .78rem; color: var(--muted); line-height: 1.4; }
+    .selo-badge { display: inline-block; background: rgba(245,197,24,.12); border: 1px solid rgba(245,197,24,.3); color: var(--yellow); font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: .2rem .55rem; border-radius: 3px; }
 
-.border-gold{
-border-color:#d4af37;
-}
+    /* POR QUE ESCOLHER */
+    .pq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1rem; }
+    .pq-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; transition: border-color .2s, transform .2s; }
+    .pq-card:hover { border-color: var(--yellow); transform: translateY(-2px); }
+    .pq-icon { font-size: 2rem; margin-bottom: .75rem; }
+    .pq-title { font-family: var(--font-h); font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .4rem; }
+    .pq-desc { font-size: .88rem; color: #888; line-height: 1.5; }
 
-.card{
-background:rgba(255,255,255,.04);
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,.08);
-}
+    /* CTA */
+    .cta-box {
+      background: linear-gradient(135deg, #1a0000 0%, #2a0a00 100%);
+      border: 1px solid rgba(192,57,43,.4); border-radius: 8px; padding: 3rem 2rem; text-align: center;
+    }
+    .cta-box h2 { font-family: var(--font-h); font-size: clamp(1.8rem,5vw,3rem); font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: .75rem; }
+    .cta-box h2 span { color: var(--yellow); }
+    .cta-box p { color: #aaa; font-size: .95rem; margin-bottom: 1.75rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .btn-row { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
 
-.glow{
-box-shadow:0 0 40px rgba(212,175,55,.15);
-}
+    /* FOOTER */
+    footer { background: #080808; border-top: 1px solid var(--border); padding: 3rem 1.5rem 2rem; }
+    .footer-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; }
+    @media (max-width: 720px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 420px) { .footer-inner { grid-template-columns: 1fr; } }
+    .footer-brand img { height: 40px; margin-bottom: .75rem; }
+    .footer-brand p { font-size: .85rem; color: var(--muted); margin-bottom: .5rem; }
+    .footer-brand small { font-size: .75rem; color: #444; }
+    .footer-col h4 { font-family: var(--font-h); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--yellow); margin-bottom: .75rem; }
+    .footer-col a, .footer-col p { display: block; color: var(--muted); text-decoration: none; font-size: .85rem; margin-bottom: .4rem; transition: color .2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { max-width: 960px; margin: 2rem auto 0; border-top: 1px solid var(--border); padding-top: 1.25rem; text-align: center; font-size: .78rem; color: #444; }
 
-.hover-card{
-transition:.4s ease;
-}
-
-.hover-card:hover{
-transform:translateY(-8px);
-border-color:rgba(212,175,55,.35);
-}
-
-.hero-bg{
-background:
-linear-gradient(rgba(4,10,20,.88),rgba(4,10,20,.95)),
-url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop');
-background-size:cover;
-background-position:center;
-}
-
-.section-divider{
-height:1px;
-background:linear-gradient(to right,transparent,rgba(212,175,55,.4),transparent);
-}
-
-.timeline::before{
-content:'';
-position:absolute;
-left:18px;
-top:0;
-width:2px;
-height:100%;
-background:#d4af37;
-}
-
-.gallery-image{
-height:320px;
-object-fit:cover;
-width:100%;
-transition:.5s ease;
-}
-
-.gallery-card:hover .gallery-image{
-transform:scale(1.05);
-}
-
-.blur-bg{
-background:linear-gradient(to top,rgba(4,10,20,.95),transparent);
-}
-
-</style>
+    @media (max-width: 600px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .section { padding: 3rem 1rem; }
+    }
+  </style>
 </head>
+<body class="pt">
 
-<body>
-
-<!-- WHATSAPP -->
-
-<a href="https://wa.me/5521992320613"
-target="_blank"
-class="fixed bottom-6 right-6 z-50 bg-[#25d366] p-5 rounded-full shadow-2xl hover:scale-110 transition duration-300">
-
-<i class="fab fa-whatsapp text-3xl text-white"></i>
-
-</a>
-
-<!-- HEADER -->
-
-<header class="sticky top-0 z-50 bg-[#07111f]/95 backdrop-blur border-b border-white/10">
-
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
-<a href="index.html" class="flex items-center gap-4">
-
-<img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png"
-class="w-14 h-14 object-contain">
-
-<div>
-
-<h1 class="font-black uppercase text-lg">
-ABG DISTRIBUIDORA
-</h1>
-
-<p class="text-[10px] uppercase tracking-[0.3em] text-gray-400">
-Ferro e Aço
-</p>
-
-</div>
-
-</a>
-
-<nav class="hidden md:flex items-center gap-8 uppercase text-xs font-black">
-
-<a href="index.html" class="hover:text-yellow-400 transition">
-Início
-</a>
-
-<a href="produtos.html" class="hover:text-yellow-400 transition">
-Catálogo
-</a>
-
-<a href="entregas.html" class="hover:text-yellow-400 transition">
-Entregas
-</a>
-
-<a href="contato.html" class="hover:text-yellow-400 transition">
-Contato
-</a>
-
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png" alt="ABG" />
+    <span>ABG Distribuidora<small>Fabricante Nacional · RJ</small></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="produtos.html">Catálogo</a></li>
+    <li><a href="entregas.html">Entregas</a></li>
+    <li><a href="quem-somos.html" class="active">Quem Somos</a></li>
+  </ul>
+  <a href="https://wa.me/5521992320613?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento" class="nav-cta" target="_blank">💬 Orçamento</a>
+  <div class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
-
+<div class="mobile-menu" id="mob">
+  <a href="index.html">Início</a>
+  <a href="produtos.html">Catálogo</a>
+  <a href="entregas.html">Entregas</a>
+  <a href="quem-somos.html">Quem Somos</a>
+  <a href="https://wa.me/5521992320613" target="_blank">💬 Falar no WhatsApp</a>
 </div>
-
-</header>
 
 <!-- HERO -->
-
-<section class="hero-bg min-h-[90vh] flex items-center relative overflow-hidden">
-
-<div class="max-w-7xl mx-auto px-6 py-24 w-full">
-
-<div class="max-w-5xl">
-
-<span class="bg-gold text-black px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-[0.3em]">
-Quem Somos
-</span>
-
-<h1 class="text-5xl md:text-7xl font-black uppercase leading-[0.95] mt-10">
-
-Estrutura forte.
-<span class="gold">Confiança sólida.</span>
-
-</h1>
-
-<p class="text-gray-300 text-lg leading-relaxed mt-10 max-w-3xl">
-
-A ABG DISTRIBUIDORA DE FERRO E AÇO nasceu com um propósito simples:
-entregar materiais de qualidade com transparência, compromisso e atendimento humano para clientes em todo o estado do Rio de Janeiro.
-
-</p>
-
-<div class="flex flex-col sm:flex-row gap-5 mt-12">
-
-<a href="produtos.html"
-class="bg-gold text-black px-10 py-5 rounded-2xl font-black uppercase text-sm hover:scale-105 transition glow text-center">
-
-Ver Catálogo
-
-</a>
-
-<a href="https://wa.me/5521992320613"
-target="_blank"
-class="border border-white/20 px-10 py-5 rounded-2xl font-bold uppercase text-sm hover:bg-white/10 transition text-center">
-
-Falar no WhatsApp
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
+<section class="hero">
+  <div class="hero-tag">🏭 Quem Somos</div>
+  <h1>Estrutura Forte.<br/><em>Confiança Sólida.</em></h1>
+  <p>A ABG nasceu da simplicidade de um pequeno comércio e cresceu com um propósito claro: entregar materiais de qualidade com transparência, compromisso e atendimento humano para obras em todo o estado do Rio de Janeiro.</p>
+  <div class="hero-btns">
+    <a href="produtos.html" class="btn btn-yellow">📦 Ver Catálogo</a>
+    <a href="https://wa.me/5521992320613?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20ABG." target="_blank" class="btn btn-green">💬 Falar no WhatsApp</a>
+  </div>
 </section>
 
-<!-- EMPRESA VERIFICADA -->
-
-<section class="py-24">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="text-center mb-20">
-
-<h2 class="text-4xl md:text-5xl font-black uppercase">
-Empresa Verificada
-</h2>
-
-<p class="text-gray-400 mt-5 max-w-3xl mx-auto">
-Compromisso com transparência, atendimento real e entregas em todo o estado do Rio de Janeiro.
-</p>
-
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-badge yellow"><span class="icon">✅</span> CNPJ Ativo 52.570.746/0001-34</div>
+    <div class="trust-badge yellow"><span class="icon">🏅</span> Verificado Reclame Aqui</div>
+    <div class="trust-badge"><span class="icon">🚚</span> Frete Sempre Grátis em Todo RJ</div>
+    <div class="trust-badge"><span class="icon">📍</span> Saracuruna, Duque de Caxias</div>
+    <div class="trust-badge"><span class="icon">💬</span> Atendimento 24h pelo WhatsApp</div>
+  </div>
 </div>
 
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-<div class="card rounded-3xl p-10 hover-card glow">
-<i class="fas fa-building text-5xl gold mb-8"></i>
-<h3 class="font-black text-2xl uppercase mb-4">
-CNPJ Ativo
-</h3>
-<p class="text-gray-400 text-sm leading-relaxed">
-Empresa registrada e atuando oficialmente no segmento de ferragens e construção civil.
-</p>
-</div>
-
-<div class="card rounded-3xl p-10 hover-card glow">
-<i class="fas fa-truck-fast text-5xl gold mb-8"></i>
-<h3 class="font-black text-2xl uppercase mb-4">
-Logística Própria
-</h3>
-<p class="text-gray-400 text-sm leading-relaxed">
-Entregas organizadas através de operação própria e parceiros especializados.
-</p>
-</div>
-
-<div class="card rounded-3xl p-10 hover-card glow">
-<i class="fas fa-shield-halved text-5xl gold mb-8"></i>
-<h3 class="font-black text-2xl uppercase mb-4">
-Empresa Verificada
-</h3>
-<p class="text-gray-400 text-sm leading-relaxed">
-Atendimento humanizado, suporte rápido e compromisso com cada cliente.
-</p>
-</div>
-
-</div>
-
-</div>
-
+<!-- NÚMEROS -->
+<section class="section" style="background:var(--bg2); border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">+5</div>
+        <div class="stat-label">Anos no Segmento</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">+5mil</div>
+        <div class="stat-label">Clientes Atendidos</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">+10mil</div>
+        <div class="stat-label">Materiais Entregues</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">+500t</div>
+        <div class="stat-label">Toneladas de Ferro Distribuídas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Frete Grátis em Todo RJ</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="section-divider"></div>
+<hr class="divider" />
 
-<!-- HISTÓRIA -->
+<!-- NOSSA HISTÓRIA -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Nossa Trajetória</div>
+    <div class="section-title">A História<br/>por Trás da ABG</div>
+    <div class="historia-grid">
+      <div class="historia-text">
+        <p>Tudo começou de forma simples. Em <strong>2018</strong>, um pequeno comércio de água e gás era o ponto de partida — sem grandes estruturas, mas com algo que nunca mudou: <strong>honestidade, respeito ao cliente e vontade de fazer diferente</strong>.</p>
+        <p>Com o tempo, percebemos que o mercado de construção civil no Rio de Janeiro precisava de um fornecedor que falasse a língua do trabalhador, do pedreiro, do engenheiro e do dono da obra. Um fornecedor que entregasse no prazo, cobrasse justo e tratasse cada cliente como parceiro.</p>
+        <p>Foi assim que nasceu a <strong>ABG Distribuidora de Ferro e Aço</strong>. A entrada no segmento de ferragens em 2020 foi o passo que mudou tudo. Em 2022, fechamos parcerias com fornecedores reconhecidos nacionalmente — <strong>CSN, ArcelorMittal e Gerdau</strong> — e em 2023 a marca ABG foi consolidada como referência de entrega e qualidade na Baixada Fluminense.</p>
+        <blockquote>"Cada obra que a gente abastece representa a confiança de alguém que apostou na gente. Isso a gente nunca esquece."</blockquote>
+        <p>Hoje, em 2026, a ABG segue crescendo — e os próximos passos já estão sendo dados.</p>
+      </div>
 
-<section class="py-24">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="grid lg:grid-cols-2 gap-20 items-start">
-
-<div>
-
-<h2 class="text-5xl font-black uppercase mb-10">
-Nossa História
-</h2>
-
-<div class="space-y-8 text-gray-300 leading-relaxed text-lg">
-
-<p>
-A história da ABG começou em 2018 através de um pequeno comércio voltado para água e gás.
-Mesmo em uma estrutura simples, já existia algo que se tornaria a base da empresa:
-honestidade, compromisso e respeito ao cliente.
-</p>
-
-<p>
-Com o crescimento das operações, identificamos a necessidade de um mercado mais transparente no setor de ferragens e construção civil.
-Foi então que iniciamos nossa trajetória no segmento de aço, ferragens e materiais para obras.
-</p>
-
-<p>
-Em 2022 demos um dos passos mais importantes da nossa caminhada:
-o início de operações com fornecedores reconhecidos nacionalmente como ArcelorMittal, CSN e Gerdau.
-</p>
-
-<p>
-Hoje a ABG DISTRIBUIDORA DE FERRO E AÇO atende clientes em todo o estado do Rio de Janeiro, mantendo como principal objetivo:
-</p>
-
-<div class="border-l-4 border-gold pl-6 py-4">
-
-<p class="text-white text-2xl italic font-bold">
-“Entregar qualidade, confiança e preço justo para cada cliente.”
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="relative">
-
-<div class="timeline relative pl-16 space-y-12">
-
-<div class="relative">
-
-<div class="absolute left-[-64px] top-0 w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-black">
-2018
-</div>
-
-<div class="card rounded-3xl p-8">
-<h3 class="font-black text-2xl mb-3">
-O início
-</h3>
-<p class="text-gray-400">
-Primeiras operações comerciais com água e gás.
-</p>
-</div>
-
-</div>
-
-<div class="relative">
-
-<div class="absolute left-[-64px] top-0 w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-black">
-2020
-</div>
-
-<div class="card rounded-3xl p-8">
-<h3 class="font-black text-2xl mb-3">
-Entrada nas Ferragens
-</h3>
-<p class="text-gray-400">
-Expansão para o setor de ferro, aço e construção civil.
-</p>
-</div>
-
-</div>
-
-<div class="relative">
-
-<div class="absolute left-[-64px] top-0 w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-black">
-2022
-</div>
-
-<div class="card rounded-3xl p-8">
-<h3 class="font-black text-2xl mb-3">
-Novos Fornecedores
-</h3>
-<p class="text-gray-400">
-Parcerias com ArcelorMittal, CSN e Gerdau.
-</p>
-</div>
-
-</div>
-
-<div class="relative">
-
-<div class="absolute left-[-64px] top-0 w-10 h-10 rounded-full bg-gold flex items-center justify-center text-black font-black">
-2023
-</div>
-
-<div class="card rounded-3xl p-8">
-<h3 class="font-black text-2xl mb-3">
-Nascimento da ABG
-</h3>
-<p class="text-gray-400">
-Consolidação da marca ABG DISTRIBUIDORA DE FERRO E AÇO.
-</p>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+      <!-- TIMELINE -->
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot">18</div>
+          <div class="timeline-year">2018</div>
+          <div class="timeline-name">O Início</div>
+          <div class="timeline-desc">Primeiras operações comerciais com água e gás. A semente de um negócio construído com honestidade.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">20</div>
+          <div class="timeline-year">2020</div>
+          <div class="timeline-name">Entrada nas Ferragens</div>
+          <div class="timeline-desc">Expansão para ferro, aço e materiais de construção civil. Início da distribuição na Baixada Fluminense.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">22</div>
+          <div class="timeline-year">2022</div>
+          <div class="timeline-name">Grandes Parceiros</div>
+          <div class="timeline-desc">Parcerias firmadas com CSN, ArcelorMittal e Gerdau — fornecedores reconhecidos nacionalmente.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">23</div>
+          <div class="timeline-year">2023</div>
+          <div class="timeline-name">Nascimento da Marca ABG</div>
+          <div class="timeline-desc">Consolidação da ABG Distribuidora de Ferro e Aço como marca e CNPJ próprio no RJ.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">24</div>
+          <div class="timeline-year">2024 – 2025</div>
+          <div class="timeline-name">Expansão Logística</div>
+          <div class="timeline-desc">Crescimento da área de entregas para todo o estado do RJ. Incorporação de lajes e tijolos ao portfólio.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot future">→</div>
+          <div class="timeline-year future">2026 — Em andamento</div>
+          <div class="timeline-name">Ponto de Vendas em Duque de Caxias</div>
+          <div class="timeline-desc">Nova unidade física de atendimento e vendas prevista para Duque de Caxias, facilitando ainda mais o acesso dos clientes da Baixada.</div>
+          <div class="in-progress">Em implantação</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot future">→</div>
+          <div class="timeline-year future">2026 — Em andamento</div>
+          <div class="timeline-name">Ponto de Vendas em Niterói</div>
+          <div class="timeline-desc">Segunda unidade em expansão prevista para atender a região de Niterói e entorno.</div>
+          <div class="in-progress">Em implantação</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ESTATÍSTICAS -->
-
-<section class="py-24 bg-[#0d1829]">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-<div class="card rounded-3xl p-10 text-center hover-card">
-
-<h3 class="text-5xl font-black gold mb-4">
-RJ
-</h3>
-
-<p class="uppercase font-bold text-sm tracking-[0.2em] text-gray-300">
-Atendimento em todo o estado
-</p>
-
-</div>
-
-<div class="card rounded-3xl p-10 text-center hover-card">
-
-<h3 class="text-5xl font-black gold mb-4">
-24h
-</h3>
-
-<p class="uppercase font-bold text-sm tracking-[0.2em] text-gray-300">
-Suporte online e acompanhamento
-</p>
-
-</div>
-
-<div class="card rounded-3xl p-10 text-center hover-card">
-
-<h3 class="text-5xl font-black gold mb-4">
-+2020
-</h3>
-
-<p class="uppercase font-bold text-sm tracking-[0.2em] text-gray-300">
-Atuando no setor de ferragens
-</p>
-
-</div>
-
-<div class="card rounded-3xl p-10 text-center hover-card">
-
-<h3 class="text-5xl font-black gold mb-4">
-100%
-</h3>
-
-<p class="uppercase font-bold text-sm tracking-[0.2em] text-gray-300">
-Compromisso com transparência
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
+<hr class="divider" />
 
 <!-- GALERIA -->
-
-<section class="py-24">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="text-center mb-20">
-
-<h2 class="text-5xl font-black uppercase">
-Nossa Estrutura
-</h2>
-
-<p class="text-gray-400 mt-5 max-w-3xl mx-auto">
-Operação preparada para atender obras de pequeno, médio e grande porte.
-</p>
-
-</div>
-
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-<div class="gallery-card relative overflow-hidden rounded-[30px]">
-
-<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop"
-class="gallery-image">
-
-<div class="absolute inset-0 blur-bg flex items-end p-8">
-
-<div>
-
-<h3 class="font-black text-2xl uppercase">
-Ferragens & Aço
-</h3>
-
-<p class="text-gray-300 text-sm mt-2">
-Materiais para estruturas, colunas e construção civil.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="gallery-card relative overflow-hidden rounded-[30px]">
-
-<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop"
-class="gallery-image">
-
-<div class="absolute inset-0 blur-bg flex items-end p-8">
-
-<div>
-
-<h3 class="font-black text-2xl uppercase">
-Logística
-</h3>
-
-<p class="text-gray-300 text-sm mt-2">
-Entregas organizadas para todo o estado do RJ.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="gallery-card relative overflow-hidden rounded-[30px]">
-
-<img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop"
-class="gallery-image">
-
-<div class="absolute inset-0 blur-bg flex items-end p-8">
-
-<div>
-
-<h3 class="font-black text-2xl uppercase">
-Distribuição
-</h3>
-
-<p class="text-gray-300 text-sm mt-2">
-Atendimento rápido para obras e construções.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+<section class="section" style="background:var(--bg2);">
+  <div class="section-inner">
+    <div class="section-label">Nossa Estrutura</div>
+    <div class="section-title">A Fábrica<br/>por Dentro</div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop" alt="Galpão ferragens" loading="lazy" />
+        <div class="overlay"><span>Galpão de Ferragens</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop" alt="Estoque de vergalhões" loading="lazy" />
+        <div class="overlay"><span>Estoque de Vergalhões</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=800&auto=format&fit=crop" alt="Separação de materiais" loading="lazy" />
+        <div class="overlay"><span>Separação de Pedidos</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1581092787765-e3feb951d987?q=80&w=800&auto=format&fit=crop" alt="Carregamento caminhão" loading="lazy" />
+        <div class="overlay"><span>Carregamento e Entrega</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" alt="Lajes pré-moldadas" loading="lazy" />
+        <div class="overlay"><span>Lajes Pré-Moldadas</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://i.postimg.cc/1RNKH2Gj/file-00000000204471fbb554c8d1a051e409.png" alt="Fachada ABG" loading="lazy" />
+        <div class="overlay"><span>Fachada ABG — Saracuruna</span></div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<hr class="divider" />
 
 <!-- FORNECEDORES -->
-
-<section class="py-24 bg-[#0d1829]">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="text-center mb-20">
-
-<h2 class="text-5xl font-black uppercase">
-Parceiros & Fornecedores
-</h2>
-
-<p class="text-gray-400 mt-5">
-Fornecedores reconhecidos nacionalmente.
-</p>
-
-</div>
-
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-<div class="card rounded-3xl p-10 text-center hover-card">
-<i class="fas fa-industry text-5xl gold mb-6"></i>
-<h3 class="font-black text-2xl uppercase">
-CSN
-</h3>
-<p class="text-gray-400 text-sm mt-4">
-Fornecedor de aço e materiais estruturais.
-</p>
-</div>
-
-<div class="card rounded-3xl p-10 text-center hover-card">
-<i class="fas fa-building-circle-check text-5xl gold mb-6"></i>
-<h3 class="font-black text-2xl uppercase">
-ArcelorMittal
-</h3>
-<p class="text-gray-400 text-sm mt-4">
-Uma das maiores referências mundiais em aço.
-</p>
-</div>
-
-<div class="card rounded-3xl p-10 text-center hover-card">
-<i class="fas fa-helmet-safety text-5xl gold mb-6"></i>
-<h3 class="font-black text-2xl uppercase">
-Gerdau
-</h3>
-<p class="text-gray-400 text-sm mt-4">
-Qualidade reconhecida no segmento de ferragens.
-</p>
-</div>
-
-<div class="card rounded-3xl p-10 text-center hover-card">
-<i class="fas fa-cubes text-5xl gold mb-6"></i>
-<h3 class="font-black text-2xl uppercase">
-Mauá
-</h3>
-<p class="text-gray-400 text-sm mt-4">
-Fornecedor de cimento e materiais para construção.
-</p>
-</div>
-
-</div>
-
-</div>
-
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Parceiros Comerciais</div>
+    <div class="section-title">Nossos Fornecedores<br/>em Destaque</div>
+    <p style="color:#888;font-size:.92rem;margin-bottom:2rem;max-width:580px;">Trabalhamos apenas com fornecedores reconhecidos nacionalmente, garantindo qualidade certificada em cada produto que sai do nosso galpão.</p>
+    <div class="fornec-grid">
+      <div class="fornec-card">
+        <div class="fornec-logo" style="color:#d4af37;">CSN</div>
+        <div class="fornec-label">Companhia Siderúrgica Nacional</div>
+        <p style="font-size:.78rem;color:#666;margin-top:.5rem;">Aço e materiais estruturais de alta performance.</p>
+      </div>
+      <div class="fornec-card">
+        <div class="fornec-logo" style="color:#e8e8e8;">ArcelorMittal</div>
+        <div class="fornec-label">Líder mundial em siderurgia</div>
+        <p style="font-size:.78rem;color:#666;margin-top:.5rem;">Vergalhões e perfis estruturais CA-50 e CA-60.</p>
+      </div>
+      <div class="fornec-card">
+        <div class="fornec-logo" style="color:#e07b39;">Gerdau</div>
+        <div class="fornec-label">Ferragens e Aço Nacional</div>
+        <p style="font-size:.78rem;color:#666;margin-top:.5rem;">Referência brasileira em ferragens para construção civil.</p>
+      </div>
+      <div class="fornec-card">
+        <div class="fornec-logo" style="color:#c0392b;">Mauá</div>
+        <div class="fornec-label">Cimento e insumos</div>
+        <p style="font-size:.78rem;color:#666;margin-top:.5rem;">Cimento de alta qualidade para fundações e acabamentos.</p>
+      </div>
+      <div class="fornec-card">
+        <div class="fornec-logo" style="color:#7ec8a0;font-size:1.1rem;">Rubraz</div>
+        <div class="fornec-label">Lajes e Concretos</div>
+        <p style="font-size:.78rem;color:#666;margin-top:.5rem;">Lajes pré-moldadas e concreto para coberturas e estruturas.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- QUALIDADE -->
+<hr class="divider" />
 
-<section class="py-24">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="text-center mb-20">
-
-<h2 class="text-5xl font-black uppercase">
-Qualidade & Garantia
-</h2>
-
-</div>
-
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-<div class="card rounded-3xl p-10 text-center hover-card">
-<i class="fas fa-award text-5xl gold mb-6"></i>
-<h3 class="font-black text-xl uppercase">
-Materiais Certificados
-</h3>
-</div>
-
-<div class="card rounded-3xl p-10 text-center hover-card">
-<i class="fas fa-shield text-5xl gold mb-6"></i>
-<h3 class="font-black text-xl uppercase">
-Garantia de Qualidade
-</h3>
-</div>
-
-<div class="card rounded-3xl p-10 text-center hover-card">
-<i class="fas fa-circle-check text-5xl gold mb-6"></i>
-<h3 class="font-black text-xl uppercase">
-Padrão ABNT
-</h3>
-</div>
-
-<div class="card rounded-3xl p-10 text-center hover-card">
-<i class="fas fa-star text-5xl gold mb-6"></i>
-<h3 class="font-black text-xl uppercase">
-Empresa Verificada
-</h3>
-</div>
-
-</div>
-
-</div>
-
+<!-- SELOS DE QUALIDADE -->
+<section class="section" style="background:var(--bg2);">
+  <div class="section-inner">
+    <div class="section-label">Certificações & Garantia</div>
+    <div class="section-title">Selos que Garantem<br/>a Sua Obra</div>
+    <div class="selos-grid">
+      <div class="selo-card">
+        <div class="selo-icon">🏗️</div>
+        <div class="selo-name">Lajes ABNT</div>
+        <div class="selo-desc">Lajes pré-moldadas produzidas dentro dos padrões técnicos da ABNT NBR 14859.</div>
+        <div class="selo-badge">Qualidade Certificada</div>
+      </div>
+      <div class="selo-card">
+        <div class="selo-icon">🔩</div>
+        <div class="selo-name">Ferro CA-50</div>
+        <div class="selo-desc">Vergalhões e colunas com certificação CA-50 — padrão obrigatório para estruturas em concreto armado.</div>
+        <div class="selo-badge">Norma ABNT NBR 7480</div>
+      </div>
+      <div class="selo-card">
+        <div class="selo-icon">⭐</div>
+        <div class="selo-name">Reclame Aqui</div>
+        <div class="selo-desc">Empresa verificada no Reclame Aqui com atendimento real e histórico de resoluções.</div>
+        <div class="selo-badge">Empresa Verificada</div>
+      </div>
+      <div class="selo-card">
+        <div class="selo-icon">✅</div>
+        <div class="selo-name">CNPJ Regularizado</div>
+        <div class="selo-desc">CNPJ 52.570.746/0001-34 ativo e regularizado. Emitimos nota fiscal para pessoa física e jurídica.</div>
+        <div class="selo-badge">Nota Fiscal Garantida</div>
+      </div>
+      <div class="selo-card">
+        <div class="selo-icon">🧱</div>
+        <div class="selo-name">Tijolos de 1ª Linha</div>
+        <div class="selo-desc">Tijolos cerâmicos 20x30 com quebra mínima e procedência comprovada de fornecedores parceiros.</div>
+        <div class="selo-badge">Procedência Garantida</div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<hr class="divider" />
 
 <!-- POR QUE ESCOLHER -->
-
-<section class="py-24 bg-[#0d1829]">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="text-center mb-20">
-
-<h2 class="text-5xl font-black uppercase">
-Por Que Escolher a ABG?
-</h2>
-
-</div>
-
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-<div class="card rounded-3xl p-8 hover-card">
-<i class="fas fa-handshake text-4xl gold mb-6"></i>
-<h3 class="font-black text-xl uppercase mb-4">
-Transparência
-</h3>
-<p class="text-gray-400 text-sm">
-Atendimento claro, direto e humanizado.
-</p>
-</div>
-
-<div class="card rounded-3xl p-8 hover-card">
-<i class="fas fa-truck text-4xl gold mb-6"></i>
-<h3 class="font-black text-xl uppercase mb-4">
-Entrega Rápida
-</h3>
-<p class="text-gray-400 text-sm">
-Logística organizada em todo o RJ.
-</p>
-</div>
-
-<div class="card rounded-3xl p-8 hover-card">
-<i class="fas fa-sack-dollar text-4xl gold mb-6"></i>
-<h3 class="font-black text-xl uppercase mb-4">
-Preço Competitivo
-</h3>
-<p class="text-gray-400 text-sm">
-Qualidade com excelente custo-benefício.
-</p>
-</div>
-
-<div class="card rounded-3xl p-8 hover-card">
-<i class="fas fa-users text-4xl gold mb-6"></i>
-<h3 class="font-black text-xl uppercase mb-4">
-Compromisso
-</h3>
-<p class="text-gray-400 text-sm">
-Foco em criar relações duradouras.
-</p>
-</div>
-
-</div>
-
-</div>
-
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Nossos Diferenciais</div>
+    <div class="section-title">Por Que Escolher<br/>a ABG?</div>
+    <div class="pq-grid">
+      <div class="pq-card">
+        <div class="pq-icon">💬</div>
+        <div class="pq-title">Atendimento Humano</div>
+        <div class="pq-desc">Fale diretamente com quem entende de obra. Sem robô, sem fila — resposta rápida pelo WhatsApp.</div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-icon">🚚</div>
+        <div class="pq-title">Frete Sempre Grátis</div>
+        <div class="pq-desc">Zero cobrança de frete em qualquer região do estado do Rio de Janeiro. O preço que você vê é o preço que você paga.</div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-icon">⚡</div>
+        <div class="pq-title">Entrega no Mesmo Dia</div>
+        <div class="pq-desc">Pedidos fechados até 11h30 na Baixada Fluminense saem para entrega ainda no período da tarde.</div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-icon">🏭</div>
+        <div class="pq-title">Direto da Fábrica</div>
+        <div class="pq-desc">Estoque próprio em Saracuruna. Sem intermediários — preço de fábrica para o seu canteiro de obras.</div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-icon">📋</div>
+        <div class="pq-title">Nota Fiscal Garantida</div>
+        <div class="pq-desc">Emissão de NF para pessoa física e jurídica. Sua compra sempre segura e documentada.</div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-icon">🤝</div>
+        <div class="pq-title">Relação de Confiança</div>
+        <div class="pq-desc">Cada cliente é um parceiro. Construímos relações duradouras baseadas em transparência e compromisso real.</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- CTA -->
+<hr class="divider" />
 
-<section class="py-24">
-
-<div class="max-w-5xl mx-auto px-6 text-center">
-
-<h2 class="text-5xl md:text-6xl font-black uppercase leading-tight">
-
-Sua obra merece
-<span class="gold">qualidade e confiança.</span>
-
-</h2>
-
-<p class="text-gray-400 text-lg leading-relaxed mt-8 max-w-3xl mx-auto">
-
-Solicite agora seu orçamento personalizado com nossa equipe e tenha acesso aos melhores materiais para sua obra.
-
-</p>
-
-<div class="flex flex-col sm:flex-row justify-center gap-5 mt-12">
-
-<a href="produtos.html"
-class="bg-gold text-black px-12 py-5 rounded-2xl font-black uppercase text-sm hover:scale-105 transition glow">
-
-Ver Catálogo
-
-</a>
-
-<a href="https://wa.me/5521992320613"
-target="_blank"
-class="border border-white/20 px-12 py-5 rounded-2xl font-black uppercase text-sm hover:bg-white/10 transition">
-
-Solicitar Orçamento
-
-</a>
-
-</div>
-
-</div>
-
+<!-- CTA FINAL -->
+<section class="section" style="background:var(--bg2);">
+  <div class="section-inner">
+    <div class="cta-box">
+      <h2>Sua Obra Merece<br/><span>Qualidade e Confiança.</span></h2>
+      <p>Solicite agora um orçamento personalizado com nossa equipe. Frete grátis, entrega rápida e materiais certificados para sua construção.</p>
+      <div class="btn-row">
+        <a href="https://wa.me/5521992320613?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20personalizado." target="_blank" class="btn btn-green">💬 Solicitar Orçamento</a>
+        <a href="produtos.html" class="btn btn-outline">📦 Ver Catálogo Completo</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
-
-<footer class="bg-black border-t border-white/10 py-16">
-
-<div class="max-w-7xl mx-auto px-6 text-center">
-
-<img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png"
-class="w-24 mx-auto mb-8">
-
-<h2 class="text-2xl font-black uppercase mb-4">
-ABG DISTRIBUIDORA DE FERRO E AÇO
-</h2>
-
-<p class="gold uppercase tracking-[0.3em] text-xs font-bold">
-Estrutura forte. Confiança sólida.
-</p>
-
-<div class="mt-10 space-y-3 text-gray-400 text-sm">
-
-<p>CNPJ: 52.570.746/0001-34</p>
-
-<p>
-R. Berlarmino Gondim, 35 - Parque Independência - Duque de Caxias/RJ
-</p>
-
-<p>(21) 99232-0613</p>
-
-<p>abg.distribuidora.ltda@gmail.com</p>
-
-</div>
-
-<div class="flex justify-center gap-6 mt-10 text-2xl">
-
-<a href="https://www.instagram.com/abg.distribuidora.de.ferro?igsh=MXNsZ3kyYWZzaHBtcQ=="
-class="hover:text-yellow-400 transition">
-
-<i class="fab fa-instagram"></i>
-
-</a>
-
-<a href="https://wa.me/5521992320613"
-class="hover:text-green-400 transition">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
-
-</div>
-
-<div class="border-t border-white/10 mt-12 pt-8 text-slate-600 text-xs uppercase tracking-[0.3em]">
-
-© ABG DISTRIBUIDORA DE FERRO E AÇO — Todos os direitos reservados.
-
-</div>
-
-</div>
-
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png" alt="ABG" />
+      <p>Reduzindo custos, construindo futuros.</p>
+      <small>CNPJ: 52.570.746/0001-34</small>
+    </div>
+    <div class="footer-col">
+      <h4>Explorar</h4>
+      <a href="produtos.html">Catálogo</a>
+      <a href="entregas.html">Logística</a>
+      <a href="quem-somos.html">Quem Somos</a>
+    </div>
+    <div class="footer-col">
+      <h4>Onde Estamos</h4>
+      <p>Saracuruna — Duque de Caxias/RJ</p>
+      <p>Seg a Sex: 08h30 às 13h</p>
+      <p>Sáb: Entregas agendadas</p>
+      <p>WhatsApp: 24h</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <a href="https://wa.me/5521992320613" target="_blank">(21) 99232-0613</a>
+      <a href="https://www.instagram.com/abg.distribuidora.de.ferro" target="_blank">@abg.distribuidora.de.ferro</a>
+      <a href="mailto:abg.distribuidora.ltda@gmail.com">abg.distribuidora.ltda@gmail.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 ABG Distribuidora de Ferro e Aço. Todos os direitos reservados.
+  </div>
 </footer>
 
+<!-- WPP FLOAT -->
+<a href="https://wa.me/5521992320613?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento"
+   target="_blank"
+   style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;background:#25d366;color:#000;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 4px 16px rgba(0,0,0,.4);text-decoration:none;transition:transform .2s;"
+   onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+  💬
+</a>
+
 </body>
-    </html>
+</html>
