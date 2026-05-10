@@ -1,1399 +1,1530 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Produtos | ABG Distribuidora</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --preto: #0a0a0a;
-    --cinza-escuro: #141414;
-    --cinza-medio: #1e1e1e;
-    --cinza-card: #252525;
-    --cinza-borda: #333;
-    --amarelo: #f5c518;
-    --amarelo-hover: #ffd84d;
-    --branco: #f5f0e8;
-    --texto-muted: #888;
-    --verde: #2ecc71;
-    --destaque: #e8a000;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo | ABG Distribuidora de Ferro e Aço</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet" />
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --abg-black:   #0a0a0a;
+      --abg-dark:    #111111;
+      --abg-panel:   #1a1a1a;
+      --abg-border:  #2a2a2a;
+      --abg-steel:   #3a3a3a;
+      --abg-mid:     #888888;
+      --abg-light:   #cccccc;
+      --abg-white:   #f5f5f0;
+      --abg-gold:    #c8a951;
+      --abg-gold2:   #e8c96a;
+      --abg-red:     #c0392b;
+      --abg-green:   #27ae60;
+      --abg-wa:      #25D366;
+      --font-main:   'Barlow', sans-serif;
+      --font-cond:   'Barlow Condensed', sans-serif;
+      --nav-h:       68px;
+      --radius:      6px;
+      --transition:  0.25s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-main);
+      background: var(--abg-black);
+      color: var(--abg-white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
 
-  body {
-    background: var(--preto);
-    color: var(--branco);
-    font-family: 'Barlow', sans-serif;
-    min-height: 100vh;
-  }
+    /* ─── TOPBAR ────────────────────────────────────────── */
+    .topbar {
+      background: var(--abg-gold);
+      padding: 7px 24px;
+      text-align: center;
+      font-family: var(--font-main);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--abg-black);
+    }
+    .topbar a {
+      color: var(--abg-black);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
 
-  /* ── NAV ── */
-  nav {
-    background: var(--cinza-escuro);
-    border-bottom: 2px solid var(--amarelo);
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  .nav-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--amarelo);
-    letter-spacing: 2px;
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 24px; align-items: center; }
-  .nav-links a {
-    color: var(--branco);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    opacity: 0.8;
-    transition: opacity 0.2s, color 0.2s;
-  }
-  .nav-links a:hover { opacity: 1; color: var(--amarelo); }
-  .nav-cart-btn {
-    background: var(--amarelo);
-    color: var(--preto);
-    border: none;
-    padding: 8px 18px;
-    border-radius: 4px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: background 0.2s, transform 0.1s;
-    position: relative;
-  }
-  .nav-cart-btn:hover { background: var(--amarelo-hover); transform: translateY(-1px); }
-  .cart-count {
-    background: var(--preto);
-    color: var(--amarelo);
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 11px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-  }
+    /* ─── NAVBAR ────────────────────────────────────────── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--abg-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      gap: 24px;
+    }
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-brand-name {
+      font-family: var(--font-cond);
+      font-size: 1.15rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      color: var(--abg-white);
+      text-transform: uppercase;
+    }
+    .nav-brand-name span { color: var(--abg-gold); }
+    .nav-brand-sub {
+      font-family: var(--font-main);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--abg-gold);
+      margin-top: 2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-main);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--abg-light);
+      padding: 6px 12px;
+      border-radius: var(--radius);
+      transition: color var(--transition), background var(--transition);
+      white-space: nowrap;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--abg-white); background: rgba(200,169,81,0.12); }
+    .nav-links a.active { color: var(--abg-gold); }
+    .nav-cta {
+      font-family: var(--font-main);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--abg-black) !important;
+      background: var(--abg-gold) !important;
+      padding: 8px 16px !important;
+      border-radius: var(--radius) !important;
+      transition: background var(--transition), transform var(--transition) !important;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--abg-gold2) !important; transform: translateY(-1px); }
 
-  /* ── BANNER HERO ── */
-  .hero-banner {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1200 50%, #0a0a0a 100%);
-    border-bottom: 1px solid var(--cinza-borda);
-    padding: 48px 24px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-banner::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(ellipse at center, rgba(245,197,24,0.07) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .hero-badge {
-    display: inline-block;
-    background: var(--amarelo);
-    color: var(--preto);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 4px 14px;
-    border-radius: 2px;
-    margin-bottom: 16px;
-  }
-  .hero-banner h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(36px, 6vw, 72px);
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .hero-banner h1 span { color: var(--amarelo); }
-  .hero-banner p {
-    color: var(--texto-muted);
-    font-size: 16px;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .hero-pills {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 24px;
-  }
-  .pill {
-    border: 1px solid var(--cinza-borda);
-    border-radius: 100px;
-    padding: 6px 16px;
-    font-size: 13px;
-    color: var(--texto-muted);
-  }
-  .pill span { color: var(--verde); margin-right: 6px; }
+    /* hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--abg-white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  /* ── LAYOUT ── */
-  .page-layout {
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 0;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 32px 24px;
-    align-items: start;
-  }
-  @media (max-width: 960px) {
-    .page-layout { grid-template-columns: 1fr; }
-    .cart-sidebar { order: -1; }
-  }
+    /* mobile menu */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--abg-dark);
+      border-bottom: 2px solid var(--abg-gold);
+      padding: 16px 24px 24px;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 999;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: var(--font-main);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--abg-light);
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      letter-spacing: 0.03em;
+      transition: background var(--transition), color var(--transition);
+    }
+    .nav-mobile a:hover { background: rgba(200,169,81,0.1); color: var(--abg-gold); }
+    .nav-mobile a.active { color: var(--abg-gold); }
+    .nav-mobile .mob-cta {
+      margin-top: 8px;
+      background: var(--abg-gold);
+      color: var(--abg-black) !important;
+      font-weight: 700;
+      text-align: center;
+    }
+    .nav-mobile .mob-cta:hover { background: var(--abg-gold2); }
 
-  /* ── CATEGORIAS / FILTROS ── */
-  .categories-bar {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 28px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--cinza-borda);
-  }
-  .cat-btn {
-    background: var(--cinza-card);
-    border: 1px solid var(--cinza-borda);
-    color: var(--branco);
-    padding: 7px 16px;
-    border-radius: 4px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .cat-btn:hover, .cat-btn.active {
-    background: var(--amarelo);
-    color: var(--preto);
-    border-color: var(--amarelo);
-  }
+    /* ─── HERO CATÁLOGO ─────────────────────────────────── */
+    .cat-hero {
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+      border-bottom: 1px solid var(--abg-border);
+      padding: 52px 32px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cat-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(200,169,81,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cat-hero-inner { max-width: 1100px; margin: 0 auto; }
+    .cat-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,169,81,0.12);
+      border: 1px solid rgba(200,169,81,0.3);
+      color: var(--abg-gold);
+      font-family: var(--font-main);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      margin-bottom: 18px;
+    }
+    .cat-hero h1 {
+      font-family: var(--font-cond);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--abg-white);
+      margin-bottom: 12px;
+    }
+    .cat-hero h1 em { color: var(--abg-gold); font-style: italic; }
+    .cat-hero p {
+      font-size: 1rem;
+      color: var(--abg-mid);
+      max-width: 540px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .cat-hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .cat-hero-pills span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--abg-light);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--abg-border);
+      padding: 6px 14px;
+      border-radius: var(--radius);
+    }
+    .cat-hero-pills span svg { color: var(--abg-gold); flex-shrink: 0; }
 
-  /* ── SEÇÃO DE CATEGORIA ── */
-  .category-section { margin-bottom: 40px; }
-  .category-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--amarelo);
-    border-left: 3px solid var(--amarelo);
-    padding-left: 12px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .category-title .icon { font-size: 18px; }
+    /* ─── STICKY CART BAR ───────────────────────────────── */
+    .cart-bar {
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 900;
+      background: var(--abg-dark);
+      border-bottom: 2px solid var(--abg-gold);
+      padding: 10px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .cart-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-main);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--abg-light);
+    }
+    .cart-count-badge {
+      background: var(--abg-gold);
+      color: var(--abg-black);
+      font-size: 0.72rem;
+      font-weight: 800;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cart-total-bar {
+      font-family: var(--font-cond);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--abg-gold);
+    }
+    .btn-open-cart {
+      background: var(--abg-gold);
+      color: var(--abg-black);
+      font-family: var(--font-main);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .btn-open-cart:hover { background: var(--abg-gold2); transform: translateY(-1px); }
 
-  /* ── GRID DE PRODUTOS ── */
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-  }
+    /* ─── CATALOG LAYOUT ────────────────────────────────── */
+    .catalog-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
 
-  /* ── CARD DE PRODUTO ── */
-  .product-card {
-    background: var(--cinza-card);
-    border: 1px solid var(--cinza-borda);
-    border-radius: 6px;
-    padding: 16px;
-    transition: border-color 0.2s, transform 0.2s;
-    cursor: pointer;
-    position: relative;
-  }
-  .product-card:hover {
-    border-color: var(--amarelo);
-    transform: translateY(-2px);
-  }
-  .product-card.destaque {
-    border-color: var(--destaque);
-  }
-  .product-card.destaque::before {
-    content: '⭐ MAIS VENDIDO';
-    position: absolute;
-    top: -10px;
-    left: 12px;
-    background: var(--destaque);
-    color: var(--preto);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    padding: 2px 8px;
-    border-radius: 2px;
-  }
-  .product-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 4px;
-    color: var(--branco);
-  }
-  .product-spec {
-    font-size: 12px;
-    color: var(--texto-muted);
-    margin-bottom: 10px;
-    line-height: 1.4;
-  }
-  .product-price {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--amarelo);
-    margin-bottom: 12px;
-  }
-  .product-price small {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--texto-muted);
-    font-family: 'Barlow', sans-serif;
-  }
-  .qty-control {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
-  .qty-btn {
-    background: var(--cinza-medio);
-    border: 1px solid var(--cinza-borda);
-    color: var(--branco);
-    width: 28px;
-    height: 28px;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.15s;
-  }
-  .qty-btn:hover { background: var(--cinza-borda); }
-  .qty-input {
-    background: var(--cinza-medio);
-    border: 1px solid var(--cinza-borda);
-    color: var(--branco);
-    width: 48px;
-    height: 28px;
-    text-align: center;
-    border-radius: 4px;
-    font-size: 14px;
-    font-family: 'Barlow', sans-serif;
-  }
-  .add-btn {
-    width: 100%;
-    background: var(--cinza-medio);
-    border: 1px solid var(--cinza-borda);
-    color: var(--branco);
-    padding: 8px;
-    border-radius: 4px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-transform: uppercase;
-  }
-  .add-btn:hover {
-    background: var(--amarelo);
-    color: var(--preto);
-    border-color: var(--amarelo);
-  }
-  .add-btn.added {
-    background: var(--verde);
-    border-color: var(--verde);
-    color: #fff;
-  }
+    /* Filter tabs */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .filter-tab {
+      background: var(--abg-panel);
+      border: 1px solid var(--abg-border);
+      color: var(--abg-light);
+      font-family: var(--font-main);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .filter-tab:hover { border-color: var(--abg-gold); color: var(--abg-gold); }
+    .filter-tab.active {
+      background: var(--abg-gold);
+      border-color: var(--abg-gold);
+      color: var(--abg-black);
+    }
 
-  /* ── MODAL DE DETALHES ── */
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
-  .modal-overlay.open { opacity: 1; pointer-events: all; }
-  .modal-box {
-    background: var(--cinza-medio);
-    border: 1px solid var(--cinza-borda);
-    border-top: 3px solid var(--amarelo);
-    border-radius: 8px;
-    max-width: 480px;
-    width: 100%;
-    padding: 28px;
-    transform: translateY(20px);
-    transition: transform 0.2s;
-  }
-  .modal-overlay.open .modal-box { transform: translateY(0); }
-  .modal-close {
-    float: right;
-    background: none;
-    border: none;
-    color: var(--texto-muted);
-    font-size: 22px;
-    cursor: pointer;
-    line-height: 1;
-  }
-  .modal-close:hover { color: var(--branco); }
-  .modal-tag {
-    display: inline-block;
-    background: var(--amarelo);
-    color: var(--preto);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    padding: 2px 10px;
-    border-radius: 2px;
-    margin-bottom: 10px;
-  }
-  .modal-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 26px;
-    font-weight: 900;
-    margin-bottom: 6px;
-  }
-  .modal-price {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 32px;
-    font-weight: 900;
-    color: var(--amarelo);
-    margin-bottom: 16px;
-  }
-  .modal-specs {
-    background: var(--cinza-card);
-    border-radius: 6px;
-    padding: 14px;
-    margin-bottom: 16px;
-  }
-  .modal-specs h4 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: var(--amarelo);
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .spec-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px solid var(--cinza-borda);
-    font-size: 13px;
-  }
-  .spec-row:last-child { border-bottom: none; }
-  .spec-label { color: var(--texto-muted); }
-  .spec-val { font-weight: 600; }
+    /* Category group */
+    .cat-group { margin-bottom: 48px; }
+    .cat-group-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-cond);
+      font-size: 1.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--abg-white);
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--abg-border);
+    }
+    .cat-group-title::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 20px;
+      background: var(--abg-gold);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
 
-  /* ── SIDEBAR CARRINHO ── */
-  .cart-sidebar {
-    position: sticky;
-    top: 80px;
-    margin-left: 24px;
-  }
-  @media (max-width: 960px) {
-    .cart-sidebar { margin-left: 0; margin-bottom: 32px; }
-  }
-  .cart-box {
-    background: var(--cinza-card);
-    border: 1px solid var(--cinza-borda);
-    border-top: 3px solid var(--amarelo);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  .cart-header {
-    background: var(--cinza-medio);
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--cinza-borda);
-  }
-  .cart-header h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  .cart-clear {
-    background: none;
-    border: none;
-    color: var(--texto-muted);
-    font-size: 12px;
-    cursor: pointer;
-    text-decoration: underline;
-  }
-  .cart-clear:hover { color: #e74c3c; }
-  .cart-items {
-    padding: 12px;
-    max-height: 320px;
-    overflow-y: auto;
-  }
-  .cart-empty {
-    text-align: center;
-    padding: 32px 16px;
-    color: var(--texto-muted);
-    font-size: 14px;
-  }
-  .cart-empty .big { font-size: 36px; margin-bottom: 8px; }
-  .cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 8px 6px;
-    border-bottom: 1px solid var(--cinza-borda);
-    gap: 8px;
-  }
-  .cart-item:last-child { border-bottom: none; }
-  .cart-item-name {
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.3;
-    flex: 1;
-  }
-  .cart-item-qty { font-size: 12px; color: var(--texto-muted); }
-  .cart-item-price {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--amarelo);
-    white-space: nowrap;
-  }
-  .cart-remove {
-    background: none;
-    border: none;
-    color: var(--texto-muted);
-    cursor: pointer;
-    font-size: 14px;
-    padding: 0 4px;
-  }
-  .cart-remove:hover { color: #e74c3c; }
-  .cart-footer {
-    border-top: 1px solid var(--cinza-borda);
-    padding: 14px 18px;
-  }
-  .cart-total-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
-  }
-  .cart-total-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--texto-muted);
-  }
-  .cart-total-value {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 26px;
-    font-weight: 900;
-    color: var(--amarelo);
-  }
-  .checkout-btn {
-    width: 100%;
-    background: var(--amarelo);
-    color: var(--preto);
-    border: none;
-    padding: 14px;
-    border-radius: 4px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-    text-transform: uppercase;
-  }
-  .checkout-btn:hover { background: var(--amarelo-hover); transform: translateY(-1px); }
-  .checkout-btn:disabled {
-    background: var(--cinza-borda);
-    color: var(--texto-muted);
-    cursor: not-allowed;
-    transform: none;
-  }
+    /* Products grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .product-card {
+      background: var(--abg-panel);
+      border: 1px solid var(--abg-border);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .product-card:hover {
+      border-color: rgba(200,169,81,0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .product-name {
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--abg-white);
+      line-height: 1.3;
+    }
+    .product-desc {
+      font-size: 0.78rem;
+      color: var(--abg-mid);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .product-price {
+      font-family: var(--font-cond);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--abg-gold);
+    }
+    .product-price span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--abg-mid);
+      margin-left: 2px;
+    }
+    .product-qty {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--abg-steel);
+      border-radius: var(--radius);
+      overflow: hidden;
+      width: fit-content;
+    }
+    .qty-btn {
+      background: var(--abg-steel);
+      color: var(--abg-white);
+      border: none;
+      width: 32px; height: 32px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+    .qty-btn:hover { background: var(--abg-gold); color: var(--abg-black); }
+    .qty-input {
+      width: 44px;
+      background: var(--abg-panel);
+      color: var(--abg-white);
+      border: none;
+      text-align: center;
+      font-family: var(--font-main);
+      font-size: 0.9rem;
+      font-weight: 700;
+      height: 32px;
+      outline: none;
+    }
+    .btn-add {
+      background: rgba(200,169,81,0.12);
+      color: var(--abg-gold);
+      border: 1px solid rgba(200,169,81,0.3);
+      font-family: var(--font-main);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all var(--transition);
+      width: 100%;
+      letter-spacing: 0.02em;
+    }
+    .btn-add:hover {
+      background: var(--abg-gold);
+      color: var(--abg-black);
+      border-color: var(--abg-gold);
+    }
+    .btn-add.added {
+      background: var(--abg-green);
+      color: #fff;
+      border-color: var(--abg-green);
+    }
 
-  /* ── MODAL CHECKOUT ── */
-  .checkout-form { display: flex; flex-direction: column; gap: 14px; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-group label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--texto-muted);
-  }
-  .form-group input, .form-group select, .form-group textarea {
-    background: var(--cinza-card);
-    border: 1px solid var(--cinza-borda);
-    color: var(--branco);
-    padding: 10px 12px;
-    border-radius: 4px;
-    font-size: 14px;
-    font-family: 'Barlow', sans-serif;
-    transition: border-color 0.2s;
-  }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    outline: none;
-    border-color: var(--amarelo);
-  }
-  .form-group select option { background: var(--cinza-escuro); }
-  .send-btn {
-    background: #25D366;
-    color: #fff;
-    border: none;
-    padding: 14px;
-    border-radius: 4px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-transform: uppercase;
-    transition: background 0.2s;
-    margin-top: 4px;
-  }
-  .send-btn:hover { background: #1ebe57; }
+    /* ─── CART OVERLAY ──────────────────────────────────── */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 2000;
+      display: none;
+      align-items: flex-start;
+      justify-content: flex-end;
+      backdrop-filter: blur(4px);
+    }
+    .cart-overlay.open { display: flex; }
+    .cart-panel {
+      width: 420px;
+      max-width: 100vw;
+      height: 100vh;
+      background: var(--abg-dark);
+      border-left: 1px solid var(--abg-border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: slideIn 0.3s ease;
+    }
+    @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--abg-border);
+    }
+    .cart-header h3 {
+      font-family: var(--font-cond);
+      font-size: 1.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .cart-close {
+      background: none;
+      border: none;
+      color: var(--abg-mid);
+      font-size: 1.4rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+      transition: color var(--transition);
+    }
+    .cart-close:hover { color: var(--abg-white); }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cart-empty {
+      text-align: center;
+      color: var(--abg-mid);
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+    .cart-empty svg { width: 48px; height: 48px; margin: 0 auto 12px; opacity: 0.3; display: block; }
+    .cart-item {
+      background: var(--abg-panel);
+      border: 1px solid var(--abg-border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--abg-white);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .cart-item-price { font-size: 0.82rem; color: var(--abg-gold); font-weight: 600; }
+    .cart-item-qty { font-size: 0.75rem; color: var(--abg-mid); }
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: var(--abg-steel);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 2px;
+      transition: color var(--transition);
+      flex-shrink: 0;
+    }
+    .cart-item-remove:hover { color: var(--abg-red); }
+    .cart-footer {
+      padding: 20px 24px;
+      border-top: 1px solid var(--abg-border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-total-label { font-size: 0.85rem; color: var(--abg-mid); font-weight: 600; }
+    .cart-total-value {
+      font-family: var(--font-cond);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--abg-gold);
+    }
+    .cart-delivery-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cart-delivery-fields input,
+    .cart-delivery-fields select {
+      background: var(--abg-panel);
+      border: 1px solid var(--abg-border);
+      color: var(--abg-white);
+      font-family: var(--font-main);
+      font-size: 0.82rem;
+      padding: 9px 12px;
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color var(--transition);
+      width: 100%;
+    }
+    .cart-delivery-fields input:focus,
+    .cart-delivery-fields select:focus { border-color: var(--abg-gold); }
+    .cart-delivery-fields select option { background: var(--abg-dark); }
+    .cart-delivery-fields textarea {
+      background: var(--abg-panel);
+      border: 1px solid var(--abg-border);
+      color: var(--abg-white);
+      font-family: var(--font-main);
+      font-size: 0.82rem;
+      padding: 9px 12px;
+      border-radius: var(--radius);
+      outline: none;
+      resize: vertical;
+      min-height: 64px;
+      transition: border-color var(--transition);
+    }
+    .cart-delivery-fields textarea:focus { border-color: var(--abg-gold); }
+    .btn-checkout {
+      background: var(--abg-wa);
+      color: #fff;
+      font-family: var(--font-main);
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 13px 20px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background var(--transition), transform var(--transition);
+      letter-spacing: 0.02em;
+    }
+    .btn-checkout:hover { background: #1fbd5a; transform: translateY(-1px); }
+    .btn-clear-cart {
+      background: none;
+      border: 1px solid var(--abg-border);
+      color: var(--abg-mid);
+      font-family: var(--font-main);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 8px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .btn-clear-cart:hover { border-color: var(--abg-red); color: var(--abg-red); }
 
-  /* ── RESUMO NO CHECKOUT ── */
-  .checkout-summary {
-    background: var(--cinza-card);
-    border-radius: 6px;
-    padding: 14px;
-    margin-bottom: 4px;
-    max-height: 180px;
-    overflow-y: auto;
-  }
-  .checkout-summary h4 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: var(--amarelo);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .cs-item {
-    font-size: 13px;
-    padding: 4px 0;
-    border-bottom: 1px solid var(--cinza-borda);
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .cs-item:last-child { border-bottom: none; }
+    /* ─── FOOTER ────────────────────────────────────────── */
+    .footer {
+      background: var(--abg-dark);
+      border-top: 1px solid var(--abg-border);
+      padding: 56px 32px 32px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-brand { display: flex; flex-direction: column; gap: 14px; }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 14px; }
+    .footer-logo { height: 48px; width: auto; }
+    .footer-brand-name {
+      font-family: var(--font-cond);
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      color: var(--abg-white);
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    .footer-brand-name span { color: var(--abg-gold); }
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: var(--abg-mid);
+      line-height: 1.6;
+    }
+    .footer-cnpj {
+      font-size: 0.75rem;
+      color: var(--abg-steel);
+      letter-spacing: 0.04em;
+    }
+    .footer-col h4 {
+      font-family: var(--font-cond);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--abg-gold);
+      margin-bottom: 14px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a {
+      font-size: 0.83rem;
+      color: var(--abg-mid);
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--abg-gold); }
+    .footer-col ul li {
+      font-size: 0.83rem;
+      color: var(--abg-mid);
+    }
+    .footer-divider {
+      max-width: 1100px;
+      margin: 32px auto 0;
+      border: none;
+      border-top: 1px solid var(--abg-border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--abg-steel);
+    }
+    .footer-copy-right {
+      font-size: 0.75rem;
+      color: var(--abg-steel);
+    }
 
-  /* scrollbar */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--cinza-escuro); }
-  ::-webkit-scrollbar-thumb { background: var(--cinza-borda); border-radius: 2px; }
-
-  /* ── PRODUTOS MAIN ── */
-  .products-main { padding-right: 0; }
-
-  /* animação add to cart */
-  @keyframes bounce {
-    0% { transform: scale(1); }
-    40% { transform: scale(1.08); }
-    100% { transform: scale(1); }
-  }
-  .bounce { animation: bounce 0.3s ease; }
-</style>
+    /* ─── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 680px) {
+      .navbar { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .cart-bar { padding: 10px 20px; }
+      .cart-bar-left span:last-child { display: none; }
+      .catalog-section { padding: 24px 16px 60px; }
+      .cat-hero { padding: 36px 20px 28px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .footer { padding: 40px 20px 24px; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .cart-panel { width: 100vw; }
+    }
+    @media (max-width: 420px) {
+      .products-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">ABG</a>
-  <div class="nav-links">
+  <!-- TOPBAR -->
+  <div class="topbar">
+    Frete Grátis* na Baixada Fluminense · Pedidos até 11h30 com entrega no mesmo dia &nbsp;·&nbsp;
+    <a href="https://wa.me/5521992320613?text=Olá,%20tudo%20bem?%20Gostaria%20de%20solicitar%20um%20orçamento.">Falar no WhatsApp</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-name">ABG <span>Distribuidora</span></span>
+      <span class="nav-brand-sub">Duque de Caxias &middot; RJ</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="produtos.html" class="active">Catálogo</a></li>
+      <li><a href="entregas.html">Entregas</a></li>
+      <li><a href="quem-somos.html">Quem Somos</a></li>
+      <li><a href="contato.html">Atendimento</a></li>
+      <li><a href="https://wa.me/5521992320613?text=Olá,%20gostaria%20de%20um%20orçamento." class="nav-cta" target="_blank">Solicitar Orçamento →</a></li>
+    </ul>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="nav-mobile" id="navMobile">
     <a href="index.html">Início</a>
-    <a href="#" style="color:var(--amarelo)">Produtos</a>
+    <a href="produtos.html" class="active">Catálogo</a>
     <a href="entregas.html">Entregas</a>
     <a href="quem-somos.html">Quem Somos</a>
+    <a href="contato.html">Atendimento</a>
+    <a href="https://wa.me/5521992320613?text=Olá,%20gostaria%20de%20um%20orçamento." class="mob-cta" target="_blank">Solicitar Orçamento →</a>
   </div>
-  <button class="nav-cart-btn" onclick="scrollToCart()">
-    🛒 Carrinho <span class="cart-count" id="cartCount">0</span>
-  </button>
-</nav>
 
-<!-- HERO BANNER -->
-<div class="hero-banner">
-  <div class="hero-badge">📦 Catálogo Completo 2026</div>
-  <h1>Nossos <span>Materiais</span></h1>
-  <p>Ferro, aço, lajes, tijolos, cimento e muito mais — preço de fábrica, entrega em todo o RJ</p>
-  <div class="hero-pills">
-    <div class="pill"><span>✅</span> Estoque disponível</div>
-    <div class="pill"><span>🚛</span> Frete para todo RJ</div>
-    <div class="pill"><span>💬</span> Orçamento via WhatsApp</div>
+  <!-- HERO -->
+  <section class="cat-hero">
+    <div class="cat-hero-inner">
+      <div class="cat-hero-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Catálogo Completo 2026
+      </div>
+      <h1>Nossos <em>Materiais</em></h1>
+      <p>Ferro, aço, lajes, tijolos, cimento e muito mais — preço de fábrica, entrega em todo o RJ.</p>
+      <div class="cat-hero-pills">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Estoque disponível
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Frete para todo RJ
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Orçamento via WhatsApp
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY CART BAR -->
+  <div class="cart-bar">
+    <div class="cart-bar-left">
+      <div class="cart-count-badge" id="cartCountBadge">0</div>
+      <span>itens no carrinho</span>
+    </div>
+    <div class="cart-total-bar" id="cartTotalBar">R$ 0,00</div>
+    <button class="btn-open-cart" id="btnOpenCart">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
+      Ver Carrinho
+    </button>
   </div>
-</div>
 
-<!-- CONTEÚDO PRINCIPAL -->
-<div class="page-layout">
+  <!-- CATALOG SECTION -->
+  <main class="catalog-section">
 
-  <!-- PRODUTOS -->
-  <div class="products-main">
-
-    <!-- FILTROS -->
-    <div class="categories-bar">
-      <button class="cat-btn active" onclick="filterCategory('all', this)">Todos</button>
-      <button class="cat-btn" onclick="filterCategory('ferragens', this)">🔩 Ferragens</button>
-      <button class="cat-btn" onclick="filterCategory('cimento', this)">🏗️ Cimento</button>
-      <button class="cat-btn" onclick="filterCategory('laje', this)">🏠 Lajes</button>
-      <button class="cat-btn" onclick="filterCategory('tijolo', this)">🧱 Tijolos</button>
-      <button class="cat-btn" onclick="filterCategory('graneis', this)">⛏️ Areia/Pedra</button>
-      <button class="cat-btn" onclick="filterCategory('madeira', this)">🌲 Madeiras</button>
+    <!-- FILTER TABS -->
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-cat="all">Todos</button>
+      <button class="filter-tab" data-cat="ferragens">Ferragens</button>
+      <button class="filter-tab" data-cat="cimento">Cimento</button>
+      <button class="filter-tab" data-cat="lajes">Lajes</button>
+      <button class="filter-tab" data-cat="tijolos">Tijolos</button>
+      <button class="filter-tab" data-cat="areia">Areia / Pedra</button>
+      <button class="filter-tab" data-cat="madeiras">Madeiras</button>
     </div>
 
     <!-- FERRAGENS -->
-    <div class="category-section" data-cat="ferragens">
-      <div class="category-title"><span class="icon">🔩</span> Colunas CA-50 (6 metros)</div>
+    <div class="cat-group" data-category="ferragens">
+      <div class="cat-group-title">Colunas CA-50 (6 metros)</div>
       <div class="products-grid">
-        <div class="product-card destaque" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Coluna 1/4" 7×20</div>
-          <div class="product-spec">Bitola: 1/4" | Armadura: 7×20cm | Comprimento: 6m | Aço CA-50</div>
-          <div class="product-price">R$ 55,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bitola: 1/4" | Armadura: 7×20cm | Comprimento: 6m | Aço CA-50</div>
+          <div class="product-price">R$ 55,00 <span>/un</span></div>
+          <div class="product-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <input type="number" class="qty-input" value="1" min="1" />
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+          <button class="btn-add" onclick="addToCart(this, 'Coluna 1/4&quot; 7×20', 55)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Coluna 1/4" 7×27</div>
-          <div class="product-spec">Bitola: 1/4" | Armadura: 7×27cm | Comprimento: 6m | Aço CA-50</div>
-          <div class="product-price">R$ 67,50 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bitola: 1/4" | Armadura: 7×27cm | Comprimento: 6m | Aço CA-50</div>
+          <div class="product-price">R$ 67,50 <span>/un</span></div>
+          <div class="product-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <input type="number" class="qty-input" value="1" min="1" />
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+          <button class="btn-add" onclick="addToCart(this, 'Coluna 1/4&quot; 7×27', 67.5)">+ Adicionar</button>
         </div>
-        <div class="product-card destaque" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Coluna 5/16" 7×20</div>
-          <div class="product-spec">Bitola: 5/16" | Armadura: 7×20cm | Comprimento: 6m | Aço CA-50</div>
-          <div class="product-price">R$ 65,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bitola: 5/16" | Armadura: 7×20cm | Comprimento: 6m | Aço CA-50</div>
+          <div class="product-price">R$ 65,00 <span>/un</span></div>
+          <div class="product-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <input type="number" class="qty-input" value="1" min="1" />
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+          <button class="btn-add" onclick="addToCart(this, 'Coluna 5/16&quot; 7×20', 65)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Coluna 5/16" 7×27</div>
-          <div class="product-spec">Bitola: 5/16" | Armadura: 7×27cm | Comprimento: 6m | Aço CA-50</div>
-          <div class="product-price">R$ 87,50 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bitola: 5/16" | Armadura: 7×27cm | Comprimento: 6m | Aço CA-50</div>
+          <div class="product-price">R$ 87,50 <span>/un</span></div>
+          <div class="product-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <input type="number" class="qty-input" value="1" min="1" />
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+          <button class="btn-add" onclick="addToCart(this, 'Coluna 5/16&quot; 7×27', 87.5)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Coluna 3/8" 7×20</div>
-          <div class="product-spec">Bitola: 3/8" | Armadura: 7×20cm | Comprimento: 6m | Aço CA-50</div>
-          <div class="product-price">R$ 115,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bitola: 3/8" | Armadura: 7×20cm | Comprimento: 6m | Aço CA-50</div>
+          <div class="product-price">R$ 115,00 <span>/un</span></div>
+          <div class="product-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <input type="number" class="qty-input" value="1" min="1" />
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+          <button class="btn-add" onclick="addToCart(this, 'Coluna 3/8&quot; 7×20', 115)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Coluna 3/8" 7×27</div>
-          <div class="product-spec">Bitola: 3/8" | Armadura: 7×27cm | Comprimento: 6m | Aço CA-50</div>
-          <div class="product-price">R$ 147,50 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bitola: 3/8" | Armadura: 7×27cm | Comprimento: 6m | Aço CA-50</div>
+          <div class="product-price">R$ 147,50 <span>/un</span></div>
+          <div class="product-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <input type="number" class="qty-input" value="1" min="1" />
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+          <button class="btn-add" onclick="addToCart(this, 'Coluna 3/8&quot; 7×27', 147.5)">+ Adicionar</button>
         </div>
       </div>
     </div>
 
-    <div class="category-section" data-cat="ferragens">
-      <div class="category-title"><span class="icon">📏</span> Vergalhões (12 metros)</div>
+    <div class="cat-group" data-category="ferragens">
+      <div class="cat-group-title">Vergalhões (12 metros)</div>
       <div class="products-grid">
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Vergalhão 3/16"</div>
-          <div class="product-spec">Bitola: 3/16" | Comprimento: 12m | Aço CA-60</div>
-          <div class="product-price">R$ 10,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bitola: 3/16" | Comprimento: 12m | Aço CA-60</div>
+          <div class="product-price">R$ 10,00 <span>/un</span></div>
+          <div class="product-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <input type="number" class="qty-input" value="1" min="1" />
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+          <button class="btn-add" onclick="addToCart(this, 'Vergalhão 3/16&quot;', 10)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Vergalhão 1/4"</div>
-          <div class="product-spec">Bitola: 1/4" | Comprimento: 12m | Aço CA-50</div>
-          <div class="product-price">R$ 20,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bitola: 1/4" | Comprimento: 12m | Aço CA-50</div>
+          <div class="product-price">R$ 20,00 <span>/un</span></div>
+          <div class="product-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <input type="number" class="qty-input" value="1" min="1" />
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+          <button class="btn-add" onclick="addToCart(this, 'Vergalhão 1/4&quot;', 20)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Vergalhão 5/16"</div>
-          <div class="product-spec">Bitola: 5/16" | Comprimento: 12m | Aço CA-50</div>
-          <div class="product-price">R$ 30,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bitola: 5/16" | Comprimento: 12m | Aço CA-50</div>
+          <div class="product-price">R$ 30,00 <span>/un</span></div>
+          <div class="product-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <input type="number" class="qty-input" value="1" min="1" />
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+          <button class="btn-add" onclick="addToCart(this, 'Vergalhão 5/16&quot;', 30)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Vergalhão 3/8"</div>
-          <div class="product-spec">Bitola: 3/8" | Comprimento: 12m | Aço CA-50</div>
-          <div class="product-price">R$ 50,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bitola: 3/8" | Comprimento: 12m | Aço CA-50</div>
+          <div class="product-price">R$ 50,00 <span>/un</span></div>
+          <div class="product-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <input type="number" class="qty-input" value="1" min="1" />
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+          <button class="btn-add" onclick="addToCart(this, 'Vergalhão 3/8&quot;', 50)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Vergalhão 1/2"</div>
-          <div class="product-spec">Bitola: 1/2" | Comprimento: 12m | Aço CA-50</div>
-          <div class="product-price">R$ 80,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bitola: 1/2" | Comprimento: 12m | Aço CA-50</div>
+          <div class="product-price">R$ 80,00 <span>/un</span></div>
+          <div class="product-qty">
+            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+            <input type="number" class="qty-input" value="1" min="1" />
+            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+          <button class="btn-add" onclick="addToCart(this, 'Vergalhão 1/2&quot;', 80)">+ Adicionar</button>
         </div>
       </div>
     </div>
 
-    <div class="category-section" data-cat="ferragens">
-      <div class="category-title"><span class="icon">🔲</span> Radier (Ferragem Armada)</div>
+    <div class="cat-group" data-category="ferragens">
+      <div class="cat-group-title">Radier — Ferragem Armada</div>
       <div class="products-grid">
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Radier 60×60 1/4"</div>
-          <div class="product-spec">60×60cm | Bitola 1/4" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 12,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">60×60cm | Bitola 1/4" | Aço CA-50 armado</div>
+          <div class="product-price">R$ 12,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Radier 60×60 1/4&quot;',12)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Radier 80×80 1/4"</div>
-          <div class="product-spec">80×80cm | Bitola 1/4" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 18,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">80×80cm | Bitola 1/4" | Aço CA-50 armado</div>
+          <div class="product-price">R$ 18,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Radier 80×80 1/4&quot;',18)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Radier 60×60 5/16"</div>
-          <div class="product-spec">60×60cm | Bitola 5/16" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 20,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">60×60cm | Bitola 5/16" | Aço CA-50 armado</div>
+          <div class="product-price">R$ 20,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Radier 60×60 5/16&quot;',20)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Radier 80×80 5/16"</div>
-          <div class="product-spec">80×80cm | Bitola 5/16" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 25,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">80×80cm | Bitola 5/16" | Aço CA-50 armado</div>
+          <div class="product-price">R$ 25,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Radier 80×80 5/16&quot;',25)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Radier 100×100 5/16"</div>
-          <div class="product-spec">100×100cm | Bitola 5/16" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 40,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">100×100cm | Bitola 5/16" | Aço CA-50 armado</div>
+          <div class="product-price">R$ 40,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Radier 100×100 5/16&quot;',40)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Radier 60×60 3/8"</div>
-          <div class="product-spec">60×60cm | Bitola 3/8" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 27,50 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">60×60cm | Bitola 3/8" | Aço CA-50 armado</div>
+          <div class="product-price">R$ 27,50 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Radier 60×60 3/8&quot;',27.5)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Radier 80×80 3/8"</div>
-          <div class="product-spec">80×80cm | Bitola 3/8" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 50,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">80×80cm | Bitola 3/8" | Aço CA-50 armado</div>
+          <div class="product-price">R$ 50,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Radier 80×80 3/8&quot;',50)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Radier 100×100 3/8"</div>
-          <div class="product-spec">100×100cm | Bitola 3/8" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 65,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">100×100cm | Bitola 3/8" | Aço CA-50 armado</div>
+          <div class="product-price">R$ 65,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Radier 100×100 3/8&quot;',65)">+ Adicionar</button>
         </div>
       </div>
     </div>
 
-    <div class="category-section" data-cat="ferragens">
-      <div class="category-title"><span class="icon">🔳</span> Malhas POP (Fio 4.2mm — 2×3m)</div>
+    <div class="cat-group" data-category="ferragens">
+      <div class="cat-group-title">Malhas POP — Fio 4.2mm (2×3m)</div>
       <div class="products-grid">
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Malha POP 20×20</div>
-          <div class="product-spec">Fio 4.2mm | Espaçamento: 20×20cm | 2×3m | Aço CA-60</div>
-          <div class="product-price">R$ 72,50 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Fio 4.2mm | Espaçamento: 20×20cm | 2×3m | Aço CA-60</div>
+          <div class="product-price">R$ 72,50 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Malha POP 20×20',72.5)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Malha POP 15×15</div>
-          <div class="product-spec">Fio 4.2mm | Espaçamento: 15×15cm | 2×3m | Aço CA-60</div>
-          <div class="product-price">R$ 87,50 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Fio 4.2mm | Espaçamento: 15×15cm | 2×3m | Aço CA-60</div>
+          <div class="product-price">R$ 87,50 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Malha POP 15×15',87.5)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Malha POP 10×10</div>
-          <div class="product-spec">Fio 4.2mm | Espaçamento: 10×10cm | 2×3m | Aço CA-60</div>
-          <div class="product-price">R$ 115,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Fio 4.2mm | Espaçamento: 10×10cm | 2×3m | Aço CA-60</div>
+          <div class="product-price">R$ 115,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Malha POP 10×10',115)">+ Adicionar</button>
         </div>
       </div>
     </div>
 
-    <div class="category-section" data-cat="ferragens">
-      <div class="category-title"><span class="icon">🪝</span> Arame, Estribos e Pregos</div>
+    <div class="cat-group" data-category="ferragens">
+      <div class="cat-group-title">Arame, Estribos e Pregos</div>
       <div class="products-grid">
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Arame Recozido Liso</div>
-          <div class="product-spec">Arame liso recozido | 1kg | Uso em amarrações e estruturas</div>
-          <div class="product-price">R$ 25,00 <small>/kg</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Arame liso recozido | 1kg | Uso em amarrações e estruturas</div>
+          <div class="product-price">R$ 25,00 <span>/kg</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Arame Recozido Liso',25)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Arame Recozido Torcido</div>
-          <div class="product-spec">Arame torcido recozido | 1kg | Maior resistência ao deslizamento</div>
-          <div class="product-price">R$ 25,00 <small>/kg</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Arame torcido recozido | 1kg | Maior resistência ao deslizamento</div>
+          <div class="product-price">R$ 25,00 <span>/kg</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Arame Recozido Torcido',25)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Estribo 7×20cm</div>
-          <div class="product-spec">Estribo de aço CA-60 | Pacote c/ 100 unidades | 7×20cm</div>
-          <div class="product-price">R$ 80,00 <small>/pct 100un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Estribo de aço CA-60 | Pacote c/ 100 unidades | 7×20cm</div>
+          <div class="product-price">R$ 80,00 <span>/pct 100un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Estribo 7×20cm',80)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Estribo 7×27cm</div>
-          <div class="product-spec">Estribo de aço CA-60 | Pacote c/ 100 unidades | 7×27cm</div>
-          <div class="product-price">R$ 120,00 <small>/pct 100un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Estribo de aço CA-60 | Pacote c/ 100 unidades | 7×27cm</div>
+          <div class="product-price">R$ 120,00 <span>/pct 100un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Estribo 7×27cm',120)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Prego 16×24</div>
-          <div class="product-spec">Prego comum 16×24 | 1kg | Uso geral em madeira</div>
-          <div class="product-price">R$ 20,00 <small>/kg</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Prego comum 16×24 | 1kg | Uso geral em madeira</div>
+          <div class="product-price">R$ 20,00 <span>/kg</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Prego 16×24',20)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Prego 17×27</div>
-          <div class="product-spec">Prego comum 17×27 | 1kg | Uso geral em madeira</div>
-          <div class="product-price">R$ 20,00 <small>/kg</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Prego comum 17×27 | 1kg | Uso geral em madeira</div>
+          <div class="product-price">R$ 20,00 <span>/kg</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Prego 17×27',20)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="ferragens">
           <div class="product-name">Prego 18×30</div>
-          <div class="product-spec">Prego comum 18×30 | 1kg | Uso geral em madeira</div>
-          <div class="product-price">R$ 20,00 <small>/kg</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Prego comum 18×30 | 1kg | Uso geral em madeira</div>
+          <div class="product-price">R$ 20,00 <span>/kg</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Prego 18×30',20)">+ Adicionar</button>
         </div>
       </div>
     </div>
 
     <!-- CIMENTO -->
-    <div class="category-section" data-cat="cimento">
-      <div class="category-title"><span class="icon">🏗️</span> Cimento (saco 50kg)</div>
+    <div class="cat-group" data-category="cimento">
+      <div class="cat-group-title">Cimento (saco 50kg)</div>
       <div class="products-grid">
-        <div class="product-card destaque" onclick="openModal(this)">
+        <div class="product-card" data-cat="cimento">
           <div class="product-name">Cimento CSN CP III</div>
-          <div class="product-spec">Tipo CP III | Alto-forno | Saco 50kg | Resistente a sulfatos</div>
-          <div class="product-price">R$ 28,50 <small>/saco</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Tipo CP III | Alto-forno | Saco 50kg | Resistente a sulfatos</div>
+          <div class="product-price">R$ 28,50 <span>/saco</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Cimento CSN CP III',28.5)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="cimento">
           <div class="product-name">Cimento Mauá CP II</div>
-          <div class="product-spec">Tipo CP II | Composto | Saco 50kg | Uso geral em obras</div>
-          <div class="product-price">R$ 33,50 <small>/saco</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Tipo CP II | Composto | Saco 50kg | Uso geral em obras</div>
+          <div class="product-price">R$ 33,50 <span>/saco</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Cimento Mauá CP II',33.5)">+ Adicionar</button>
         </div>
       </div>
     </div>
 
     <!-- LAJES -->
-    <div class="category-section" data-cat="laje">
-      <div class="category-title"><span class="icon">🏠</span> Lajes Pré-Moldadas (por m²)</div>
+    <div class="cat-group" data-category="lajes">
+      <div class="cat-group-title">Lajes Pré-Moldadas (por m²)</div>
       <div class="products-grid">
-        <div class="product-card destaque" onclick="openModal(this)">
+        <div class="product-card" data-cat="lajes">
           <div class="product-name">Laje de Isopor (EPS)</div>
-          <div class="product-spec">Laje pré-moldada com EPS | Sob medida | Mais leve e ágil | Preço por m²</div>
-          <div class="product-price">R$ 35,00 <small>/m²</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Laje pré-moldada com EPS | Sob medida | Mais leve e ágil</div>
+          <div class="product-price">R$ 35,00 <span>/m²</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Laje de Isopor (EPS)',35)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="lajes">
           <div class="product-name">Laje Cerâmica</div>
-          <div class="product-spec">Laje pré-moldada cerâmica | Sob medida | Alta durabilidade | Preço por m²</div>
-          <div class="product-price">R$ 40,00 <small>/m²</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Laje pré-moldada cerâmica | Sob medida | Alta durabilidade</div>
+          <div class="product-price">R$ 40,00 <span>/m²</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Laje Cerâmica',40)">+ Adicionar</button>
         </div>
       </div>
     </div>
 
     <!-- TIJOLOS -->
-    <div class="category-section" data-cat="tijolo">
-      <div class="category-title"><span class="icon">🧱</span> Tijolos — Atacado e Varejo</div>
+    <div class="cat-group" data-category="tijolos">
+      <div class="cat-group-title">Tijolos — Atacado e Varejo</div>
       <div class="products-grid">
-        <div class="product-card destaque" onclick="openModal(this)">
+        <div class="product-card" data-cat="tijolos">
           <div class="product-name">Tijolo 20×30 — Atacado</div>
-          <div class="product-spec">Tijolo furado 20×30cm | Milheiro (1.000 un.) | 1ª linha, quebra mínima</div>
-          <div class="product-price">R$ 850,00 <small>/milheiro</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Tijolo furado 20×30cm | Milheiro (1.000 un.) | 1ª linha, quebra mínima</div>
+          <div class="product-price">R$ 850,00 <span>/milheiro</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Tijolo 20×30 — Atacado',850)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="tijolos">
           <div class="product-name">Tijolo 20×20 — Atacado</div>
-          <div class="product-spec">Tijolo furado 20×20cm | Milheiro (1.000 un.) | 1ª linha</div>
-          <div class="product-price">R$ 750,00 <small>/milheiro</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Tijolo furado 20×20cm | Milheiro (1.000 un.) | 1ª linha</div>
+          <div class="product-price">R$ 750,00 <span>/milheiro</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Tijolo 20×20 — Atacado',750)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="tijolos">
           <div class="product-name">Tijolo 20×30 — Varejo</div>
-          <div class="product-spec">Tijolo furado 20×30cm | Por unidade | 1ª linha</div>
-          <div class="product-price">R$ 1,20 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Tijolo furado 20×30cm | Por unidade | 1ª linha</div>
+          <div class="product-price">R$ 1,20 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Tijolo 20×30 — Varejo',1.2)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="tijolos">
           <div class="product-name">Tijolo 20×20 — Varejo</div>
-          <div class="product-spec">Tijolo furado 20×20cm | Por unidade | 1ª linha</div>
-          <div class="product-price">R$ 1,10 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Tijolo furado 20×20cm | Por unidade | 1ª linha</div>
+          <div class="product-price">R$ 1,10 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Tijolo 20×20 — Varejo',1.1)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="tijolos">
           <div class="product-name">Bloco Concreto 9×19×39</div>
-          <div class="product-spec">Bloco de concreto estrutural | 9×19×39cm | Atacado: 1.000 un. — R$ 1.650,00</div>
-          <div class="product-price">R$ 2,25 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bloco de concreto estrutural | 9×19×39cm | Atacado: 1.000 un.</div>
+          <div class="product-price">R$ 2,25 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Bloco Concreto 9×19×39',2.25)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="tijolos">
           <div class="product-name">Bloco Concreto 14×19×39</div>
-          <div class="product-spec">Bloco de concreto estrutural | 14×19×39cm | Atacado: 1.000 un. — R$ 2.000,00</div>
-          <div class="product-price">R$ 3,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Bloco de concreto estrutural | 14×19×39cm | Atacado: 1.000 un.</div>
+          <div class="product-price">R$ 3,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Bloco Concreto 14×19×39',3)">+ Adicionar</button>
         </div>
       </div>
     </div>
 
-    <!-- GRANEIS -->
-    <div class="category-section" data-cat="graneis">
-      <div class="category-title"><span class="icon">⛏️</span> Areia, Areola e Pedra (por m³)</div>
+    <!-- AREIA / PEDRA -->
+    <div class="cat-group" data-category="areia">
+      <div class="cat-group-title">Areia, Areola e Pedra (por m³)</div>
       <div class="products-grid">
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="areia">
           <div class="product-name">Areia Lavada</div>
-          <div class="product-spec">Areia lavada fina | Por m³ | Ideal para reboco e concreto</div>
-          <div class="product-price">R$ 105,00 <small>/m³</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Areia lavada fina | Por m³ | Ideal para reboco e concreto</div>
+          <div class="product-price">R$ 105,00 <span>/m³</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Areia Lavada',105)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="areia">
           <div class="product-name">Areola</div>
-          <div class="product-spec">Areola | Por m³ | Ideal para aterro e nivelamento</div>
-          <div class="product-price">R$ 110,00 <small>/m³</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Areola | Por m³ | Ideal para aterro e nivelamento</div>
+          <div class="product-price">R$ 110,00 <span>/m³</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Areola',110)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="areia">
           <div class="product-name">Pedra Brita (nº1, 2 ou 3)</div>
-          <div class="product-spec">Pedra britada | Por m³ | Informar tipo no pedido: nº1, nº2 ou nº3</div>
-          <div class="product-price">R$ 130,00 <small>/m³</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Pedra britada | Por m³ | Informar tipo no pedido: nº1, nº2 ou nº3</div>
+          <div class="product-price">R$ 130,00 <span>/m³</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Pedra Brita',130)">+ Adicionar</button>
         </div>
       </div>
     </div>
 
     <!-- MADEIRAS -->
-    <div class="category-section" data-cat="madeira">
-      <div class="category-title"><span class="icon">🌲</span> Madeiras (Pinus)</div>
+    <div class="cat-group" data-category="madeiras">
+      <div class="cat-group-title">Madeiras — Pinus</div>
       <div class="products-grid">
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="madeiras">
           <div class="product-name">Tábua Pinus 30×2,5</div>
-          <div class="product-spec">Tábua de pinus | 30×2,5cm | Comprimento: 3m | Para formas e acabamentos</div>
-          <div class="product-price">R$ 35,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Tábua de pinus | 30×2,5cm | Comprimento: 3m | Para formas e acabamentos</div>
+          <div class="product-price">R$ 35,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Tábua Pinus 30×2,5',35)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="madeiras">
           <div class="product-name">Tábua Pinus 20×2,5</div>
-          <div class="product-spec">Tábua de pinus | 20×2,5cm | Comprimento: 3m</div>
-          <div class="product-price">R$ 30,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Tábua de pinus | 20×2,5cm | Comprimento: 3m</div>
+          <div class="product-price">R$ 30,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Tábua Pinus 20×2,5',30)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="madeiras">
           <div class="product-name">Sarrafo 25cm</div>
-          <div class="product-spec">Sarrafo de pinus | Largura: 25cm | Ripas e estruturas leves</div>
-          <div class="product-price">R$ 20,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Sarrafo de pinus | Largura: 25cm | Ripas e estruturas leves</div>
+          <div class="product-price">R$ 20,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Sarrafo 25cm',20)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="madeiras">
           <div class="product-name">Sarrafo 20cm</div>
-          <div class="product-spec">Sarrafo de pinus | Largura: 20cm</div>
-          <div class="product-price">R$ 18,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Sarrafo de pinus | Largura: 20cm</div>
+          <div class="product-price">R$ 18,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Sarrafo 20cm',18)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="madeiras">
           <div class="product-name">Sarrafo 15cm</div>
-          <div class="product-spec">Sarrafo de pinus | Largura: 15cm</div>
-          <div class="product-price">R$ 15,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Sarrafo de pinus | Largura: 15cm</div>
+          <div class="product-price">R$ 15,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Sarrafo 15cm',15)">+ Adicionar</button>
         </div>
-        <div class="product-card" onclick="openModal(this)">
+        <div class="product-card" data-cat="madeiras">
           <div class="product-name">Sarrafo 10cm</div>
-          <div class="product-spec">Sarrafo de pinus | Largura: 10cm</div>
-          <div class="product-price">R$ 12,00 <small>/un</small></div>
-          <div class="qty-control"><button class="qty-btn" onclick="changeQty(event,-1)">−</button><input class="qty-input" type="number" value="1" min="1" onclick="event.stopPropagation()"><button class="qty-btn" onclick="changeQty(event,1)">+</button></div>
-          <button class="add-btn" onclick="addToCart(event,this)">+ Adicionar</button>
+          <div class="product-desc">Sarrafo de pinus | Largura: 10cm</div>
+          <div class="product-price">R$ 12,00 <span>/un</span></div>
+          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
+          <button class="btn-add" onclick="addToCart(this,'Sarrafo 10cm',12)">+ Adicionar</button>
         </div>
       </div>
     </div>
 
-  </div><!-- /products-main -->
+  </main>
 
-  <!-- SIDEBAR CARRINHO -->
-  <div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-box">
+  <!-- CART OVERLAY -->
+  <div class="cart-overlay" id="cartOverlay">
+    <div class="cart-panel">
       <div class="cart-header">
-        <h3>🛒 Seu Carrinho</h3>
-        <button class="cart-clear" onclick="clearCart()">Limpar tudo</button>
+        <h3>Seu Carrinho</h3>
+        <button class="cart-close" id="cartClose">✕</button>
       </div>
       <div class="cart-items" id="cartItems">
-        <div class="cart-empty"><div class="big">🛒</div>Carrinho vazio.<br>Adicione produtos ao lado!</div>
+        <div class="cart-empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
+          Carrinho vazio.<br>Adicione produtos ao catálogo.
+        </div>
       </div>
       <div class="cart-footer">
         <div class="cart-total-row">
-          <span class="cart-total-label">Total estimado</span>
-          <span class="cart-total-value" id="cartTotal">R$ 0,00</span>
+          <span class="cart-total-label">Total Estimado</span>
+          <span class="cart-total-value" id="cartTotalValue">R$ 0,00</span>
         </div>
-        <button class="checkout-btn" id="checkoutBtn" onclick="openCheckout()" disabled>
-          Fechar Pedido →
+        <div class="cart-delivery-fields">
+          <input type="text" id="deliveryCep" placeholder="CEP de Entrega" maxlength="9" />
+          <input type="text" id="deliveryAddress" placeholder="Endereço Completo" />
+          <select id="deliveryTime">
+            <option value="" disabled selected>Melhor Horário para Entrega</option>
+            <option value="Manhã (08h às 12h)">Manhã (08h às 12h)</option>
+            <option value="Tarde (12h às 18h)">Tarde (12h às 18h)</option>
+            <option value="Qualquer horário">Qualquer horário</option>
+          </select>
+          <textarea id="deliveryObs" placeholder="Observações (opcional)"></textarea>
+        </div>
+        <button class="btn-checkout" id="btnCheckout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.627-5.372-12-12-12zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+          Enviar Pedido no WhatsApp
         </button>
+        <button class="btn-clear-cart" id="btnClearCart">Limpar Carrinho</button>
       </div>
     </div>
   </div>
 
-</div><!-- /page-layout -->
-
-<!-- MODAL DETALHES DO PRODUTO -->
-<div class="modal-overlay" id="productModal" onclick="closeModal(event)">
-  <div class="modal-box">
-    <button class="modal-close" onclick="document.getElementById('productModal').classList.remove('open')">✕</button>
-    <div class="modal-tag" id="modalTag">FERRAGEM</div>
-    <div class="modal-title" id="modalTitle">Produto</div>
-    <div class="modal-price" id="modalPrice">R$ 0,00</div>
-    <div class="modal-specs" id="modalSpecs"></div>
-    <p style="font-size:13px;color:var(--texto-muted);line-height:1.5" id="modalDesc"></p>
-  </div>
-</div>
-
-<!-- MODAL CHECKOUT -->
-<div class="modal-overlay" id="checkoutModal" onclick="closeCheckout(event)">
-  <div class="modal-box" style="max-width:520px">
-    <button class="modal-close" onclick="document.getElementById('checkoutModal').classList.remove('open')">✕</button>
-    <div class="modal-tag">FINALIZAR PEDIDO</div>
-    <div class="modal-title" style="margin-bottom:16px">Fechar Carrinho 📦</div>
-
-    <div class="checkout-summary" id="checkoutSummary"></div>
-
-    <div class="checkout-form">
-      <div class="form-group">
-        <label>CEP de Entrega</label>
-        <input type="text" id="cepInput" placeholder="Ex: 25000-000" maxlength="9" oninput="formatCep(this)">
-      </div>
-      <div class="form-group">
-        <label>Endereço Completo</label>
-        <input type="text" id="enderecoInput" placeholder="Rua, número, bairro, cidade">
-      </div>
-      <div class="form-group">
-        <label>Melhor Horário para Entrega</label>
-        <select id="horarioSelect">
-          <option value="">Selecione o período</option>
-          <option value="Manhã (08h às 12h)">🌅 Manhã (08h às 12h)</option>
-          <option value="Tarde (12h às 18h)">☀️ Tarde (12h às 18h)</option>
-          <option value="Qualquer horário">⏰ Qualquer horário</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Observações (opcional)</label>
-        <textarea id="obsInput" rows="2" placeholder="Ex: portão azul, ligar antes de chegar..."></textarea>
-      </div>
-      <button class="send-btn" onclick="sendWhatsApp()">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Enviar Pedido no WhatsApp
-      </button>
-    </div>
-  </div>
-</div>
-
-<script>
-  // ── ESTADO DO CARRINHO ──
-  let cart = [];
-
-  // ── DADOS DE SPECS PARA O MODAL ──
-  const specsData = {
-    'Coluna 1/4" 7×20': { tag: 'COLUNA CA-50', specs: [['Tipo','Coluna armada'],['Bitola','1/4" (6.3mm)'],['Armadura','7×20cm'],['Comprimento','6 metros'],['Aço','CA-50'],['Uso','Pilares, fundações']] },
-    'Coluna 1/4" 7×27': { tag: 'COLUNA CA-50', specs: [['Tipo','Coluna armada'],['Bitola','1/4" (6.3mm)'],['Armadura','7×27cm'],['Comprimento','6 metros'],['Aço','CA-50'],['Uso','Pilares reforçados']] },
-    'Coluna 5/16" 7×20': { tag: 'COLUNA CA-50', specs: [['Tipo','Coluna armada'],['Bitola','5/16" (8mm)'],['Armadura','7×20cm'],['Comprimento','6 metros'],['Aço','CA-50'],['Uso','Pilares de alta carga']] },
-    'Coluna 5/16" 7×27': { tag: 'COLUNA CA-50', specs: [['Tipo','Coluna armada'],['Bitola','5/16" (8mm)'],['Armadura','7×27cm'],['Comprimento','6 metros'],['Aço','CA-50'],['Uso','Pilares de alta carga']] },
-    'Coluna 3/8" 7×20': { tag: 'COLUNA CA-50', specs: [['Tipo','Coluna armada'],['Bitola','3/8" (9.5mm)'],['Armadura','7×20cm'],['Comprimento','6 metros'],['Aço','CA-50'],['Uso','Estruturas pesadas']] },
-    'Coluna 3/8" 7×27': { tag: 'COLUNA CA-50', specs: [['Tipo','Coluna armada'],['Bitola','3/8" (9.5mm)'],['Armadura','7×27cm'],['Comprimento','6 metros'],['Aço','CA-50'],['Uso','Estruturas pesadas']] },
-    'Vergalhão 3/16"': { tag: 'VERGALHÃO CA-60', specs: [['Bitola','3/16" (4.8mm)'],['Comprimento','12 metros'],['Aço','CA-60'],['Uso','Estribos, amarrações leves']] },
-    'Vergalhão 1/4"': { tag: 'VERGALHÃO CA-50', specs: [['Bitola','1/4" (6.3mm)'],['Comprimento','12 metros'],['Aço','CA-50'],['Uso','Lajes, vigas, pilares']] },
-    'Vergalhão 5/16"': { tag: 'VERGALHÃO CA-50', specs: [['Bitola','5/16" (8mm)'],['Comprimento','12 metros'],['Aço','CA-50'],['Uso','Vigas e pilares']] },
-    'Vergalhão 3/8"': { tag: 'VERGALHÃO CA-50', specs: [['Bitola','3/8" (9.5mm)'],['Comprimento','12 metros'],['Aço','CA-50'],['Uso','Estruturas de grande porte']] },
-    'Vergalhão 1/2"': { tag: 'VERGALHÃO CA-50', specs: [['Bitola','1/2" (12.7mm)'],['Comprimento','12 metros'],['Aço','CA-50'],['Uso','Grandes estruturas']] },
-    'Laje de Isopor (EPS)': { tag: 'LAJE PRÉ-MOLDADA', specs: [['Tipo','Isopor (EPS)'],['Formato','Sob medida do cliente'],['Preço','Por m²'],['Vantagem','Mais leve, ágil'],['Entrega','Prazo conforme medidas']] },
-    'Laje Cerâmica': { tag: 'LAJE PRÉ-MOLDADA', specs: [['Tipo','Cerâmica'],['Formato','Sob medida do cliente'],['Preço','Por m²'],['Vantagem','Alta durabilidade'],['Entrega','Prazo conforme medidas']] },
-    'Cimento CSN CP III': { tag: 'CIMENTO', specs: [['Tipo','CP III — Alto-forno'],['Peso','50kg/saco'],['Uso','Peças em contato c/ sulfatos'],['Marca','CSN']] },
-    'Cimento Mauá CP II': { tag: 'CIMENTO', specs: [['Tipo','CP II — Composto'],['Peso','50kg/saco'],['Uso','Uso geral em obras'],['Marca','Mauá']] },
-    'Tijolo 20×30 — Atacado': { tag: 'TIJOLO', specs: [['Medida','20×30cm'],['Quant.','1.000 unidades (milheiro)'],['Qualidade','1ª linha'],['Uso','Alvenaria geral']] },
-    'Tijolo 20×20 — Atacado': { tag: 'TIJOLO', specs: [['Medida','20×20cm'],['Quant.','1.000 unidades (milheiro)'],['Qualidade','1ª linha'],['Uso','Alvenaria geral']] },
-    'Tijolo 20×30 — Varejo': { tag: 'TIJOLO', specs: [['Medida','20×30cm'],['Quant.','Por unidade'],['Qualidade','1ª linha'],['Uso','Alvenaria geral']] },
-    'Tijolo 20×20 — Varejo': { tag: 'TIJOLO', specs: [['Medida','20×20cm'],['Quant.','Por unidade'],['Qualidade','1ª linha'],['Uso','Alvenaria geral']] },
-    'Bloco Concreto 9×19×39': { tag: 'BLOCO DE CONCRETO', specs: [['Medida','9×19×39cm'],['Varejo','R$ 2,25/un'],['Atacado','R$ 1.650,00/mil'],['Uso','Alvenaria estrutural']] },
-    'Bloco Concreto 14×19×39': { tag: 'BLOCO DE CONCRETO', specs: [['Medida','14×19×39cm'],['Varejo','R$ 3,00/un'],['Atacado','R$ 2.000,00/mil'],['Uso','Alvenaria estrutural']] },
-  };
-
-  // ── MUDAR QTD ──
-  function changeQty(e, delta) {
-    e.stopPropagation();
-    const card = e.target.closest('.product-card');
-    const input = card.querySelector('.qty-input');
-    const newVal = Math.max(1, parseInt(input.value || 1) + delta);
-    input.value = newVal;
-  }
-
-  // ── ADICIONAR AO CARRINHO ──
-  function addToCart(e, btn) {
-    e.stopPropagation();
-    const card = btn.closest('.product-card');
-    const name = card.querySelector('.product-name').textContent;
-    const priceText = card.querySelector('.product-price').childNodes[0].textContent.trim();
-    const price = parseFloat(priceText.replace('R$', '').replace('.', '').replace(',', '.'));
-    const qty = parseInt(card.querySelector('.qty-input').value || 1);
-
-    const existing = cart.find(i => i.name === name);
-    if (existing) {
-      existing.qty += qty;
-    } else {
-      cart.push({ name, price, qty });
-    }
-
-    btn.textContent = '✓ Adicionado!';
-    btn.classList.add('added');
-    setTimeout(() => { btn.textContent = '+ Adicionar'; btn.classList.remove('added'); }, 1500);
-
-    renderCart();
-    document.getElementById('cartSidebar').classList.add('bounce');
-    setTimeout(() => document.getElementById('cartSidebar').classList.remove('bounce'), 300);
-  }
-
-  // ── RENDERIZAR CARRINHO ──
-  function renderCart() {
-    const container = document.getElementById('cartItems');
-    const totalEl = document.getElementById('cartTotal');
-    const countEl = document.getElementById('cartCount');
-    const btn = document.getElementById('checkoutBtn');
-
-    if (cart.length === 0) {
-      container.innerHTML = '<div class="cart-empty"><div class="big">🛒</div>Carrinho vazio.<br>Adicione produtos ao lado!</div>';
-      totalEl.textContent = 'R$ 0,00';
-      countEl.textContent = '0';
-      btn.disabled = true;
-      return;
-    }
-
-    let total = 0;
-    let html = '';
-    cart.forEach((item, i) => {
-      const sub = item.price * item.qty;
-      total += sub;
-      html += `
-        <div class="cart-item">
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png" alt="ABG Distribuidora" class="footer-logo" />
           <div>
-            <div class="cart-item-name">${item.name}</div>
-            <div class="cart-item-qty">${item.qty}× ${fmt(item.price)}</div>
+            <div class="footer-brand-name">ABG <span>Distribuidora</span></div>
           </div>
-          <div style="display:flex;align-items:center;gap:6px">
-            <span class="cart-item-price">${fmt(sub)}</span>
-            <button class="cart-remove" onclick="removeItem(${i})">✕</button>
-          </div>
-        </div>`;
+        </div>
+        <p class="footer-tagline">Reduzindo custos, construindo futuros. Ferro, aço e lajes em todo o estado do Rio de Janeiro.</p>
+        <p class="footer-cnpj">CNPJ: 52.570.746/0001-34</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="produtos.html">Catálogo</a></li>
+          <li><a href="entregas.html">Logística</a></li>
+          <li><a href="quem-somos.html">Quem Somos</a></li>
+          <li><a href="contato.html">Atendimento</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Canais Diretos</h4>
+        <ul>
+          <li><a href="https://wa.me/5521992320613" target="_blank">(21) 99232-0613</a></li>
+          <li><a href="mailto:abg.distribuidora.ltda@gmail.com">E-mail Comercial</a></li>
+          <li><a href="https://www.instagram.com/abg.distribuidora.de.ferro" target="_blank">Instagram Oficial</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Onde Estamos</h4>
+        <ul>
+          <li>R. Berlarmino Gondim, 35</li>
+          <li>Parque Independência</li>
+          <li>Duque de Caxias · RJ</li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=R.+Berlarmino+Gondim,+35+Duque+de+Caxias" target="_blank">Ver no Maps</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-divider">
+      <span class="footer-copy">© 2026 ABG Distribuidora de Ferro e Aço — Todos os direitos reservados.</span>
+      <span class="footer-copy-right">Fabricante Nacional · Duque de Caxias · RJ</span>
+    </div>
+  </footer>
+
+  <script>
+    // ─── NAVBAR TOGGLE ─────────────────────────────────
+    const navToggle = document.getElementById('navToggle');
+    const navMobile = document.getElementById('navMobile');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navMobile.classList.toggle('open');
     });
-
-    container.innerHTML = html;
-    totalEl.textContent = fmt(total);
-    countEl.textContent = cart.reduce((a,b) => a+b.qty, 0);
-    btn.disabled = false;
-  }
-
-  function removeItem(i) { cart.splice(i, 1); renderCart(); }
-  function clearCart() { cart = []; renderCart(); }
-  function fmt(v) { return 'R$ ' + v.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
-
-  // ── SCROLL TO CART ──
-  function scrollToCart() {
-    document.getElementById('cartSidebar').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  // ── MODAL PRODUTO ──
-  function openModal(card) {
-    const name = card.querySelector('.product-name').textContent;
-    const spec = card.querySelector('.product-spec').textContent;
-    const priceText = card.querySelector('.product-price').childNodes[0].textContent.trim();
-    const unit = card.querySelector('.product-price small') ? card.querySelector('.product-price small').textContent : '';
-
-    document.getElementById('modalTitle').textContent = name;
-    document.getElementById('modalPrice').textContent = priceText + ' ' + unit;
-    document.getElementById('modalDesc').textContent = spec;
-
-    const data = specsData[name];
-    const tag = data ? data.tag : 'PRODUTO';
-    document.getElementById('modalTag').textContent = tag;
-
-    const specsEl = document.getElementById('modalSpecs');
-    if (data && data.specs) {
-      let rows = '<h4>📋 Especificações</h4>';
-      data.specs.forEach(([l,v]) => {
-        rows += `<div class="spec-row"><span class="spec-label">${l}</span><span class="spec-val">${v}</span></div>`;
-      });
-      specsEl.innerHTML = rows;
-      specsEl.style.display = 'block';
-    } else {
-      specsEl.style.display = 'none';
-    }
-
-    document.getElementById('productModal').classList.add('open');
-  }
-
-  function closeModal(e) {
-    if (e.target === document.getElementById('productModal')) {
-      document.getElementById('productModal').classList.remove('open');
-    }
-  }
-
-  // ── CHECKOUT MODAL ──
-  function openCheckout() {
-    if (cart.length === 0) return;
-    let html = '<h4>📦 Itens do Pedido</h4>';
-    let total = 0;
-    cart.forEach(item => {
-      const sub = item.price * item.qty;
-      total += sub;
-      html += `<div class="cs-item"><span>${item.qty}× ${item.name}</span><span style="color:var(--amarelo);font-weight:700">${fmt(sub)}</span></div>`;
-    });
-    html += `<div class="cs-item" style="font-weight:700;color:var(--amarelo);border-top:1px solid var(--cinza-borda);padding-top:8px;margin-top:4px"><span>TOTAL ESTIMADO</span><span>${fmt(total)}</span></div>`;
-    document.getElementById('checkoutSummary').innerHTML = html;
-    document.getElementById('checkoutModal').classList.add('open');
-  }
-
-  function closeCheckout(e) {
-    if (e.target === document.getElementById('checkoutModal')) {
-      document.getElementById('checkoutModal').classList.remove('open');
-    }
-  }
-
-  // ── FORMATAR CEP ──
-  function formatCep(el) {
-    let v = el.value.replace(/\D/g, '');
-    if (v.length > 5) v = v.slice(0,5) + '-' + v.slice(5,8);
-    el.value = v;
-  }
-
-  // ── ENVIAR WHATSAPP ──
-  function sendWhatsApp() {
-    const cep = document.getElementById('cepInput').value.trim();
-    const endereco = document.getElementById('enderecoInput').value.trim();
-    const horario = document.getElementById('horarioSelect').value;
-    const obs = document.getElementById('obsInput').value.trim();
-
-    let msg = '🏗️ *PEDIDO — ABG DISTRIBUIDORA*\n\n';
-    msg += '*📦 Itens Selecionados:*\n';
-
-    let total = 0;
-    cart.forEach(item => {
-      const sub = item.price * item.qty;
-      total += sub;
-      msg += `• ${item.qty}× ${item.name} — ${fmt(sub)}\n`;
-    });
-
-    msg += `\n💰 *Total Estimado: ${fmt(total)}*\n`;
-
-    if (cep) msg += `\n📍 *CEP:* ${cep}`;
-    if (endereco) msg += `\n🏠 *Endereço:* ${endereco}`;
-    if (horario) msg += `\n⏰ *Melhor horário:* ${horario}`;
-    if (obs) msg += `\n📝 *Obs:* ${obs}`;
-
-    msg += '\n\nGostaria de confirmar esse pedido e verificar o frete. Aguardo retorno! 🙏';
-
-    const encoded = encodeURIComponent(msg);
-    window.open(`https://wa.me/5521992320613?text=${encoded}`, '_blank');
-  }
-
-  // ── FILTROS DE CATEGORIA ──
-  function filterCategory(cat, btn) {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    document.querySelectorAll('.category-section').forEach(sec => {
-      if (cat === 'all' || sec.dataset.cat === cat) {
-        sec.style.display = 'block';
-      } else {
-        sec.style.display = 'none';
+    document.addEventListener('click', e => {
+      if (!navToggle.contains(e.target) && !navMobile.contains(e.target)) {
+        navToggle.classList.remove('open');
+        navMobile.classList.remove('open');
       }
     });
-  }
-</script>
+
+    // ─── CART STATE ─────────────────────────────────────
+    let cart = [];
+
+    function fmtBRL(v) {
+      return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function updateCartUI() {
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      const count = cart.reduce((s, i) => s + i.qty, 0);
+      document.getElementById('cartCountBadge').textContent = count;
+      document.getElementById('cartTotalBar').textContent = fmtBRL(total);
+      document.getElementById('cartTotalValue').textContent = fmtBRL(total);
+
+      const itemsEl = document.getElementById('cartItems');
+      if (cart.length === 0) {
+        itemsEl.innerHTML = `<div class="cart-empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
+          Carrinho vazio.<br>Adicione produtos ao catálogo.
+        </div>`;
+        return;
+      }
+      itemsEl.innerHTML = cart.map((item, i) => `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">${fmtBRL(item.price)} × ${item.qty} = ${fmtBRL(item.price * item.qty)}</div>
+          </div>
+          <button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button>
+        </div>
+      `).join('');
+    }
+
+    function changeQty(btn, delta) {
+      const wrap = btn.closest('.product-card');
+      const input = wrap.querySelector('.qty-input');
+      let v = parseInt(input.value) + delta;
+      if (v < 1) v = 1;
+      input.value = v;
+    }
+
+    function addToCart(btn, name, price) {
+      const wrap = btn.closest('.product-card');
+      const qty = parseInt(wrap.querySelector('.qty-input').value) || 1;
+      const existing = cart.find(i => i.name === name);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({ name, price, qty });
+      }
+      btn.textContent = '✓ Adicionado';
+      btn.classList.add('added');
+      setTimeout(() => {
+        btn.textContent = '+ Adicionar';
+        btn.classList.remove('added');
+      }, 1600);
+      updateCartUI();
+    }
+
+    function removeFromCart(idx) {
+      cart.splice(idx, 1);
+      updateCartUI();
+    }
+
+    // ─── CART OPEN / CLOSE ──────────────────────────────
+    const overlay  = document.getElementById('cartOverlay');
+    const btnOpen  = document.getElementById('btnOpenCart');
+    const btnClose = document.getElementById('cartClose');
+
+    btnOpen.addEventListener('click', () => overlay.classList.add('open'));
+    btnClose.addEventListener('click', () => overlay.classList.remove('open'));
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+
+    // ─── CHECKOUT ───────────────────────────────────────
+    document.getElementById('btnCheckout').addEventListener('click', () => {
+      if (cart.length === 0) { alert('Seu carrinho está vazio!'); return; }
+      const cep  = document.getElementById('deliveryCep').value.trim();
+      const addr = document.getElementById('deliveryAddress').value.trim();
+      const time = document.getElementById('deliveryTime').value;
+      const obs  = document.getElementById('deliveryObs').value.trim();
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+      let msg = '🧱 *PEDIDO ABG DISTRIBUIDORA*\n\n';
+      cart.forEach(i => {
+        msg += `• ${i.name} × ${i.qty} = ${fmtBRL(i.price * i.qty)}\n`;
+      });
+      msg += `\n💰 *Total: ${fmtBRL(total)}*\n`;
+      if (cep)  msg += `\n📍 CEP: ${cep}`;
+      if (addr) msg += `\n📋 Endereço: ${addr}`;
+      if (time) msg += `\n🕐 Horário: ${time}`;
+      if (obs)  msg += `\n💬 Obs: ${obs}`;
+
+      window.open('https://wa.me/5521992320613?text=' + encodeURIComponent(msg), '_blank');
+    });
+
+    // ─── CLEAR CART ─────────────────────────────────────
+    document.getElementById('btnClearCart').addEventListener('click', () => {
+      if (confirm('Limpar todos os itens do carrinho?')) {
+        cart = [];
+        updateCartUI();
+      }
+    });
+
+    // ─── CEP MASK ───────────────────────────────────────
+    document.getElementById('deliveryCep').addEventListener('input', function() {
+      let v = this.value.replace(/\D/g,'').slice(0,8);
+      if (v.length > 5) v = v.slice(0,5) + '-' + v.slice(5);
+      this.value = v;
+    });
+
+    // ─── FILTER TABS ────────────────────────────────────
+    document.getElementById('filterTabs').addEventListener('click', e => {
+      const tab = e.target.closest('.filter-tab');
+      if (!tab) return;
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const cat = tab.dataset.cat;
+      document.querySelectorAll('.cat-group').forEach(g => {
+        g.style.display = (cat === 'all' || g.dataset.category === cat) ? '' : 'none';
+      });
+    });
+
+    updateCartUI();
+  </script>
 </body>
 </html>
