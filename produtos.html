@@ -54,357 +54,281 @@
     .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
 
     /* ── CARRINHO FLUTUANTE ── */
-    .cart-float {
+    #cart-btn {
       position: fixed;
       bottom: 24px;
       right: 24px;
       z-index: 999;
       background: var(--amarelo);
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(245,197,24,0.4);
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      color: var(--preto);
       border: none;
-    }
-    .cart-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(245,197,24,0.6); }
-    .cart-float svg { width: 26px; height: 26px; fill: var(--preto); }
-    .cart-badge {
-      position: absolute;
-      top: -4px;
-      right: -4px;
-      background: #e53e3e;
-      color: white;
+      border-radius: 50px;
+      padding: 14px 22px;
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      width: 20px;
-      height: 20px;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 20px rgba(245,197,24,0.35);
+      transition: background 0.2s, transform 0.2s;
+    }
+    #cart-btn:hover { background: var(--amarelo-escuro); transform: translateY(-2px); }
+    #cart-btn .cart-count {
+      background: var(--preto);
+      color: var(--amarelo);
       border-radius: 50%;
+      width: 22px;
+      height: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid var(--preto);
-      display: none;
+      font-size: 0.75rem;
+      font-weight: 900;
     }
-    .cart-badge.visible { display: flex; }
+    #cart-btn.hidden { display: none; }
 
-    /* ── MODAL CARRINHO ── */
-    .cart-overlay {
+    /* ── CARRINHO MODAL ── */
+    #cart-overlay {
+      display: none;
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.7);
-      z-index: 1100;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
     }
-    .cart-overlay.open { opacity: 1; pointer-events: all; }
-    .cart-modal {
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      max-width: 480px;
-      height: auto;
-      max-height: 85vh;
+    #cart-overlay.open { display: flex; align-items: flex-end; justify-content: flex-end; }
+    #cart-panel {
       background: var(--cinza-escuro);
       border: 1px solid var(--cinza-borda);
+      border-right: none;
       border-bottom: none;
-      border-radius: 12px 12px 0 0;
-      z-index: 1101;
-      transform: translateY(100%);
-      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      border-top-left-radius: 12px;
+      width: 100%;
+      max-width: 480px;
+      max-height: 85vh;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
-    .cart-modal.open { transform: translateY(0); }
-    .cart-modal-header {
-      padding: 20px 24px 16px;
+    .cart-header {
+      padding: 20px 24px;
       border-bottom: 1px solid var(--cinza-borda);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-shrink: 0;
     }
-    .cart-modal-title {
+    .cart-header h3 {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.1rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.1em;
     }
-    .cart-modal-close {
+    .cart-header h3 span { color: var(--amarelo); }
+    #cart-close {
       background: none;
-      border: none;
+      border: 1px solid var(--cinza-borda);
       color: var(--cinza-texto);
+      border-radius: 4px;
+      width: 32px;
+      height: 32px;
       cursor: pointer;
-      padding: 4px;
-      font-size: 1.2rem;
-      line-height: 1;
-      transition: color 0.2s;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, border-color 0.2s;
     }
-    .cart-modal-close:hover { color: var(--branco); }
-    .cart-items {
+    #cart-close:hover { color: var(--branco); border-color: var(--cinza-texto); }
+    #cart-items {
       flex: 1;
       overflow-y: auto;
       padding: 16px 24px;
     }
+    #cart-items::-webkit-scrollbar { width: 4px; }
+    #cart-items::-webkit-scrollbar-track { background: transparent; }
+    #cart-items::-webkit-scrollbar-thumb { background: var(--cinza-borda); border-radius: 2px; }
+    .cart-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--cinza-borda);
+    }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+    .cart-item-sub {
+      font-size: 0.8rem;
+      color: var(--cinza-texto);
+    }
+    .cart-item-sub .disc-tag {
+      color: #4ade80;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+    .cart-item-right {
+      text-align: right;
+    }
+    .cart-item-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--amarelo);
+      margin-bottom: 6px;
+    }
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+    .cart-qty-btn {
+      background: var(--cinza-borda);
+      border: none;
+      color: var(--branco);
+      width: 26px;
+      height: 26px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .cart-qty-btn:hover { background: var(--amarelo); color: var(--preto); }
+    .cart-qty-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      min-width: 28px;
+      text-align: center;
+    }
+    .cart-remove {
+      background: none;
+      border: none;
+      color: #555;
+      cursor: pointer;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0;
+      margin-top: 4px;
+      transition: color 0.2s;
+      display: block;
+      text-align: right;
+    }
+    .cart-remove:hover { color: #f87171; }
     .cart-empty {
       text-align: center;
       padding: 40px 0;
       color: var(--cinza-texto);
       font-size: 0.9rem;
     }
-    .cart-empty-icon { font-size: 2.4rem; margin-bottom: 12px; }
-    .cart-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--cinza-borda);
-    }
-    .cart-item:last-child { border-bottom: none; }
-    .cart-item-emoji { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
-    .cart-item-info { flex: 1; min-width: 0; }
-    .cart-item-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .cart-item-sub { font-size: 0.78rem; color: var(--cinza-texto); }
-    .cart-item-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .qty-btn {
-      width: 26px;
-      height: 26px;
-      background: var(--cinza-borda);
-      border: none;
-      border-radius: 4px;
-      color: var(--branco);
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-      line-height: 1;
-    }
-    .qty-btn:hover { background: #3a3a3a; }
-    .qty-val {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      min-width: 20px;
-      text-align: center;
-    }
-    .cart-item-price {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--amarelo);
-      flex-shrink: 0;
-      text-align: right;
-    }
-    .cart-item-remove {
-      background: none;
-      border: none;
-      color: #555;
-      cursor: pointer;
-      font-size: 0.8rem;
-      padding: 0;
-      transition: color 0.2s;
-      flex-shrink: 0;
-      align-self: center;
-    }
-    .cart-item-remove:hover { color: #e53e3e; }
-
-    /* Frete no carrinho */
-    .cart-frete {
-      padding: 16px 24px;
-      border-top: 1px solid var(--cinza-borda);
-      flex-shrink: 0;
-    }
-    .cart-frete-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--cinza-texto);
-      margin-bottom: 8px;
-    }
-    .frete-row { display: flex; gap: 8px; }
-    .frete-input {
-      flex: 1;
-      background: var(--cinza-medio);
-      border: 1px solid var(--cinza-borda);
-      border-radius: 4px;
-      color: var(--branco);
-      font-family: 'Barlow', sans-serif;
-      font-size: 0.88rem;
-      padding: 9px 12px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .frete-input:focus { border-color: var(--amarelo); }
-    .frete-input::placeholder { color: #444; }
-    .frete-btn {
-      background: var(--cinza-borda);
-      border: none;
-      border-radius: 4px;
-      color: var(--branco);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 9px 14px;
-      cursor: pointer;
-      transition: background 0.2s;
-      white-space: nowrap;
-    }
-    .frete-btn:hover { background: #3a3a3a; }
-    .frete-resultado {
-      margin-top: 8px;
-      font-size: 0.82rem;
-      color: var(--cinza-texto);
-      min-height: 18px;
-    }
-    .frete-resultado.ok { color: var(--amarelo); }
-
-    /* Endereço */
-    .cart-endereco {
-      padding: 0 24px 14px;
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-    .cart-endereco.visible { display: flex; }
-    .end-input {
-      background: var(--cinza-medio);
-      border: 1px solid var(--cinza-borda);
-      border-radius: 4px;
-      color: var(--branco);
-      font-family: 'Barlow', sans-serif;
-      font-size: 0.88rem;
-      padding: 9px 12px;
-      outline: none;
-      width: 100%;
-      transition: border-color 0.2s;
-    }
-    .end-input:focus { border-color: var(--amarelo); }
-    .end-input::placeholder { color: #444; }
-    .end-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-
-    /* Horário */
-    .cart-horario {
-      padding: 0 24px 14px;
-      display: none;
-      flex-shrink: 0;
-    }
-    .cart-horario.visible { display: block; }
-    .horario-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--cinza-texto);
-      margin-bottom: 8px;
-    }
-    .horario-select {
-      width: 100%;
-      background: var(--cinza-medio);
-      border: 1px solid var(--cinza-borda);
-      border-radius: 4px;
-      color: var(--branco);
-      font-family: 'Barlow', sans-serif;
-      font-size: 0.88rem;
-      padding: 9px 12px;
-      outline: none;
-      cursor: pointer;
-      transition: border-color 0.2s;
-    }
-    .horario-select:focus { border-color: var(--amarelo); }
-
+    .cart-empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
     .cart-footer {
-      padding: 16px 24px 24px;
       border-top: 1px solid var(--cinza-borda);
-      flex-shrink: 0;
+      padding: 20px 24px;
     }
-    .cart-total-row {
+    .cart-footer-row {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 14px;
+      align-items: center;
+      margin-bottom: 16px;
     }
     .cart-total-label {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.8rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--cinza-texto);
     }
     .cart-total-val {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 900;
       color: var(--amarelo);
     }
+
+    /* Frete */
+    .frete-box {
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+    .frete-box label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cinza-texto);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .frete-row { display: flex; gap: 8px; margin-bottom: 8px; }
+    .frete-row input, .frete-row select {
+      flex: 1;
+      background: var(--preto);
+      border: 1px solid var(--cinza-borda);
+      color: var(--branco);
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .frete-row input:focus, .frete-row select:focus { border-color: var(--amarelo); }
+    .frete-row select option { background: var(--cinza-escuro); }
+    .frete-row input[type="text"] { width: 140px; flex: none; }
+    #frete-resultado {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--cinza-texto);
+      min-height: 18px;
+    }
+    #frete-resultado.ok { color: var(--amarelo); }
+
     .btn-finalizar {
       width: 100%;
-      background: var(--amarelo);
-      color: var(--preto);
+      background: #25d366;
+      color: var(--branco);
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 800;
-      font-size: 1rem;
+      font-size: 1.05rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      border: none;
-      border-radius: 4px;
-      padding: 15px;
       cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
+      transition: background 0.2s, transform 0.2s;
     }
-    .btn-finalizar:hover { background: var(--amarelo-escuro); transform: translateY(-1px); }
-    .btn-limpar-cart {
-      width: 100%;
-      background: transparent;
-      color: var(--cinza-texto);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: none;
-      padding: 8px;
-      cursor: pointer;
-      margin-top: 8px;
-      transition: color 0.2s;
-    }
-    .btn-limpar-cart:hover { color: #e53e3e; }
+    .btn-finalizar:hover { background: #1da851; transform: translateY(-1px); }
 
     /* ── NAV ── */
     nav {
@@ -482,7 +406,7 @@
       border-radius: 4px;
       font-weight: 700 !important;
     }
-    .nav-cta:hover { background: var(--amarelo-escuro) !important; color: var(--preto) !important; }
+    .nav-cta:hover { background: var(--amarelo-escuro) !important; }
 
     .hamburger {
       display: none;
@@ -518,14 +442,13 @@
     .mobile-menu a:last-child { border-bottom: none; }
     .mobile-menu a:hover { color: var(--amarelo); }
     .mobile-menu a.mobile-cta { color: var(--amarelo); font-weight: 700; }
-    .mobile-menu a.ativo { color: var(--amarelo); }
 
-    /* ── HERO CATÁLOGO ── */
+    /* ── PAGE HERO ── */
     .page-hero {
       background:
-        linear-gradient(to right, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.8) 60%, rgba(10,10,10,0.5) 100%),
-        url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1400') center/cover no-repeat;
-      padding: 56px 24px 48px;
+        linear-gradient(to right, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.85) 60%, rgba(10,10,10,0.6) 100%),
+        url('https://i.postimg.cc/1RNKH2Gj/file-00000000204471fbb554c8d1a051e409.png') center/cover no-repeat;
+      padding: 64px 24px 56px;
       border-bottom: 1px solid var(--cinza-borda);
       position: relative;
       overflow: hidden;
@@ -541,12 +464,12 @@
       pointer-events: none;
     }
     .page-hero-inner {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
     }
-    .section-label {
+    .page-hero .section-label {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.72rem;
       font-weight: 700;
@@ -566,203 +489,257 @@
     .page-hero h1 em { font-style: normal; color: var(--amarelo); }
     .page-hero p {
       color: var(--cinza-texto);
-      font-size: 0.95rem;
+      font-size: 0.97rem;
       max-width: 520px;
-      line-height: 1.6;
     }
 
-    /* ── CATÁLOGO ── */
-    .catalogo { padding: 56px 24px 80px; }
-    .container { max-width: 1100px; margin: 0 auto; }
+    /* ── CATALOG LAYOUT ── */
+    .catalog-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px 100px;
+    }
 
-    /* Filtros */
-    .filtros {
+    /* Filtros / abas de categoria */
+    .cat-tabs {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
     }
-    .filtro-btn {
+    .cat-tab {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.82rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 8px 18px;
-      border-radius: 4px;
+      padding: 7px 16px;
+      border-radius: 3px;
       border: 1px solid var(--cinza-borda);
-      background: var(--cinza-medio);
+      background: transparent;
       color: var(--cinza-texto);
       cursor: pointer;
       transition: all 0.2s;
     }
-    .filtro-btn:hover { border-color: var(--amarelo); color: var(--amarelo); }
-    .filtro-btn.ativo { background: var(--amarelo); color: var(--preto); border-color: var(--amarelo); }
+    .cat-tab:hover { border-color: var(--amarelo); color: var(--amarelo); }
+    .cat-tab.active { background: var(--amarelo); color: var(--preto); border-color: var(--amarelo); }
 
     /* Seção de categoria */
-    .cat-section { margin-bottom: 52px; }
-    .cat-header {
+    .cat-section { margin-bottom: 56px; }
+    .cat-section.hidden { display: none; }
+    .cat-title {
       display: flex;
       align-items: center;
       gap: 14px;
       margin-bottom: 20px;
-      padding-bottom: 16px;
+      padding-bottom: 14px;
       border-bottom: 1px solid var(--cinza-borda);
     }
-    .cat-emoji { font-size: 1.6rem; }
-    .cat-titulo {
+    .cat-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(245,197,24,0.1);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .cat-title h2 {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.3rem;
-      font-weight: 800;
+      font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
     }
-    .cat-count {
+    .cat-title h2 em { font-style: normal; color: var(--amarelo); font-size: 0.8rem; font-weight: 600; margin-left: 6px; letter-spacing: 0.1em; }
+
+    /* subcategorias */
+    .subcat { margin-bottom: 24px; }
+    .subcat-label {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--cinza-texto);
-      background: var(--cinza-medio);
-      border: 1px solid var(--cinza-borda);
-      padding: 3px 10px;
-      border-radius: 2px;
-      margin-left: auto;
+      color: var(--amarelo);
+      margin-bottom: 10px;
+      opacity: 0.8;
     }
 
-    /* Grade de produtos */
-    .prod-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 12px;
-    }
-    .prod-card {
+    /* Tabela de produtos */
+    .prod-table {
+      width: 100%;
+      border-collapse: collapse;
       background: var(--cinza-medio);
       border: 1px solid var(--cinza-borda);
-      border-radius: 6px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
     }
-    .prod-card:hover { border-color: rgba(245,197,24,0.4); transform: translateY(-2px); }
-    .prod-card-top {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
+    .prod-table thead tr {
+      background: var(--preto);
+      border-bottom: 1px solid var(--cinza-borda);
     }
-    .prod-emoji { font-size: 1.4rem; flex-shrink: 0; }
-    .prod-info { flex: 1; min-width: 0; }
-    .prod-nome {
+    .prod-table thead th {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
-      font-weight: 800;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cinza-texto);
+      padding: 10px 16px;
+      text-align: left;
+    }
+    .prod-table thead th:last-child { text-align: right; }
+    .prod-table tbody tr {
+      border-bottom: 1px solid var(--cinza-borda);
+      transition: background 0.15s;
+    }
+    .prod-table tbody tr:last-child { border-bottom: none; }
+    .prod-table tbody tr:hover { background: #252525; }
+    .prod-table td {
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      vertical-align: middle;
+    }
+    .prod-table td:last-child { text-align: right; }
+    .prod-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      line-height: 1.2;
-      margin-bottom: 3px;
     }
-    .prod-desc { font-size: 0.78rem; color: var(--cinza-texto); line-height: 1.5; }
-    .prod-tag-atacado {
+    .prod-detail { font-size: 0.78rem; color: var(--cinza-texto); margin-top: 2px; }
+    .prod-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--amarelo);
+      white-space: nowrap;
+    }
+    .prod-price small {
+      font-size: 0.68rem;
+      color: var(--cinza-texto);
+      font-weight: 600;
+      display: block;
+      margin-top: 1px;
+    }
+    .promo-tag {
       display: inline-block;
-      background: rgba(245,197,24,0.1);
-      border: 1px solid rgba(245,197,24,0.2);
+      background: rgba(245,197,24,0.15);
       color: var(--amarelo);
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.62rem;
-      font-weight: 700;
+      font-size: 0.65rem;
+      font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       padding: 2px 7px;
       border-radius: 2px;
-      margin-top: 3px;
+      border: 1px solid rgba(245,197,24,0.25);
+      margin-left: 6px;
     }
-    .prod-preco {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 900;
-      color: var(--amarelo);
-      line-height: 1;
+
+    /* Qty + Adicionar */
+    .add-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: flex-end;
     }
-    .prod-unidade {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--cinza-texto);
-      margin-left: 2px;
-    }
-    .prod-btn {
-      width: 100%;
-      background: var(--cinza-borda);
-      border: none;
+    .qty-ctrl {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--preto);
+      border: 1px solid var(--cinza-borda);
       border-radius: 4px;
-      color: var(--branco);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 10px;
+      overflow: hidden;
+    }
+    .qty-btn {
+      background: none;
+      border: none;
+      color: var(--cinza-texto);
+      width: 28px;
+      height: 28px;
       cursor: pointer;
-      transition: background 0.2s, color 0.2s;
+      font-size: 1rem;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      margin-top: auto;
+      transition: color 0.15s, background 0.15s;
     }
-    .prod-btn:hover { background: var(--amarelo); color: var(--preto); }
-    .prod-btn.adicionado { background: var(--amarelo); color: var(--preto); }
-
-    /* ── BANNER ENTREGA ── */
-    .banner-entrega {
-      background: var(--cinza-escuro);
-      border-top: 1px solid var(--cinza-borda);
-      padding: 48px 24px;
-    }
-    .banner-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: var(--cinza-medio);
-      border: 1px solid var(--cinza-borda);
-      border-left: 4px solid var(--amarelo);
-      border-radius: 8px;
-      padding: 36px 40px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 32px;
-      align-items: center;
-    }
-    .banner-inner h2 {
+    .qty-btn:hover { color: var(--amarelo); background: rgba(245,197,24,0.08); }
+    .qty-input {
+      background: transparent;
+      border: none;
+      color: var(--branco);
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.05;
-      margin-bottom: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      width: 36px;
+      text-align: center;
+      outline: none;
+      padding: 0;
     }
-    .banner-inner h2 em { font-style: normal; color: var(--amarelo); }
-    .banner-inner p { color: var(--cinza-texto); font-size: 0.9rem; }
-    .btn-amarelo {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    .qty-input::-webkit-inner-spin-button, .qty-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+    .btn-add {
       background: var(--amarelo);
       color: var(--preto);
+      border: none;
+      border-radius: 4px;
+      padding: 7px 14px;
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 800;
-      font-size: 0.95rem;
-      letter-spacing: 0.1em;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 4px;
-      transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.15s;
       white-space: nowrap;
     }
-    .btn-amarelo:hover { background: var(--amarelo-escuro); transform: translateY(-2px); }
+    .btn-add:hover { background: var(--amarelo-escuro); transform: scale(1.03); }
+    .btn-add.added { background: #4ade80; color: #022c11; }
+
+    /* desconto progressivo info */
+    .promo-info {
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-left: 3px solid var(--amarelo);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .promo-info-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .promo-info-text {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      line-height: 1.55;
+    }
+    .promo-info-text strong { color: var(--amarelo); font-weight: 700; }
+    .promo-tiers {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .promo-tier {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 2px;
+      background: rgba(245,197,24,0.1);
+      color: var(--amarelo);
+      border: 1px solid rgba(245,197,24,0.2);
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -790,12 +767,7 @@
       margin-bottom: 18px;
     }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul li a {
-      color: var(--cinza-texto);
-      text-decoration: none;
-      font-size: 0.88rem;
-      transition: color 0.2s;
-    }
+    .footer-col ul li a { color: var(--cinza-texto); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
     .footer-col ul li a:hover { color: var(--branco); }
     .footer-col ul li span { color: var(--cinza-texto); font-size: 0.88rem; }
     .footer-bottom {
@@ -811,93 +783,98 @@
     }
     .footer-bottom p { font-size: 0.78rem; color: #444; }
 
-    /* ── RESPONSIVO ── */
+    /* Responsive */
     @media (max-width: 900px) {
-      .banner-inner { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .prod-grid { grid-template-columns: 1fr 1fr; }
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
       .footer-bottom { flex-direction: column; text-align: center; }
-      .cart-modal { max-width: 100%; border-radius: 12px 12px 0 0; }
+      .prod-table thead th:nth-child(2),
+      .prod-table td:nth-child(2) { display: none; }
     }
-    @media (max-width: 480px) {
-      .prod-grid { grid-template-columns: 1fr; }
-      .filtros { gap: 6px; }
+    @media (max-width: 540px) {
+      .add-row { flex-direction: column; align-items: flex-end; gap: 6px; }
     }
   </style>
 </head>
 <body>
 
-<!-- WhatsApp flutuante -->
+<!-- WhatsApp Flutuante -->
 <a class="whatsapp-float" href="https://wa.me/5521992320613?text=Olá,%20tudo%20bem?%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <!-- Carrinho flutuante -->
-<button class="cart-float" onclick="toggleCart()" aria-label="Carrinho">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6" stroke="var(--preto)" stroke-width="2" fill="none"/><path d="M16 10a4 4 0 01-8 0" fill="none" stroke="var(--preto)" stroke-width="2"/></svg>
-  <span class="cart-badge" id="cartBadge">0</span>
+<button id="cart-btn" class="hidden" onclick="openCart()">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+  Carrinho
+  <span class="cart-count" id="cart-count">0</span>
 </button>
 
-<!-- Overlay carrinho -->
-<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-
-<!-- Modal carrinho -->
-<div class="cart-modal" id="cartModal">
-  <div class="cart-modal-header">
-    <span class="cart-modal-title">🛒 Meu Pedido</span>
-    <button class="cart-modal-close" onclick="closeCart()">✕</button>
-  </div>
-
-  <div class="cart-items" id="cartItems">
-    <div class="cart-empty" id="cartEmpty">
-      <div class="cart-empty-icon">📦</div>
-      <p>Nenhum produto adicionado ainda.</p>
+<!-- Modal do carrinho -->
+<div id="cart-overlay" onclick="overlayClick(event)">
+  <div id="cart-panel">
+    <div class="cart-header">
+      <h3>🏗️ Seu <span>Pedido</span></h3>
+      <button id="cart-close" onclick="closeCart()">✕</button>
     </div>
-  </div>
-
-  <div class="cart-frete" id="cartFrete" style="display:none">
-    <div class="cart-frete-label">Calcular Frete</div>
-    <div class="frete-row">
-      <input class="frete-input" id="freteInput" type="text" placeholder="Digite seu CEP" maxlength="9" />
-      <button class="frete-btn" onclick="calcularFrete()">Calcular</button>
+    <div id="cart-items">
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🧱</div>
+        Nenhum produto adicionado ainda.
+      </div>
     </div>
-    <div class="frete-resultado" id="freteRes"></div>
-  </div>
+    <div class="cart-footer">
+      <div class="cart-footer-row">
+        <span class="cart-total-label">Total Estimado</span>
+        <span class="cart-total-val" id="cart-total">R$ 0,00</span>
+      </div>
+      <div class="frete-box">
+        <label>📍 Endereço de Entrega</label>
 
-  <div class="cart-endereco" id="cartEndereco">
-    <input class="end-input" id="endRua" type="text" placeholder="Rua / Avenida" />
-    <div class="end-row">
-      <input class="end-input" id="endNum" type="text" placeholder="Número" />
-      <input class="end-input" id="endComp" type="text" placeholder="Complemento" />
+        <!-- CEP + botão buscar -->
+        <div class="frete-row">
+          <input type="text" id="frete-cep" placeholder="CEP (ex: 25255-470)" maxlength="9" oninput="maskCEP(this)" />
+          <button id="btn-buscar-cep" onclick="buscarCEP()" style="background:var(--amarelo);color:var(--preto);border:none;border-radius:4px;padding:0 14px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.2s;">Buscar</button>
+        </div>
+
+        <!-- Rua + Número (preenchidos auto / editáveis) -->
+        <div class="frete-row">
+          <input type="text" id="frete-rua" placeholder="Rua / Av." style="flex:1" readonly />
+          <input type="text" id="frete-numero" placeholder="Nº" style="width:70px;flex:none" />
+        </div>
+
+        <!-- Bairro + Cidade (auto) -->
+        <div class="frete-row">
+          <input type="text" id="frete-bairro" placeholder="Bairro" style="flex:1" readonly />
+          <input type="text" id="frete-cidade" placeholder="Cidade / UF" style="flex:1" readonly />
+        </div>
+
+        <!-- Complemento / ponto de referência -->
+        <div class="frete-row">
+          <input type="text" id="frete-complemento" placeholder="Complemento / Ponto de referência (ex: casa, apto 201, próx. à padaria)" style="flex:1" />
+        </div>
+
+        <!-- Horário preferido -->
+        <div class="frete-row">
+          <select id="frete-hora">
+            <option value="">⏰ Melhor horário para entrega</option>
+            <option>Manhã (8h–12h)</option>
+            <option>Tarde (12h–18h)</option>
+            <option>Qualquer horário</option>
+          </select>
+        </div>
+
+        <div id="frete-resultado"></div>
+      </div>
+      <button class="btn-finalizar" onclick="finalizarPedido()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Finalizar Pedido no WhatsApp
+      </button>
     </div>
-    <input class="end-input" id="endBairro" type="text" placeholder="Bairro" />
-  </div>
-
-  <div class="cart-horario" id="cartHorario">
-    <div class="horario-label">Melhor horário para entrega</div>
-    <select class="horario-select" id="horarioSelect">
-      <option value="Qualquer horário">Qualquer horário</option>
-      <option value="Manhã (07h–12h)">Manhã (07h–12h)</option>
-      <option value="Tarde (12h–18h)">Tarde (12h–18h)</option>
-      <option value="A combinar">A combinar</option>
-    </select>
-  </div>
-
-  <div class="cart-footer" id="cartFooter" style="display:none">
-    <div class="cart-total-row">
-      <span class="cart-total-label">Total Estimado</span>
-      <span class="cart-total-val" id="cartTotal">R$ 0,00</span>
-    </div>
-    <button class="btn-finalizar" onclick="finalizarPedido()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Finalizar pelo WhatsApp
-    </button>
-    <button class="btn-limpar-cart" onclick="limparCarrinho()">Limpar carrinho</button>
   </div>
 </div>
 
@@ -922,7 +899,7 @@
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Início</a>
-    <a href="produtos.html" class="ativo">Catálogo</a>
+    <a href="produtos.html">Catálogo</a>
     <a href="entregas.html">Entregas</a>
     <a href="quem-somos.html">Quem Somos</a>
     <a href="contato.html">Atendimento</a>
@@ -930,398 +907,267 @@
   </div>
 </nav>
 
-<!-- HERO DA PÁGINA -->
+<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <div class="section-label">Catálogo Completo</div>
-    <h1>Materiais em<br><em>Estoque Imediato.</em></h1>
-    <p>Ferragens, cimento, lajes, tijolos, areia, pedra e madeira. Adicione ao carrinho e envie seu pedido direto pelo WhatsApp.</p>
+    <div class="section-label">Estoque Imediato · Duque de Caxias · RJ</div>
+    <h1>Catálogo <em>Completo</em></h1>
+    <p>Ferragens, cimentos, lajes, tijolos, areia, pedra e madeira. Selecione os itens, monte seu pedido e envie direto pelo WhatsApp.</p>
   </div>
 </section>
 
-<!-- CATÁLOGO -->
-<section class="catalogo">
-  <div class="container">
+<!-- CATALOG -->
+<div class="catalog-wrap">
 
-    <!-- Filtros -->
-    <div class="filtros" id="filtros">
-      <button class="filtro-btn ativo" onclick="filtrar('todos', this)">Todos</button>
-      <button class="filtro-btn" onclick="filtrar('ferragem', this)">🔩 Ferragem</button>
-      <button class="filtro-btn" onclick="filtrar('cimento', this)">🏗️ Cimento</button>
-      <button class="filtro-btn" onclick="filtrar('laje', this)">🧱 Laje</button>
-      <button class="filtro-btn" onclick="filtrar('tijolo', this)">🟫 Tijolo</button>
-      <button class="filtro-btn" onclick="filtrar('areia-pedra', this)">⛏️ Areia & Pedra</button>
-      <button class="filtro-btn" onclick="filtrar('madeira', this)">🪵 Madeira</button>
-    </div>
-
-    <!-- FERRAGEM -->
-    <div class="cat-section" data-cat="ferragem" id="sec-ferragem">
-      <div class="cat-header">
-        <span class="cat-emoji">🔩</span>
-        <span class="cat-titulo">Ferragem & Aço</span>
-        <span class="cat-count">CA-50 · CA-60</span>
-      </div>
-      <div class="prod-grid">
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🔩</span>
-            <div class="prod-info">
-              <div class="prod-nome">Vergalhão CA-50 — 5/16"</div>
-              <div class="prod-desc">Barra de 12m · Alta resistência · Fundação e estrutura</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 62,00<span class="prod-unidade">/barra</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🔩','Vergalhão CA-50 5/16"','R$ 62,00/barra',62)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🔩</span>
-            <div class="prod-info">
-              <div class="prod-nome">Vergalhão CA-50 — 3/8"</div>
-              <div class="prod-desc">Barra de 12m · Armação de pilares e vigas</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 78,00<span class="prod-unidade">/barra</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🔩','Vergalhão CA-50 3/8"','R$ 78,00/barra',78)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🔩</span>
-            <div class="prod-info">
-              <div class="prod-nome">Vergalhão CA-50 — 1/2"</div>
-              <div class="prod-desc">Barra de 12m · Estrutura principal · Pilares</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 110,00<span class="prod-unidade">/barra</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🔩','Vergalhão CA-50 1/2"','R$ 110,00/barra',110)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🔩</span>
-            <div class="prod-info">
-              <div class="prod-nome">Vergalhão CA-60 — 4,2mm</div>
-              <div class="prod-desc">Fio CA-60 · Estribos e armação de lajes</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 28,00<span class="prod-unidade">/kg</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🔩','Vergalhão CA-60 4,2mm','R$ 28,00/kg',28)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🔩</span>
-            <div class="prod-info">
-              <div class="prod-nome">Malha POP 20×20</div>
-              <div class="prod-desc">Tela soldada 2,4×6m · Laje e piso · CA-60</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 72,50<span class="prod-unidade">/tela</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🔩','Malha POP 20×20','R$ 72,50/tela',72.5)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🔩</span>
-            <div class="prod-info">
-              <div class="prod-nome">Coluna Armada 5/16"</div>
-              <div class="prod-desc">Coluna pré-montada · Aço CA-50 com estribos</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 95,00<span class="prod-unidade">/unid</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🔩','Coluna Armada 5/16"','R$ 95,00/unid',95)">+ Adicionar ao pedido</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- CIMENTO -->
-    <div class="cat-section" data-cat="cimento" id="sec-cimento">
-      <div class="cat-header">
-        <span class="cat-emoji">🏗️</span>
-        <span class="cat-titulo">Cimento</span>
-        <span class="cat-count">CP II · CP IV</span>
-      </div>
-      <div class="prod-grid">
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🏗️</span>
-            <div class="prod-info">
-              <div class="prod-nome">Cimento Mauá CP II — 50kg</div>
-              <div class="prod-desc">Uso geral · Argamassas, concreto e revestimento</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 33,50<span class="prod-unidade">/saco</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🏗️','Cimento Mauá CP II 50kg','R$ 33,50/saco',33.5)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🏗️</span>
-            <div class="prod-info">
-              <div class="prod-nome">Cimento Mauá CP II — Pallet</div>
-              <div class="prod-desc">40 sacos × 50kg · Preço especial atacado</div>
-              <span class="prod-tag-atacado">Atacado</span>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 1.260,00<span class="prod-unidade">/pallet</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🏗️','Cimento Mauá CP II — Pallet 40 sacos','R$ 1.260,00/pallet',1260)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🏗️</span>
-            <div class="prod-info">
-              <div class="prod-nome">Cimento CP IV — 50kg</div>
-              <div class="prod-desc">Resistente à umidade · Indicado para ambientes úmidos</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 36,00<span class="prod-unidade">/saco</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🏗️','Cimento CP IV 50kg','R$ 36,00/saco',36)">+ Adicionar ao pedido</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- LAJE -->
-    <div class="cat-section" data-cat="laje" id="sec-laje">
-      <div class="cat-header">
-        <span class="cat-emoji">🧱</span>
-        <span class="cat-titulo">Lajes Pré-Moldadas</span>
-        <span class="cat-count">EPS · Cerâmica</span>
-      </div>
-      <div class="prod-grid">
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🧱</span>
-            <div class="prod-info">
-              <div class="prod-nome">Laje de Isopor (EPS)</div>
-              <div class="prod-desc">Vão até 4m · Leve e resistente · Pronta entrega</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 35,00<span class="prod-unidade">/m²</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🧱','Laje de Isopor (EPS)','R$ 35,00/m²',35)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🧱</span>
-            <div class="prod-info">
-              <div class="prod-nome">Laje Cerâmica</div>
-              <div class="prod-desc">Vão até 5m · Alta durabilidade · Acabamento superior</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 42,00<span class="prod-unidade">/m²</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🧱','Laje Cerâmica','R$ 42,00/m²',42)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🧱</span>
-            <div class="prod-info">
-              <div class="prod-nome">Tavela Cerâmica</div>
-              <div class="prod-desc">Bloco enchimento para laje · Por unidade</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 2,80<span class="prod-unidade">/unid</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🧱','Tavela Cerâmica','R$ 2,80/unid',2.8)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🧱</span>
-            <div class="prod-info">
-              <div class="prod-nome">Viga Treliçada</div>
-              <div class="prod-desc">Aço CA-60 · Para composição de laje · 6m</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 48,00<span class="prod-unidade">/peça</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🧱','Viga Treliçada 6m','R$ 48,00/peça',48)">+ Adicionar ao pedido</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- TIJOLO -->
-    <div class="cat-section" data-cat="tijolo" id="sec-tijolo">
-      <div class="cat-header">
-        <span class="cat-emoji">🟫</span>
-        <span class="cat-titulo">Tijolos</span>
-        <span class="cat-count">20×30 · 20×20</span>
-      </div>
-      <div class="prod-grid">
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🟫</span>
-            <div class="prod-info">
-              <div class="prod-nome">Tijolo 20×30 — Unidade</div>
-              <div class="prod-desc">Tijolo furado 6 furos · Alvenaria e fechamento</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 0,95<span class="prod-unidade">/unid</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🟫','Tijolo 20×30 — Unidade','R$ 0,95/unid',0.95)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🟫</span>
-            <div class="prod-info">
-              <div class="prod-nome">Tijolo 20×30 — Milheiro</div>
-              <div class="prod-desc">1.000 unidades · Preço especial de atacado</div>
-              <span class="prod-tag-atacado">Atacado</span>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 850,00<span class="prod-unidade">/mil</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🟫','Tijolo 20×30 — Milheiro','R$ 850,00/mil',850)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🟫</span>
-            <div class="prod-info">
-              <div class="prod-nome">Tijolo 20×20 — Unidade</div>
-              <div class="prod-desc">Tijolo furado · Divisórias e paredes internas</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 0,75<span class="prod-unidade">/unid</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🟫','Tijolo 20×20 — Unidade','R$ 0,75/unid',0.75)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🟫</span>
-            <div class="prod-info">
-              <div class="prod-nome">Tijolo 20×20 — Milheiro</div>
-              <div class="prod-desc">1.000 unidades · Preço especial de atacado</div>
-              <span class="prod-tag-atacado">Atacado</span>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 680,00<span class="prod-unidade">/mil</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🟫','Tijolo 20×20 — Milheiro','R$ 680,00/mil',680)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🟫</span>
-            <div class="prod-info">
-              <div class="prod-nome">Tijolinho Aparente</div>
-              <div class="prod-desc">Acabamento rústico · Decorativo e externo</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 1,40<span class="prod-unidade">/unid</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🟫','Tijolinho Aparente','R$ 1,40/unid',1.4)">+ Adicionar ao pedido</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- AREIA & PEDRA -->
-    <div class="cat-section" data-cat="areia-pedra" id="sec-areia-pedra">
-      <div class="cat-header">
-        <span class="cat-emoji">⛏️</span>
-        <span class="cat-titulo">Areia & Pedra</span>
-        <span class="cat-count">Grossa · Fina · Brita</span>
-      </div>
-      <div class="prod-grid">
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">⛏️</span>
-            <div class="prod-info">
-              <div class="prod-nome">Areia Grossa</div>
-              <div class="prod-desc">Concreto e argamassa estrutural · Por m³</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 140,00<span class="prod-unidade">/m³</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'⛏️','Areia Grossa','R$ 140,00/m³',140)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">⛏️</span>
-            <div class="prod-info">
-              <div class="prod-nome">Areia Fina</div>
-              <div class="prod-desc">Reboco e assentamento · Por m³</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 155,00<span class="prod-unidade">/m³</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'⛏️','Areia Fina','R$ 155,00/m³',155)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">⛏️</span>
-            <div class="prod-info">
-              <div class="prod-nome">Brita 1</div>
-              <div class="prod-desc">Concreto estrutural · Drenagem · Por m³</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 175,00<span class="prod-unidade">/m³</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'⛏️','Brita 1','R$ 175,00/m³',175)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">⛏️</span>
-            <div class="prod-info">
-              <div class="prod-nome">Pedrisco</div>
-              <div class="prod-desc">Acabamento e passeios · Por m³</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 165,00<span class="prod-unidade">/m³</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'⛏️','Pedrisco','R$ 165,00/m³',165)">+ Adicionar ao pedido</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- MADEIRA -->
-    <div class="cat-section" data-cat="madeira" id="sec-madeira">
-      <div class="cat-header">
-        <span class="cat-emoji">🪵</span>
-        <span class="cat-titulo">Madeira</span>
-        <span class="cat-count">Fôrmas · Caibro · Viga</span>
-      </div>
-      <div class="prod-grid">
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🪵</span>
-            <div class="prod-info">
-              <div class="prod-nome">Madeira de Fôrma 2,5×25cm</div>
-              <div class="prod-desc">Tábua 3m · Fôrma de concreto · Pinus</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 18,00<span class="prod-unidade">/peça</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🪵','Madeira de Fôrma 2,5×25cm','R$ 18,00/peça',18)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🪵</span>
-            <div class="prod-info">
-              <div class="prod-nome">Caibro 5×7cm — 3m</div>
-              <div class="prod-desc">Estrutura de telhado · Ripamento · Eucalipto</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 22,00<span class="prod-unidade">/peça</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🪵','Caibro 5×7cm 3m','R$ 22,00/peça',22)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🪵</span>
-            <div class="prod-info">
-              <div class="prod-nome">Viga 7×9cm — 6m</div>
-              <div class="prod-desc">Estrutura pesada · Suporte de laje e telhado</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 68,00<span class="prod-unidade">/peça</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🪵','Viga 7×9cm 6m','R$ 68,00/peça',68)">+ Adicionar ao pedido</button>
-        </div>
-        <div class="prod-card">
-          <div class="prod-card-top">
-            <span class="prod-emoji">🪵</span>
-            <div class="prod-info">
-              <div class="prod-nome">Compensado 14mm — 2,44×1,22m</div>
-              <div class="prod-desc">Chapas de compensado · Fôrma e acabamento</div>
-            </div>
-          </div>
-          <div><span class="prod-preco">R$ 95,00<span class="prod-unidade">/chapa</span></span></div>
-          <button class="prod-btn" onclick="addCart(this,'🪵','Compensado 14mm 2,44×1,22m','R$ 95,00/chapa',95)">+ Adicionar ao pedido</button>
-        </div>
-      </div>
-    </div>
-
+  <!-- Filtros por aba -->
+  <div class="cat-tabs">
+    <button class="cat-tab active" onclick="filterCat('todos')">Todos</button>
+    <button class="cat-tab" onclick="filterCat('ferragem')">🔩 Ferragens</button>
+    <button class="cat-tab" onclick="filterCat('cimento')">🏗️ Cimento</button>
+    <button class="cat-tab" onclick="filterCat('laje')">🏛️ Lajes</button>
+    <button class="cat-tab" onclick="filterCat('tijolo')">🧱 Tijolos & Blocos</button>
+    <button class="cat-tab" onclick="filterCat('areia')">⛏️ Areia & Pedra</button>
+    <button class="cat-tab" onclick="filterCat('madeira')">🪵 Madeiras</button>
   </div>
-</section>
 
-<!-- BANNER ENTREGA -->
-<section class="banner-entrega">
-  <div class="banner-inner">
-    <div>
-      <h2>Entrega Rápida<br><em>Em Todo o RJ.</em></h2>
-      <p>Pedidos aprovados até 11h30 podem sair no mesmo dia para a Baixada Fluminense. Consulte prazos para Capital e Interior.</p>
+  <!-- ── FERRAGENS ── -->
+  <div class="cat-section" data-cat="ferragem">
+    <div class="cat-title">
+      <div class="cat-icon">🔩</div>
+      <h2>Ferragens <em>CA-50 / CA-60</em></h2>
     </div>
-    <a class="btn-amarelo" href="entregas.html">Ver Logística</a>
+
+    <!-- Colunas -->
+    <div class="subcat">
+      <div class="subcat-label">Colunas Armadas — 6 metros</div>
+      <table class="prod-table">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Medida</th>
+            <th>Preço Unit.</th>
+            <th>Qtd. + Adicionar</th>
+          </tr>
+        </thead>
+        <tbody id="tb-colunas"></tbody>
+      </table>
+    </div>
+
+    <!-- Vergalhões -->
+    <div class="subcat">
+      <div class="subcat-label">Vergalhões — 12 metros</div>
+      <table class="prod-table">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Bitola</th>
+            <th>Preço Unit.</th>
+            <th>Qtd. + Adicionar</th>
+          </tr>
+        </thead>
+        <tbody id="tb-vergalhoes"></tbody>
+      </table>
+    </div>
+
+    <!-- Radier -->
+    <div class="subcat">
+      <div class="subcat-label">Radier — por peça</div>
+      <table class="prod-table">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Medida × Bitola</th>
+            <th>Preço Unit.</th>
+            <th>Qtd. + Adicionar</th>
+          </tr>
+        </thead>
+        <tbody id="tb-radier"></tbody>
+      </table>
+    </div>
+
+    <!-- Malhas POP -->
+    <div class="subcat">
+      <div class="subcat-label">Malhas POP — Fio 4.2mm · 2×3m</div>
+      <table class="prod-table">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Espaçamento</th>
+            <th>Preço Unit.</th>
+            <th>Qtd. + Adicionar</th>
+          </tr>
+        </thead>
+        <tbody id="tb-malhas"></tbody>
+      </table>
+    </div>
+
+    <!-- Estribos -->
+    <div class="subcat">
+      <div class="subcat-label">Estribos — Pacote com 100 un.</div>
+      <table class="prod-table">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Medida</th>
+            <th>Preço Pacote</th>
+            <th>Qtd. + Adicionar</th>
+          </tr>
+        </thead>
+        <tbody id="tb-estribos"></tbody>
+      </table>
+    </div>
+
+    <!-- Arame -->
+    <div class="subcat">
+      <div class="subcat-label">Arame Recozido — por kg</div>
+      <table class="prod-table">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Tipo</th>
+            <th>Preço/kg</th>
+            <th>Qtd. (kg) + Adicionar</th>
+          </tr>
+        </thead>
+        <tbody id="tb-arame"></tbody>
+      </table>
+    </div>
+
+    <!-- Pregos -->
+    <div class="subcat">
+      <div class="subcat-label">Pregos Comuns — por kg</div>
+      <table class="prod-table">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Bitola</th>
+            <th>Preço/kg</th>
+            <th>Qtd. (kg) + Adicionar</th>
+          </tr>
+        </thead>
+        <tbody id="tb-pregos"></tbody>
+      </table>
+    </div>
   </div>
-</section>
+
+  <!-- ── CIMENTO ── -->
+  <div class="cat-section" data-cat="cimento">
+    <div class="cat-title">
+      <div class="cat-icon">🏗️</div>
+      <h2>Cimento <em>50kg / saco</em></h2>
+    </div>
+    <div class="promo-info">
+      <div class="promo-info-icon">🏷️</div>
+      <div class="promo-info-text">
+        <strong>Desconto Progressivo no Cimento!</strong> Quanto mais você compra, maior o desconto — aplicado automaticamente ao carrinho.<br/>
+        <div class="promo-tiers">
+          <span class="promo-tier">40+ sacos → 4%</span>
+          <span class="promo-tier">50+ sacos → 5%</span>
+          <span class="promo-tier">60+ sacos → 6%</span>
+          <span class="promo-tier">70+ sacos → 7%</span>
+          <span class="promo-tier">80+ sacos → 8%</span>
+          <span class="promo-tier">90+ sacos → 9%</span>
+          <span class="promo-tier">100+ sacos → 10% (máx.)</span>
+        </div>
+      </div>
+    </div>
+    <table class="prod-table">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Tipo</th>
+          <th>Preço Unit.</th>
+          <th>Qtd. (sacos) + Adicionar</th>
+        </tr>
+      </thead>
+      <tbody id="tb-cimento"></tbody>
+    </table>
+  </div>
+
+  <!-- ── LAJES ── -->
+  <div class="cat-section" data-cat="laje">
+    <div class="cat-title">
+      <div class="cat-icon">🏛️</div>
+      <h2>Lajes Pré-Moldadas <em>por m²</em></h2>
+    </div>
+    <table class="prod-table">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Tipo</th>
+          <th>Preço/m²</th>
+          <th>Qtd. (m²) + Adicionar</th>
+        </tr>
+      </thead>
+      <tbody id="tb-lajes"></tbody>
+    </table>
+  </div>
+
+  <!-- ── TIJOLOS & BLOCOS ── -->
+  <div class="cat-section" data-cat="tijolo">
+    <div class="cat-title">
+      <div class="cat-icon">🧱</div>
+      <h2>Tijolos <em>&amp; Blocos de Concreto</em></h2>
+    </div>
+
+    <div class="subcat">
+      <div class="subcat-label">Tijolos — Atacado (milheiro = 1000 un.)</div>
+      <table class="prod-table">
+        <thead><tr><th>Produto</th><th>Medida</th><th>Preço Milheiro</th><th>Qtd. (milheiro) + Adicionar</th></tr></thead>
+        <tbody id="tb-tijolo-atac"></tbody>
+      </table>
+    </div>
+
+    <div class="subcat">
+      <div class="subcat-label">Tijolos — Varejo (por unidade)</div>
+      <table class="prod-table">
+        <thead><tr><th>Produto</th><th>Medida</th><th>Preço/un.</th><th>Qtd. + Adicionar</th></tr></thead>
+        <tbody id="tb-tijolo-var"></tbody>
+      </table>
+    </div>
+
+    <div class="subcat">
+      <div class="subcat-label">Blocos de Concreto — Atacado (1000 un.)</div>
+      <table class="prod-table">
+        <thead><tr><th>Produto</th><th>Medida</th><th>Preço Milheiro</th><th>Qtd. (milheiro) + Adicionar</th></tr></thead>
+        <tbody id="tb-bloco-atac"></tbody>
+      </table>
+    </div>
+
+    <div class="subcat">
+      <div class="subcat-label">Blocos de Concreto — Varejo (por unidade)</div>
+      <table class="prod-table">
+        <thead><tr><th>Produto</th><th>Medida</th><th>Preço/un.</th><th>Qtd. + Adicionar</th></tr></thead>
+        <tbody id="tb-bloco-var"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── AREIA & PEDRA ── -->
+  <div class="cat-section" data-cat="areia">
+    <div class="cat-title">
+      <div class="cat-icon">⛏️</div>
+      <h2>Areia, Areola <em>&amp; Pedra Brita — por m³</em></h2>
+    </div>
+    <table class="prod-table">
+      <thead><tr><th>Produto</th><th>Tipo</th><th>Preço/m³</th><th>Qtd. (m³) + Adicionar</th></tr></thead>
+      <tbody id="tb-areia"></tbody>
+    </table>
+  </div>
+
+  <!-- ── MADEIRAS ── -->
+  <div class="cat-section" data-cat="madeira">
+    <div class="cat-title">
+      <div class="cat-icon">🪵</div>
+      <h2>Madeiras <em>Pinus & Sarrafos</em></h2>
+    </div>
+    <table class="prod-table">
+      <thead><tr><th>Produto</th><th>Dimensão</th><th>Preço Unit.</th><th>Qtd. + Adicionar</th></tr></thead>
+      <tbody id="tb-madeira"></tbody>
+    </table>
+  </div>
+
+</div><!-- end catalog-wrap -->
 
 <!-- FOOTER -->
 <footer>
@@ -1365,209 +1211,436 @@
 </footer>
 
 <script>
-  // ── MENU MOBILE ──
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
+// ── CATÁLOGO DE PRODUTOS ──────────────────────────────────────────────────────
+const CATALOG = {
+  colunas: [
+    { id:'col1', name:'Coluna 1/4" — 7×20', detail:'CA-50 · 6 metros', price:55, unit:'un.' },
+    { id:'col2', name:'Coluna 1/4" — 7×27', detail:'CA-50 · 6 metros', price:67.5, unit:'un.' },
+    { id:'col3', name:'Coluna 5/16" — 7×20', detail:'CA-50 · 6 metros', price:65, unit:'un.' },
+    { id:'col4', name:'Coluna 5/16" — 7×27', detail:'CA-50 · 6 metros', price:87.5, unit:'un.' },
+    { id:'col5', name:'Coluna 3/8" — 7×20', detail:'CA-50 · 6 metros', price:115, unit:'un.' },
+    { id:'col6', name:'Coluna 3/8" — 7×27', detail:'CA-50 · 6 metros', price:147.5, unit:'un.' },
+  ],
+  vergalhoes: [
+    { id:'vrg1', name:'Vergalhão 3/16"', detail:'CA-50 · 12 metros', price:10, unit:'un.' },
+    { id:'vrg2', name:'Vergalhão 1/4"', detail:'CA-50 · 12 metros', price:20, unit:'un.' },
+    { id:'vrg3', name:'Vergalhão 5/16"', detail:'CA-50 · 12 metros', price:30, unit:'un.' },
+    { id:'vrg4', name:'Vergalhão 3/8"', detail:'CA-50 · 12 metros', price:50, unit:'un.' },
+    { id:'vrg5', name:'Vergalhão 1/2"', detail:'CA-50 · 12 metros', price:80, unit:'un.' },
+  ],
+  radier: [
+    { id:'rad1', name:'Radier 60×60cm — 1/4"', detail:'CA-50', price:12, unit:'un.' },
+    { id:'rad2', name:'Radier 80×80cm — 1/4"', detail:'CA-50', price:18, unit:'un.' },
+    { id:'rad3', name:'Radier 60×60cm — 5/16"', detail:'CA-50', price:20, unit:'un.' },
+    { id:'rad4', name:'Radier 80×80cm — 5/16"', detail:'CA-50', price:25, unit:'un.' },
+    { id:'rad5', name:'Radier 100×100cm — 5/16"', detail:'CA-50', price:40, unit:'un.' },
+    { id:'rad6', name:'Radier 60×60cm — 3/8"', detail:'CA-50', price:27.5, unit:'un.' },
+    { id:'rad7', name:'Radier 80×80cm — 3/8"', detail:'CA-50', price:50, unit:'un.' },
+    { id:'rad8', name:'Radier 100×100cm — 3/8"', detail:'CA-50', price:65, unit:'un.' },
+  ],
+  malhas: [
+    { id:'mal1', name:'Malha POP 20×20', detail:'Fio 4.2mm · 2×3m', price:72.5, unit:'un.' },
+    { id:'mal2', name:'Malha POP 15×15', detail:'Fio 4.2mm · 2×3m', price:87.5, unit:'un.' },
+    { id:'mal3', name:'Malha POP 10×10', detail:'Fio 4.2mm · 2×3m', price:115, unit:'un.' },
+  ],
+  estribos: [
+    { id:'est1', name:'Estribos 7×20cm', detail:'Pacote com 100 un.', price:80, unit:'pct' },
+    { id:'est2', name:'Estribos 7×27cm', detail:'Pacote com 100 un.', price:120, unit:'pct' },
+  ],
+  arame: [
+    { id:'arm1', name:'Arame Recozido Liso', detail:'por kg', price:25, unit:'kg' },
+    { id:'arm2', name:'Arame Recozido Torcido', detail:'por kg', price:25, unit:'kg' },
+  ],
+  pregos: [
+    { id:'prg1', name:'Prego Comum 16×24', detail:'por kg', price:20, unit:'kg' },
+    { id:'prg2', name:'Prego Comum 17×27', detail:'por kg', price:20, unit:'kg' },
+    { id:'prg3', name:'Prego Comum 18×30', detail:'por kg', price:20, unit:'kg' },
+  ],
+  cimento: [
+    { id:'cim1', name:'Cimento CSN CP III', detail:'50kg · saco', price:28.5, unit:'saco', promo:true },
+    { id:'cim2', name:'Cimento Mauá CP II', detail:'50kg · saco', price:33.5, unit:'saco', promo:true },
+  ],
+  lajes: [
+    { id:'laj1', name:'Laje de Isopor (EPS)', detail:'medidas fornecidas pelo cliente · por m²', price:35, unit:'m²' },
+    { id:'laj2', name:'Laje Cerâmica', detail:'medidas fornecidas pelo cliente · por m²', price:40, unit:'m²' },
+  ],
+  tijolo_atac: [
+    { id:'tja1', name:'Tijolo 20×20 — Atacado', detail:'milheiro (1000 un.)', price:750, unit:'milh.' },
+    { id:'tja2', name:'Tijolo 20×30 — Atacado', detail:'milheiro (1000 un.)', price:850, unit:'milh.' },
+  ],
+  tijolo_var: [
+    { id:'tjv1', name:'Tijolo 20×20 — Varejo', detail:'por unidade', price:1.10, unit:'un.' },
+    { id:'tjv2', name:'Tijolo 20×30 — Varejo', detail:'por unidade', price:1.20, unit:'un.' },
+  ],
+  bloco_atac: [
+    { id:'bla1', name:'Bloco Concreto 9×19×39 — Atacado', detail:'milheiro (1000 un.)', price:1650, unit:'milh.' },
+    { id:'bla2', name:'Bloco Concreto 14×19×39 — Atacado', detail:'milheiro (1000 un.)', price:2000, unit:'milh.' },
+  ],
+  bloco_var: [
+    { id:'blv1', name:'Bloco Concreto 9×19×39 — Varejo', detail:'por unidade', price:2.25, unit:'un.' },
+    { id:'blv2', name:'Bloco Concreto 14×19×39 — Varejo', detail:'por unidade', price:3.00, unit:'un.' },
+  ],
+  areia: [
+    { id:'are1', name:'Areia Lavada', detail:'por m³', price:105, unit:'m³' },
+    { id:'are2', name:'Areola', detail:'por m³', price:110, unit:'m³' },
+    { id:'are3', name:'Pedra Brita Nº1', detail:'por m³', price:130, unit:'m³' },
+    { id:'are4', name:'Pedra Brita Nº2', detail:'por m³', price:130, unit:'m³' },
+    { id:'are5', name:'Pedra Brita Nº3', detail:'por m³', price:130, unit:'m³' },
+  ],
+  madeira: [
+    { id:'mad1', name:'Tábua Pinus 30×2,5cm', detail:'3 metros', price:35, unit:'un.' },
+    { id:'mad2', name:'Tábua Pinus 20×2,5cm', detail:'3 metros', price:30, unit:'un.' },
+    { id:'mad3', name:'Sarrafo 25cm', detail:'por peça', price:20, unit:'un.' },
+    { id:'mad4', name:'Sarrafo 20cm', detail:'por peça', price:18, unit:'un.' },
+    { id:'mad5', name:'Sarrafo 15cm', detail:'por peça', price:15, unit:'un.' },
+    { id:'mad6', name:'Sarrafo 10cm', detail:'por peça', price:12, unit:'un.' },
+  ],
+};
+
+// ── DESCONTO PROGRESSIVO CIMENTO ──────────────────────────────────────────────
+function cimentoDiscount(qty) {
+  if (qty >= 100) return 0.10;
+  if (qty >= 90)  return 0.09;
+  if (qty >= 80)  return 0.08;
+  if (qty >= 70)  return 0.07;
+  if (qty >= 60)  return 0.06;
+  if (qty >= 50)  return 0.05;
+  if (qty >= 40)  return 0.04;
+  return 0;
+}
+
+// ── CARRINHO ──────────────────────────────────────────────────────────────────
+let cart = {}; // { productId: { ...product, qty } }
+
+function getEffectivePrice(item) {
+  if (item.promo) {
+    const disc = cimentoDiscount(item.qty);
+    return item.price * (1 - disc);
+  }
+  return item.price;
+}
+
+function getDiscountPct(item) {
+  if (item.promo) return cimentoDiscount(item.qty);
+  return 0;
+}
+
+function cartTotal() {
+  return Object.values(cart).reduce((s, item) => s + getEffectivePrice(item) * item.qty, 0);
+}
+
+function cartItemCount() {
+  return Object.values(cart).reduce((s, i) => s + i.qty, 0);
+}
+
+function renderCart() {
+  const container = document.getElementById('cart-items');
+  const keys = Object.keys(cart);
+  const btn = document.getElementById('cart-btn');
+  const count = document.getElementById('cart-count');
+
+  count.textContent = cartItemCount();
+  btn.classList.toggle('hidden', keys.length === 0);
+
+  if (keys.length === 0) {
+    container.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">🧱</div>Nenhum produto adicionado ainda.</div>';
+    document.getElementById('cart-total').textContent = 'R$ 0,00';
+    return;
   }
 
-  // ── CARRINHO ──
-  let carrinho = [];
-
-  function toggleCart() {
-    const overlay = document.getElementById('cartOverlay');
-    const modal = document.getElementById('cartModal');
-    overlay.classList.toggle('open');
-    modal.classList.toggle('open');
-  }
-  function closeCart() {
-    document.getElementById('cartOverlay').classList.remove('open');
-    document.getElementById('cartModal').classList.remove('open');
-  }
-
-  function addCart(btn, emoji, nome, preco, valor) {
-    const existente = carrinho.find(i => i.nome === nome);
-    if (existente) {
-      existente.qty++;
-      existente.total = existente.qty * existente.valor;
-    } else {
-      carrinho.push({ emoji, nome, preco, valor, qty: 1, total: valor });
-    }
-    btn.textContent = '✓ Adicionado';
-    btn.classList.add('adicionado');
-    setTimeout(() => {
-      btn.textContent = '+ Adicionar ao pedido';
-      btn.classList.remove('adicionado');
-    }, 1500);
-    renderCart();
-  }
-
-  function alterarQty(nome, delta) {
-    const item = carrinho.find(i => i.nome === nome);
-    if (!item) return;
-    item.qty += delta;
-    if (item.qty <= 0) {
-      carrinho = carrinho.filter(i => i.nome !== nome);
-    } else {
-      item.total = item.qty * item.valor;
-    }
-    renderCart();
-  }
-
-  function removerItem(nome) {
-    carrinho = carrinho.filter(i => i.nome !== nome);
-    renderCart();
-  }
-
-  function limparCarrinho() {
-    carrinho = [];
-    renderCart();
-  }
-
-  function renderCart() {
-    const badge = document.getElementById('cartBadge');
-    const itemsEl = document.getElementById('cartItems');
-    const emptyEl = document.getElementById('cartEmpty');
-    const freteEl = document.getElementById('cartFrete');
-    const endEl = document.getElementById('cartEndereco');
-    const horEl = document.getElementById('cartHorario');
-    const footerEl = document.getElementById('cartFooter');
-    const totalEl = document.getElementById('cartTotal');
-
-    const totalQty = carrinho.reduce((s, i) => s + i.qty, 0);
-    const totalVal = carrinho.reduce((s, i) => s + i.total, 0);
-
-    // badge
-    badge.textContent = totalQty;
-    badge.classList.toggle('visible', totalQty > 0);
-
-    // empty
-    emptyEl.style.display = carrinho.length === 0 ? 'block' : 'none';
-    freteEl.style.display = carrinho.length === 0 ? 'none' : 'block';
-    footerEl.style.display = carrinho.length === 0 ? 'none' : 'block';
-
-    // endereço e horário
-    if (carrinho.length > 0) {
-      endEl.classList.add('visible');
-      horEl.classList.add('visible');
-    } else {
-      endEl.classList.remove('visible');
-      horEl.classList.remove('visible');
-    }
-
-    // items
-    const itensHTML = carrinho.map(i => `
+  container.innerHTML = keys.map(id => {
+    const item = cart[id];
+    const effPrice = getEffectivePrice(item);
+    const disc = getDiscountPct(item);
+    const subtotal = effPrice * item.qty;
+    const discTag = disc > 0 ? `<span class="disc-tag">−${(disc*100).toFixed(0)}%</span>` : '';
+    return `
       <div class="cart-item">
-        <span class="cart-item-emoji">${i.emoji}</span>
-        <div class="cart-item-info">
-          <div class="cart-item-name">${i.nome}</div>
-          <div class="cart-item-sub">${i.preco}</div>
+        <div>
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-sub">${item.detail} · ${fmtMoney(effPrice)}/${item.unit}${discTag}</div>
+          <button class="cart-remove" onclick="removeFromCart('${id}')">✕ Remover</button>
+        </div>
+        <div class="cart-item-right">
+          <div class="cart-item-price">${fmtMoney(subtotal)}</div>
           <div class="cart-item-controls">
-            <button class="qty-btn" onclick="alterarQty('${i.nome.replace(/'/g,"\\'")}', -1)">−</button>
-            <span class="qty-val">${i.qty}</span>
-            <button class="qty-btn" onclick="alterarQty('${i.nome.replace(/'/g,"\\'")}', 1)">+</button>
+            <button class="cart-qty-btn" onclick="changeCartQty('${id}', -1)">−</button>
+            <span class="cart-qty-num">${item.qty}</span>
+            <button class="cart-qty-btn" onclick="changeCartQty('${id}', 1)">+</button>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-          <span class="cart-item-price">R$ ${i.total.toFixed(2).replace('.',',')}</span>
-          <button class="cart-item-remove" onclick="removerItem('${i.nome.replace(/'/g,"\\'")}')">✕ remover</button>
+      </div>`;
+  }).join('');
+
+  document.getElementById('cart-total').textContent = fmtMoney(cartTotal());
+}
+
+function addToCart(productId, product, qty) {
+  qty = parseInt(qty) || 1;
+  if (qty < 1) qty = 1;
+  if (cart[productId]) {
+    cart[productId].qty += qty;
+  } else {
+    cart[productId] = { ...product, qty };
+  }
+  renderCart();
+}
+
+function changeCartQty(id, delta) {
+  if (!cart[id]) return;
+  cart[id].qty += delta;
+  if (cart[id].qty <= 0) delete cart[id];
+  renderCart();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  renderCart();
+}
+
+function openCart() {
+  document.getElementById('cart-overlay').classList.add('open');
+}
+
+function closeCart() {
+  document.getElementById('cart-overlay').classList.remove('open');
+}
+
+function overlayClick(e) {
+  if (e.target === document.getElementById('cart-overlay')) closeCart();
+}
+
+// ── RENDER TABLES ─────────────────────────────────────────────────────────────
+function renderRow(tbody, product) {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td>
+      <div class="prod-name">${product.name}${product.promo ? '<span class="promo-tag">Promoção</span>' : ''}</div>
+      <div class="prod-detail">${product.detail}</div>
+    </td>
+    <td><div class="prod-detail">${product.detail.split('·')[0].trim()}</div></td>
+    <td>
+      <div class="prod-price">${fmtMoney(product.price)}<small>por ${product.unit}</small></div>
+    </td>
+    <td>
+      <div class="add-row">
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="adjustQty('qty-${product.id}', -1)">−</button>
+          <input class="qty-input" id="qty-${product.id}" type="number" value="1" min="1" />
+          <button class="qty-btn" onclick="adjustQty('qty-${product.id}', 1)">+</button>
         </div>
+        <button class="btn-add" id="add-${product.id}" onclick="handleAdd('${product.id}')">+ Adicionar</button>
       </div>
-    `).join('');
+    </td>`;
+  tbody.appendChild(tr);
+}
 
-    // limpa os items preservando o empty
-    const existingItems = itemsEl.querySelectorAll('.cart-item');
-    existingItems.forEach(el => el.remove());
-    emptyEl.insertAdjacentHTML('afterend', itensHTML);
+function adjustQty(inputId, delta) {
+  const el = document.getElementById(inputId);
+  if (!el) return;
+  let v = parseInt(el.value) || 1;
+  v = Math.max(1, v + delta);
+  el.value = v;
+}
 
-    totalEl.textContent = 'R$ ' + totalVal.toFixed(2).replace('.', ',');
+function handleAdd(productId) {
+  const input = document.getElementById('qty-' + productId);
+  const qty = parseInt(input?.value) || 1;
+
+  // Find product in catalog
+  let found = null;
+  for (const arr of Object.values(CATALOG)) {
+    const p = arr.find(x => x.id === productId);
+    if (p) { found = p; break; }
   }
+  if (!found) return;
 
-  // ── FRETE ──
-  function calcularFrete() {
-    const cep = document.getElementById('freteInput').value.replace(/\D/g, '');
-    const res = document.getElementById('freteRes');
-    if (cep.length < 8) {
-      res.textContent = 'CEP inválido.';
-      res.className = 'frete-resultado';
-      return;
+  addToCart(productId, found, qty);
+
+  // Feedback visual
+  const btn = document.getElementById('add-' + productId);
+  if (btn) {
+    btn.textContent = '✓ Adicionado';
+    btn.classList.add('added');
+    setTimeout(() => { btn.textContent = '+ Adicionar'; btn.classList.remove('added'); }, 1200);
+  }
+  if (input) input.value = 1;
+}
+
+// Populate all tables
+function populateTables() {
+  const map = {
+    'tb-colunas': CATALOG.colunas,
+    'tb-vergalhoes': CATALOG.vergalhoes,
+    'tb-radier': CATALOG.radier,
+    'tb-malhas': CATALOG.malhas,
+    'tb-estribos': CATALOG.estribos,
+    'tb-arame': CATALOG.arame,
+    'tb-pregos': CATALOG.pregos,
+    'tb-cimento': CATALOG.cimento,
+    'tb-lajes': CATALOG.lajes,
+    'tb-tijolo-atac': CATALOG.tijolo_atac,
+    'tb-tijolo-var': CATALOG.tijolo_var,
+    'tb-bloco-atac': CATALOG.bloco_atac,
+    'tb-bloco-var': CATALOG.bloco_var,
+    'tb-areia': CATALOG.areia,
+    'tb-madeira': CATALOG.madeira,
+  };
+  for (const [tbId, products] of Object.entries(map)) {
+    const tbody = document.getElementById(tbId);
+    if (!tbody) continue;
+    products.forEach(p => renderRow(tbody, p));
+  }
+}
+
+// ── FILTRO DE CATEGORIAS ──────────────────────────────────────────────────────
+function filterCat(cat) {
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  document.querySelectorAll('.cat-section').forEach(sec => {
+    if (cat === 'todos' || sec.dataset.cat === cat) {
+      sec.classList.remove('hidden');
+    } else {
+      sec.classList.add('hidden');
     }
-    res.textContent = 'Calculando...';
-    res.className = 'frete-resultado';
+  });
+}
 
-    // Simulação por faixa de CEP (RJ)
-    setTimeout(() => {
-      const prefix = parseInt(cep.substring(0,5));
-      let msg = '';
-      if (prefix >= 25000 && prefix <= 26800) {
-        msg = '✓ Baixada — Entrega em até 24h · Frete a calcular no pedido';
-      } else if (prefix >= 20000 && prefix <= 24999) {
-        msg = '✓ Capital RJ — Entrega em até 36h · Frete a calcular no pedido';
-      } else if (prefix >= 27000 && prefix <= 28999) {
-        msg = '✓ Interior RJ — Entrega em até 72h · Frete a calcular no pedido';
-      } else {
-        msg = 'Consulte o frete pelo WhatsApp para sua região.';
-      }
-      res.textContent = msg;
-      res.className = 'frete-resultado ok';
-    }, 600);
+// ── FINALIZAR PEDIDO ──────────────────────────────────────────────────────────
+function finalizarPedido() {
+  const keys = Object.keys(cart);
+  if (keys.length === 0) {
+    alert('Adicione ao menos um produto ao carrinho antes de finalizar.');
+    return;
   }
 
-  // Máscara CEP
-  document.getElementById('freteInput').addEventListener('input', function() {
-    let v = this.value.replace(/\D/g, '');
-    if (v.length > 5) v = v.slice(0,5) + '-' + v.slice(5,8);
-    this.value = v;
+  const cep         = document.getElementById('frete-cep').value.trim();
+  const rua         = document.getElementById('frete-rua').value.trim();
+  const numero      = document.getElementById('frete-numero').value.trim();
+  const bairro      = document.getElementById('frete-bairro').value.trim();
+  const cidade      = document.getElementById('frete-cidade').value.trim();
+  const complemento = document.getElementById('frete-complemento').value.trim();
+  const hora        = document.getElementById('frete-hora').value.trim();
+
+  // Monta endereço completo
+  let endParts = [];
+  if (rua)    endParts.push(rua);
+  if (numero) endParts.push(`Nº ${numero}`);
+  if (complemento) endParts.push(complemento);
+  if (bairro) endParts.push(bairro);
+  if (cidade) endParts.push(cidade);
+  const endCompleto = endParts.join(', ');
+
+  let itens = '';
+  keys.forEach(id => {
+    const item = cart[id];
+    const effPrice = getEffectivePrice(item);
+    const subtotal = effPrice * item.qty;
+    const disc = getDiscountPct(item);
+    const discStr = disc > 0 ? ` (−${(disc*100).toFixed(0)}%)` : '';
+    itens += `• ${item.qty}× ${item.name}${discStr} — ${fmtMoney(subtotal)}\n`;
   });
 
-  // ── FINALIZAR PEDIDO ──
-  function finalizarPedido() {
-    if (carrinho.length === 0) return;
+  const total = fmtMoney(cartTotal());
 
-    const cep = document.getElementById('freteInput').value || 'Não informado';
-    const rua = document.getElementById('endRua').value || '';
-    const num = document.getElementById('endNum').value || '';
-    const comp = document.getElementById('endComp').value || '';
-    const bairro = document.getElementById('endBairro').value || '';
-    const horario = document.getElementById('horarioSelect').value;
-    const total = carrinho.reduce((s, i) => s + i.total, 0);
+  let msg = `🏗️ *PEDIDO — ABG DISTRIBUIDORA*\n\n`;
+  msg += `*📦 Itens Selecionados:*\n${itens}\n`;
+  msg += `💰 *Total Estimado: ${total}*\n`;
+  if (cep)         msg += `\n📍 *CEP:* ${cep}`;
+  if (endCompleto) msg += `\n🏠 *Endereço:* ${endCompleto}`;
+  if (hora)        msg += `\n⏰ *Melhor horário:* ${hora}`;
+  msg += `\n\nGostaria de confirmar esse pedido e verificar o frete. Aguardo retorno! 🙏`;
 
-    const endFormatado = [rua, num, comp, bairro].filter(Boolean).join(', ') || 'Não informado';
+  const url = `https://wa.me/5521992320613?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
 
-    let itens = carrinho.map(i =>
-      `• ${i.qty}× ${i.nome} — R$ ${i.total.toFixed(2).replace('.', ',')}`
-    ).join('\n');
+// ── CEP: MÁSCARA + BUSCA AUTOMÁTICA ──────────────────────────────────────────
+function maskCEP(el) {
+  let v = el.value.replace(/\D/g,'');
+  if (v.length > 5) v = v.slice(0,5) + '-' + v.slice(5,8);
+  el.value = v;
 
-    const msg =
-`🏗️ *PEDIDO — ABG DISTRIBUIDORA*
-
-*📦 Itens Selecionados:*
-${itens}
-
-💰 *Total Estimado: R$ ${total.toFixed(2).replace('.', ',')}*
-
-📍 *CEP:* ${cep}
-🏠 *Endereço:* ${endFormatado}
-⏰ *Melhor horário:* ${horario}
-
-Gostaria de confirmar esse pedido e verificar o frete. Aguardo retorno! 🙏`;
-
-    const encoded = encodeURIComponent(msg);
-    window.open(`https://wa.me/5521992320613?text=${encoded}`, '_blank');
+  // Limpa campos se CEP incompleto
+  if (v.replace(/\D/g,'').length < 8) {
+    clearAddressFields();
+    document.getElementById('frete-resultado').textContent = '';
+    document.getElementById('frete-resultado').className = '';
   }
 
-  // ── FILTROS ──
-  function filtrar(cat, btn) {
-    document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
-    btn.classList.add('ativo');
-    document.querySelectorAll('.cat-section').forEach(sec => {
-      if (cat === 'todos' || sec.dataset.cat === cat) {
-        sec.style.display = '';
-      } else {
-        sec.style.display = 'none';
-      }
-    });
+  // Auto-busca ao completar 9 chars (00000-000)
+  if (el.value.length === 9) buscarCEP();
+}
+
+function clearAddressFields() {
+  ['frete-rua','frete-bairro','frete-cidade'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.value = ''; }
+  });
+}
+
+async function buscarCEP() {
+  const cepRaw = document.getElementById('frete-cep').value.replace(/\D/g,'');
+  const res    = document.getElementById('frete-resultado');
+
+  if (cepRaw.length !== 8) {
+    res.textContent = 'Digite um CEP completo com 8 dígitos.';
+    res.className = '';
+    return;
   }
+
+  res.textContent = '🔍 Buscando endereço...';
+  res.className = '';
+
+  try {
+    const resp = await fetch(`https://viacep.com.br/ws/${cepRaw}/json/`);
+    const data = await resp.json();
+
+    if (data.erro) {
+      res.textContent = '⚠️ CEP não encontrado. Verifique e tente novamente.';
+      res.className = '';
+      clearAddressFields();
+      return;
+    }
+
+    document.getElementById('frete-rua').value    = data.logradouro || '';
+    document.getElementById('frete-bairro').value = data.bairro     || '';
+    document.getElementById('frete-cidade').value = `${data.localidade} / ${data.uf}`;
+
+    // Foco no número
+    document.getElementById('frete-numero').focus();
+
+    // Prazo por região
+    const prefix = parseInt(cepRaw.slice(0,2));
+    if (prefix >= 20 && prefix <= 23) {
+      res.textContent = '📦 Capital RJ — prazo estimado: até 36h'; res.className = 'ok';
+    } else if (prefix >= 25 && prefix <= 26) {
+      res.textContent = '⚡ Baixada Fluminense — prazo estimado: mesmo dia*'; res.className = 'ok';
+    } else if (prefix >= 27 && prefix <= 28) {
+      res.textContent = '🚛 Interior RJ — prazo estimado: até 72h'; res.className = 'ok';
+    } else {
+      res.textContent = '✅ Endereço encontrado! Frete confirmado pela equipe.'; res.className = 'ok';
+    }
+
+  } catch (e) {
+    res.textContent = '⚠️ Erro ao buscar CEP. Verifique sua conexão.';
+    res.className = '';
+  }
+}
+
+// ── UTILIDADES ────────────────────────────────────────────────────────────────
+function fmtMoney(v) {
+  return 'R$ ' + v.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Init
+populateTables();
+renderCart();
 </script>
-
 </body>
 </html>
