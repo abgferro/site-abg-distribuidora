@@ -174,8 +174,8 @@
     .page-hero {
       padding: 72px 24px 64px;
       background:
-        linear-gradient(to right, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.80) 60%, rgba(10,10,10,0.55) 100%),
-        url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1400') center/cover no-repeat;
+        linear-gradient(to right, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.78) 55%, rgba(10,10,10,0.45) 100%),
+        url('https://i.postimg.cc/x1KW2j4k/Whats-App-Image-2026-02-13-at-11-17-11.jpg') center/cover no-repeat;
       position: relative;
       overflow: hidden;
       border-bottom: 1px solid var(--cinza-borda);
@@ -667,11 +667,328 @@
     }
     .footer-bottom p { font-size: 0.78rem; color: #444; }
 
+    /* ── CALCULADORA DE FRETE ── */
+    .calc-section {
+      padding: 72px 24px;
+      background: var(--preto);
+    }
+    .calc-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-top: 48px;
+    }
+    .calc-box {
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 8px;
+      padding: 36px 32px;
+    }
+    .calc-box h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .calc-box p.calc-sub {
+      font-size: 0.85rem;
+      color: var(--cinza-texto);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .calc-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .calc-field label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cinza-texto);
+    }
+    .calc-field input {
+      background: var(--preto);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 4px;
+      color: var(--branco);
+      font-family: 'Barlow', sans-serif;
+      font-size: 1rem;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .calc-field input::placeholder { color: #444; }
+    .calc-field input:focus { border-color: var(--amarelo); }
+    .calc-btn {
+      width: 100%;
+      background: var(--amarelo);
+      color: var(--preto);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      padding: 14px 24px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .calc-btn:hover { background: var(--amarelo-escuro); }
+    .calc-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* resultado */
+    .calc-resultado {
+      display: none;
+      margin-top: 20px;
+      background: var(--cinza-escuro);
+      border: 1px solid var(--cinza-borda);
+      border-left: 4px solid var(--amarelo);
+      border-radius: 6px;
+      padding: 20px 22px;
+    }
+    .calc-resultado.visivel { display: block; }
+    .calc-resultado-topo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .calc-resultado-local {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--branco);
+    }
+    .calc-resultado-prazo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--amarelo);
+      line-height: 1;
+    }
+    .calc-resultado-obs {
+      font-size: 0.8rem;
+      color: var(--cinza-texto);
+      line-height: 1.5;
+    }
+    .calc-resultado-obs span {
+      color: var(--amarelo);
+      font-weight: 600;
+    }
+    .calc-erro {
+      display: none;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: #e05c5c;
+      padding: 10px 14px;
+      background: rgba(224,92,92,0.08);
+      border: 1px solid rgba(224,92,92,0.2);
+      border-radius: 4px;
+    }
+    .calc-erro.visivel { display: block; }
+    .calc-loading {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: var(--cinza-texto);
+    }
+    .calc-loading.visivel { display: flex; }
+    .spin {
+      width: 16px; height: 16px;
+      border: 2px solid var(--cinza-borda);
+      border-top-color: var(--amarelo);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* lado direito – dica visual */
+    .calc-dica {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--cinza-borda);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .calc-dica-item {
+      background: var(--cinza-medio);
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.2s;
+    }
+    .calc-dica-item:hover { background: #222; }
+    .calc-dica-dot {
+      width: 8px; height: 8px;
+      background: var(--amarelo);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .calc-dica-txt strong {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .calc-dica-txt span {
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+    }
+
+    /* ── RETIRADA NO GALPÃO ── */
+    .retirada-section {
+      padding: 72px 24px;
+      background: var(--cinza-escuro);
+    }
+    .retirada-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+      align-items: start;
+    }
+    .retirada-card {
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .retirada-card-header {
+      background: var(--cinza-escuro);
+      border-bottom: 1px solid var(--cinza-borda);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .retirada-card-header .card-icon {
+      width: 40px; height: 40px;
+      background: rgba(245,197,24,0.1);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .retirada-card-header .card-icon svg { width: 20px; height: 20px; }
+    .retirada-card-header h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .retirada-card-body { padding: 24px; }
+    .retirada-end {
+      margin-bottom: 20px;
+    }
+    .retirada-end p {
+      font-size: 0.9rem;
+      color: var(--cinza-texto);
+      line-height: 1.7;
+    }
+    .retirada-end strong {
+      color: var(--branco);
+      font-weight: 600;
+    }
+    .retirada-map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amarelo);
+      text-decoration: none;
+      margin-top: 10px;
+      transition: gap 0.2s;
+    }
+    .retirada-map-btn:hover { gap: 12px; }
+    .retirada-map-btn::after { content: '→'; }
+
+    /* horários */
+    .horarios-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--cinza-borda);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .horario-item {
+      background: var(--preto);
+      padding: 14px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .horario-dia {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amarelo);
+      min-width: 120px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .horario-detalhe strong {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .horario-detalhe small {
+      font-size: 0.78rem;
+      color: var(--cinza-texto);
+      line-height: 1.5;
+      display: block;
+    }
+    .aviso-meio-dia {
+      background: rgba(245,197,24,0.06);
+      border: 1px solid rgba(245,197,24,0.18);
+      border-left: 3px solid var(--amarelo);
+      border-radius: 4px;
+      padding: 14px 16px;
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      line-height: 1.6;
+    }
+    .aviso-meio-dia strong { color: var(--amarelo); }
+
     /* ── RESPONSIVO ── */
     @media (max-width: 900px) {
       .regioes-wrapper { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
       .etapa:not(:last-child) { border-right: none; border-bottom: 1px solid var(--cinza-borda); }
+      .calc-wrapper { grid-template-columns: 1fr; }
+      .retirada-inner { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -729,7 +1046,10 @@
       Frota própria, rotas organizadas e prazos cumpridos. Do galpão em Duque de Caxias até o canteiro — com segurança e pontualidade.
     </p>
     <div class="hero-btns">
-      <a class="btn-amarelo" href="https://wa.me/5521992320613?text=Olá,%20gostaria%20de%20consultar%20o%20frete%20para%20minha%20região." target="_blank" rel="noopener">Consultar Frete</a>
+      <a class="btn-amarelo" href="#calcular-frete" onclick="document.getElementById('calcular-frete').scrollIntoView({behavior:'smooth'});return false;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Calcular Frete
+      </a>
       <a class="btn-outline" href="produtos.html">Ver Catálogo</a>
     </div>
   </div>
@@ -975,6 +1295,195 @@
   </div>
 </section>
 
+<!-- CALCULADORA DE FRETE -->
+<section class="calc-section" id="calcular-frete">
+  <div class="container">
+    <div class="section-label">Simulador de Frete</div>
+    <h2 class="section-title">Calcule o Prazo<br><em>Para Sua Entrega.</em></h2>
+    <p class="section-subtitle">Digite o CEP do endereço de entrega e veja o prazo estimado para a sua região.</p>
+
+    <div class="calc-wrapper">
+      <!-- Formulário -->
+      <div class="calc-box">
+        <h3>Consulta de Prazo</h3>
+        <p class="calc-sub">Informe o CEP de entrega. O prazo é estimado com base na sua região e pode variar conforme o volume e tipo do pedido.</p>
+
+        <div class="calc-field">
+          <label for="cep-input">CEP de Entrega</label>
+          <input type="text" id="cep-input" placeholder="00000-000" maxlength="9" inputmode="numeric" />
+        </div>
+        <div class="calc-field" id="campo-logradouro" style="display:none;">
+          <label>Endereço Encontrado</label>
+          <input type="text" id="logradouro-display" readonly style="color: var(--cinza-texto); cursor:default;" />
+        </div>
+
+        <button class="calc-btn" id="calc-btn-consultar" onclick="consultarFrete()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Consultar Prazo
+        </button>
+
+        <div class="calc-loading" id="calc-loading">
+          <div class="spin"></div>
+          Buscando endereço...
+        </div>
+        <div class="calc-erro" id="calc-erro"></div>
+
+        <div class="calc-resultado" id="calc-resultado">
+          <div class="calc-resultado-topo">
+            <div>
+              <div class="calc-resultado-local" id="res-local"></div>
+              <div style="font-size:0.78rem;color:var(--cinza-texto);margin-top:2px;" id="res-cidade"></div>
+            </div>
+            <div class="calc-resultado-prazo" id="res-prazo"></div>
+          </div>
+          <div class="calc-resultado-obs" id="res-obs"></div>
+        </div>
+      </div>
+
+      <!-- Dicas visuais à direita -->
+      <div class="calc-dica">
+        <div class="calc-dica-item">
+          <div class="calc-dica-dot"></div>
+          <div class="calc-dica-txt">
+            <strong>Baixada Fluminense</strong>
+            <span>Mesmo dia — pedidos aprovados até 11h30</span>
+          </div>
+        </div>
+        <div class="calc-dica-item">
+          <div class="calc-dica-dot"></div>
+          <div class="calc-dica-txt">
+            <strong>Capital e Grande Rio</strong>
+            <span>Prazo estimado de até 36 horas úteis</span>
+          </div>
+        </div>
+        <div class="calc-dica-item">
+          <div class="calc-dica-dot"></div>
+          <div class="calc-dica-txt">
+            <strong>Interior do Estado</strong>
+            <span>Prazo estimado de até 72 horas — consulte</span>
+          </div>
+        </div>
+        <div class="calc-dica-item">
+          <div class="calc-dica-dot" style="background:#555;"></div>
+          <div class="calc-dica-txt">
+            <strong>Entrega Variável</strong>
+            <span>(Prazo pode variar conforme volume e tipo do pedido — nosso time confirma após aprovação)</span>
+          </div>
+        </div>
+        <div class="calc-dica-item">
+          <div class="calc-dica-dot" style="background:#25d366;"></div>
+          <div class="calc-dica-txt">
+            <strong>Dúvidas? Fale pelo WhatsApp</strong>
+            <span>(21) 99232-0613 — resposta em minutos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- RETIRADA NO GALPÃO -->
+<section class="retirada-section" id="retirada">
+  <div class="container">
+    <div class="section-label">Retirada no Local</div>
+    <h2 class="section-title">Prefere Buscar<br><em>No Galpão?</em></h2>
+    <p class="section-subtitle">Sem frete, sem espera. Retire seus materiais diretamente em nosso galpão em Duque de Caxias.</p>
+
+    <div class="retirada-inner">
+
+      <!-- Endereço -->
+      <div class="retirada-card">
+        <div class="retirada-card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f5c518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Endereço para Retirada</h3>
+        </div>
+        <div class="retirada-card-body">
+          <div class="retirada-end">
+            <p>
+              <strong>ABG Distribuidora de Ferro e Aço</strong><br />
+              R. Berlarmino Gondim, 35<br />
+              Parque Independência<br />
+              Duque de Caxias – RJ
+            </p>
+            <a class="retirada-map-btn" href="https://www.google.com/maps/search/?api=1&query=R.+Berlarmino+Gondim,+35+Duque+de+Caxias" target="_blank" rel="noopener">
+              Abrir no Google Maps
+            </a>
+          </div>
+          <div class="aviso-meio-dia">
+            <strong>Atenção:</strong> Agende sua retirada com antecedência pelo WhatsApp para garantirmos que o pedido esteja separado na sua chegada.
+          </div>
+        </div>
+      </div>
+
+      <!-- Horários -->
+      <div class="retirada-card">
+        <div class="retirada-card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f5c518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Horários de Funcionamento</h3>
+        </div>
+        <div class="retirada-card-body">
+          <div class="horarios-lista">
+
+            <div class="horario-item">
+              <div class="horario-dia">Seg – Sex</div>
+              <div class="horario-detalhe">
+                <strong>08h30 às 13h00 — Atendimento Presencial</strong>
+                <small>Compras no local, retirada de materiais e atendimento comercial.</small>
+              </div>
+            </div>
+
+            <div class="horario-item">
+              <div class="horario-dia">Almoço</div>
+              <div class="horario-detalhe">
+                <strong>12h00 – 12h20 · Galpão pode fechar</strong>
+                <small>Se não houver agendamento confirmado para atendimento presencial nesse período, o galpão inicia o fechamento a partir do meio-dia. Confirme via WhatsApp antes de vir.</small>
+              </div>
+            </div>
+
+            <div class="horario-item">
+              <div class="horario-dia">Tarde</div>
+              <div class="horario-detalhe">
+                <strong>Somente Entregas</strong>
+                <small>O período da tarde é dedicado às rotas de entrega. Não há atendimento presencial nem retirada no galpão após o período da manhã.</small>
+              </div>
+            </div>
+
+            <div class="horario-item">
+              <div class="horario-dia">Sábado</div>
+              <div class="horario-detalhe">
+                <strong>Entregas normalmente</strong>
+                <small>As rotas de entrega seguem normalmente aos sábados. Atendimento pelo WhatsApp para orçamentos e agendamentos.</small>
+              </div>
+            </div>
+
+            <div class="horario-item">
+              <div class="horario-dia">WhatsApp</div>
+              <div class="horario-detalhe">
+                <strong>24h — Todos os dias</strong>
+                <small>Orçamentos, confirmações e agendamentos via WhatsApp a qualquer hora.</small>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="aviso-meio-dia">
+            <strong>Resumo importante:</strong> Compras presenciais das <strong>08h30 às 13h</strong>, Seg–Sex. Entre <strong>12h e 12h20</strong>, sem agendamento prévio, o galpão pode estar fechando. Tarde reservada para entregas. Sábados: só entregas e WhatsApp.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
 <!-- CTA FINAL -->
 <section class="cta-final">
   <div class="container">
@@ -1029,9 +1538,134 @@
 </footer>
 
 <script>
+  /* ── MENU MOBILE ── */
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
+
+  /* ── CALCULADORA DE FRETE ── */
+  (function () {
+    var input   = document.getElementById('cep-input');
+    var btnEl   = document.getElementById('calc-btn-consultar');
+    var loadEl  = document.getElementById('calc-loading');
+    var erroEl  = document.getElementById('calc-erro');
+    var resEl   = document.getElementById('calc-resultado');
+    var campoLog = document.getElementById('campo-logradouro');
+    var logDisp = document.getElementById('logradouro-display');
+    var resLocal = document.getElementById('res-local');
+    var resCidade = document.getElementById('res-cidade');
+    var resPrazo  = document.getElementById('res-prazo');
+    var resObs    = document.getElementById('res-obs');
+
+    /* Máscara CEP */
+    input.addEventListener('input', function () {
+      var v = this.value.replace(/\D/g, '').slice(0, 8);
+      if (v.length > 5) v = v.slice(0, 5) + '-' + v.slice(5);
+      this.value = v;
+    });
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); buscar(); }
+    });
+
+    /* Expõe para o onclick inline do botão */
+    window.consultarFrete = buscar;
+
+    function reset() {
+      erroEl.classList.remove('visivel');
+      resEl.classList.remove('visivel');
+      campoLog.style.display = 'none';
+    }
+
+    function mostrarErro(msg) {
+      erroEl.innerHTML = msg;
+      erroEl.classList.add('visivel');
+    }
+
+    function regiaoDosCEP(num) {
+      /* Baixada Fluminense — mesmo dia */
+      var baixada = [[25000000,25999999],[26000000,26999999],[23800000,23899999]];
+      for (var i = 0; i < baixada.length; i++) {
+        if (num >= baixada[i][0] && num <= baixada[i][1]) {
+          return {
+            regiao : 'Baixada Fluminense',
+            prazo  : 'Mesmo Dia',
+            obs    : 'Pedidos aprovados até <strong style="color:var(--amarelo)">11h30</strong> têm saída no mesmo dia. <span style="color:#666;">(Entrega variável conforme volume e tipo do pedido — nosso time confirma após aprovação.)</span>'
+          };
+        }
+      }
+      /* Capital e Grande Rio — até 36h */
+      var capital = [[20000000,23799999],[24000000,24999999],[28600000,28699999]];
+      for (var j = 0; j < capital.length; j++) {
+        if (num >= capital[j][0] && num <= capital[j][1]) {
+          return {
+            regiao : 'Capital e Grande Rio',
+            prazo  : 'Até 36h',
+            obs    : 'Prazo estimado de <strong style="color:var(--amarelo)">até 36 horas úteis</strong> após aprovação do pedido. <span style="color:#666;">(Entrega variável conforme volume e tipo do pedido — nosso time confirma o horário exato.)</span>'
+          };
+        }
+      }
+      /* Interior RJ — até 72h */
+      if (num >= 20000000 && num <= 28999999) {
+        return {
+          regiao : 'Interior do Estado RJ',
+          prazo  : 'Até 72h',
+          obs    : 'Prazo estimado de <strong style="color:var(--amarelo)">até 72 horas</strong>. Frete calculado por distância e volume do pedido. <span style="color:#666;">(Entrega variável conforme volume e tipo do pedido.)</span>'
+        };
+      }
+      return null;
+    }
+
+    function buscar() {
+      reset();
+      var raw = input.value.replace(/\D/g, '');
+
+      if (raw.length !== 8) {
+        mostrarErro('Digite um CEP válido com 8 dígitos.');
+        return;
+      }
+
+      btnEl.disabled = true;
+      loadEl.classList.add('visivel');
+
+      fetch('https://viacep.com.br/ws/' + raw + '/json/')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          loadEl.classList.remove('visivel');
+          btnEl.disabled = false;
+
+          if (data.erro) {
+            mostrarErro('CEP não encontrado. Verifique e tente novamente.');
+            return;
+          }
+
+          /* Endereço encontrado */
+          var parts = [data.logradouro, data.bairro, data.localidade, data.uf].filter(Boolean);
+          logDisp.value = parts.join(', ');
+          campoLog.style.display = 'flex';
+
+          /* Classificar */
+          var num = parseInt(raw, 10);
+          var info = regiaoDosCEP(num);
+
+          if (!info) {
+            mostrarErro('Endereço fora do estado do Rio de Janeiro. No momento realizamos entregas apenas no RJ.');
+            return;
+          }
+
+          resLocal.textContent  = info.regiao;
+          resCidade.textContent = data.localidade + (data.uf ? ' · ' + data.uf : '');
+          resPrazo.textContent  = info.prazo;
+          resObs.innerHTML      = info.obs;
+          resEl.classList.add('visivel');
+        })
+        .catch(function () {
+          loadEl.classList.remove('visivel');
+          btnEl.disabled = false;
+          mostrarErro('Erro ao consultar o CEP. Verifique sua conexão e tente novamente.');
+        });
+    }
+  })();
 </script>
 
 </body>
