@@ -3,1528 +3,1571 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Catálogo | ABG Distribuidora de Ferro e Aço</title>
+  <title>Catálogo de Produtos | ABG Distribuidora de Ferro e Aço</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ─── RESET & BASE ─────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --abg-black:   #0a0a0a;
-      --abg-dark:    #111111;
-      --abg-panel:   #1a1a1a;
-      --abg-border:  #2a2a2a;
-      --abg-steel:   #3a3a3a;
-      --abg-mid:     #888888;
-      --abg-light:   #cccccc;
-      --abg-white:   #f5f5f0;
-      --abg-gold:    #c8a951;
-      --abg-gold2:   #e8c96a;
-      --abg-red:     #c0392b;
-      --abg-green:   #27ae60;
-      --abg-wa:      #25D366;
-      --font-main:   'Barlow', sans-serif;
-      --font-cond:   'Barlow Condensed', sans-serif;
-      --nav-h:       68px;
-      --radius:      6px;
-      --transition:  0.25s ease;
+      --preto: #0a0a0a;
+      --amarelo: #f5c518;
+      --amarelo-escuro: #d4a800;
+      --cinza-escuro: #141414;
+      --cinza-medio: #1e1e1e;
+      --cinza-borda: #2a2a2a;
+      --cinza-texto: #888;
+      --branco: #ffffff;
+      --branco-suave: #e8e8e8;
     }
+
     html { scroll-behavior: smooth; }
+
     body {
-      font-family: var(--font-main);
-      background: var(--abg-black);
-      color: var(--abg-white);
-      min-height: 100vh;
+      background: var(--preto);
+      color: var(--branco);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
       overflow-x: hidden;
     }
-    a { color: inherit; text-decoration: none; }
 
-    /* ─── TOPBAR ────────────────────────────────────────── */
-    .topbar {
-      background: var(--abg-gold);
-      padding: 7px 24px;
-      text-align: center;
-      font-family: var(--font-main);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: var(--abg-black);
-    }
-    .topbar a {
-      color: var(--abg-black);
-      font-weight: 700;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    /* ─── NAVBAR ────────────────────────────────────────── */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      height: var(--nav-h);
-      background: rgba(10,10,10,0.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--abg-border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 32px;
-      gap: 24px;
-    }
-    .nav-brand {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-    .nav-brand-name {
-      font-family: var(--font-cond);
-      font-size: 1.15rem;
-      font-weight: 900;
-      letter-spacing: 0.06em;
-      color: var(--abg-white);
-      text-transform: uppercase;
-    }
-    .nav-brand-name span { color: var(--abg-gold); }
-    .nav-brand-sub {
-      font-family: var(--font-main);
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--abg-gold);
-      margin-top: 2px;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: var(--font-main);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: var(--abg-light);
-      padding: 6px 12px;
-      border-radius: var(--radius);
-      transition: color var(--transition), background var(--transition);
-      white-space: nowrap;
-    }
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--abg-white); background: rgba(200,169,81,0.12); }
-    .nav-links a.active { color: var(--abg-gold); }
-    .nav-cta {
-      font-family: var(--font-main);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: var(--abg-black) !important;
-      background: var(--abg-gold) !important;
-      padding: 8px 16px !important;
-      border-radius: var(--radius) !important;
-      transition: background var(--transition), transform var(--transition) !important;
-      white-space: nowrap;
-    }
-    .nav-cta:hover { background: var(--abg-gold2) !important; transform: translateY(-1px); }
-
-    /* hamburger */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--abg-white);
-      border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s;
-    }
-    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity: 0; }
-    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* mobile menu */
-    .nav-mobile {
-      display: none;
+    /* ── WHATSAPP FLUTUANTE ── */
+    .whatsapp-float {
       position: fixed;
-      top: var(--nav-h);
-      left: 0; right: 0;
-      background: var(--abg-dark);
-      border-bottom: 2px solid var(--abg-gold);
-      padding: 16px 24px 24px;
-      flex-direction: column;
-      gap: 4px;
+      bottom: 96px;
+      right: 24px;
+      z-index: 998;
+      background: #25d366;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.6); }
+    .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+
+    /* ── CARRINHO FLUTUANTE ── */
+    .cart-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
       z-index: 999;
+      background: var(--amarelo);
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(245,197,24,0.4);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
     }
-    .nav-mobile.open { display: flex; }
-    .nav-mobile a {
-      font-family: var(--font-main);
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--abg-light);
-      padding: 12px 16px;
-      border-radius: var(--radius);
-      letter-spacing: 0.03em;
-      transition: background var(--transition), color var(--transition);
-    }
-    .nav-mobile a:hover { background: rgba(200,169,81,0.1); color: var(--abg-gold); }
-    .nav-mobile a.active { color: var(--abg-gold); }
-    .nav-mobile .mob-cta {
-      margin-top: 8px;
-      background: var(--abg-gold);
-      color: var(--abg-black) !important;
-      font-weight: 700;
-      text-align: center;
-    }
-    .nav-mobile .mob-cta:hover { background: var(--abg-gold2); }
-
-    /* ─── HERO CATÁLOGO ─────────────────────────────────── */
-    .cat-hero {
-      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
-      border-bottom: 1px solid var(--abg-border);
-      padding: 52px 32px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .cat-hero::before {
-      content: '';
+    .cart-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(245,197,24,0.6); }
+    .cart-float svg { width: 26px; height: 26px; fill: var(--preto); }
+    .cart-badge {
       position: absolute;
-      top: -60px; right: -60px;
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(200,169,81,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .cat-hero-inner { max-width: 1100px; margin: 0 auto; }
-    .cat-hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(200,169,81,0.12);
-      border: 1px solid rgba(200,169,81,0.3);
-      color: var(--abg-gold);
-      font-family: var(--font-main);
+      top: -4px;
+      right: -4px;
+      background: #e53e3e;
+      color: white;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 2px;
-      margin-bottom: 18px;
-    }
-    .cat-hero h1 {
-      font-family: var(--font-cond);
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      font-weight: 900;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      line-height: 1.05;
-      color: var(--abg-white);
-      margin-bottom: 12px;
-    }
-    .cat-hero h1 em { color: var(--abg-gold); font-style: italic; }
-    .cat-hero p {
-      font-size: 1rem;
-      color: var(--abg-mid);
-      max-width: 540px;
-      line-height: 1.6;
-      margin-bottom: 28px;
-    }
-    .cat-hero-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .cat-hero-pills span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--abg-light);
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--abg-border);
-      padding: 6px 14px;
-      border-radius: var(--radius);
-    }
-    .cat-hero-pills span svg { color: var(--abg-gold); flex-shrink: 0; }
-
-    /* ─── STICKY CART BAR ───────────────────────────────── */
-    .cart-bar {
-      position: sticky;
-      top: var(--nav-h);
-      z-index: 900;
-      background: var(--abg-dark);
-      border-bottom: 2px solid var(--abg-gold);
-      padding: 10px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .cart-bar-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-main);
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--abg-light);
-    }
-    .cart-count-badge {
-      background: var(--abg-gold);
-      color: var(--abg-black);
-      font-size: 0.72rem;
-      font-weight: 800;
-      width: 22px; height: 22px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 2px solid var(--preto);
+      display: none;
     }
-    .cart-total-bar {
-      font-family: var(--font-cond);
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--abg-gold);
-    }
-    .btn-open-cart {
-      background: var(--abg-gold);
-      color: var(--abg-black);
-      font-family: var(--font-main);
-      font-size: 0.82rem;
-      font-weight: 700;
-      padding: 8px 18px;
-      border-radius: var(--radius);
-      border: none;
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-    }
-    .btn-open-cart:hover { background: var(--abg-gold2); transform: translateY(-1px); }
+    .cart-badge.visible { display: flex; }
 
-    /* ─── CATALOG LAYOUT ────────────────────────────────── */
-    .catalog-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
-    }
-
-    /* Filter tabs */
-    .filter-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 36px;
-    }
-    .filter-tab {
-      background: var(--abg-panel);
-      border: 1px solid var(--abg-border);
-      color: var(--abg-light);
-      font-family: var(--font-main);
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 7px 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all var(--transition);
-      white-space: nowrap;
-    }
-    .filter-tab:hover { border-color: var(--abg-gold); color: var(--abg-gold); }
-    .filter-tab.active {
-      background: var(--abg-gold);
-      border-color: var(--abg-gold);
-      color: var(--abg-black);
-    }
-
-    /* Category group */
-    .cat-group { margin-bottom: 48px; }
-    .cat-group-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--font-cond);
-      font-size: 1.2rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--abg-white);
-      margin-bottom: 18px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--abg-border);
-    }
-    .cat-group-title::before {
-      content: '';
-      display: block;
-      width: 4px;
-      height: 20px;
-      background: var(--abg-gold);
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
-
-    /* Products grid */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 16px;
-    }
-    .product-card {
-      background: var(--abg-panel);
-      border: 1px solid var(--abg-border);
-      border-radius: var(--radius);
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-    }
-    .product-card:hover {
-      border-color: rgba(200,169,81,0.4);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-    }
-    .product-name {
-      font-family: var(--font-main);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--abg-white);
-      line-height: 1.3;
-    }
-    .product-desc {
-      font-size: 0.78rem;
-      color: var(--abg-mid);
-      line-height: 1.5;
-      flex: 1;
-    }
-    .product-price {
-      font-family: var(--font-cond);
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--abg-gold);
-    }
-    .product-price span {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--abg-mid);
-      margin-left: 2px;
-    }
-    .product-qty {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      border: 1px solid var(--abg-steel);
-      border-radius: var(--radius);
-      overflow: hidden;
-      width: fit-content;
-    }
-    .qty-btn {
-      background: var(--abg-steel);
-      color: var(--abg-white);
-      border: none;
-      width: 32px; height: 32px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background var(--transition);
-    }
-    .qty-btn:hover { background: var(--abg-gold); color: var(--abg-black); }
-    .qty-input {
-      width: 44px;
-      background: var(--abg-panel);
-      color: var(--abg-white);
-      border: none;
-      text-align: center;
-      font-family: var(--font-main);
-      font-size: 0.9rem;
-      font-weight: 700;
-      height: 32px;
-      outline: none;
-    }
-    .btn-add {
-      background: rgba(200,169,81,0.12);
-      color: var(--abg-gold);
-      border: 1px solid rgba(200,169,81,0.3);
-      font-family: var(--font-main);
-      font-size: 0.82rem;
-      font-weight: 700;
-      padding: 8px 14px;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: all var(--transition);
-      width: 100%;
-      letter-spacing: 0.02em;
-    }
-    .btn-add:hover {
-      background: var(--abg-gold);
-      color: var(--abg-black);
-      border-color: var(--abg-gold);
-    }
-    .btn-add.added {
-      background: var(--abg-green);
-      color: #fff;
-      border-color: var(--abg-green);
-    }
-
-    /* ─── CART OVERLAY ──────────────────────────────────── */
+    /* ── MODAL CARRINHO ── */
     .cart-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 2000;
-      display: none;
-      align-items: flex-start;
-      justify-content: flex-end;
-      backdrop-filter: blur(4px);
+      background: rgba(0,0,0,0.7);
+      z-index: 1100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
     }
-    .cart-overlay.open { display: flex; }
-    .cart-panel {
-      width: 420px;
-      max-width: 100vw;
-      height: 100vh;
-      background: var(--abg-dark);
-      border-left: 1px solid var(--abg-border);
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-modal {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      max-height: 85vh;
+      background: var(--cinza-escuro);
+      border: 1px solid var(--cinza-borda);
+      border-bottom: none;
+      border-radius: 12px 12px 0 0;
+      z-index: 1101;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
       display: flex;
       flex-direction: column;
-      overflow: hidden;
-      animation: slideIn 0.3s ease;
     }
-    @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
-    .cart-header {
+    .cart-modal.open { transform: translateY(0); }
+    .cart-modal-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--cinza-borda);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 24px;
-      border-bottom: 1px solid var(--abg-border);
+      flex-shrink: 0;
     }
-    .cart-header h3 {
-      font-family: var(--font-cond);
-      font-size: 1.2rem;
+    .cart-modal-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
-    .cart-close {
+    .cart-modal-close {
       background: none;
       border: none;
-      color: var(--abg-mid);
-      font-size: 1.4rem;
+      color: var(--cinza-texto);
       cursor: pointer;
-      line-height: 1;
       padding: 4px;
-      transition: color var(--transition);
+      font-size: 1.2rem;
+      line-height: 1;
+      transition: color 0.2s;
     }
-    .cart-close:hover { color: var(--abg-white); }
+    .cart-modal-close:hover { color: var(--branco); }
     .cart-items {
       flex: 1;
       overflow-y: auto;
       padding: 16px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
     }
     .cart-empty {
       text-align: center;
-      color: var(--abg-mid);
+      padding: 40px 0;
+      color: var(--cinza-texto);
       font-size: 0.9rem;
-      margin-top: 40px;
     }
-    .cart-empty svg { width: 48px; height: 48px; margin: 0 auto 12px; opacity: 0.3; display: block; }
+    .cart-empty-icon { font-size: 2.4rem; margin-bottom: 12px; }
     .cart-item {
-      background: var(--abg-panel);
-      border: 1px solid var(--abg-border);
-      border-radius: var(--radius);
-      padding: 12px 14px;
       display: flex;
-      gap: 10px;
       align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--cinza-borda);
     }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-emoji { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
     .cart-item-info { flex: 1; min-width: 0; }
     .cart-item-name {
-      font-size: 0.85rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
       font-weight: 700;
-      color: var(--abg-white);
-      margin-bottom: 4px;
-      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .cart-item-price { font-size: 0.82rem; color: var(--abg-gold); font-weight: 600; }
-    .cart-item-qty { font-size: 0.75rem; color: var(--abg-mid); }
-    .cart-item-remove {
-      background: none;
-      border: none;
-      color: var(--abg-steel);
-      cursor: pointer;
-      font-size: 1rem;
-      padding: 2px;
-      transition: color var(--transition);
-      flex-shrink: 0;
-    }
-    .cart-item-remove:hover { color: var(--abg-red); }
-    .cart-footer {
-      padding: 20px 24px;
-      border-top: 1px solid var(--abg-border);
+    .cart-item-sub { font-size: 0.78rem; color: var(--cinza-texto); }
+    .cart-item-controls {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .cart-total-row {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 10px;
+      margin-top: 8px;
     }
-    .cart-total-label { font-size: 0.85rem; color: var(--abg-mid); font-weight: 600; }
-    .cart-total-value {
-      font-family: var(--font-cond);
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--abg-gold);
-    }
-    .cart-delivery-fields {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .cart-delivery-fields input,
-    .cart-delivery-fields select {
-      background: var(--abg-panel);
-      border: 1px solid var(--abg-border);
-      color: var(--abg-white);
-      font-family: var(--font-main);
-      font-size: 0.82rem;
-      padding: 9px 12px;
-      border-radius: var(--radius);
-      outline: none;
-      transition: border-color var(--transition);
-      width: 100%;
-    }
-    .cart-delivery-fields input:focus,
-    .cart-delivery-fields select:focus { border-color: var(--abg-gold); }
-    .cart-delivery-fields select option { background: var(--abg-dark); }
-    .cart-delivery-fields textarea {
-      background: var(--abg-panel);
-      border: 1px solid var(--abg-border);
-      color: var(--abg-white);
-      font-family: var(--font-main);
-      font-size: 0.82rem;
-      padding: 9px 12px;
-      border-radius: var(--radius);
-      outline: none;
-      resize: vertical;
-      min-height: 64px;
-      transition: border-color var(--transition);
-    }
-    .cart-delivery-fields textarea:focus { border-color: var(--abg-gold); }
-    .btn-checkout {
-      background: var(--abg-wa);
-      color: #fff;
-      font-family: var(--font-main);
-      font-size: 0.9rem;
-      font-weight: 700;
-      padding: 13px 20px;
-      border-radius: var(--radius);
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      background: var(--cinza-borda);
       border: none;
+      border-radius: 4px;
+      color: var(--branco);
+      font-size: 1rem;
+      font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      transition: background var(--transition), transform var(--transition);
-      letter-spacing: 0.02em;
+      transition: background 0.2s;
+      line-height: 1;
     }
-    .btn-checkout:hover { background: #1fbd5a; transform: translateY(-1px); }
-    .btn-clear-cart {
+    .qty-btn:hover { background: #3a3a3a; }
+    .qty-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      min-width: 20px;
+      text-align: center;
+    }
+    .cart-item-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--amarelo);
+      flex-shrink: 0;
+      text-align: right;
+    }
+    .cart-item-remove {
       background: none;
-      border: 1px solid var(--abg-border);
-      color: var(--abg-mid);
-      font-family: var(--font-main);
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 8px;
-      border-radius: var(--radius);
+      border: none;
+      color: #555;
       cursor: pointer;
-      transition: all var(--transition);
+      font-size: 0.8rem;
+      padding: 0;
+      transition: color 0.2s;
+      flex-shrink: 0;
+      align-self: center;
     }
-    .btn-clear-cart:hover { border-color: var(--abg-red); color: var(--abg-red); }
+    .cart-item-remove:hover { color: #e53e3e; }
 
-    /* ─── FOOTER ────────────────────────────────────────── */
-    .footer {
-      background: var(--abg-dark);
-      border-top: 1px solid var(--abg-border);
-      padding: 56px 32px 32px;
+    /* Frete no carrinho */
+    .cart-frete {
+      padding: 16px 24px;
+      border-top: 1px solid var(--cinza-borda);
+      flex-shrink: 0;
+    }
+    .cart-frete-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cinza-texto);
+      margin-bottom: 8px;
+    }
+    .frete-row { display: flex; gap: 8px; }
+    .frete-input {
+      flex: 1;
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 4px;
+      color: var(--branco);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.88rem;
+      padding: 9px 12px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .frete-input:focus { border-color: var(--amarelo); }
+    .frete-input::placeholder { color: #444; }
+    .frete-btn {
+      background: var(--cinza-borda);
+      border: none;
+      border-radius: 4px;
+      color: var(--branco);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 9px 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .frete-btn:hover { background: #3a3a3a; }
+    .frete-resultado {
+      margin-top: 8px;
+      font-size: 0.82rem;
+      color: var(--cinza-texto);
+      min-height: 18px;
+    }
+    .frete-resultado.ok { color: var(--amarelo); }
+
+    /* Endereço */
+    .cart-endereco {
+      padding: 0 24px 14px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .cart-endereco.visible { display: flex; }
+    .end-input {
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 4px;
+      color: var(--branco);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.88rem;
+      padding: 9px 12px;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    .end-input:focus { border-color: var(--amarelo); }
+    .end-input::placeholder { color: #444; }
+    .end-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+    /* Horário */
+    .cart-horario {
+      padding: 0 24px 14px;
+      display: none;
+      flex-shrink: 0;
+    }
+    .cart-horario.visible { display: block; }
+    .horario-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cinza-texto);
+      margin-bottom: 8px;
+    }
+    .horario-select {
+      width: 100%;
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 4px;
+      color: var(--branco);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.88rem;
+      padding: 9px 12px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .horario-select:focus { border-color: var(--amarelo); }
+
+    .cart-footer {
+      padding: 16px 24px 24px;
+      border-top: 1px solid var(--cinza-borda);
+      flex-shrink: 0;
+    }
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 14px;
+    }
+    .cart-total-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cinza-texto);
+    }
+    .cart-total-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--amarelo);
+    }
+    .btn-finalizar {
+      width: 100%;
+      background: var(--amarelo);
+      color: var(--preto);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      padding: 15px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-finalizar:hover { background: var(--amarelo-escuro); transform: translateY(-1px); }
+    .btn-limpar-cart {
+      width: 100%;
+      background: transparent;
+      color: var(--cinza-texto);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: color 0.2s;
+    }
+    .btn-limpar-cart:hover { color: #e53e3e; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid var(--cinza-borda);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      line-height: 1;
+    }
+    .nav-logo .logo-abg {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      background: var(--amarelo);
+      color: var(--preto);
+      padding: 4px 10px;
+      border-radius: 3px 0 0 3px;
+    }
+    .nav-logo .logo-nome {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--branco-suave);
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-left: none;
+      padding: 4px 12px;
+      border-radius: 0 3px 3px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .nav-logo .logo-nome em {
+      font-style: normal;
+      color: var(--cinza-texto);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--cinza-texto);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--amarelo); }
+    .nav-links a.ativo { color: var(--amarelo); }
+    .nav-cta {
+      background: var(--amarelo) !important;
+      color: var(--preto) !important;
+      padding: 8px 18px;
+      border-radius: 4px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--amarelo-escuro) !important; color: var(--preto) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--branco); transition: 0.3s; }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--cinza-escuro);
+      border-top: 1px solid var(--cinza-borda);
+      padding: 16px 24px 24px;
+      gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cinza-texto);
+      text-decoration: none;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--cinza-borda);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--amarelo); }
+    .mobile-menu a.mobile-cta { color: var(--amarelo); font-weight: 700; }
+    .mobile-menu a.ativo { color: var(--amarelo); }
+
+    /* ── HERO CATÁLOGO ── */
+    .page-hero {
+      background:
+        linear-gradient(to right, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.8) 60%, rgba(10,10,10,0.5) 100%),
+        url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1400') center/cover no-repeat;
+      padding: 56px 24px 48px;
+      border-bottom: 1px solid var(--cinza-borda);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .page-hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amarelo);
+      margin-bottom: 10px;
+    }
+    .page-hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.0;
+      margin-bottom: 12px;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--amarelo); }
+    .page-hero p {
+      color: var(--cinza-texto);
+      font-size: 0.95rem;
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    /* ── CATÁLOGO ── */
+    .catalogo { padding: 56px 24px 80px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* Filtros */
+    .filtros {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .filtro-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 4px;
+      border: 1px solid var(--cinza-borda);
+      background: var(--cinza-medio);
+      color: var(--cinza-texto);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filtro-btn:hover { border-color: var(--amarelo); color: var(--amarelo); }
+    .filtro-btn.ativo { background: var(--amarelo); color: var(--preto); border-color: var(--amarelo); }
+
+    /* Seção de categoria */
+    .cat-section { margin-bottom: 52px; }
+    .cat-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--cinza-borda);
+    }
+    .cat-emoji { font-size: 1.6rem; }
+    .cat-titulo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .cat-count {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cinza-texto);
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      padding: 3px 10px;
+      border-radius: 2px;
+      margin-left: auto;
+    }
+
+    /* Grade de produtos */
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .prod-card {
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 6px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+    }
+    .prod-card:hover { border-color: rgba(245,197,24,0.4); transform: translateY(-2px); }
+    .prod-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .prod-emoji { font-size: 1.4rem; flex-shrink: 0; }
+    .prod-info { flex: 1; min-width: 0; }
+    .prod-nome {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+    .prod-desc { font-size: 0.78rem; color: var(--cinza-texto); line-height: 1.5; }
+    .prod-tag-atacado {
+      display: inline-block;
+      background: rgba(245,197,24,0.1);
+      border: 1px solid rgba(245,197,24,0.2);
+      color: var(--amarelo);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 2px;
+      margin-top: 3px;
+    }
+    .prod-preco {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--amarelo);
+      line-height: 1;
+    }
+    .prod-unidade {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--cinza-texto);
+      margin-left: 2px;
+    }
+    .prod-btn {
+      width: 100%;
+      background: var(--cinza-borda);
+      border: none;
+      border-radius: 4px;
+      color: var(--branco);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: auto;
+    }
+    .prod-btn:hover { background: var(--amarelo); color: var(--preto); }
+    .prod-btn.adicionado { background: var(--amarelo); color: var(--preto); }
+
+    /* ── BANNER ENTREGA ── */
+    .banner-entrega {
+      background: var(--cinza-escuro);
+      border-top: 1px solid var(--cinza-borda);
+      padding: 48px 24px;
+    }
+    .banner-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      border-left: 4px solid var(--amarelo);
+      border-radius: 8px;
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+    .banner-inner h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+    .banner-inner h2 em { font-style: normal; color: var(--amarelo); }
+    .banner-inner p { color: var(--cinza-texto); font-size: 0.9rem; }
+    .btn-amarelo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--amarelo);
+      color: var(--preto);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .btn-amarelo:hover { background: var(--amarelo-escuro); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080808;
+      border-top: 1px solid var(--cinza-borda);
+      padding: 56px 24px 32px;
     }
     .footer-inner {
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
+      gap: 48px;
     }
-    .footer-brand { display: flex; flex-direction: column; gap: 14px; }
-    .footer-logo-wrap { display: flex; align-items: center; gap: 14px; }
-    .footer-logo { height: 48px; width: auto; }
-    .footer-brand-name {
-      font-family: var(--font-cond);
-      font-size: 1rem;
-      font-weight: 900;
-      letter-spacing: 0.06em;
-      color: var(--abg-white);
-      text-transform: uppercase;
-      line-height: 1.2;
-    }
-    .footer-brand-name span { color: var(--abg-gold); }
-    .footer-tagline {
-      font-size: 0.82rem;
-      color: var(--abg-mid);
-      line-height: 1.6;
-    }
-    .footer-cnpj {
-      font-size: 0.75rem;
-      color: var(--abg-steel);
-      letter-spacing: 0.04em;
-    }
+    .footer-brand img { height: 40px; margin-bottom: 14px; }
+    .footer-brand p { color: var(--cinza-texto); font-size: 0.88rem; max-width: 280px; line-height: 1.6; margin-bottom: 12px; }
+    .footer-brand .cnpj { font-size: 0.75rem; color: #444; letter-spacing: 0.04em; }
     .footer-col h4 {
-      font-family: var(--font-cond);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--abg-gold);
-      margin-bottom: 14px;
+      color: var(--amarelo);
+      margin-bottom: 18px;
     }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-col ul li a {
-      font-size: 0.83rem;
-      color: var(--abg-mid);
-      transition: color var(--transition);
+      color: var(--cinza-texto);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
     }
-    .footer-col ul li a:hover { color: var(--abg-gold); }
-    .footer-col ul li {
-      font-size: 0.83rem;
-      color: var(--abg-mid);
-    }
-    .footer-divider {
+    .footer-col ul li a:hover { color: var(--branco); }
+    .footer-col ul li span { color: var(--cinza-texto); font-size: 0.88rem; }
+    .footer-bottom {
       max-width: 1100px;
-      margin: 32px auto 0;
-      border: none;
-      border-top: 1px solid var(--abg-border);
+      margin: 36px auto 0;
       padding-top: 24px;
+      border-top: 1px solid var(--cinza-borda);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 12px;
     }
-    .footer-copy {
-      font-size: 0.75rem;
-      color: var(--abg-steel);
-    }
-    .footer-copy-right {
-      font-size: 0.75rem;
-      color: var(--abg-steel);
-    }
+    .footer-bottom p { font-size: 0.78rem; color: #444; }
 
-    /* ─── RESPONSIVE ────────────────────────────────────── */
+    /* ── RESPONSIVO ── */
     @media (max-width: 900px) {
-      .footer-inner { grid-template-columns: 1fr 1fr; }
-      .footer-brand { grid-column: 1 / -1; }
+      .banner-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
-    @media (max-width: 680px) {
-      .navbar { padding: 0 20px; }
+    @media (max-width: 768px) {
       .nav-links { display: none; }
-      .nav-toggle { display: flex; }
-      .cart-bar { padding: 10px 20px; }
-      .cart-bar-left span:last-child { display: none; }
-      .catalog-section { padding: 24px 16px 60px; }
-      .cat-hero { padding: 36px 20px 28px; }
+      .hamburger { display: flex; }
+      .prod-grid { grid-template-columns: 1fr 1fr; }
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
-      .footer { padding: 40px 20px 24px; }
-      .products-grid { grid-template-columns: 1fr 1fr; }
-      .cart-panel { width: 100vw; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .cart-modal { max-width: 100%; border-radius: 12px 12px 0 0; }
     }
-    @media (max-width: 420px) {
-      .products-grid { grid-template-columns: 1fr; }
+    @media (max-width: 480px) {
+      .prod-grid { grid-template-columns: 1fr; }
+      .filtros { gap: 6px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- TOPBAR -->
-  <div class="topbar">
-    Frete Grátis* na Baixada Fluminense · Pedidos até 11h30 com entrega no mesmo dia &nbsp;·&nbsp;
-    <a href="https://wa.me/5521992320613?text=Olá,%20tudo%20bem?%20Gostaria%20de%20solicitar%20um%20orçamento.">Falar no WhatsApp</a>
+<!-- WhatsApp flutuante -->
+<a class="whatsapp-float" href="https://wa.me/5521992320613?text=Olá,%20tudo%20bem?%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Carrinho flutuante -->
+<button class="cart-float" onclick="toggleCart()" aria-label="Carrinho">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6" stroke="var(--preto)" stroke-width="2" fill="none"/><path d="M16 10a4 4 0 01-8 0" fill="none" stroke="var(--preto)" stroke-width="2"/></svg>
+  <span class="cart-badge" id="cartBadge">0</span>
+</button>
+
+<!-- Overlay carrinho -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<!-- Modal carrinho -->
+<div class="cart-modal" id="cartModal">
+  <div class="cart-modal-header">
+    <span class="cart-modal-title">🛒 Meu Pedido</span>
+    <button class="cart-modal-close" onclick="closeCart()">✕</button>
   </div>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <a href="index.html" class="nav-brand">
-      <span class="nav-brand-name">ABG <span>Distribuidora</span></span>
-      <span class="nav-brand-sub">Duque de Caxias &middot; RJ</span>
-    </a>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <div class="cart-empty-icon">📦</div>
+      <p>Nenhum produto adicionado ainda.</p>
+    </div>
+  </div>
 
+  <div class="cart-frete" id="cartFrete" style="display:none">
+    <div class="cart-frete-label">Calcular Frete</div>
+    <div class="frete-row">
+      <input class="frete-input" id="freteInput" type="text" placeholder="Digite seu CEP" maxlength="9" />
+      <button class="frete-btn" onclick="calcularFrete()">Calcular</button>
+    </div>
+    <div class="frete-resultado" id="freteRes"></div>
+  </div>
+
+  <div class="cart-endereco" id="cartEndereco">
+    <input class="end-input" id="endRua" type="text" placeholder="Rua / Avenida" />
+    <div class="end-row">
+      <input class="end-input" id="endNum" type="text" placeholder="Número" />
+      <input class="end-input" id="endComp" type="text" placeholder="Complemento" />
+    </div>
+    <input class="end-input" id="endBairro" type="text" placeholder="Bairro" />
+  </div>
+
+  <div class="cart-horario" id="cartHorario">
+    <div class="horario-label">Melhor horário para entrega</div>
+    <select class="horario-select" id="horarioSelect">
+      <option value="Qualquer horário">Qualquer horário</option>
+      <option value="Manhã (07h–12h)">Manhã (07h–12h)</option>
+      <option value="Tarde (12h–18h)">Tarde (12h–18h)</option>
+      <option value="A combinar">A combinar</option>
+    </select>
+  </div>
+
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total Estimado</span>
+      <span class="cart-total-val" id="cartTotal">R$ 0,00</span>
+    </div>
+    <button class="btn-finalizar" onclick="finalizarPedido()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Finalizar pelo WhatsApp
+    </button>
+    <button class="btn-limpar-cart" onclick="limparCarrinho()">Limpar carrinho</button>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <span class="logo-abg">ABG</span>
+      <span class="logo-nome">DISTRIBUIDORA DE FERRO E AÇO<em>DUQUE DE CAXIAS · RJ</em></span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Início</a></li>
-      <li><a href="produtos.html" class="active">Catálogo</a></li>
+      <li><a href="produtos.html" class="ativo">Catálogo</a></li>
       <li><a href="entregas.html">Entregas</a></li>
       <li><a href="quem-somos.html">Quem Somos</a></li>
       <li><a href="contato.html">Atendimento</a></li>
-      <li><a href="https://wa.me/5521992320613?text=Olá,%20gostaria%20de%20um%20orçamento." class="nav-cta" target="_blank">Solicitar Orçamento →</a></li>
+      <li><a href="https://wa.me/5521992320613?text=Olá,%20gostaria%20de%20um%20orçamento." class="nav-cta" target="_blank" rel="noopener">Orçamento</a></li>
     </ul>
-
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Abrir menu">
       <span></span><span></span><span></span>
     </button>
-  </nav>
-
-  <!-- MOBILE MENU -->
-  <div class="nav-mobile" id="navMobile">
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Início</a>
-    <a href="produtos.html" class="active">Catálogo</a>
+    <a href="produtos.html" class="ativo">Catálogo</a>
     <a href="entregas.html">Entregas</a>
     <a href="quem-somos.html">Quem Somos</a>
     <a href="contato.html">Atendimento</a>
-    <a href="https://wa.me/5521992320613?text=Olá,%20gostaria%20de%20um%20orçamento." class="mob-cta" target="_blank">Solicitar Orçamento →</a>
+    <a href="https://wa.me/5521992320613?text=Olá,%20gostaria%20de%20um%20orçamento." class="mobile-cta" target="_blank" rel="noopener">Solicitar Orçamento →</a>
   </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="cat-hero">
-    <div class="cat-hero-inner">
-      <div class="cat-hero-badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        Catálogo Completo 2026
-      </div>
-      <h1>Nossos <em>Materiais</em></h1>
-      <p>Ferro, aço, lajes, tijolos, cimento e muito mais — preço de fábrica, entrega em todo o RJ.</p>
-      <div class="cat-hero-pills">
-        <span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Estoque disponível
-        </span>
-        <span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          Frete para todo RJ
-        </span>
-        <span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          Orçamento via WhatsApp
-        </span>
-      </div>
-    </div>
-  </section>
-
-  <!-- STICKY CART BAR -->
-  <div class="cart-bar">
-    <div class="cart-bar-left">
-      <div class="cart-count-badge" id="cartCountBadge">0</div>
-      <span>itens no carrinho</span>
-    </div>
-    <div class="cart-total-bar" id="cartTotalBar">R$ 0,00</div>
-    <button class="btn-open-cart" id="btnOpenCart">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
-      Ver Carrinho
-    </button>
+<!-- HERO DA PÁGINA -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="section-label">Catálogo Completo</div>
+    <h1>Materiais em<br><em>Estoque Imediato.</em></h1>
+    <p>Ferragens, cimento, lajes, tijolos, areia, pedra e madeira. Adicione ao carrinho e envie seu pedido direto pelo WhatsApp.</p>
   </div>
+</section>
 
-  <!-- CATALOG SECTION -->
-  <main class="catalog-section">
+<!-- CATÁLOGO -->
+<section class="catalogo">
+  <div class="container">
 
-    <!-- FILTER TABS -->
-    <div class="filter-tabs" id="filterTabs">
-      <button class="filter-tab active" data-cat="all">Todos</button>
-      <button class="filter-tab" data-cat="ferragens">Ferragens</button>
-      <button class="filter-tab" data-cat="cimento">Cimento</button>
-      <button class="filter-tab" data-cat="lajes">Lajes</button>
-      <button class="filter-tab" data-cat="tijolos">Tijolos</button>
-      <button class="filter-tab" data-cat="areia">Areia / Pedra</button>
-      <button class="filter-tab" data-cat="madeiras">Madeiras</button>
+    <!-- Filtros -->
+    <div class="filtros" id="filtros">
+      <button class="filtro-btn ativo" onclick="filtrar('todos', this)">Todos</button>
+      <button class="filtro-btn" onclick="filtrar('ferragem', this)">🔩 Ferragem</button>
+      <button class="filtro-btn" onclick="filtrar('cimento', this)">🏗️ Cimento</button>
+      <button class="filtro-btn" onclick="filtrar('laje', this)">🧱 Laje</button>
+      <button class="filtro-btn" onclick="filtrar('tijolo', this)">🟫 Tijolo</button>
+      <button class="filtro-btn" onclick="filtrar('areia-pedra', this)">⛏️ Areia & Pedra</button>
+      <button class="filtro-btn" onclick="filtrar('madeira', this)">🪵 Madeira</button>
     </div>
 
-    <!-- FERRAGENS -->
-    <div class="cat-group" data-category="ferragens">
-      <div class="cat-group-title">Colunas CA-50 (6 metros)</div>
-      <div class="products-grid">
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Coluna 1/4" 7×20</div>
-          <div class="product-desc">Bitola: 1/4" | Armadura: 7×20cm | Comprimento: 6m | Aço CA-50</div>
-          <div class="product-price">R$ 55,00 <span>/un</span></div>
-          <div class="product-qty">
-            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
-            <input type="number" class="qty-input" value="1" min="1" />
-            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
-          </div>
-          <button class="btn-add" onclick="addToCart(this, 'Coluna 1/4&quot; 7×20', 55)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Coluna 1/4" 7×27</div>
-          <div class="product-desc">Bitola: 1/4" | Armadura: 7×27cm | Comprimento: 6m | Aço CA-50</div>
-          <div class="product-price">R$ 67,50 <span>/un</span></div>
-          <div class="product-qty">
-            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
-            <input type="number" class="qty-input" value="1" min="1" />
-            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
-          </div>
-          <button class="btn-add" onclick="addToCart(this, 'Coluna 1/4&quot; 7×27', 67.5)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Coluna 5/16" 7×20</div>
-          <div class="product-desc">Bitola: 5/16" | Armadura: 7×20cm | Comprimento: 6m | Aço CA-50</div>
-          <div class="product-price">R$ 65,00 <span>/un</span></div>
-          <div class="product-qty">
-            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
-            <input type="number" class="qty-input" value="1" min="1" />
-            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
-          </div>
-          <button class="btn-add" onclick="addToCart(this, 'Coluna 5/16&quot; 7×20', 65)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Coluna 5/16" 7×27</div>
-          <div class="product-desc">Bitola: 5/16" | Armadura: 7×27cm | Comprimento: 6m | Aço CA-50</div>
-          <div class="product-price">R$ 87,50 <span>/un</span></div>
-          <div class="product-qty">
-            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
-            <input type="number" class="qty-input" value="1" min="1" />
-            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
-          </div>
-          <button class="btn-add" onclick="addToCart(this, 'Coluna 5/16&quot; 7×27', 87.5)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Coluna 3/8" 7×20</div>
-          <div class="product-desc">Bitola: 3/8" | Armadura: 7×20cm | Comprimento: 6m | Aço CA-50</div>
-          <div class="product-price">R$ 115,00 <span>/un</span></div>
-          <div class="product-qty">
-            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
-            <input type="number" class="qty-input" value="1" min="1" />
-            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
-          </div>
-          <button class="btn-add" onclick="addToCart(this, 'Coluna 3/8&quot; 7×20', 115)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Coluna 3/8" 7×27</div>
-          <div class="product-desc">Bitola: 3/8" | Armadura: 7×27cm | Comprimento: 6m | Aço CA-50</div>
-          <div class="product-price">R$ 147,50 <span>/un</span></div>
-          <div class="product-qty">
-            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
-            <input type="number" class="qty-input" value="1" min="1" />
-            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
-          </div>
-          <button class="btn-add" onclick="addToCart(this, 'Coluna 3/8&quot; 7×27', 147.5)">+ Adicionar</button>
-        </div>
+    <!-- FERRAGEM -->
+    <div class="cat-section" data-cat="ferragem" id="sec-ferragem">
+      <div class="cat-header">
+        <span class="cat-emoji">🔩</span>
+        <span class="cat-titulo">Ferragem & Aço</span>
+        <span class="cat-count">CA-50 · CA-60</span>
       </div>
-    </div>
-
-    <div class="cat-group" data-category="ferragens">
-      <div class="cat-group-title">Vergalhões (12 metros)</div>
-      <div class="products-grid">
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Vergalhão 3/16"</div>
-          <div class="product-desc">Bitola: 3/16" | Comprimento: 12m | Aço CA-60</div>
-          <div class="product-price">R$ 10,00 <span>/un</span></div>
-          <div class="product-qty">
-            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
-            <input type="number" class="qty-input" value="1" min="1" />
-            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+      <div class="prod-grid">
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🔩</span>
+            <div class="prod-info">
+              <div class="prod-nome">Vergalhão CA-50 — 5/16"</div>
+              <div class="prod-desc">Barra de 12m · Alta resistência · Fundação e estrutura</div>
+            </div>
           </div>
-          <button class="btn-add" onclick="addToCart(this, 'Vergalhão 3/16&quot;', 10)">+ Adicionar</button>
+          <div><span class="prod-preco">R$ 62,00<span class="prod-unidade">/barra</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🔩','Vergalhão CA-50 5/16"','R$ 62,00/barra',62)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Vergalhão 1/4"</div>
-          <div class="product-desc">Bitola: 1/4" | Comprimento: 12m | Aço CA-50</div>
-          <div class="product-price">R$ 20,00 <span>/un</span></div>
-          <div class="product-qty">
-            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
-            <input type="number" class="qty-input" value="1" min="1" />
-            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🔩</span>
+            <div class="prod-info">
+              <div class="prod-nome">Vergalhão CA-50 — 3/8"</div>
+              <div class="prod-desc">Barra de 12m · Armação de pilares e vigas</div>
+            </div>
           </div>
-          <button class="btn-add" onclick="addToCart(this, 'Vergalhão 1/4&quot;', 20)">+ Adicionar</button>
+          <div><span class="prod-preco">R$ 78,00<span class="prod-unidade">/barra</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🔩','Vergalhão CA-50 3/8"','R$ 78,00/barra',78)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Vergalhão 5/16"</div>
-          <div class="product-desc">Bitola: 5/16" | Comprimento: 12m | Aço CA-50</div>
-          <div class="product-price">R$ 30,00 <span>/un</span></div>
-          <div class="product-qty">
-            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
-            <input type="number" class="qty-input" value="1" min="1" />
-            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🔩</span>
+            <div class="prod-info">
+              <div class="prod-nome">Vergalhão CA-50 — 1/2"</div>
+              <div class="prod-desc">Barra de 12m · Estrutura principal · Pilares</div>
+            </div>
           </div>
-          <button class="btn-add" onclick="addToCart(this, 'Vergalhão 5/16&quot;', 30)">+ Adicionar</button>
+          <div><span class="prod-preco">R$ 110,00<span class="prod-unidade">/barra</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🔩','Vergalhão CA-50 1/2"','R$ 110,00/barra',110)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Vergalhão 3/8"</div>
-          <div class="product-desc">Bitola: 3/8" | Comprimento: 12m | Aço CA-50</div>
-          <div class="product-price">R$ 50,00 <span>/un</span></div>
-          <div class="product-qty">
-            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
-            <input type="number" class="qty-input" value="1" min="1" />
-            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🔩</span>
+            <div class="prod-info">
+              <div class="prod-nome">Vergalhão CA-60 — 4,2mm</div>
+              <div class="prod-desc">Fio CA-60 · Estribos e armação de lajes</div>
+            </div>
           </div>
-          <button class="btn-add" onclick="addToCart(this, 'Vergalhão 3/8&quot;', 50)">+ Adicionar</button>
+          <div><span class="prod-preco">R$ 28,00<span class="prod-unidade">/kg</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🔩','Vergalhão CA-60 4,2mm','R$ 28,00/kg',28)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Vergalhão 1/2"</div>
-          <div class="product-desc">Bitola: 1/2" | Comprimento: 12m | Aço CA-50</div>
-          <div class="product-price">R$ 80,00 <span>/un</span></div>
-          <div class="product-qty">
-            <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
-            <input type="number" class="qty-input" value="1" min="1" />
-            <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🔩</span>
+            <div class="prod-info">
+              <div class="prod-nome">Malha POP 20×20</div>
+              <div class="prod-desc">Tela soldada 2,4×6m · Laje e piso · CA-60</div>
+            </div>
           </div>
-          <button class="btn-add" onclick="addToCart(this, 'Vergalhão 1/2&quot;', 80)">+ Adicionar</button>
+          <div><span class="prod-preco">R$ 72,50<span class="prod-unidade">/tela</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🔩','Malha POP 20×20','R$ 72,50/tela',72.5)">+ Adicionar ao pedido</button>
         </div>
-      </div>
-    </div>
-
-    <div class="cat-group" data-category="ferragens">
-      <div class="cat-group-title">Radier — Ferragem Armada</div>
-      <div class="products-grid">
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Radier 60×60 1/4"</div>
-          <div class="product-desc">60×60cm | Bitola 1/4" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 12,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Radier 60×60 1/4&quot;',12)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Radier 80×80 1/4"</div>
-          <div class="product-desc">80×80cm | Bitola 1/4" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 18,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Radier 80×80 1/4&quot;',18)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Radier 60×60 5/16"</div>
-          <div class="product-desc">60×60cm | Bitola 5/16" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 20,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Radier 60×60 5/16&quot;',20)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Radier 80×80 5/16"</div>
-          <div class="product-desc">80×80cm | Bitola 5/16" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 25,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Radier 80×80 5/16&quot;',25)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Radier 100×100 5/16"</div>
-          <div class="product-desc">100×100cm | Bitola 5/16" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 40,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Radier 100×100 5/16&quot;',40)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Radier 60×60 3/8"</div>
-          <div class="product-desc">60×60cm | Bitola 3/8" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 27,50 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Radier 60×60 3/8&quot;',27.5)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Radier 80×80 3/8"</div>
-          <div class="product-desc">80×80cm | Bitola 3/8" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 50,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Radier 80×80 3/8&quot;',50)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Radier 100×100 3/8"</div>
-          <div class="product-desc">100×100cm | Bitola 3/8" | Aço CA-50 armado</div>
-          <div class="product-price">R$ 65,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Radier 100×100 3/8&quot;',65)">+ Adicionar</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="cat-group" data-category="ferragens">
-      <div class="cat-group-title">Malhas POP — Fio 4.2mm (2×3m)</div>
-      <div class="products-grid">
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Malha POP 20×20</div>
-          <div class="product-desc">Fio 4.2mm | Espaçamento: 20×20cm | 2×3m | Aço CA-60</div>
-          <div class="product-price">R$ 72,50 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Malha POP 20×20',72.5)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Malha POP 15×15</div>
-          <div class="product-desc">Fio 4.2mm | Espaçamento: 15×15cm | 2×3m | Aço CA-60</div>
-          <div class="product-price">R$ 87,50 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Malha POP 15×15',87.5)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Malha POP 10×10</div>
-          <div class="product-desc">Fio 4.2mm | Espaçamento: 10×10cm | 2×3m | Aço CA-60</div>
-          <div class="product-price">R$ 115,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Malha POP 10×10',115)">+ Adicionar</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="cat-group" data-category="ferragens">
-      <div class="cat-group-title">Arame, Estribos e Pregos</div>
-      <div class="products-grid">
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Arame Recozido Liso</div>
-          <div class="product-desc">Arame liso recozido | 1kg | Uso em amarrações e estruturas</div>
-          <div class="product-price">R$ 25,00 <span>/kg</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Arame Recozido Liso',25)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Arame Recozido Torcido</div>
-          <div class="product-desc">Arame torcido recozido | 1kg | Maior resistência ao deslizamento</div>
-          <div class="product-price">R$ 25,00 <span>/kg</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Arame Recozido Torcido',25)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Estribo 7×20cm</div>
-          <div class="product-desc">Estribo de aço CA-60 | Pacote c/ 100 unidades | 7×20cm</div>
-          <div class="product-price">R$ 80,00 <span>/pct 100un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Estribo 7×20cm',80)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Estribo 7×27cm</div>
-          <div class="product-desc">Estribo de aço CA-60 | Pacote c/ 100 unidades | 7×27cm</div>
-          <div class="product-price">R$ 120,00 <span>/pct 100un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Estribo 7×27cm',120)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Prego 16×24</div>
-          <div class="product-desc">Prego comum 16×24 | 1kg | Uso geral em madeira</div>
-          <div class="product-price">R$ 20,00 <span>/kg</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Prego 16×24',20)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Prego 17×27</div>
-          <div class="product-desc">Prego comum 17×27 | 1kg | Uso geral em madeira</div>
-          <div class="product-price">R$ 20,00 <span>/kg</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Prego 17×27',20)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="ferragens">
-          <div class="product-name">Prego 18×30</div>
-          <div class="product-desc">Prego comum 18×30 | 1kg | Uso geral em madeira</div>
-          <div class="product-price">R$ 20,00 <span>/kg</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Prego 18×30',20)">+ Adicionar</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🔩</span>
+            <div class="prod-info">
+              <div class="prod-nome">Coluna Armada 5/16"</div>
+              <div class="prod-desc">Coluna pré-montada · Aço CA-50 com estribos</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 95,00<span class="prod-unidade">/unid</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🔩','Coluna Armada 5/16"','R$ 95,00/unid',95)">+ Adicionar ao pedido</button>
         </div>
       </div>
     </div>
 
     <!-- CIMENTO -->
-    <div class="cat-group" data-category="cimento">
-      <div class="cat-group-title">Cimento (saco 50kg)</div>
-      <div class="products-grid">
-        <div class="product-card" data-cat="cimento">
-          <div class="product-name">Cimento CSN CP III</div>
-          <div class="product-desc">Tipo CP III | Alto-forno | Saco 50kg | Resistente a sulfatos</div>
-          <div class="product-price">R$ 28,50 <span>/saco</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Cimento CSN CP III',28.5)">+ Adicionar</button>
+    <div class="cat-section" data-cat="cimento" id="sec-cimento">
+      <div class="cat-header">
+        <span class="cat-emoji">🏗️</span>
+        <span class="cat-titulo">Cimento</span>
+        <span class="cat-count">CP II · CP IV</span>
+      </div>
+      <div class="prod-grid">
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🏗️</span>
+            <div class="prod-info">
+              <div class="prod-nome">Cimento Mauá CP II — 50kg</div>
+              <div class="prod-desc">Uso geral · Argamassas, concreto e revestimento</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 33,50<span class="prod-unidade">/saco</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🏗️','Cimento Mauá CP II 50kg','R$ 33,50/saco',33.5)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="cimento">
-          <div class="product-name">Cimento Mauá CP II</div>
-          <div class="product-desc">Tipo CP II | Composto | Saco 50kg | Uso geral em obras</div>
-          <div class="product-price">R$ 33,50 <span>/saco</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Cimento Mauá CP II',33.5)">+ Adicionar</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🏗️</span>
+            <div class="prod-info">
+              <div class="prod-nome">Cimento Mauá CP II — Pallet</div>
+              <div class="prod-desc">40 sacos × 50kg · Preço especial atacado</div>
+              <span class="prod-tag-atacado">Atacado</span>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 1.260,00<span class="prod-unidade">/pallet</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🏗️','Cimento Mauá CP II — Pallet 40 sacos','R$ 1.260,00/pallet',1260)">+ Adicionar ao pedido</button>
+        </div>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🏗️</span>
+            <div class="prod-info">
+              <div class="prod-nome">Cimento CP IV — 50kg</div>
+              <div class="prod-desc">Resistente à umidade · Indicado para ambientes úmidos</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 36,00<span class="prod-unidade">/saco</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🏗️','Cimento CP IV 50kg','R$ 36,00/saco',36)">+ Adicionar ao pedido</button>
         </div>
       </div>
     </div>
 
-    <!-- LAJES -->
-    <div class="cat-group" data-category="lajes">
-      <div class="cat-group-title">Lajes Pré-Moldadas (por m²)</div>
-      <div class="products-grid">
-        <div class="product-card" data-cat="lajes">
-          <div class="product-name">Laje de Isopor (EPS)</div>
-          <div class="product-desc">Laje pré-moldada com EPS | Sob medida | Mais leve e ágil</div>
-          <div class="product-price">R$ 35,00 <span>/m²</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Laje de Isopor (EPS)',35)">+ Adicionar</button>
+    <!-- LAJE -->
+    <div class="cat-section" data-cat="laje" id="sec-laje">
+      <div class="cat-header">
+        <span class="cat-emoji">🧱</span>
+        <span class="cat-titulo">Lajes Pré-Moldadas</span>
+        <span class="cat-count">EPS · Cerâmica</span>
+      </div>
+      <div class="prod-grid">
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🧱</span>
+            <div class="prod-info">
+              <div class="prod-nome">Laje de Isopor (EPS)</div>
+              <div class="prod-desc">Vão até 4m · Leve e resistente · Pronta entrega</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 35,00<span class="prod-unidade">/m²</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🧱','Laje de Isopor (EPS)','R$ 35,00/m²',35)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="lajes">
-          <div class="product-name">Laje Cerâmica</div>
-          <div class="product-desc">Laje pré-moldada cerâmica | Sob medida | Alta durabilidade</div>
-          <div class="product-price">R$ 40,00 <span>/m²</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Laje Cerâmica',40)">+ Adicionar</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🧱</span>
+            <div class="prod-info">
+              <div class="prod-nome">Laje Cerâmica</div>
+              <div class="prod-desc">Vão até 5m · Alta durabilidade · Acabamento superior</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 42,00<span class="prod-unidade">/m²</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🧱','Laje Cerâmica','R$ 42,00/m²',42)">+ Adicionar ao pedido</button>
+        </div>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🧱</span>
+            <div class="prod-info">
+              <div class="prod-nome">Tavela Cerâmica</div>
+              <div class="prod-desc">Bloco enchimento para laje · Por unidade</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 2,80<span class="prod-unidade">/unid</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🧱','Tavela Cerâmica','R$ 2,80/unid',2.8)">+ Adicionar ao pedido</button>
+        </div>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🧱</span>
+            <div class="prod-info">
+              <div class="prod-nome">Viga Treliçada</div>
+              <div class="prod-desc">Aço CA-60 · Para composição de laje · 6m</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 48,00<span class="prod-unidade">/peça</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🧱','Viga Treliçada 6m','R$ 48,00/peça',48)">+ Adicionar ao pedido</button>
         </div>
       </div>
     </div>
 
-    <!-- TIJOLOS -->
-    <div class="cat-group" data-category="tijolos">
-      <div class="cat-group-title">Tijolos — Atacado e Varejo</div>
-      <div class="products-grid">
-        <div class="product-card" data-cat="tijolos">
-          <div class="product-name">Tijolo 20×30 — Atacado</div>
-          <div class="product-desc">Tijolo furado 20×30cm | Milheiro (1.000 un.) | 1ª linha, quebra mínima</div>
-          <div class="product-price">R$ 850,00 <span>/milheiro</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Tijolo 20×30 — Atacado',850)">+ Adicionar</button>
+    <!-- TIJOLO -->
+    <div class="cat-section" data-cat="tijolo" id="sec-tijolo">
+      <div class="cat-header">
+        <span class="cat-emoji">🟫</span>
+        <span class="cat-titulo">Tijolos</span>
+        <span class="cat-count">20×30 · 20×20</span>
+      </div>
+      <div class="prod-grid">
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🟫</span>
+            <div class="prod-info">
+              <div class="prod-nome">Tijolo 20×30 — Unidade</div>
+              <div class="prod-desc">Tijolo furado 6 furos · Alvenaria e fechamento</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 0,95<span class="prod-unidade">/unid</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🟫','Tijolo 20×30 — Unidade','R$ 0,95/unid',0.95)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="tijolos">
-          <div class="product-name">Tijolo 20×20 — Atacado</div>
-          <div class="product-desc">Tijolo furado 20×20cm | Milheiro (1.000 un.) | 1ª linha</div>
-          <div class="product-price">R$ 750,00 <span>/milheiro</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Tijolo 20×20 — Atacado',750)">+ Adicionar</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🟫</span>
+            <div class="prod-info">
+              <div class="prod-nome">Tijolo 20×30 — Milheiro</div>
+              <div class="prod-desc">1.000 unidades · Preço especial de atacado</div>
+              <span class="prod-tag-atacado">Atacado</span>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 850,00<span class="prod-unidade">/mil</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🟫','Tijolo 20×30 — Milheiro','R$ 850,00/mil',850)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="tijolos">
-          <div class="product-name">Tijolo 20×30 — Varejo</div>
-          <div class="product-desc">Tijolo furado 20×30cm | Por unidade | 1ª linha</div>
-          <div class="product-price">R$ 1,20 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Tijolo 20×30 — Varejo',1.2)">+ Adicionar</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🟫</span>
+            <div class="prod-info">
+              <div class="prod-nome">Tijolo 20×20 — Unidade</div>
+              <div class="prod-desc">Tijolo furado · Divisórias e paredes internas</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 0,75<span class="prod-unidade">/unid</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🟫','Tijolo 20×20 — Unidade','R$ 0,75/unid',0.75)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="tijolos">
-          <div class="product-name">Tijolo 20×20 — Varejo</div>
-          <div class="product-desc">Tijolo furado 20×20cm | Por unidade | 1ª linha</div>
-          <div class="product-price">R$ 1,10 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Tijolo 20×20 — Varejo',1.1)">+ Adicionar</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🟫</span>
+            <div class="prod-info">
+              <div class="prod-nome">Tijolo 20×20 — Milheiro</div>
+              <div class="prod-desc">1.000 unidades · Preço especial de atacado</div>
+              <span class="prod-tag-atacado">Atacado</span>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 680,00<span class="prod-unidade">/mil</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🟫','Tijolo 20×20 — Milheiro','R$ 680,00/mil',680)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="tijolos">
-          <div class="product-name">Bloco Concreto 9×19×39</div>
-          <div class="product-desc">Bloco de concreto estrutural | 9×19×39cm | Atacado: 1.000 un.</div>
-          <div class="product-price">R$ 2,25 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Bloco Concreto 9×19×39',2.25)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="tijolos">
-          <div class="product-name">Bloco Concreto 14×19×39</div>
-          <div class="product-desc">Bloco de concreto estrutural | 14×19×39cm | Atacado: 1.000 un.</div>
-          <div class="product-price">R$ 3,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Bloco Concreto 14×19×39',3)">+ Adicionar</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🟫</span>
+            <div class="prod-info">
+              <div class="prod-nome">Tijolinho Aparente</div>
+              <div class="prod-desc">Acabamento rústico · Decorativo e externo</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 1,40<span class="prod-unidade">/unid</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🟫','Tijolinho Aparente','R$ 1,40/unid',1.4)">+ Adicionar ao pedido</button>
         </div>
       </div>
     </div>
 
-    <!-- AREIA / PEDRA -->
-    <div class="cat-group" data-category="areia">
-      <div class="cat-group-title">Areia, Areola e Pedra (por m³)</div>
-      <div class="products-grid">
-        <div class="product-card" data-cat="areia">
-          <div class="product-name">Areia Lavada</div>
-          <div class="product-desc">Areia lavada fina | Por m³ | Ideal para reboco e concreto</div>
-          <div class="product-price">R$ 105,00 <span>/m³</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Areia Lavada',105)">+ Adicionar</button>
+    <!-- AREIA & PEDRA -->
+    <div class="cat-section" data-cat="areia-pedra" id="sec-areia-pedra">
+      <div class="cat-header">
+        <span class="cat-emoji">⛏️</span>
+        <span class="cat-titulo">Areia & Pedra</span>
+        <span class="cat-count">Grossa · Fina · Brita</span>
+      </div>
+      <div class="prod-grid">
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">⛏️</span>
+            <div class="prod-info">
+              <div class="prod-nome">Areia Grossa</div>
+              <div class="prod-desc">Concreto e argamassa estrutural · Por m³</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 140,00<span class="prod-unidade">/m³</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'⛏️','Areia Grossa','R$ 140,00/m³',140)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="areia">
-          <div class="product-name">Areola</div>
-          <div class="product-desc">Areola | Por m³ | Ideal para aterro e nivelamento</div>
-          <div class="product-price">R$ 110,00 <span>/m³</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Areola',110)">+ Adicionar</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">⛏️</span>
+            <div class="prod-info">
+              <div class="prod-nome">Areia Fina</div>
+              <div class="prod-desc">Reboco e assentamento · Por m³</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 155,00<span class="prod-unidade">/m³</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'⛏️','Areia Fina','R$ 155,00/m³',155)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="areia">
-          <div class="product-name">Pedra Brita (nº1, 2 ou 3)</div>
-          <div class="product-desc">Pedra britada | Por m³ | Informar tipo no pedido: nº1, nº2 ou nº3</div>
-          <div class="product-price">R$ 130,00 <span>/m³</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Pedra Brita',130)">+ Adicionar</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">⛏️</span>
+            <div class="prod-info">
+              <div class="prod-nome">Brita 1</div>
+              <div class="prod-desc">Concreto estrutural · Drenagem · Por m³</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 175,00<span class="prod-unidade">/m³</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'⛏️','Brita 1','R$ 175,00/m³',175)">+ Adicionar ao pedido</button>
+        </div>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">⛏️</span>
+            <div class="prod-info">
+              <div class="prod-nome">Pedrisco</div>
+              <div class="prod-desc">Acabamento e passeios · Por m³</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 165,00<span class="prod-unidade">/m³</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'⛏️','Pedrisco','R$ 165,00/m³',165)">+ Adicionar ao pedido</button>
         </div>
       </div>
     </div>
 
-    <!-- MADEIRAS -->
-    <div class="cat-group" data-category="madeiras">
-      <div class="cat-group-title">Madeiras — Pinus</div>
-      <div class="products-grid">
-        <div class="product-card" data-cat="madeiras">
-          <div class="product-name">Tábua Pinus 30×2,5</div>
-          <div class="product-desc">Tábua de pinus | 30×2,5cm | Comprimento: 3m | Para formas e acabamentos</div>
-          <div class="product-price">R$ 35,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Tábua Pinus 30×2,5',35)">+ Adicionar</button>
+    <!-- MADEIRA -->
+    <div class="cat-section" data-cat="madeira" id="sec-madeira">
+      <div class="cat-header">
+        <span class="cat-emoji">🪵</span>
+        <span class="cat-titulo">Madeira</span>
+        <span class="cat-count">Fôrmas · Caibro · Viga</span>
+      </div>
+      <div class="prod-grid">
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🪵</span>
+            <div class="prod-info">
+              <div class="prod-nome">Madeira de Fôrma 2,5×25cm</div>
+              <div class="prod-desc">Tábua 3m · Fôrma de concreto · Pinus</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 18,00<span class="prod-unidade">/peça</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🪵','Madeira de Fôrma 2,5×25cm','R$ 18,00/peça',18)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="madeiras">
-          <div class="product-name">Tábua Pinus 20×2,5</div>
-          <div class="product-desc">Tábua de pinus | 20×2,5cm | Comprimento: 3m</div>
-          <div class="product-price">R$ 30,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Tábua Pinus 20×2,5',30)">+ Adicionar</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🪵</span>
+            <div class="prod-info">
+              <div class="prod-nome">Caibro 5×7cm — 3m</div>
+              <div class="prod-desc">Estrutura de telhado · Ripamento · Eucalipto</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 22,00<span class="prod-unidade">/peça</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🪵','Caibro 5×7cm 3m','R$ 22,00/peça',22)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="madeiras">
-          <div class="product-name">Sarrafo 25cm</div>
-          <div class="product-desc">Sarrafo de pinus | Largura: 25cm | Ripas e estruturas leves</div>
-          <div class="product-price">R$ 20,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Sarrafo 25cm',20)">+ Adicionar</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🪵</span>
+            <div class="prod-info">
+              <div class="prod-nome">Viga 7×9cm — 6m</div>
+              <div class="prod-desc">Estrutura pesada · Suporte de laje e telhado</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 68,00<span class="prod-unidade">/peça</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🪵','Viga 7×9cm 6m','R$ 68,00/peça',68)">+ Adicionar ao pedido</button>
         </div>
-        <div class="product-card" data-cat="madeiras">
-          <div class="product-name">Sarrafo 20cm</div>
-          <div class="product-desc">Sarrafo de pinus | Largura: 20cm</div>
-          <div class="product-price">R$ 18,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Sarrafo 20cm',18)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="madeiras">
-          <div class="product-name">Sarrafo 15cm</div>
-          <div class="product-desc">Sarrafo de pinus | Largura: 15cm</div>
-          <div class="product-price">R$ 15,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Sarrafo 15cm',15)">+ Adicionar</button>
-        </div>
-        <div class="product-card" data-cat="madeiras">
-          <div class="product-name">Sarrafo 10cm</div>
-          <div class="product-desc">Sarrafo de pinus | Largura: 10cm</div>
-          <div class="product-price">R$ 12,00 <span>/un</span></div>
-          <div class="product-qty"><button class="qty-btn" onclick="changeQty(this,-1)">−</button><input type="number" class="qty-input" value="1" min="1" /><button class="qty-btn" onclick="changeQty(this,1)">+</button></div>
-          <button class="btn-add" onclick="addToCart(this,'Sarrafo 10cm',12)">+ Adicionar</button>
+        <div class="prod-card">
+          <div class="prod-card-top">
+            <span class="prod-emoji">🪵</span>
+            <div class="prod-info">
+              <div class="prod-nome">Compensado 14mm — 2,44×1,22m</div>
+              <div class="prod-desc">Chapas de compensado · Fôrma e acabamento</div>
+            </div>
+          </div>
+          <div><span class="prod-preco">R$ 95,00<span class="prod-unidade">/chapa</span></span></div>
+          <button class="prod-btn" onclick="addCart(this,'🪵','Compensado 14mm 2,44×1,22m','R$ 95,00/chapa',95)">+ Adicionar ao pedido</button>
         </div>
       </div>
     </div>
 
-  </main>
+  </div>
+</section>
 
-  <!-- CART OVERLAY -->
-  <div class="cart-overlay" id="cartOverlay">
-    <div class="cart-panel">
-      <div class="cart-header">
-        <h3>Seu Carrinho</h3>
-        <button class="cart-close" id="cartClose">✕</button>
-      </div>
-      <div class="cart-items" id="cartItems">
-        <div class="cart-empty">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
-          Carrinho vazio.<br>Adicione produtos ao catálogo.
-        </div>
-      </div>
-      <div class="cart-footer">
-        <div class="cart-total-row">
-          <span class="cart-total-label">Total Estimado</span>
-          <span class="cart-total-value" id="cartTotalValue">R$ 0,00</span>
-        </div>
-        <div class="cart-delivery-fields">
-          <input type="text" id="deliveryCep" placeholder="CEP de Entrega" maxlength="9" />
-          <input type="text" id="deliveryAddress" placeholder="Endereço Completo" />
-          <select id="deliveryTime">
-            <option value="" disabled selected>Melhor Horário para Entrega</option>
-            <option value="Manhã (08h às 12h)">Manhã (08h às 12h)</option>
-            <option value="Tarde (12h às 18h)">Tarde (12h às 18h)</option>
-            <option value="Qualquer horário">Qualquer horário</option>
-          </select>
-          <textarea id="deliveryObs" placeholder="Observações (opcional)"></textarea>
-        </div>
-        <button class="btn-checkout" id="btnCheckout">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.627-5.372-12-12-12zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-          Enviar Pedido no WhatsApp
-        </button>
-        <button class="btn-clear-cart" id="btnClearCart">Limpar Carrinho</button>
-      </div>
+<!-- BANNER ENTREGA -->
+<section class="banner-entrega">
+  <div class="banner-inner">
+    <div>
+      <h2>Entrega Rápida<br><em>Em Todo o RJ.</em></h2>
+      <p>Pedidos aprovados até 11h30 podem sair no mesmo dia para a Baixada Fluminense. Consulte prazos para Capital e Interior.</p>
+    </div>
+    <a class="btn-amarelo" href="entregas.html">Ver Logística</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png" alt="ABG Distribuidora" />
+      <p>Reduzindo custos, construindo futuros. Ferro, aço e lajes em todo o estado do Rio de Janeiro.</p>
+      <p class="cnpj">CNPJ: 52.570.746/0001-34</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explorar</h4>
+      <ul>
+        <li><a href="produtos.html">Catálogo</a></li>
+        <li><a href="entregas.html">Logística</a></li>
+        <li><a href="quem-somos.html">Quem Somos</a></li>
+        <li><a href="contato.html">Atendimento</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Canais Diretos</h4>
+      <ul>
+        <li><a href="https://wa.me/5521992320613" target="_blank">(21) 99232-0613</a></li>
+        <li><a href="mailto:abg.distribuidora.ltda@gmail.com">E-mail Comercial</a></li>
+        <li><a href="https://www.instagram.com/abg.distribuidora.de.ferro" target="_blank">Instagram Oficial</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Onde Estamos</h4>
+      <ul>
+        <li><span>R. Berlarmino Gondim, 35</span></li>
+        <li><span>Parque Independência</span></li>
+        <li><span>Duque de Caxias · RJ</span></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=R.+Berlarmino+Gondim,+35+Duque+de+Caxias" target="_blank">Ver no Maps</a></li>
+      </ul>
     </div>
   </div>
+  <div class="footer-bottom">
+    <p>© 2026 ABG Distribuidora de Ferro e Aço — Todos os direitos reservados.</p>
+    <p style="color:#333;font-size:0.75rem;">Fabricante Nacional · Duque de Caxias · RJ</p>
+  </div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo-wrap">
-          <img src="https://i.postimg.cc/G2vxcshz/file-00000000db80720ead8e39c9848d6487.png" alt="ABG Distribuidora" class="footer-logo" />
-          <div>
-            <div class="footer-brand-name">ABG <span>Distribuidora</span></div>
+<script>
+  // ── MENU MOBILE ──
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // ── CARRINHO ──
+  let carrinho = [];
+
+  function toggleCart() {
+    const overlay = document.getElementById('cartOverlay');
+    const modal = document.getElementById('cartModal');
+    overlay.classList.toggle('open');
+    modal.classList.toggle('open');
+  }
+  function closeCart() {
+    document.getElementById('cartOverlay').classList.remove('open');
+    document.getElementById('cartModal').classList.remove('open');
+  }
+
+  function addCart(btn, emoji, nome, preco, valor) {
+    const existente = carrinho.find(i => i.nome === nome);
+    if (existente) {
+      existente.qty++;
+      existente.total = existente.qty * existente.valor;
+    } else {
+      carrinho.push({ emoji, nome, preco, valor, qty: 1, total: valor });
+    }
+    btn.textContent = '✓ Adicionado';
+    btn.classList.add('adicionado');
+    setTimeout(() => {
+      btn.textContent = '+ Adicionar ao pedido';
+      btn.classList.remove('adicionado');
+    }, 1500);
+    renderCart();
+  }
+
+  function alterarQty(nome, delta) {
+    const item = carrinho.find(i => i.nome === nome);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) {
+      carrinho = carrinho.filter(i => i.nome !== nome);
+    } else {
+      item.total = item.qty * item.valor;
+    }
+    renderCart();
+  }
+
+  function removerItem(nome) {
+    carrinho = carrinho.filter(i => i.nome !== nome);
+    renderCart();
+  }
+
+  function limparCarrinho() {
+    carrinho = [];
+    renderCart();
+  }
+
+  function renderCart() {
+    const badge = document.getElementById('cartBadge');
+    const itemsEl = document.getElementById('cartItems');
+    const emptyEl = document.getElementById('cartEmpty');
+    const freteEl = document.getElementById('cartFrete');
+    const endEl = document.getElementById('cartEndereco');
+    const horEl = document.getElementById('cartHorario');
+    const footerEl = document.getElementById('cartFooter');
+    const totalEl = document.getElementById('cartTotal');
+
+    const totalQty = carrinho.reduce((s, i) => s + i.qty, 0);
+    const totalVal = carrinho.reduce((s, i) => s + i.total, 0);
+
+    // badge
+    badge.textContent = totalQty;
+    badge.classList.toggle('visible', totalQty > 0);
+
+    // empty
+    emptyEl.style.display = carrinho.length === 0 ? 'block' : 'none';
+    freteEl.style.display = carrinho.length === 0 ? 'none' : 'block';
+    footerEl.style.display = carrinho.length === 0 ? 'none' : 'block';
+
+    // endereço e horário
+    if (carrinho.length > 0) {
+      endEl.classList.add('visible');
+      horEl.classList.add('visible');
+    } else {
+      endEl.classList.remove('visible');
+      horEl.classList.remove('visible');
+    }
+
+    // items
+    const itensHTML = carrinho.map(i => `
+      <div class="cart-item">
+        <span class="cart-item-emoji">${i.emoji}</span>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${i.nome}</div>
+          <div class="cart-item-sub">${i.preco}</div>
+          <div class="cart-item-controls">
+            <button class="qty-btn" onclick="alterarQty('${i.nome.replace(/'/g,"\\'")}', -1)">−</button>
+            <span class="qty-val">${i.qty}</span>
+            <button class="qty-btn" onclick="alterarQty('${i.nome.replace(/'/g,"\\'")}', 1)">+</button>
           </div>
         </div>
-        <p class="footer-tagline">Reduzindo custos, construindo futuros. Ferro, aço e lajes em todo o estado do Rio de Janeiro.</p>
-        <p class="footer-cnpj">CNPJ: 52.570.746/0001-34</p>
-      </div>
-      <div class="footer-col">
-        <h4>Explorar</h4>
-        <ul>
-          <li><a href="produtos.html">Catálogo</a></li>
-          <li><a href="entregas.html">Logística</a></li>
-          <li><a href="quem-somos.html">Quem Somos</a></li>
-          <li><a href="contato.html">Atendimento</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Canais Diretos</h4>
-        <ul>
-          <li><a href="https://wa.me/5521992320613" target="_blank">(21) 99232-0613</a></li>
-          <li><a href="mailto:abg.distribuidora.ltda@gmail.com">E-mail Comercial</a></li>
-          <li><a href="https://www.instagram.com/abg.distribuidora.de.ferro" target="_blank">Instagram Oficial</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Onde Estamos</h4>
-        <ul>
-          <li>R. Berlarmino Gondim, 35</li>
-          <li>Parque Independência</li>
-          <li>Duque de Caxias · RJ</li>
-          <li><a href="https://www.google.com/maps/search/?api=1&query=R.+Berlarmino+Gondim,+35+Duque+de+Caxias" target="_blank">Ver no Maps</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-divider">
-      <span class="footer-copy">© 2026 ABG Distribuidora de Ferro e Aço — Todos os direitos reservados.</span>
-      <span class="footer-copy-right">Fabricante Nacional · Duque de Caxias · RJ</span>
-    </div>
-  </footer>
-
-  <script>
-    // ─── NAVBAR TOGGLE ─────────────────────────────────
-    const navToggle = document.getElementById('navToggle');
-    const navMobile = document.getElementById('navMobile');
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('open');
-      navMobile.classList.toggle('open');
-    });
-    document.addEventListener('click', e => {
-      if (!navToggle.contains(e.target) && !navMobile.contains(e.target)) {
-        navToggle.classList.remove('open');
-        navMobile.classList.remove('open');
-      }
-    });
-
-    // ─── CART STATE ─────────────────────────────────────
-    let cart = [];
-
-    function fmtBRL(v) {
-      return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    }
-
-    function updateCartUI() {
-      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-      const count = cart.reduce((s, i) => s + i.qty, 0);
-      document.getElementById('cartCountBadge').textContent = count;
-      document.getElementById('cartTotalBar').textContent = fmtBRL(total);
-      document.getElementById('cartTotalValue').textContent = fmtBRL(total);
-
-      const itemsEl = document.getElementById('cartItems');
-      if (cart.length === 0) {
-        itemsEl.innerHTML = `<div class="cart-empty">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
-          Carrinho vazio.<br>Adicione produtos ao catálogo.
-        </div>`;
-        return;
-      }
-      itemsEl.innerHTML = cart.map((item, i) => `
-        <div class="cart-item">
-          <div class="cart-item-info">
-            <div class="cart-item-name">${item.name}</div>
-            <div class="cart-item-price">${fmtBRL(item.price)} × ${item.qty} = ${fmtBRL(item.price * item.qty)}</div>
-          </div>
-          <button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+          <span class="cart-item-price">R$ ${i.total.toFixed(2).replace('.',',')}</span>
+          <button class="cart-item-remove" onclick="removerItem('${i.nome.replace(/'/g,"\\'")}')">✕ remover</button>
         </div>
-      `).join('');
-    }
+      </div>
+    `).join('');
 
-    function changeQty(btn, delta) {
-      const wrap = btn.closest('.product-card');
-      const input = wrap.querySelector('.qty-input');
-      let v = parseInt(input.value) + delta;
-      if (v < 1) v = 1;
-      input.value = v;
-    }
+    // limpa os items preservando o empty
+    const existingItems = itemsEl.querySelectorAll('.cart-item');
+    existingItems.forEach(el => el.remove());
+    emptyEl.insertAdjacentHTML('afterend', itensHTML);
 
-    function addToCart(btn, name, price) {
-      const wrap = btn.closest('.product-card');
-      const qty = parseInt(wrap.querySelector('.qty-input').value) || 1;
-      const existing = cart.find(i => i.name === name);
-      if (existing) {
-        existing.qty += qty;
+    totalEl.textContent = 'R$ ' + totalVal.toFixed(2).replace('.', ',');
+  }
+
+  // ── FRETE ──
+  function calcularFrete() {
+    const cep = document.getElementById('freteInput').value.replace(/\D/g, '');
+    const res = document.getElementById('freteRes');
+    if (cep.length < 8) {
+      res.textContent = 'CEP inválido.';
+      res.className = 'frete-resultado';
+      return;
+    }
+    res.textContent = 'Calculando...';
+    res.className = 'frete-resultado';
+
+    // Simulação por faixa de CEP (RJ)
+    setTimeout(() => {
+      const prefix = parseInt(cep.substring(0,5));
+      let msg = '';
+      if (prefix >= 25000 && prefix <= 26800) {
+        msg = '✓ Baixada — Entrega em até 24h · Frete a calcular no pedido';
+      } else if (prefix >= 20000 && prefix <= 24999) {
+        msg = '✓ Capital RJ — Entrega em até 36h · Frete a calcular no pedido';
+      } else if (prefix >= 27000 && prefix <= 28999) {
+        msg = '✓ Interior RJ — Entrega em até 72h · Frete a calcular no pedido';
       } else {
-        cart.push({ name, price, qty });
+        msg = 'Consulte o frete pelo WhatsApp para sua região.';
       }
-      btn.textContent = '✓ Adicionado';
-      btn.classList.add('added');
-      setTimeout(() => {
-        btn.textContent = '+ Adicionar';
-        btn.classList.remove('added');
-      }, 1600);
-      updateCartUI();
-    }
+      res.textContent = msg;
+      res.className = 'frete-resultado ok';
+    }, 600);
+  }
 
-    function removeFromCart(idx) {
-      cart.splice(idx, 1);
-      updateCartUI();
-    }
+  // Máscara CEP
+  document.getElementById('freteInput').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g, '');
+    if (v.length > 5) v = v.slice(0,5) + '-' + v.slice(5,8);
+    this.value = v;
+  });
 
-    // ─── CART OPEN / CLOSE ──────────────────────────────
-    const overlay  = document.getElementById('cartOverlay');
-    const btnOpen  = document.getElementById('btnOpenCart');
-    const btnClose = document.getElementById('cartClose');
+  // ── FINALIZAR PEDIDO ──
+  function finalizarPedido() {
+    if (carrinho.length === 0) return;
 
-    btnOpen.addEventListener('click', () => overlay.classList.add('open'));
-    btnClose.addEventListener('click', () => overlay.classList.remove('open'));
-    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+    const cep = document.getElementById('freteInput').value || 'Não informado';
+    const rua = document.getElementById('endRua').value || '';
+    const num = document.getElementById('endNum').value || '';
+    const comp = document.getElementById('endComp').value || '';
+    const bairro = document.getElementById('endBairro').value || '';
+    const horario = document.getElementById('horarioSelect').value;
+    const total = carrinho.reduce((s, i) => s + i.total, 0);
 
-    // ─── CHECKOUT ───────────────────────────────────────
-    document.getElementById('btnCheckout').addEventListener('click', () => {
-      if (cart.length === 0) { alert('Seu carrinho está vazio!'); return; }
-      const cep  = document.getElementById('deliveryCep').value.trim();
-      const addr = document.getElementById('deliveryAddress').value.trim();
-      const time = document.getElementById('deliveryTime').value;
-      const obs  = document.getElementById('deliveryObs').value.trim();
-      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    const endFormatado = [rua, num, comp, bairro].filter(Boolean).join(', ') || 'Não informado';
 
-      let msg = '🧱 *PEDIDO ABG DISTRIBUIDORA*\n\n';
-      cart.forEach(i => {
-        msg += `• ${i.name} × ${i.qty} = ${fmtBRL(i.price * i.qty)}\n`;
-      });
-      msg += `\n💰 *Total: ${fmtBRL(total)}*\n`;
-      if (cep)  msg += `\n📍 CEP: ${cep}`;
-      if (addr) msg += `\n📋 Endereço: ${addr}`;
-      if (time) msg += `\n🕐 Horário: ${time}`;
-      if (obs)  msg += `\n💬 Obs: ${obs}`;
+    let itens = carrinho.map(i =>
+      `• ${i.qty}× ${i.nome} — R$ ${i.total.toFixed(2).replace('.', ',')}`
+    ).join('\n');
 
-      window.open('https://wa.me/5521992320613?text=' + encodeURIComponent(msg), '_blank');
-    });
+    const msg =
+`🏗️ *PEDIDO — ABG DISTRIBUIDORA*
 
-    // ─── CLEAR CART ─────────────────────────────────────
-    document.getElementById('btnClearCart').addEventListener('click', () => {
-      if (confirm('Limpar todos os itens do carrinho?')) {
-        cart = [];
-        updateCartUI();
+*📦 Itens Selecionados:*
+${itens}
+
+💰 *Total Estimado: R$ ${total.toFixed(2).replace('.', ',')}*
+
+📍 *CEP:* ${cep}
+🏠 *Endereço:* ${endFormatado}
+⏰ *Melhor horário:* ${horario}
+
+Gostaria de confirmar esse pedido e verificar o frete. Aguardo retorno! 🙏`;
+
+    const encoded = encodeURIComponent(msg);
+    window.open(`https://wa.me/5521992320613?text=${encoded}`, '_blank');
+  }
+
+  // ── FILTROS ──
+  function filtrar(cat, btn) {
+    document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
+    btn.classList.add('ativo');
+    document.querySelectorAll('.cat-section').forEach(sec => {
+      if (cat === 'todos' || sec.dataset.cat === cat) {
+        sec.style.display = '';
+      } else {
+        sec.style.display = 'none';
       }
     });
+  }
+</script>
 
-    // ─── CEP MASK ───────────────────────────────────────
-    document.getElementById('deliveryCep').addEventListener('input', function() {
-      let v = this.value.replace(/\D/g,'').slice(0,8);
-      if (v.length > 5) v = v.slice(0,5) + '-' + v.slice(5);
-      this.value = v;
-    });
-
-    // ─── FILTER TABS ────────────────────────────────────
-    document.getElementById('filterTabs').addEventListener('click', e => {
-      const tab = e.target.closest('.filter-tab');
-      if (!tab) return;
-      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const cat = tab.dataset.cat;
-      document.querySelectorAll('.cat-group').forEach(g => {
-        g.style.display = (cat === 'all' || g.dataset.category === cat) ? '' : 'none';
-      });
-    });
-
-    updateCartUI();
-  </script>
 </body>
 </html>
