@@ -6,27 +6,31 @@
   <title>Atendimento | ABG Distribuidora de Ferro e Aço</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --preto: #0a0a0a;
-      --amarelo: #f5c518;
-      --amarelo-escuro: #d4a800;
-      --cinza-escuro: #141414;
-      --cinza-medio: #1e1e1e;
-      --cinza-borda: #2a2a2a;
-      --cinza-texto: #888;
-      --branco: #ffffff;
-      --branco-suave: #e8e8e8;
+      --azul-principal: #0A1E3A;
+      --azul-secundario: #143B60;
+      --grafite: #1A1E23;
+      --cinza-aco: #3C434C;
+      --dourado: #D4AF37;
+      --dourado-claro: #f1d06d;
+      --branco: #FFFFFF;
+      --texto: #B8C0CC;
     }
 
     html { scroll-behavior: smooth; }
+
     body {
-      background: var(--preto);
+      background:
+        linear-gradient(rgba(4,10,25,.96), rgba(4,10,25,.98)),
+        url('https://i.postimg.cc/ZRY8s3Yg/Chat-GPT-Image-11-de-mai-de-2026-09-44-33.png');
+      background-size: cover;
+      background-attachment: fixed;
       color: var(--branco);
-      font-family: 'Barlow', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 16px;
       line-height: 1.6;
       overflow-x: hidden;
@@ -51,9 +55,9 @@
     /* ── NAV ── */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(10,10,10,0.97);
-      border-bottom: 1px solid var(--cinza-borda);
-      backdrop-filter: blur(12px);
+      background: rgba(7,13,26,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(212,175,55,.15);
     }
     .nav-inner {
       max-width: 1200px; margin: 0 auto;
@@ -61,93 +65,107 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Bebas Neue', sans-serif;
       text-decoration: none;
       display: flex; align-items: center; gap: 0; line-height: 1;
     }
     .nav-logo .logo-abg {
-      font-size: 1.5rem; font-weight: 900; letter-spacing: 0.06em;
-      background: var(--amarelo); color: var(--preto);
+      font-size: 1.9rem; font-weight: 400; letter-spacing: .08em;
+      background: var(--dourado); color: #08111f;
       padding: 4px 10px; border-radius: 3px 0 0 3px;
     }
     .nav-logo .logo-nome {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--branco-suave);
-      background: var(--cinza-medio);
-      border: 1px solid var(--cinza-borda); border-left: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #fff;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06); border-left: none;
       padding: 4px 12px; border-radius: 0 3px 3px 0;
       display: flex; flex-direction: column; gap: 1px;
     }
     .nav-logo .logo-nome em {
-      font-style: normal; color: var(--cinza-texto);
-      font-size: 0.62rem; letter-spacing: 0.15em;
+      font-style: normal; color: #8892a0;
+      font-size: 0.6rem; letter-spacing: 0.1em; font-weight: 500;
     }
     .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
     .nav-links a {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600; font-size: 0.95rem; letter-spacing: 0.08em;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600; font-size: 0.85rem; letter-spacing: 0.05em;
       text-transform: uppercase; text-decoration: none;
-      color: var(--cinza-texto); transition: color 0.2s;
+      color: #c4ccd8; transition: color 0.25s;
     }
-    .nav-links a:hover { color: var(--amarelo); }
-    .nav-links a.ativo { color: var(--amarelo); }
+    .nav-links a:hover { color: var(--dourado); }
+    .nav-links a.ativo { color: var(--dourado); }
     .nav-cta {
-      background: var(--amarelo) !important; color: var(--preto) !important;
-      padding: 8px 18px; border-radius: 4px; font-weight: 700 !important;
+      background: linear-gradient(135deg, #D4AF37, #f1d06d) !important;
+      color: #08111f !important;
+      padding: 10px 20px !important; border-radius: 4px !important;
+      font-weight: 700 !important;
+      box-shadow: 0 0 18px rgba(212,175,55,.18);
     }
-    .nav-cta:hover { background: var(--amarelo-escuro) !important; }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(212,175,55,.3); }
+
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       cursor: pointer; background: none; border: none; padding: 4px;
     }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--branco); }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--branco); transition: 0.3s; }
     .mobile-menu {
       display: none; flex-direction: column;
-      background: var(--cinza-escuro);
-      border-top: 1px solid var(--cinza-borda);
+      background: rgba(7,13,26,.98);
+      border-top: 1px solid rgba(212,175,55,.15);
       padding: 16px 24px 24px; gap: 0;
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600; font-size: 1.05rem; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--cinza-texto);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600; font-size: 1.05rem; letter-spacing: 0.05em;
+      text-transform: uppercase; color: #c4ccd8;
       text-decoration: none; padding: 14px 0;
-      border-bottom: 1px solid var(--cinza-borda); transition: color 0.2s;
+      border-bottom: 1px solid rgba(255,255,255,.06); transition: color 0.2s;
     }
     .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: var(--amarelo); }
-    .mobile-menu a.mobile-cta { color: var(--amarelo); font-weight: 700; }
+    .mobile-menu a:hover { color: var(--dourado); }
+    .mobile-menu a.mobile-cta { color: var(--dourado); font-weight: 700; }
 
     /* ── HERO ── */
     .hero {
       padding: 80px 24px 72px;
-      background: linear-gradient(160deg, #0a0a0a 40%, #1a0e00 100%);
-      border-bottom: 1px solid var(--cinza-borda);
+      background:
+        linear-gradient(160deg, rgba(4,10,25,.92) 40%, rgba(20,14,0,.85) 100%),
+        url('https://i.postimg.cc/ZRY8s3Yg/Chat-GPT-Image-11-de-mai-de-2026-09-44-33.png') center/cover no-repeat;
+      border-bottom: 1px solid rgba(212,175,55,.12);
       text-align: center;
       position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
+      background-size: 60px 60px;
+      z-index: 1;
     }
     .hero::after {
       content: '';
       position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(20,59,96,.45), transparent 40%);
+      z-index: 1;
     }
-    .hero-content { position: relative; z-index: 1; }
+    .hero-content { position: relative; z-index: 2; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--amarelo);
-      border: 1px solid rgba(245,197,24,0.3);
-      padding: 6px 14px; border-radius: 2px; margin-bottom: 24px;
+      background: rgba(212,175,55,.08);
+      border: 1px solid rgba(212,175,55,.25);
+      color: var(--dourado);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem; letter-spacing: .18em;
+      padding: 8px 20px; margin-bottom: 24px;
     }
     .hero-badge::before {
       content: ''; width: 6px; height: 6px;
-      background: var(--amarelo); border-radius: 50%;
+      background: var(--dourado); border-radius: 50%;
       animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse {
@@ -155,171 +173,198 @@
       50% { opacity: 0.4; transform: scale(0.7); }
     }
     .hero h1 {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(3rem, 7vw, 5rem);
-      font-weight: 900; line-height: 1.0; text-transform: uppercase;
-      margin-bottom: 20px;
+      font-weight: 400; line-height: .9; letter-spacing: .03em;
+      text-transform: uppercase; margin-bottom: 20px;
+      color: var(--branco);
     }
-    .hero h1 em { font-style: normal; color: var(--amarelo); display: block; }
+    .hero h1 em { font-style: normal; color: var(--dourado); display: block; }
     .hero-desc {
-      color: var(--cinza-texto); font-size: 1.05rem;
-      max-width: 520px; margin: 0 auto;
+      color: #d0d8e4; font-size: 1.05rem;
+      max-width: 520px; margin: 0 auto; line-height: 1.8;
     }
 
     /* ── UTILITÁRIOS ── */
     .container { max-width: 1100px; margin: 0 auto; }
-    .section { padding: 72px 24px; }
-    .section-alt { background: var(--cinza-escuro); }
+    .section { padding: 100px 24px; position: relative; }
+    .section-alt { background: transparent; }
     .section-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--amarelo); margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--dourado); margin-bottom: 16px;
     }
     .section-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 800; text-transform: uppercase; line-height: 1.1; margin-bottom: 12px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400; letter-spacing: .04em;
+      text-transform: uppercase; line-height: 1.1; margin-bottom: 16px;
+      color: var(--branco);
     }
-    .section-title em { font-style: normal; color: var(--amarelo); }
-    .section-subtitle { color: var(--cinza-texto); max-width: 540px; font-size: 0.95rem; margin-bottom: 48px; }
-    hr.divider { border: none; border-top: 1px solid var(--cinza-borda); margin: 0; }
+    .section-title em { font-style: normal; color: var(--dourado); }
+    .section-subtitle { color: #b8c0cc; max-width: 600px; font-size: 0.95rem; margin-bottom: 48px; }
+    hr.divider { border: none; border-top: 1px solid rgba(212,175,55,.08); margin: 0; }
 
     .btn-amarelo {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--amarelo); color: var(--preto);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800; font-size: 0.95rem; letter-spacing: 0.1em;
+      background: linear-gradient(135deg, #D4AF37, #f1d06d);
+      color: #08111f;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 0.9rem; letter-spacing: .05em;
       text-transform: uppercase; text-decoration: none;
-      padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer;
-      transition: background 0.2s, transform 0.2s; flex-shrink: 0;
+      padding: 14px 32px; border-radius: 4px; border: none; cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s; flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(212,175,55,.15);
     }
-    .btn-amarelo:hover { background: var(--amarelo-escuro); transform: translateY(-2px); }
+    .btn-amarelo:hover { transform: translateY(-3px); box-shadow: 0 0 25px rgba(212,175,55,.3); }
     .btn-outline {
       display: inline-flex; align-items: center; gap: 8px;
-      border: 1px solid var(--cinza-borda); color: var(--branco);
-      background: transparent;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 0.95rem; letter-spacing: 0.1em;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600; font-size: 0.9rem; letter-spacing: .05em;
       text-transform: uppercase; text-decoration: none;
-      padding: 14px 28px; border-radius: 4px;
-      transition: border-color 0.2s, color 0.2s;
+      padding: 14px 32px; border-radius: 4px;
+      transition: border-color 0.3s, color 0.3s, background 0.3s;
     }
-    .btn-outline:hover { border-color: var(--amarelo); color: var(--amarelo); }
+    .btn-outline:hover { border-color: var(--dourado); color: var(--dourado); background: rgba(212,175,55,.04); }
 
     /* ── CANAIS ── */
     .canais-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1px;
-      background: var(--cinza-borda);
-      border: 1px solid var(--cinza-borda);
-      border-radius: 8px;
-      overflow: hidden;
+      gap: 24px;
+      margin-top: 48px;
     }
     .canal-card {
-      background: var(--cinza-medio);
-      padding: 36px 28px;
-      display: flex; flex-direction: column; gap: 14px;
-      transition: background 0.2s;
+      background: linear-gradient(180deg, rgba(20,59,96,.18), rgba(26,30,35,.92));
+      border: 1px solid rgba(212,175,55,.10);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+      border-radius: 8px;
+      padding: 36px 32px;
+      display: flex; flex-direction: column; gap: 16px;
+      transition: .35s;
     }
-    .canal-card:hover { background: #222; }
+    .canal-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212,175,55,.35);
+      box-shadow: 0 12px 40px rgba(0,0,0,.45), 0 0 18px rgba(212,175,55,.08);
+    }
     .canal-num {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.18em;
-      color: var(--amarelo); opacity: 0.6;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem; font-weight: 400; color: var(--dourado);
+      opacity: 0.3;
     }
     .canal-icon {
-      width: 48px; height: 48px; border-radius: 8px;
+      width: 56px; height: 56px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(245,197,24,0.1); flex-shrink: 0;
+      background: rgba(212,175,55,.08);
+      border: 1px solid rgba(212,175,55,.14);
+      flex-shrink: 0;
     }
-    .canal-icon svg { width: 24px; height: 24px; }
+    .canal-icon svg { width: 26px; height: 26px; }
     .canal-tag {
       display: inline-block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; padding: 3px 10px; border-radius: 2px;
-      background: rgba(245,197,24,0.12); color: var(--amarelo);
-      border: 1px solid rgba(245,197,24,0.2); width: fit-content;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 3px;
+      background: rgba(212,175,55,.1); color: var(--dourado);
+      border: 1px solid rgba(212,175,55,.2); width: fit-content;
     }
     .canal-card h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.2rem; font-weight: 800; text-transform: uppercase;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; font-weight: 400; letter-spacing: .04em;
+      text-transform: uppercase;
     }
-    .canal-card p { font-size: 0.9rem; color: var(--cinza-texto); flex: 1; line-height: 1.6; }
+    .canal-card p { font-size: 0.88rem; color: #c1cad5; flex: 1; line-height: 1.6; }
     .canal-info {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.05rem; font-weight: 700; color: var(--branco-suave);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem; font-weight: 600; color: var(--branco);
     }
     .canal-link {
       display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; text-decoration: none; color: var(--amarelo);
-      transition: gap 0.2s;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; text-decoration: none; color: var(--dourado);
+      transition: gap 0.2s, color 0.2s;
     }
-    .canal-link:hover { gap: 12px; }
+    .canal-link:hover { gap: 12px; color: var(--dourado-claro); }
     .canal-link::after { content: '→'; }
 
     /* ── HORÁRIOS ── */
     .horarios-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1px;
-      background: var(--cinza-borda);
-      border: 1px solid var(--cinza-borda);
-      border-radius: 8px;
-      overflow: hidden;
+      gap: 24px;
+      margin-top: 48px;
     }
     .horario-card {
-      background: var(--cinza-medio);
-      padding: 32px 24px;
-      transition: background 0.2s;
+      background: linear-gradient(180deg, rgba(20,59,96,.18), rgba(26,30,35,.92));
+      border: 1px solid rgba(212,175,55,.10);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+      border-radius: 8px;
+      padding: 36px 28px;
+      transition: .35s;
     }
-    .horario-card:hover { background: #222; }
+    .horario-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212,175,55,.25);
+    }
     .horario-periodo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--amarelo); margin-bottom: 8px; opacity: 0.8;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--dourado); margin-bottom: 8px; opacity: 0.8;
     }
     .horario-card h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.1rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; font-weight: 400; letter-spacing: .04em;
+      text-transform: uppercase; margin-bottom: 12px;
     }
     .horario-horas {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 2.2rem; font-weight: 900; color: var(--amarelo);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.6rem; font-weight: 400; color: var(--dourado);
       line-height: 1; margin-bottom: 10px;
     }
-    .horario-card p { font-size: 0.88rem; color: var(--cinza-texto); line-height: 1.6; }
+    .horario-card p { font-size: 0.85rem; color: #c1cad5; line-height: 1.6; }
 
     /* ── LOCALIZAÇÃO ── */
     .localizacao-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--cinza-borda);
-      border: 1px solid var(--cinza-borda);
-      border-radius: 8px;
-      overflow: hidden;
+      gap: 24px;
+      margin-top: 48px;
     }
     .local-info {
-      background: var(--cinza-medio);
+      background: linear-gradient(180deg, rgba(20,59,96,.18), rgba(26,30,35,.92));
+      border: 1px solid rgba(212,175,55,.10);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+      border-radius: 8px;
       padding: 40px 36px;
       display: flex; flex-direction: column; gap: 24px;
     }
     .local-item { display: flex; flex-direction: column; gap: 4px; }
     .local-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--amarelo); opacity: 0.8;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--dourado); opacity: 0.8;
     }
     .local-valor {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.05rem; font-weight: 700; color: var(--branco-suave);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem; font-weight: 400; letter-spacing: .04em;
+      color: var(--branco);
     }
-    .local-sub { font-size: 0.85rem; color: var(--cinza-texto); }
-    .local-mapa { background: var(--cinza-medio); position: relative; min-height: 320px; }
+    .local-sub { font-size: 0.82rem; color: var(--texto); }
+    .local-mapa {
+      background: linear-gradient(180deg, rgba(20,59,96,.18), rgba(26,30,35,.92));
+      border: 1px solid rgba(212,175,55,.10);
+      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+      border-radius: 8px;
+      position: relative; min-height: 320px; overflow: hidden;
+    }
     .local-mapa iframe {
       width: 100%; height: 100%; min-height: 320px;
       border: none; display: block;
@@ -331,99 +376,110 @@
     }
     .map-overlay a {
       display: inline-flex; align-items: center; gap: 6px;
-      background: var(--amarelo); color: var(--preto);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em;
+      background: linear-gradient(135deg, #D4AF37, #f1d06d);
+      color: #08111f;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: .06em;
       text-transform: uppercase; text-decoration: none;
-      padding: 8px 14px; border-radius: 4px;
-      transition: background 0.2s;
+      padding: 10px 16px; border-radius: 4px;
+      transition: transform 0.2s;
+      box-shadow: 0 0 14px rgba(212,175,55,.2);
     }
-    .map-overlay a:hover { background: var(--amarelo-escuro); }
+    .map-overlay a:hover { transform: translateY(-2px); }
 
     /* ── PERGUNTAS FREQUENTES ── */
-    .faq-list { display: flex; flex-direction: column; gap: 1px; margin-top: 48px; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 48px; }
     .faq-item {
-      background: var(--cinza-medio);
-      border: 1px solid var(--cinza-borda);
+      background: linear-gradient(180deg, rgba(20,59,96,.12), rgba(26,30,35,.6));
+      border: 1px solid rgba(212,175,55,.08);
       border-radius: 6px;
       overflow: hidden;
-      margin-bottom: 4px;
+      backdrop-filter: blur(8px);
+      transition: border-color 0.3s;
     }
-    .faq-item:first-child { border-radius: 6px 6px 0 0; }
-    .faq-item:last-child { border-radius: 0 0 6px 6px; margin-bottom: 0; }
+    .faq-item:hover { border-color: rgba(212,175,55,.2); }
     .faq-pergunta {
       width: 100%; background: none; border: none;
-      padding: 20px 24px; display: flex; align-items: center;
+      padding: 22px 24px; display: flex; align-items: center;
       justify-content: space-between; gap: 16px;
       cursor: pointer; text-align: left;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.05rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.04em; color: var(--branco);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem; font-weight: 400; letter-spacing: .04em;
+      text-transform: uppercase; color: var(--branco);
       transition: color 0.2s;
     }
-    .faq-pergunta:hover { color: var(--amarelo); }
-    .faq-pergunta.aberta { color: var(--amarelo); border-bottom: 1px solid var(--cinza-borda); }
+    .faq-pergunta:hover { color: var(--dourado); }
+    .faq-pergunta.aberta {
+      color: var(--dourado);
+      border-bottom: 1px solid rgba(212,175,55,.15);
+    }
     .faq-seta {
       width: 20px; height: 20px; flex-shrink: 0;
-      color: var(--amarelo);
+      stroke: var(--dourado);
       transition: transform 0.3s;
     }
     .faq-pergunta.aberta .faq-seta { transform: rotate(180deg); }
     .faq-resposta {
       display: none;
-      padding: 20px 24px;
-      font-size: 0.92rem; color: var(--cinza-texto); line-height: 1.7;
+      padding: 22px 24px;
+      font-size: 0.9rem; color: var(--texto); line-height: 1.7;
     }
     .faq-resposta.aberta { display: block; }
 
     /* ── TRABALHE CONOSCO ── */
     .trabalhe-box {
       margin-top: 48px;
-      background: var(--cinza-medio);
-      border: 1px solid var(--cinza-borda);
-      border-left: 4px solid var(--amarelo);
+      background: linear-gradient(180deg, rgba(20,59,96,.18), rgba(26,30,35,.92));
+      border: 1px solid rgba(212,175,55,.10);
+      border-left: 4px solid var(--dourado);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.35);
       border-radius: 8px;
       padding: 40px 36px;
       display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
     }
     .trabalhe-icon {
-      width: 60px; height: 60px;
-      background: rgba(245,197,24,0.1);
-      border-radius: 8px;
+      width: 64px; height: 64px;
+      background: rgba(212,175,55,.08);
+      border: 1px solid rgba(212,175,55,.14);
+      border-radius: 50%;
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    .trabalhe-icon svg { width: 30px; height: 30px; }
+    .trabalhe-icon svg { width: 32px; height: 32px; stroke: var(--dourado); }
     .trabalhe-text { flex: 1; min-width: 200px; }
     .trabalhe-text h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.3rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem; font-weight: 400; letter-spacing: .04em;
+      text-transform: uppercase; margin-bottom: 8px;
     }
-    .trabalhe-text p { color: var(--cinza-texto); font-size: 0.92rem; max-width: 480px; line-height: 1.6; }
+    .trabalhe-text p { color: #c1cad5; font-size: 0.9rem; max-width: 480px; line-height: 1.6; }
 
     /* ── CTA FINAL ── */
     .cta-final {
-      background: var(--preto);
-      text-align: center; padding: 96px 24px;
+      background: transparent;
+      text-align: center; padding: 100px 24px;
       position: relative; overflow: hidden;
     }
     .cta-final::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 50% 70% at 50% 100%, rgba(245,197,24,0.07) 0%, transparent 70%);
+      background: radial-gradient(circle at center, rgba(20,59,96,.45), transparent 60%);
       pointer-events: none;
     }
+    .cta-final .container { position: relative; z-index: 1; }
     .cta-final h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 900; text-transform: uppercase; line-height: 1.0; margin-bottom: 16px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400; text-transform: uppercase; line-height: 1.0;
+      margin-bottom: 16px; letter-spacing: .04em;
     }
-    .cta-final h2 em { font-style: normal; color: var(--amarelo); }
-    .cta-final p { color: var(--cinza-texto); margin-bottom: 36px; font-size: 1rem; }
+    .cta-final h2 em { font-style: normal; color: var(--dourado); }
+    .cta-final p { color: #d0d8e4; margin-bottom: 36px; font-size: 1rem; }
     .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
     /* ── FOOTER ── */
     footer {
-      background: #080808;
-      border-top: 1px solid var(--cinza-borda);
+      background: #08111f;
+      border-top: 1px solid rgba(212,175,55,.12);
       padding: 56px 24px 32px;
     }
     .footer-inner {
@@ -433,24 +489,24 @@
       gap: 48px;
     }
     .footer-brand img { height: 40px; margin-bottom: 14px; }
-    .footer-brand p { color: var(--cinza-texto); font-size: 0.88rem; max-width: 280px; line-height: 1.6; margin-bottom: 12px; }
-    .footer-brand .cnpj { font-size: 0.75rem; color: #444; letter-spacing: 0.04em; }
+    .footer-brand p { color: #b6c0cb; font-size: 0.88rem; max-width: 280px; line-height: 1.6; margin-bottom: 12px; }
+    .footer-brand .cnpj { font-size: 0.75rem; color: #556; letter-spacing: 0.04em; }
     .footer-col h4 {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--amarelo); margin-bottom: 18px;
+      text-transform: uppercase; color: var(--dourado); margin-bottom: 18px;
     }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul li a { color: var(--cinza-texto); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
-    .footer-col ul li a:hover { color: var(--branco); }
-    .footer-col ul li span { color: var(--cinza-texto); font-size: 0.88rem; }
+    .footer-col ul li a { color: #b6c0cb; text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--dourado); }
+    .footer-col ul li span { color: #b6c0cb; font-size: 0.88rem; }
     .footer-bottom {
       max-width: 1100px; margin: 36px auto 0;
-      padding-top: 24px; border-top: 1px solid var(--cinza-borda);
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,.05);
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 12px;
     }
-    .footer-bottom p { font-size: 0.78rem; color: #444; }
+    .footer-bottom p { font-size: 0.78rem; color: #556; }
 
     /* ── RESPONSIVO ── */
     @media (max-width: 900px) {
@@ -460,9 +516,11 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .trabalhe-box { flex-direction: column; }
+      .trabalhe-box { flex-direction: column; text-align: center; }
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
       .footer-bottom { flex-direction: column; text-align: center; }
+      .hero h1 { font-size: 2.8rem; }
+      .hero-btns { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
@@ -478,7 +536,7 @@
   <div class="nav-inner">
     <a class="nav-logo" href="index.html">
       <span class="logo-abg">ABG</span>
-      <span class="logo-nome">DISTRIBUIDORA DE FERRO E AÇO<em>DUQUE DE CAXIAS · RJ</em></span>
+      <span class="logo-nome">Distribuidora de Ferro e Aço<em>Duque de Caxias · RJ</em></span>
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Início</a></li>
@@ -542,7 +600,7 @@
       <div class="canal-card">
         <div class="canal-num">02</div>
         <div class="canal-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#f5c518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         </div>
         <div class="canal-tag">Propostas &amp; Parcerias</div>
         <h3>E-mail Comercial</h3>
@@ -609,7 +667,7 @@
     <h2 class="section-title">Nossa <em>Localização</em></h2>
     <p class="section-subtitle">Venha conhecer o galpão ou retire seu pedido diretamente na unidade em Duque de Caxias.</p>
 
-    <div class="localizacao-grid" style="margin-top:48px;">
+    <div class="localizacao-grid">
       <div class="local-info">
         <div class="local-item">
           <div class="local-label">Endereço</div>
@@ -628,7 +686,7 @@
         </div>
         <div class="local-item">
           <div class="local-label">E-mail</div>
-          <div class="local-valor" style="font-size:0.9rem;">abg.distribuidora.ltda@gmail.com</div>
+          <div class="local-valor" style="font-size:0.95rem; font-family:'Montserrat',sans-serif; font-weight:600;">abg.distribuidora.ltda@gmail.com</div>
           <div class="local-sub">Resposta em até 24h úteis</div>
         </div>
         <a class="btn-amarelo" href="https://www.google.com/maps/search/?api=1&query=R.+Berlarmino+Gondim,+35+Duque+de+Caxias" target="_blank" rel="noopener" style="margin-top:8px; width:fit-content;">
@@ -732,11 +790,11 @@
 
     <div class="trabalhe-box">
       <div class="trabalhe-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#f5c518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
       </div>
       <div class="trabalhe-text">
         <h3>Trabalhe Conosco</h3>
-        <p>Quer fazer parte do time ABG? Envie seu currículo para o nosso e-mail comercial com o assunto <strong style="color:var(--branco-suave)">"Trabalhe Conosco"</strong>. Analisamos todas as candidaturas e retornamos em breve.</p>
+        <p>Quer fazer parte do time ABG? Envie seu currículo para o nosso e-mail comercial com o assunto <strong style="color:var(--dourado)">"Trabalhe Conosco"</strong>. Analisamos todas as candidaturas e retornamos em breve.</p>
       </div>
       <a class="btn-amarelo" href="mailto:abg.distribuidora.ltda@gmail.com?subject=Trabalhe%20Conosco%20-%20Currículo">
         Enviar Currículo
@@ -794,7 +852,7 @@
   </div>
   <div class="footer-bottom">
     <p>© 2026 ABG Distribuidora de Ferro e Aço — Todos os direitos reservados.</p>
-    <p style="color:#333;font-size:0.75rem;">Fabricante Nacional · Duque de Caxias · RJ</p>
+    <p style="color:#445;font-size:0.75rem;">Fabricante Nacional · Duque de Caxias · RJ</p>
   </div>
 </footer>
 
@@ -823,4 +881,4 @@
 </script>
 
 </body>
-</html>
+  </html>
