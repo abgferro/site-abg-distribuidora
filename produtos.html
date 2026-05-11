@@ -6,28 +6,34 @@
   <title>Catálogo de Produtos | ABG Distribuidora de Ferro e Aço</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --preto: #0a0a0a;
-      --amarelo: #f5c518;
-      --amarelo-escuro: #d4a800;
-      --cinza-escuro: #141414;
+      --azul-principal: #0A1E3A;
+      --azul-secundario: #143B60;
+      --grafite: #1A1E23;
+      --cinza-aco: #3C434C;
+      --dourado: #D4AF37;
+      --dourado-claro: #f1d06d;
+      --branco: #FFFFFF;
+      --texto: #B8C0CC;
       --cinza-medio: #1e1e1e;
       --cinza-borda: #2a2a2a;
-      --cinza-texto: #888;
-      --branco: #ffffff;
-      --branco-suave: #e8e8e8;
+      --preto: #0a0a0a;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--preto);
+      background:
+        linear-gradient(rgba(4,10,25,.96), rgba(4,10,25,.98)),
+        url('https://i.postimg.cc/ZRY8s3Yg/Chat-GPT-Image-11-de-mai-de-2026-09-44-33.png');
+      background-size: cover;
+      background-attachment: fixed;
       color: var(--branco);
-      font-family: 'Barlow', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 16px;
       line-height: 1.6;
       overflow-x: hidden;
@@ -59,27 +65,27 @@
       bottom: 24px;
       right: 24px;
       z-index: 999;
-      background: var(--amarelo);
-      color: var(--preto);
+      background: linear-gradient(135deg, #D4AF37, #f1d06d);
+      color: #08111f;
       border: none;
       border-radius: 50px;
       padding: 14px 22px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      letter-spacing: 0.08em;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 4px 20px rgba(245,197,24,0.35);
-      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 20px rgba(212,175,55,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    #cart-btn:hover { background: var(--amarelo-escuro); transform: translateY(-2px); }
+    #cart-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(212,175,55,0.5); }
     #cart-btn .cart-count {
-      background: var(--preto);
-      color: var(--amarelo);
+      background: #08111f;
+      color: var(--dourado);
       border-radius: 50%;
       width: 22px;
       height: 22px;
@@ -87,7 +93,7 @@
       align-items: center;
       justify-content: center;
       font-size: 0.75rem;
-      font-weight: 900;
+      font-weight: 700;
     }
     #cart-btn.hidden { display: none; }
 
@@ -96,14 +102,14 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.7);
+      background: rgba(4,10,25,0.8);
       z-index: 1000;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(6px);
     }
     #cart-overlay.open { display: flex; align-items: flex-end; justify-content: flex-end; }
     #cart-panel {
-      background: var(--cinza-escuro);
-      border: 1px solid var(--cinza-borda);
+      background: rgba(7,13,26,.98);
+      border: 1px solid rgba(212,175,55,.15);
       border-right: none;
       border-bottom: none;
       border-top-left-radius: 12px;
@@ -113,26 +119,28 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      backdrop-filter: blur(14px);
     }
     .cart-header {
       padding: 20px 24px;
-      border-bottom: 1px solid var(--cinza-borda);
+      border-bottom: 1px solid rgba(212,175,55,.15);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .cart-header h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 800;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      color: var(--branco);
     }
-    .cart-header h3 span { color: var(--amarelo); }
+    .cart-header h3 span { color: var(--dourado); }
     #cart-close {
       background: none;
-      border: 1px solid var(--cinza-borda);
-      color: var(--cinza-texto);
+      border: 1px solid rgba(255,255,255,.1);
+      color: var(--texto);
       border-radius: 4px;
       width: 32px;
       height: 32px;
@@ -143,7 +151,7 @@
       justify-content: center;
       transition: color 0.2s, border-color 0.2s;
     }
-    #cart-close:hover { color: var(--branco); border-color: var(--cinza-texto); }
+    #cart-close:hover { color: var(--branco); border-color: var(--dourado); }
     #cart-items {
       flex: 1;
       overflow-y: auto;
@@ -151,41 +159,39 @@
     }
     #cart-items::-webkit-scrollbar { width: 4px; }
     #cart-items::-webkit-scrollbar-track { background: transparent; }
-    #cart-items::-webkit-scrollbar-thumb { background: var(--cinza-borda); border-radius: 2px; }
+    #cart-items::-webkit-scrollbar-thumb { background: rgba(212,175,55,.2); border-radius: 2px; }
     .cart-item {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 8px;
       align-items: start;
       padding: 12px 0;
-      border-bottom: 1px solid var(--cinza-borda);
+      border-bottom: 1px solid rgba(255,255,255,.05);
     }
     .cart-item:last-child { border-bottom: none; }
     .cart-item-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
       margin-bottom: 2px;
     }
     .cart-item-sub {
-      font-size: 0.8rem;
-      color: var(--cinza-texto);
+      font-size: 0.78rem;
+      color: var(--texto);
     }
     .cart-item-sub .disc-tag {
       color: #4ade80;
       font-weight: 600;
       margin-left: 4px;
     }
-    .cart-item-right {
-      text-align: right;
-    }
+    .cart-item-right { text-align: right; }
     .cart-item-price {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      color: var(--amarelo);
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: var(--dourado);
       margin-bottom: 6px;
     }
     .cart-item-controls {
@@ -195,8 +201,8 @@
       justify-content: flex-end;
     }
     .cart-qty-btn {
-      background: var(--cinza-borda);
-      border: none;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
       color: var(--branco);
       width: 26px;
       height: 26px;
@@ -207,11 +213,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.15s;
+      transition: background 0.15s, border-color 0.15s;
     }
-    .cart-qty-btn:hover { background: var(--amarelo); color: var(--preto); }
+    .cart-qty-btn:hover { background: var(--dourado); border-color: var(--dourado); color: #08111f; }
     .cart-qty-num {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 0.95rem;
       min-width: 28px;
@@ -220,11 +226,11 @@
     .cart-remove {
       background: none;
       border: none;
-      color: #555;
+      color: #556;
       cursor: pointer;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       letter-spacing: 0.05em;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       text-transform: uppercase;
       padding: 0;
@@ -237,12 +243,12 @@
     .cart-empty {
       text-align: center;
       padding: 40px 0;
-      color: var(--cinza-texto);
+      color: var(--texto);
       font-size: 0.9rem;
     }
     .cart-empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
     .cart-footer {
-      border-top: 1px solid var(--cinza-borda);
+      border-top: 1px solid rgba(212,175,55,.12);
       padding: 20px 24px;
     }
     .cart-footer-row {
@@ -252,62 +258,62 @@
       margin-bottom: 16px;
     }
     .cart-total-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--cinza-texto);
+      color: var(--texto);
     }
     .cart-total-val {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--amarelo);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--dourado);
     }
 
     /* Frete */
     .frete-box {
-      background: var(--cinza-medio);
-      border: 1px solid var(--cinza-borda);
+      background: rgba(20,59,96,.15);
+      border: 1px solid rgba(212,175,55,.10);
       border-radius: 6px;
       padding: 14px 16px;
       margin-bottom: 14px;
     }
     .frete-box label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--cinza-texto);
+      color: var(--texto);
       display: block;
       margin-bottom: 8px;
     }
     .frete-row { display: flex; gap: 8px; margin-bottom: 8px; }
     .frete-row input, .frete-row select {
       flex: 1;
-      background: var(--preto);
-      border: 1px solid var(--cinza-borda);
+      background: rgba(4,10,25,.6);
+      border: 1px solid rgba(212,175,55,.12);
       color: var(--branco);
       border-radius: 4px;
       padding: 8px 12px;
-      font-family: 'Barlow', sans-serif;
-      font-size: 0.88rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
       outline: none;
       transition: border-color 0.2s;
     }
-    .frete-row input:focus, .frete-row select:focus { border-color: var(--amarelo); }
-    .frete-row select option { background: var(--cinza-escuro); }
+    .frete-row input:focus, .frete-row select:focus { border-color: var(--dourado); }
+    .frete-row select option { background: #08111f; }
     .frete-row input[type="text"] { width: 140px; flex: none; }
     #frete-resultado {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--cinza-texto);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--texto);
       min-height: 18px;
     }
-    #frete-resultado.ok { color: var(--amarelo); }
+    #frete-resultado.ok { color: var(--dourado); }
 
     .btn-finalizar {
       width: 100%;
@@ -316,10 +322,10 @@
       border: none;
       border-radius: 6px;
       padding: 14px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 1.05rem;
-      letter-spacing: 0.1em;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       cursor: pointer;
       display: flex;
@@ -335,9 +341,9 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(10,10,10,0.97);
-      border-bottom: 1px solid var(--cinza-borda);
-      backdrop-filter: blur(12px);
+      background: rgba(7,13,26,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(212,175,55,.15);
     }
     .nav-inner {
       max-width: 1200px;
@@ -349,7 +355,7 @@
       justify-content: space-between;
     }
     .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Bebas Neue', sans-serif;
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -357,22 +363,23 @@
       line-height: 1;
     }
     .nav-logo .logo-abg {
-      font-size: 1.5rem;
-      font-weight: 900;
-      letter-spacing: 0.06em;
-      background: var(--amarelo);
-      color: var(--preto);
+      font-size: 1.9rem;
+      font-weight: 400;
+      letter-spacing: .08em;
+      background: var(--dourado);
+      color: #08111f;
       padding: 4px 10px;
       border-radius: 3px 0 0 3px;
     }
     .nav-logo .logo-nome {
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+      font-weight: 600;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--branco-suave);
-      background: var(--cinza-medio);
-      border: 1px solid var(--cinza-borda);
+      color: #fff;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
       border-left: none;
       padding: 4px 12px;
       border-radius: 0 3px 3px 0;
@@ -382,31 +389,33 @@
     }
     .nav-logo .logo-nome em {
       font-style: normal;
-      color: var(--cinza-texto);
-      font-size: 0.62rem;
-      letter-spacing: 0.15em;
+      color: #8892a0;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      font-weight: 500;
     }
     .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
     .nav-links a {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       text-decoration: none;
-      color: var(--cinza-texto);
-      transition: color 0.2s;
+      color: #c4ccd8;
+      transition: color 0.25s;
     }
-    .nav-links a:hover { color: var(--amarelo); }
-    .nav-links a.ativo { color: var(--amarelo); }
+    .nav-links a:hover { color: var(--dourado); }
+    .nav-links a.ativo { color: var(--dourado); }
     .nav-cta {
-      background: var(--amarelo) !important;
-      color: var(--preto) !important;
-      padding: 8px 18px;
-      border-radius: 4px;
+      background: linear-gradient(135deg, #D4AF37, #f1d06d) !important;
+      color: #08111f !important;
+      padding: 10px 20px !important;
+      border-radius: 4px !important;
       font-weight: 700 !important;
+      box-shadow: 0 0 18px rgba(212,175,55,.18);
     }
-    .nav-cta:hover { background: var(--amarelo-escuro) !important; }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(212,175,55,.3); }
 
     .hamburger {
       display: none;
@@ -421,76 +430,89 @@
     .mobile-menu {
       display: none;
       flex-direction: column;
-      background: var(--cinza-escuro);
-      border-top: 1px solid var(--cinza-borda);
+      background: rgba(7,13,26,.98);
+      border-top: 1px solid rgba(212,175,55,.15);
       padding: 16px 24px 24px;
       gap: 0;
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       font-size: 1.05rem;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: var(--cinza-texto);
+      color: #c4ccd8;
       text-decoration: none;
       padding: 14px 0;
-      border-bottom: 1px solid var(--cinza-borda);
+      border-bottom: 1px solid rgba(255,255,255,.06);
       transition: color 0.2s;
     }
     .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: var(--amarelo); }
-    .mobile-menu a.mobile-cta { color: var(--amarelo); font-weight: 700; }
+    .mobile-menu a:hover { color: var(--dourado); }
+    .mobile-menu a.mobile-cta { color: var(--dourado); font-weight: 700; }
 
     /* ── PAGE HERO ── */
     .page-hero {
       background:
-        linear-gradient(to right, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.85) 60%, rgba(10,10,10,0.6) 100%),
+        linear-gradient(to right,
+          rgba(4,10,25,.96) 0%,
+          rgba(4,10,25,.84) 45%,
+          rgba(4,10,25,.65) 100%),
         url('https://i.postimg.cc/1RNKH2Gj/file-00000000204471fbb554c8d1a051e409.png') center/cover no-repeat;
-      padding: 64px 24px 56px;
-      border-bottom: 1px solid var(--cinza-borda);
+      padding: 72px 24px 64px;
+      border-bottom: 1px solid rgba(212,175,55,.12);
       position: relative;
       overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
+      background-size: 60px 60px;
+      z-index: 1;
     }
     .page-hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(20,59,96,.45), transparent 40%);
+      z-index: 1;
     }
     .page-hero-inner {
       max-width: 1200px;
       margin: 0 auto;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
     .page-hero .section-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: .15em;
       text-transform: uppercase;
-      color: var(--amarelo);
-      margin-bottom: 10px;
+      color: var(--dourado);
+      margin-bottom: 16px;
     }
     .page-hero h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 900;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 400;
+      letter-spacing: .03em;
       text-transform: uppercase;
-      line-height: 1.0;
-      margin-bottom: 12px;
+      line-height: .9;
+      margin-bottom: 16px;
+      color: var(--branco);
     }
-    .page-hero h1 em { font-style: normal; color: var(--amarelo); }
+    .page-hero h1 em { font-style: normal; color: var(--dourado); }
     .page-hero p {
-      color: var(--cinza-texto);
-      font-size: 0.97rem;
+      color: #d0d8e4;
+      font-size: 1rem;
       max-width: 520px;
+      line-height: 1.8;
     }
 
     /* ── CATALOG LAYOUT ── */
@@ -508,21 +530,21 @@
       margin-bottom: 40px;
     }
     .cat-tab {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 7px 16px;
-      border-radius: 3px;
-      border: 1px solid var(--cinza-borda);
-      background: transparent;
-      color: var(--cinza-texto);
+      padding: 8px 18px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      color: var(--texto);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.25s;
     }
-    .cat-tab:hover { border-color: var(--amarelo); color: var(--amarelo); }
-    .cat-tab.active { background: var(--amarelo); color: var(--preto); border-color: var(--amarelo); }
+    .cat-tab:hover { border-color: var(--dourado); color: var(--dourado); background: rgba(212,175,55,.04); }
+    .cat-tab.active { background: linear-gradient(135deg, #D4AF37, #f1d06d); color: #08111f; border-color: var(--dourado); font-weight: 700; }
 
     /* Seção de categoria */
     .cat-section { margin-bottom: 56px; }
@@ -530,40 +552,50 @@
     .cat-title {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
       margin-bottom: 20px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--cinza-borda);
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(212,175,55,.12);
     }
     .cat-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(245,197,24,0.1);
-      border-radius: 6px;
+      width: 48px;
+      height: 48px;
+      background: rgba(212,175,55,.08);
+      border: 1px solid rgba(212,175,55,.14);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       flex-shrink: 0;
     }
     .cat-title h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 900;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: .05em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      color: var(--branco);
     }
-    .cat-title h2 em { font-style: normal; color: var(--amarelo); font-size: 0.8rem; font-weight: 600; margin-left: 6px; letter-spacing: 0.1em; }
+    .cat-title h2 em {
+      font-style: normal;
+      color: var(--dourado);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 6px;
+      letter-spacing: 0.1em;
+      font-family: 'Montserrat', sans-serif;
+    }
 
     /* subcategorias */
     .subcat { margin-bottom: 24px; }
     .subcat-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--amarelo);
+      color: var(--dourado);
       margin-bottom: 10px;
       opacity: 0.8;
     }
@@ -572,73 +604,76 @@
     .prod-table {
       width: 100%;
       border-collapse: collapse;
-      background: var(--cinza-medio);
-      border: 1px solid var(--cinza-borda);
+      background: linear-gradient(180deg, rgba(20,59,96,.12), rgba(26,30,35,.6));
+      border: 1px solid rgba(212,175,55,.10);
       border-radius: 8px;
       overflow: hidden;
+      backdrop-filter: blur(8px);
     }
     .prod-table thead tr {
-      background: var(--preto);
-      border-bottom: 1px solid var(--cinza-borda);
+      background: rgba(255,255,255,.02);
+      border-bottom: 1px solid rgba(212,175,55,.10);
     }
     .prod-table thead th {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
+      font-weight: 600;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--cinza-texto);
-      padding: 10px 16px;
+      color: var(--texto);
+      padding: 12px 16px;
       text-align: left;
     }
     .prod-table thead th:last-child { text-align: right; }
     .prod-table tbody tr {
-      border-bottom: 1px solid var(--cinza-borda);
-      transition: background 0.15s;
+      border-bottom: 1px solid rgba(255,255,255,.03);
+      transition: background 0.2s;
     }
     .prod-table tbody tr:last-child { border-bottom: none; }
-    .prod-table tbody tr:hover { background: #252525; }
+    .prod-table tbody tr:hover { background: rgba(212,175,55,.04); }
     .prod-table td {
-      padding: 12px 16px;
-      font-size: 0.9rem;
+      padding: 14px 16px;
+      font-size: 0.88rem;
       vertical-align: middle;
     }
     .prod-table td:last-child { text-align: right; }
     .prod-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .prod-detail { font-size: 0.78rem; color: var(--cinza-texto); margin-top: 2px; }
-    .prod-price {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
       font-size: 1rem;
-      color: var(--amarelo);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--branco);
+    }
+    .prod-detail { font-size: 0.76rem; color: var(--texto); margin-top: 3px; }
+    .prod-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: var(--dourado);
       white-space: nowrap;
     }
     .prod-price small {
-      font-size: 0.68rem;
-      color: var(--cinza-texto);
-      font-weight: 600;
+      font-size: 0.65rem;
+      color: var(--texto);
+      font-weight: 500;
       display: block;
       margin-top: 1px;
+      font-family: 'Montserrat', sans-serif;
     }
     .promo-tag {
       display: inline-block;
-      background: rgba(245,197,24,0.15);
-      color: var(--amarelo);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      background: rgba(212,175,55,.15);
+      color: var(--dourado);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 2px 7px;
+      padding: 2px 8px;
       border-radius: 2px;
-      border: 1px solid rgba(245,197,24,0.25);
-      margin-left: 6px;
+      border: 1px solid rgba(212,175,55,.25);
+      margin-left: 8px;
     }
 
     /* Qty + Adicionar */
@@ -652,17 +687,17 @@
       display: flex;
       align-items: center;
       gap: 0;
-      background: var(--preto);
-      border: 1px solid var(--cinza-borda);
+      background: rgba(4,10,25,.6);
+      border: 1px solid rgba(212,175,55,.12);
       border-radius: 4px;
       overflow: hidden;
     }
     .qty-btn {
       background: none;
       border: none;
-      color: var(--cinza-texto);
-      width: 28px;
-      height: 28px;
+      color: var(--texto);
+      width: 30px;
+      height: 30px;
       cursor: pointer;
       font-size: 1rem;
       font-weight: 700;
@@ -671,57 +706,58 @@
       justify-content: center;
       transition: color 0.15s, background 0.15s;
     }
-    .qty-btn:hover { color: var(--amarelo); background: rgba(245,197,24,0.08); }
+    .qty-btn:hover { color: var(--dourado); background: rgba(212,175,55,.08); }
     .qty-input {
       background: transparent;
       border: none;
       color: var(--branco);
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 0.9rem;
-      width: 36px;
+      width: 40px;
       text-align: center;
       outline: none;
       padding: 0;
     }
     .qty-input::-webkit-inner-spin-button, .qty-input::-webkit-outer-spin-button { -webkit-appearance: none; }
     .btn-add {
-      background: var(--amarelo);
-      color: var(--preto);
+      background: linear-gradient(135deg, #D4AF37, #f1d06d);
+      color: #08111f;
       border: none;
       border-radius: 4px;
-      padding: 7px 14px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
+      padding: 8px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
       font-size: 0.8rem;
-      letter-spacing: 0.08em;
+      letter-spacing: .06em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.15s, transform 0.15s;
+      transition: transform 0.15s, box-shadow 0.15s;
       white-space: nowrap;
+      box-shadow: 0 0 14px rgba(212,175,55,.12);
     }
-    .btn-add:hover { background: var(--amarelo-escuro); transform: scale(1.03); }
+    .btn-add:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(212,175,55,.25); }
     .btn-add.added { background: #4ade80; color: #022c11; }
 
     /* desconto progressivo info */
     .promo-info {
-      background: var(--cinza-medio);
-      border: 1px solid var(--cinza-borda);
-      border-left: 3px solid var(--amarelo);
+      background: rgba(212,175,55,.04);
+      border: 1px solid rgba(212,175,55,.15);
+      border-left: 3px solid var(--dourado);
       border-radius: 6px;
-      padding: 14px 18px;
+      padding: 16px 20px;
       margin-bottom: 16px;
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 14px;
     }
-    .promo-info-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .promo-info-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
     .promo-info-text {
       font-size: 0.82rem;
-      color: var(--cinza-texto);
+      color: var(--texto);
       line-height: 1.55;
     }
-    .promo-info-text strong { color: var(--amarelo); font-weight: 700; }
+    .promo-info-text strong { color: var(--dourado); font-weight: 600; }
     .promo-tiers {
       display: flex;
       gap: 6px;
@@ -729,22 +765,22 @@
       margin-top: 8px;
     }
     .promo-tier {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 3px 9px;
-      border-radius: 2px;
-      background: rgba(245,197,24,0.1);
-      color: var(--amarelo);
-      border: 1px solid rgba(245,197,24,0.2);
+      padding: 4px 10px;
+      border-radius: 3px;
+      background: rgba(212,175,55,.1);
+      color: var(--dourado);
+      border: 1px solid rgba(212,175,55,.2);
     }
 
     /* ── FOOTER ── */
     footer {
-      background: #080808;
-      border-top: 1px solid var(--cinza-borda);
+      background: #08111f;
+      border-top: 1px solid rgba(212,175,55,.12);
       padding: 56px 24px 32px;
     }
     .footer-inner {
@@ -755,33 +791,38 @@
       gap: 48px;
     }
     .footer-brand img { height: 40px; margin-bottom: 14px; }
-    .footer-brand p { color: var(--cinza-texto); font-size: 0.88rem; max-width: 280px; line-height: 1.6; margin-bottom: 12px; }
-    .footer-brand .cnpj { font-size: 0.75rem; color: #444; letter-spacing: 0.04em; }
+    .footer-brand p { color: #b6c0cb; font-size: 0.88rem; max-width: 280px; line-height: 1.6; margin-bottom: 12px; }
+    .footer-brand .cnpj { font-size: 0.75rem; color: #556; letter-spacing: 0.04em; }
     .footer-col h4 {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--amarelo);
+      color: var(--dourado);
       margin-bottom: 18px;
     }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul li a { color: var(--cinza-texto); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
-    .footer-col ul li a:hover { color: var(--branco); }
-    .footer-col ul li span { color: var(--cinza-texto); font-size: 0.88rem; }
+    .footer-col ul li a {
+      color: #b6c0cb;
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--dourado); }
+    .footer-col ul li span { color: #b6c0cb; font-size: 0.88rem; }
     .footer-bottom {
       max-width: 1100px;
       margin: 36px auto 0;
       padding-top: 24px;
-      border-top: 1px solid var(--cinza-borda);
+      border-top: 1px solid rgba(255,255,255,.05);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
     }
-    .footer-bottom p { font-size: 0.78rem; color: #444; }
+    .footer-bottom p { font-size: 0.78rem; color: #556; }
 
     /* Responsive */
     @media (max-width: 900px) {
@@ -792,8 +833,8 @@
       .hamburger { display: flex; }
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
       .footer-bottom { flex-direction: column; text-align: center; }
-      .prod-table thead th:nth-child(2),
-      .prod-table td:nth-child(2) { display: none; }
+      .prod-table thead th:nth-child(2), .prod-table td:nth-child(2) { display: none; }
+      .page-hero h1 { font-size: 2.8rem; }
     }
     @media (max-width: 540px) {
       .add-row { flex-direction: column; align-items: flex-end; gap: 6px; }
@@ -834,31 +875,21 @@
       </div>
       <div class="frete-box">
         <label>📍 Endereço de Entrega</label>
-
-        <!-- CEP + botão buscar -->
         <div class="frete-row">
           <input type="text" id="frete-cep" placeholder="CEP (ex: 25255-470)" maxlength="9" oninput="maskCEP(this)" />
-          <button id="btn-buscar-cep" onclick="buscarCEP()" style="background:var(--amarelo);color:var(--preto);border:none;border-radius:4px;padding:0 14px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.2s;">Buscar</button>
+          <button id="btn-buscar-cep" onclick="buscarCEP()" style="background:linear-gradient(135deg,#D4AF37,#f1d06d);color:#08111f;border:none;border-radius:4px;padding:0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:transform 0.2s;">Buscar</button>
         </div>
-
-        <!-- Rua + Número (preenchidos auto / editáveis) -->
         <div class="frete-row">
           <input type="text" id="frete-rua" placeholder="Rua / Av." style="flex:1" readonly />
           <input type="text" id="frete-numero" placeholder="Nº" style="width:70px;flex:none" />
         </div>
-
-        <!-- Bairro + Cidade (auto) -->
         <div class="frete-row">
           <input type="text" id="frete-bairro" placeholder="Bairro" style="flex:1" readonly />
           <input type="text" id="frete-cidade" placeholder="Cidade / UF" style="flex:1" readonly />
         </div>
-
-        <!-- Complemento / ponto de referência -->
         <div class="frete-row">
-          <input type="text" id="frete-complemento" placeholder="Complemento / Ponto de referência (ex: casa, apto 201, próx. à padaria)" style="flex:1" />
+          <input type="text" id="frete-complemento" placeholder="Complemento / Ponto de referência" style="flex:1" />
         </div>
-
-        <!-- Horário preferido -->
         <div class="frete-row">
           <select id="frete-hora">
             <option value="">⏰ Melhor horário para entrega</option>
@@ -867,7 +898,6 @@
             <option>Qualquer horário</option>
           </select>
         </div>
-
         <div id="frete-resultado"></div>
       </div>
       <button class="btn-finalizar" onclick="finalizarPedido()">
@@ -883,7 +913,7 @@
   <div class="nav-inner">
     <a class="nav-logo" href="index.html">
       <span class="logo-abg">ABG</span>
-      <span class="logo-nome">DISTRIBUIDORA DE FERRO E AÇO<em>DUQUE DE CAXIAS · RJ</em></span>
+      <span class="logo-nome">Distribuidora de Ferro e Aço<em>Duque de Caxias · RJ</em></span>
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Início</a></li>
@@ -919,7 +949,6 @@
 <!-- CATALOG -->
 <div class="catalog-wrap">
 
-  <!-- Filtros por aba -->
   <div class="cat-tabs">
     <button class="cat-tab active" onclick="filterCat('todos')">Todos</button>
     <button class="cat-tab" onclick="filterCat('ferragem')">🔩 Ferragens</button>
@@ -937,114 +966,58 @@
       <h2>Ferragens <em>CA-50 / CA-60</em></h2>
     </div>
 
-    <!-- Colunas -->
     <div class="subcat">
       <div class="subcat-label">Colunas Armadas — 6 metros</div>
       <table class="prod-table">
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Medida</th>
-            <th>Preço Unit.</th>
-            <th>Qtd. + Adicionar</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Produto</th><th>Medida</th><th>Preço Unit.</th><th>Qtd. + Adicionar</th></tr></thead>
         <tbody id="tb-colunas"></tbody>
       </table>
     </div>
 
-    <!-- Vergalhões -->
     <div class="subcat">
       <div class="subcat-label">Vergalhões — 12 metros</div>
       <table class="prod-table">
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Bitola</th>
-            <th>Preço Unit.</th>
-            <th>Qtd. + Adicionar</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Produto</th><th>Bitola</th><th>Preço Unit.</th><th>Qtd. + Adicionar</th></tr></thead>
         <tbody id="tb-vergalhoes"></tbody>
       </table>
     </div>
 
-    <!-- Radier -->
     <div class="subcat">
       <div class="subcat-label">Radier — por peça</div>
       <table class="prod-table">
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Medida × Bitola</th>
-            <th>Preço Unit.</th>
-            <th>Qtd. + Adicionar</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Produto</th><th>Medida × Bitola</th><th>Preço Unit.</th><th>Qtd. + Adicionar</th></tr></thead>
         <tbody id="tb-radier"></tbody>
       </table>
     </div>
 
-    <!-- Malhas POP -->
     <div class="subcat">
       <div class="subcat-label">Malhas POP — Fio 4.2mm · 2×3m</div>
       <table class="prod-table">
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Espaçamento</th>
-            <th>Preço Unit.</th>
-            <th>Qtd. + Adicionar</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Produto</th><th>Espaçamento</th><th>Preço Unit.</th><th>Qtd. + Adicionar</th></tr></thead>
         <tbody id="tb-malhas"></tbody>
       </table>
     </div>
 
-    <!-- Estribos -->
     <div class="subcat">
       <div class="subcat-label">Estribos — Pacote com 100 un.</div>
       <table class="prod-table">
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Medida</th>
-            <th>Preço Pacote</th>
-            <th>Qtd. + Adicionar</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Produto</th><th>Medida</th><th>Preço Pacote</th><th>Qtd. + Adicionar</th></tr></thead>
         <tbody id="tb-estribos"></tbody>
       </table>
     </div>
 
-    <!-- Arame -->
     <div class="subcat">
       <div class="subcat-label">Arame Recozido — por kg</div>
       <table class="prod-table">
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Tipo</th>
-            <th>Preço/kg</th>
-            <th>Qtd. (kg) + Adicionar</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Produto</th><th>Tipo</th><th>Preço/kg</th><th>Qtd. (kg) + Adicionar</th></tr></thead>
         <tbody id="tb-arame"></tbody>
       </table>
     </div>
 
-    <!-- Pregos -->
     <div class="subcat">
       <div class="subcat-label">Pregos Comuns — por kg</div>
       <table class="prod-table">
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Bitola</th>
-            <th>Preço/kg</th>
-            <th>Qtd. (kg) + Adicionar</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Produto</th><th>Bitola</th><th>Preço/kg</th><th>Qtd. (kg) + Adicionar</th></tr></thead>
         <tbody id="tb-pregos"></tbody>
       </table>
     </div>
@@ -1072,14 +1045,7 @@
       </div>
     </div>
     <table class="prod-table">
-      <thead>
-        <tr>
-          <th>Produto</th>
-          <th>Tipo</th>
-          <th>Preço Unit.</th>
-          <th>Qtd. (sacos) + Adicionar</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Produto</th><th>Tipo</th><th>Preço Unit.</th><th>Qtd. (sacos) + Adicionar</th></tr></thead>
       <tbody id="tb-cimento"></tbody>
     </table>
   </div>
@@ -1091,14 +1057,7 @@
       <h2>Lajes Pré-Moldadas <em>por m²</em></h2>
     </div>
     <table class="prod-table">
-      <thead>
-        <tr>
-          <th>Produto</th>
-          <th>Tipo</th>
-          <th>Preço/m²</th>
-          <th>Qtd. (m²) + Adicionar</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Produto</th><th>Tipo</th><th>Preço/m²</th><th>Qtd. (m²) + Adicionar</th></tr></thead>
       <tbody id="tb-lajes"></tbody>
     </table>
   </div>
@@ -1159,7 +1118,7 @@
   <div class="cat-section" data-cat="madeira">
     <div class="cat-title">
       <div class="cat-icon">🪵</div>
-      <h2>Madeiras <em>Pinus & Sarrafos</em></h2>
+      <h2>Madeiras <em>Pinus &amp; Sarrafos</em></h2>
     </div>
     <table class="prod-table">
       <thead><tr><th>Produto</th><th>Dimensão</th><th>Preço Unit.</th><th>Qtd. + Adicionar</th></tr></thead>
@@ -1206,12 +1165,12 @@
   </div>
   <div class="footer-bottom">
     <p>© 2026 ABG Distribuidora de Ferro e Aço — Todos os direitos reservados.</p>
-    <p style="color:#333;font-size:0.75rem;">Fabricante Nacional · Duque de Caxias · RJ</p>
+    <p style="color:#445;font-size:0.75rem;">Fabricante Nacional · Duque de Caxias · RJ</p>
   </div>
 </footer>
 
 <script>
-// ── CATÁLOGO DE PRODUTOS ──────────────────────────────────────────────────────
+// ── CATÁLOGO DE PRODUTOS ──
 const CATALOG = {
   colunas: [
     { id:'col1', name:'Coluna 1/4" — 7×20', detail:'CA-50 · 6 metros', price:55, unit:'un.' },
@@ -1297,7 +1256,7 @@ const CATALOG = {
   ],
 };
 
-// ── DESCONTO PROGRESSIVO CIMENTO ──────────────────────────────────────────────
+// ── DESCONTO PROGRESSIVO CIMENTO ──
 function cimentoDiscount(qty) {
   if (qty >= 100) return 0.10;
   if (qty >= 90)  return 0.09;
@@ -1309,7 +1268,7 @@ function cimentoDiscount(qty) {
   return 0;
 }
 
-// ── CARRINHO ──────────────────────────────────────────────────────────────────
+// ── CARRINHO ──
 let cart = {}; // { productId: { ...product, qty } }
 
 function getEffectivePrice(item) {
@@ -1410,7 +1369,7 @@ function overlayClick(e) {
   if (e.target === document.getElementById('cart-overlay')) closeCart();
 }
 
-// ── RENDER TABLES ─────────────────────────────────────────────────────────────
+// ── RENDER TABLES ──
 function renderRow(tbody, product) {
   const tr = document.createElement('tr');
   tr.innerHTML = `
@@ -1447,7 +1406,6 @@ function handleAdd(productId) {
   const input = document.getElementById('qty-' + productId);
   const qty = parseInt(input?.value) || 1;
 
-  // Find product in catalog
   let found = null;
   for (const arr of Object.values(CATALOG)) {
     const p = arr.find(x => x.id === productId);
@@ -1457,7 +1415,6 @@ function handleAdd(productId) {
 
   addToCart(productId, found, qty);
 
-  // Feedback visual
   const btn = document.getElementById('add-' + productId);
   if (btn) {
     btn.textContent = '✓ Adicionado';
@@ -1467,7 +1424,6 @@ function handleAdd(productId) {
   if (input) input.value = 1;
 }
 
-// Populate all tables
 function populateTables() {
   const map = {
     'tb-colunas': CATALOG.colunas,
@@ -1493,7 +1449,7 @@ function populateTables() {
   }
 }
 
-// ── FILTRO DE CATEGORIAS ──────────────────────────────────────────────────────
+// ── FILTRO DE CATEGORIAS ──
 function filterCat(cat) {
   document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
   event.currentTarget.classList.add('active');
@@ -1507,7 +1463,7 @@ function filterCat(cat) {
   });
 }
 
-// ── FINALIZAR PEDIDO ──────────────────────────────────────────────────────────
+// ── FINALIZAR PEDIDO ──
 function finalizarPedido() {
   const keys = Object.keys(cart);
   if (keys.length === 0) {
@@ -1523,7 +1479,6 @@ function finalizarPedido() {
   const complemento = document.getElementById('frete-complemento').value.trim();
   const hora        = document.getElementById('frete-hora').value.trim();
 
-  // Monta endereço completo
   let endParts = [];
   if (rua)    endParts.push(rua);
   if (numero) endParts.push(`Nº ${numero}`);
@@ -1556,20 +1511,18 @@ function finalizarPedido() {
   window.open(url, '_blank');
 }
 
-// ── CEP: MÁSCARA + BUSCA AUTOMÁTICA ──────────────────────────────────────────
+// ── CEP: MÁSCARA + BUSCA AUTOMÁTICA ──
 function maskCEP(el) {
   let v = el.value.replace(/\D/g,'');
   if (v.length > 5) v = v.slice(0,5) + '-' + v.slice(5,8);
   el.value = v;
 
-  // Limpa campos se CEP incompleto
   if (v.replace(/\D/g,'').length < 8) {
     clearAddressFields();
     document.getElementById('frete-resultado').textContent = '';
     document.getElementById('frete-resultado').className = '';
   }
 
-  // Auto-busca ao completar 9 chars (00000-000)
   if (el.value.length === 9) buscarCEP();
 }
 
@@ -1608,10 +1561,8 @@ async function buscarCEP() {
     document.getElementById('frete-bairro').value = data.bairro     || '';
     document.getElementById('frete-cidade').value = `${data.localidade} / ${data.uf}`;
 
-    // Foco no número
     document.getElementById('frete-numero').focus();
 
-    // Prazo por região
     const prefix = parseInt(cepRaw.slice(0,2));
     if (prefix >= 20 && prefix <= 23) {
       res.textContent = '📦 Capital RJ — prazo estimado: até 36h'; res.className = 'ok';
@@ -1629,7 +1580,7 @@ async function buscarCEP() {
   }
 }
 
-// ── UTILIDADES ────────────────────────────────────────────────────────────────
+// ── UTILIDADES ──
 function fmtMoney(v) {
   return 'R$ ' + v.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
@@ -1643,4 +1594,4 @@ populateTables();
 renderCart();
 </script>
 </body>
-</html>
+  </html>
